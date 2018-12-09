@@ -34,7 +34,7 @@ exports.cssLoaders = function (options) {
 
     if (loader) {
       loaders.push({
-        loader: `${loader  }-loader`,
+        loader: `${loader}-loader`,
         options: Object.assign({}, loaderOptions, {
           sourceMap: options.sourceMap,
         }),
@@ -72,7 +72,7 @@ exports.styleLoaders = function (options) {
   for (const extension in loaders) {
     const loader = loaders[extension];
     output.push({
-      test: new RegExp(`\\.${extension }$`),
+      test: new RegExp(`\\.${extension}$`),
       use: loader,
     });
   }
@@ -91,7 +91,7 @@ exports.createNotifierCallback = () => {
 
     notifier.notify({
       title: packageConfig.name,
-      message: `${severity }: ${error.name}`,
+      message: `${severity}: ${error.name}`,
       subtitle: filename || '',
       icon: path.join(__dirname, 'logo.ico'),
     });
