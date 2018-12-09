@@ -16,7 +16,7 @@ export default {
   },
   data() {
     return {
-      jqsrc: 'http://code.jquery.com/jquery-2.1.1.min.js',
+      jqsrc: 'http://www.webq.top/static/plugins/jquery-2.1.1.js',
       navsrc: 'http://www.webq.top/static/js/nav.js',
       times: 0,
       loading: true,
