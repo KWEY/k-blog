@@ -23,31 +23,8 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
+<style lang="less">
 .kwe-index {
   background: rgba(0, 255, 255, .3);
-}
-html, body, div, li{
-    margin: 0;
-    padding: 0;
-    color: #000;
-}
-address, caption, cite, code, dfn, em, strong, th, var {
-    font-style: normal;
-    font-weight: normal;
-}
-li {
-    list-style: none outside none;
-}
-input, textarea, select {
-    font-family: inherit;
-    font-size: inherit;
-    font-weight: inherit;
-}
-a {
-    text-decoration: none;
-}
-a:hover, a:focus {
-    text-decoration: underline;
 }
 </style>

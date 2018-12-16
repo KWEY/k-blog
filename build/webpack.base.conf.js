@@ -89,6 +89,10 @@ module.exports = {
           name: utils.assetsPath('fonts/[name].[ext]'),
         },
       },
+      {
+        test: /\.less$/,
+        loader: 'style-loader!css-loader!less-loader',
+      },
     ],
   },
   node: {

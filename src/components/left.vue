@@ -1,22 +1,23 @@
 <template>
   <div class="kwe-left">
-    <div class="kwe-info">
+    <div class="kwe-left-info">
       <div class="kwe-wrap">
         <title-svg class="kwe-img"/>
       </div>
       <div class="kwe-title">{{title}}</div>
     </div>
-    <div class="kwe-article"></div>
-    <div class="kwe-tool">
-      <router-link to="/nav">收藏夹</router-link>
+    <div class="kwe-left-artList">
+      <collapse :typeList="typeList"></collapse>
     </div>
-    <div class="kwe-link">
+    <div class="kwe-left-link">
       <a href="https://github.com/KWEY" target="_blank"><github-svg class="kwe-github"/></a>
     </div>
   </div>
 </template>
 
 <script>
+import collapse from '@/ui/collapse';
+import $http from '@/request/http';
 import githubsvg from '../assets/github.svg';
 import titlesvg from '../assets/title.svg';
 
@@ -25,17 +26,35 @@ export default {
   components: {
     'github-svg': githubsvg,
     'title-svg': titlesvg,
+    collapse,
   },
   data() {
     return {
-      title: '雪人',
+      typeList: {},
     };
+  },
+  computed: {
+    title() {
+      return this.$store.state.user.name;
+    },
+  },
+  mounted() {
+    // 获取type列表
+    const list = this.$store.state.typeList;
+    if (list) {
+      this.typeList = list;
+    } else {
+      $http.getTypeList().then((data) => {
+        this.typeList = data;
+        this.$store.dispatch('setTypeList', data);
+      });
+    }
   },
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
+<style lang="less">
 .kwe-left {
   position: fixed;
   top: 0;
@@ -45,43 +64,54 @@ export default {
   text-align: center;
   line-height: 2;
   background: #fff;
-}
-  /* 个人信息 */
-.kwe-info {
-  height: 300px;
-  background: linear-gradient( #4a4a4a, #4a4a4a 100px, #fff 100px, #fff 100%);
-}
-.kwe-wrap::before {
-  position: absolute;
-  top: -10px;
-  left: -10px;
-  content: '';
-  display: inline-block;
-  width: 100px;
-  height: 100px;
-  background: #fff;
-  border-radius: 50%;
-}
-.kwe-wrap {
-  position: relative;
-  display: inline-block;
-  width: 80px;
-  height: 80px;
-  margin-top: 60px;
-  border-radius: 50%;
-}
-.kwe-img {
-  position: relative;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-}
-/* 外链 */
-.kwe-link .kwe-github{
-  display: inline-block;
-  width: 30px;
-  height: 30px;
+
+    /* 个人信息 */
+  &-info {
+    height: 200px;
+    background: linear-gradient( #4a4a4a, #4a4a4a 100px, #fff 100px, #fff 100%);
+
+    .kwe-wrap::before {
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      content: '';
+      display: inline-block;
+      width: 100px;
+      height: 100px;
+      background: #fff;
+      border-radius: 50%;
+    }
+
+    .kwe-wrap {
+      position: relative;
+      display: inline-block;
+      width: 80px;
+      height: 80px;
+      margin-top: 60px;
+      border-radius: 50%;
+
+      .kwe-img {
+        position: relative;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+  /* 外链 */
+  &-link {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    margin: 10px;
+    .kwe-github {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+    }
+  }
 }
 @media screen and (max-width: 800px){
   .kwe-left {

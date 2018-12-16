@@ -1,0 +1,26 @@
+html, body, div, ul, li, p{
+    margin: 0;
+    padding: 0;
+    font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+}
+address, caption, cite, code, dfn, em, strong, th, var {
+    font-style: normal;
+    font-weight: normal;
+}
+li {
+    list-style: none outside none;
+}
+input, textarea, select {
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+}
+a,
+a:link,
+a:link:hover,
+a:visited,
+a:hover,
+a:active{
+    text-decoration: none;
+    color:inherit;
+}

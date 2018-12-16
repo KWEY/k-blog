@@ -1,5 +1,5 @@
 <template>
-  <div :class="{'kwe-nav': true, loading: loading}">
+  <div class="kwe-nav" :class="{loading: loading}">
     <remote-script :src="jqsrc" @load='navLoad'></remote-script>
     <remote-script :src="navsrc" @load='navLoad'></remote-script>
     <div class="kwe-nav-wrap"></div>
@@ -26,8 +26,9 @@ export default {
     navLoad() {
       this.times += 1;
       if (this.times === 2) {
-        /* eslint-disable no-new */
+        /* eslint-disable */
         new NAV.Nav({ className: 'kwe-nav-wrap' });
+        /* eslint-enable */
         this.loading = false;
       }
     },
@@ -36,7 +37,7 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
+<style lang="less">
 .kwe-nav.loading {
   min-height: 200px;
   background: url('../assets/loading.gif') no-repeat center;
