@@ -1,27 +1,25 @@
 /**
  * 模块接口列表
  */
-import qs from 'qs';
 
 import base from './api'; // 导入接口域名列表
-import axios, { fetch } from './axios'; // 导入http中创建的axios实例
+import { fetch } from './axios'; // 导入http中创建的axios实例
 
 export default {
   // 获取类型列表
   getTypeList() {
-    return fetch(base.typeList, null);
+    return fetch({ url: base.typeList });
   },
   // 获取目录列表
   getDirectoryList() {
-    return fetch(base.directoryList, null);
+    return fetch({ url: base.directoryList });
   },
   // 获取文章
   getArticle(data) {
-    return fetch(`${base.article}${data.tid}/${data.id}.json`, null);
+    return fetch({ url: `${base.article}${data.tid}/${data.id}.json` });
   },
-  // post提交
-  login(params) {
-    return axios.post(`${base.sq}/accesstoken`, qs.stringify(params));
+  // 动态获取js
+  getJS(data) {
+    return fetch(data);
   },
-  // 其他接口…………
 };

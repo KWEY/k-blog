@@ -17,7 +17,7 @@ export default {
   data() {
     return {
       jqsrc: 'http://www.webq.top/static/plugins/jquery-2.1.1.js',
-      navsrc: 'http://www.webq.top/static/js/nav.js',
+      navsrc: 'http://www.webq.top/static/plugins/nav.js',
       times: 0,
       loading: true,
     };
@@ -27,7 +27,10 @@ export default {
       this.times += 1;
       if (this.times === 2) {
         /* eslint-disable */
-        new NAV.Nav({ className: 'kwe-nav-wrap' });
+        new NAV.Nav({
+          className: 'kwe-nav-wrap',
+          url: '/static/db/nav-x.json'
+        });
         /* eslint-enable */
         this.loading = false;
       }

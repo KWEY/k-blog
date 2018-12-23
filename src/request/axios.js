@@ -6,7 +6,12 @@ import axios from 'axios';
 import store from '../store/index';
 
 // 创建axios实例
-const instance = axios.create({ timeout: 1000 * 12 });
+const instance = axios.create({
+  // baseURL: 'http://www.webq.top/',
+  timeout: 5000,
+  headers: { 'X-Custom-Header': 'Range' },
+  withCredentials: true,
+});
 // 设置post请求头
 instance.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 /**
@@ -24,17 +29,15 @@ instance.interceptors.request.use((config) => {
     cf.headers.Authorization = token;
   }
   return cf;
-},
-error => Promise.error(error));
+}, error => Promise.error(error));
 
 // 响应拦截器
 instance.interceptors.response.use(
   (res) => {
     if (res.status === 200) {
-      Promise.resolve(res);
-    } else {
-      Promise.reject(res);
+      return Promise.resolve(res);
     }
+    return Promise.reject(res);
   },
   (error) => {
     const { response } = error;
@@ -56,22 +59,15 @@ instance.interceptors.response.use(
 
 /**
  *
- * @param {*} url
- * @param {*} params
- * @param {*} method
+ * @param {*} data
  */
-const fetch = (url, params, method) => {
+const fetch = (data) => {
   const config = {
-    url,
-    method: method || 'get',
+    method: 'get',
+    ...data,
   };
-  if (method === 'get') {
-    config.params = params;
-  } else {
-    config.data = params;
-  }
   return new Promise((resovle, reject) => {
-    axios(config)
+    instance.request(config)
       .then((res) => {
         if (res.data) {
           resovle(res.data);
