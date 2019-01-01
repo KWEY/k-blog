@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-// import titleSvg from './logo.svg';
-// import githubSvg from './logo.svg';
+import TitleSvg from '../static/assets/title.svg';
+import GithubSvg from '../static/assets/github.svg';
 import '../static/less/left.less';
 import Collapse from '../ui/collapse';
 
@@ -14,7 +14,7 @@ class Left extends Component {
       <div className="kwe-left">
         <div className="kwe-left-info">
           <div className="kwe-wrap">
-            {/* <titleSvg className="kwe-img"/> */}
+            <TitleSvg className="kwe-img"/>
           </div>
           <div className="kwe-title">{title}</div>
         </div>
@@ -23,7 +23,7 @@ class Left extends Component {
         </div>
         <div className="kwe-left-link">
           <a href="https://github.com/KWEY" target="_blank">
-            {/* <githubSvg className="kwe-github"/> */}
+            <GithubSvg className="kwe-github"/>
           </a>
         </div>
       </div>

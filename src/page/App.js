@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 // import logo from './logo.svg';
-import '../static/less/app.less';
-import LeftPanel from '../components/leftPanel';
-import RightPanel from '../components/rightPanel';
+import '../static/less/index.less';
+import LeftPanel from '../components/LeftPanel';
+import RightPanel from '../components/RightPanel';
+import Form from '../components/Form';
 
 class App extends Component {
   render() {
@@ -10,6 +11,7 @@ class App extends Component {
       <div className="kwe-index">
         <LeftPanel></LeftPanel>
         <RightPanel></RightPanel>
+        {/* <Form/> */}
       </div>
     );
   }
