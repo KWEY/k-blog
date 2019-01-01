@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 // import logo from './logo.svg';
 import '../static/less/app.less';
-import LeftPanel from './leftPanel';
-import RightPanel from './rightPanel';
+import LeftPanel from '../components/leftPanel';
+import RightPanel from '../components/rightPanel';
 
 class App extends Component {
   render() {
