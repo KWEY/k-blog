@@ -51,7 +51,7 @@ export default {
 
   .kwe-directory {
     width: 96%;
-    margin: 0 auto;
+    margin: 8px auto;
     padding: 4px 8px;
     border-radius: 2px;
     transition: all .2s;
