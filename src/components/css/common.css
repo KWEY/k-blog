@@ -1,6 +1,6 @@
 html, body {
     height: 100%;
-    background: url('../../assets/3.jpg') center;
+    background: url('../../../static/img/3.jpg') center;
     background-attachment: fixed;
     background-size: auto 100%;
 }

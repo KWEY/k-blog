@@ -1,5 +1,5 @@
 <template>
-  <div class="kwe-left">
+  <div class="kwe-left" :class='showLeft'>
     <div class="kwe-left-info">
       <div class="kwe-wrap">
         <title-svg class="kwe-img"/>
@@ -28,6 +28,7 @@ export default {
     'title-svg': titlesvg,
     collapse,
   },
+  props: ['showLeft'],
   data() {
     return {
       typeList: {},
@@ -66,7 +67,9 @@ export default {
   text-align: center;
   line-height: 2;
   background: #fff;
-
+  transform: translateX(0);
+  transition: transform .3s;
+  z-index: 1;
     /* 个人信息 */
   &-info {
     height: 200px;
@@ -116,9 +119,11 @@ export default {
   }
 }
 @media screen and (max-width: 800px){
-  .kwe-left {
-    display: none;
+  .kwe-left.show-left {
+    transform: translateX(0);
   }
-
+  .kwe-left {
+    transform: translateX(-100%);
+  }
 }
 </style>

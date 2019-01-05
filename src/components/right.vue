@@ -40,13 +40,15 @@ export default {
 <style lang="less">
 .kwe-right {
   position: absolute;
-  right: 0;
   left: 310px;
+  right: 0;
+  transform: translateX(0);
   box-sizing: border-box;
   padding: 10px 0;
   min-height: 100%;
   text-align: center;
   line-height: 2;
+  transition: left .3s;
   // background: #eaeaea;
 
   .kwe-directory {
@@ -81,6 +83,7 @@ export default {
   .kwe-right {
     margin-left: 0;
     left: 0;
+    // transform: translateX(-310px);
   }
 }
 
