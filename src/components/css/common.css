@@ -1,6 +1,13 @@
+html, body {
+    height: 100%;
+    background: url('../../assets/3.jpg') center;
+    background-attachment: fixed;
+    background-size: auto 100%;
+}
 html, body, div, ul, li, p{
     margin: 0;
     padding: 0;
+    color: #33495e;
     font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
 }
 address, caption, cite, code, dfn, em, strong, th, var {

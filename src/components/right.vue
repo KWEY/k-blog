@@ -47,7 +47,7 @@ export default {
   min-height: 100%;
   text-align: center;
   line-height: 2;
-  background: #eaeaea;
+  // background: #eaeaea;
 
   .kwe-directory {
     width: 96%;
@@ -61,7 +61,7 @@ export default {
     cursor: pointer;
 
     &:hover {
-      box-shadow: 0 0 10px 1px #cc82ff;
+      box-shadow: 1px 1px 10px 1px #cc82ff;
     }
     .kwe-title {
       font-size: 16px;

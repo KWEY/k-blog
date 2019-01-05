@@ -55,6 +55,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="less">
+@top_bg: rgba(74,74,74, 1);
+
 .kwe-left {
   position: fixed;
   top: 0;
@@ -68,7 +70,7 @@ export default {
     /* 个人信息 */
   &-info {
     height: 200px;
-    background: linear-gradient( #4a4a4a, #4a4a4a 100px, #fff 100px, #fff 100%);
+    background: linear-gradient( @top_bg, @top_bg 100px, transparent 100px, transparent 100%);
 
     .kwe-wrap::before {
       position: absolute;

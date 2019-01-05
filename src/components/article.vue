@@ -40,11 +40,13 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="less">
+@top_bl: rgba(255,255,255, 0.5);
 .kwe-article {
   width: 800px;
   margin: 10px auto;
   padding: 8px;
   font-size: 14px;
+  background: @top_bl;
 
   .kwe-name {
     font-size: 20px;
@@ -55,7 +57,7 @@ export default {
     text-align: right;
   }
   .kwe-context {
-    color: #33495e;
+    // color: #33495e;
     line-height: 1.5;
   }
 }
