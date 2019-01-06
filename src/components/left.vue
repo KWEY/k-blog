@@ -69,6 +69,7 @@ export default {
   background: #fff;
   transform: translateX(0);
   transition: transform .3s;
+  box-shadow: 0 0 2px 2px #ccc;
   z-index: 1;
     /* 个人信息 */
   &-info {

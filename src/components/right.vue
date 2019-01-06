@@ -15,23 +15,34 @@ import $http from '@/request/http';
 
 export default {
   name: 'rightPanel',
+  props: ['type'],
   data() {
     return {
+      list: {},
       directory: [],
       msg: 'Welcome to Your Vue.js App',
     };
   },
-  mounted() {
-    // 获取目录列表
-    const directory = this.$store.state.directory;
-    if (directory) {
-      this.directory = directory;
-    } else {
-      $http.getDirectoryList().then((data) => {
-        this.directory = data;
-        this.$store.dispatch('setDirectory', data);
-      });
-    }
+  watch: {
+    type: 'changeList',
+  },
+  methods: {
+    getDirectory(type) {
+      if (!this.list.all) {
+        $http.getDirectoryList().then((data) => {
+          this.list[type] = data;
+          this.directory = data;
+        });
+      } else {
+        this.directory = this.list.all;
+      }
+    },
+    changeList(val, old) {
+      if (val !== old) {
+        // 获取目录列表
+        this.getDirectory(val);
+      }
+    },
   },
 };
 </script>

@@ -16,6 +16,11 @@ export default new Router({
       component: index,
     },
     {
+      path: '/index',
+      name: 'index',
+      component: index,
+    },
+    {
       path: '/nav',
       name: 'nav',
       component: nav,

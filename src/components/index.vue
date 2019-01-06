@@ -4,7 +4,7 @@
         <menu-svg class="kwe-menu-svg"/>
     </div>
     <left-panel :showLeft='showLeft'></left-panel>
-    <right-panel></right-panel>
+    <right-panel :type='type'></right-panel>
   </div>
 </template>
 
@@ -20,12 +20,30 @@ export default {
     'right-panel': rightPanel,
     'menu-svg': menusvg,
   },
+  created() {
+    // 组件创建完后获取数据，
+    // 此时 data 已经被 observed 了
+    // this.fetchData();
+  },
+  beforeRouteEnter(to, from, next) {
+    next((vm) => {
+      vm.setType(to);
+    });
+  },
+  watch: {
+    // 如果路由有变化，会再次执行该方法
+    $route: 'setType',
+  },
   data() {
     return {
       showLeft: '',
+      type: '',
     };
   },
   methods: {
+    setType(route) {
+      this.type = route.query.type || 'all';
+    },
     toggle() {
       this.showLeft = this.showLeft ? '' : 'show-left';
     },
@@ -37,7 +55,11 @@ export default {
 <style lang="less">
 .kwe-index {
   // background: rgba(0, 255, 255, .3);
-    /* menu */
+  width: 100%;
+  height: 100%;
+  background: url('../../static/img/3.jpg') center;
+  background-attachment: fixed;
+  background-size: auto 100%;
 }
 .kwe-menu {
   display: none;

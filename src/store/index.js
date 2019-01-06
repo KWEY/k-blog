@@ -9,7 +9,6 @@ export default new Vuex.Store({
   state: {
     token: null, // 用户信息,
     typeList: null,
-    directory: null,
     article: null,
   },
   mutations: {
@@ -18,9 +17,6 @@ export default new Vuex.Store({
     },
     TYPELIST(state, val) {
       state.typeList = val;
-    },
-    DIRECTORY(state, val) {
-      state.directory = val;
     },
     ARTICLE(state, val) {
       state.article = val;
@@ -32,9 +28,6 @@ export default new Vuex.Store({
     },
     setTypeList({ commit }, val) {
       commit('TYPELIST', val);
-    },
-    setDirectory({ commit }, val) {
-      commit('DIRECTORY', val);
     },
     setArticle({ commit }, val) {
       commit('ARTICLE', val);
