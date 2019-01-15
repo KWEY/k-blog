@@ -18,6 +18,14 @@ export default {
   getArticle(data) {
     return fetch({ url: `${base.article}${data.tid}/${data.id}.json` });
   },
+  // 获取mse文章
+  getMseDoc() {
+    return fetch({ url: base.mse, responseType: '' });
+  },
+  // 获取mse目录
+  getMseDocList() {
+    return fetch({ url: base.mseList });
+  },
   // 动态获取js
   getJS(data) {
     return fetch(data);

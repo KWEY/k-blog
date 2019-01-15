@@ -4,6 +4,7 @@
  */
 import axios from 'axios';
 import store from '../store/index';
+import defaultConfig from './config';
 
 // 创建axios实例
 const instance = axios.create({
@@ -63,7 +64,7 @@ instance.interceptors.response.use(
  */
 const fetch = (data) => {
   const config = {
-    method: 'get',
+    ...defaultConfig,
     ...data,
   };
   return new Promise((resovle, reject) => {
