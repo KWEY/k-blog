@@ -67,6 +67,6 @@ if (window.__INITIAL_STATE__) {
 }
 
 router.onReady(() => {
-  app.$mount('#kwe');
+  app.$mount('#app');
 });
 

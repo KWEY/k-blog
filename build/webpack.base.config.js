@@ -57,7 +57,7 @@ module.exports = {
         loader: 'url-loader',
         options: {
           limit: 10000,
-          name: path.resolve(__dirname, './static/img/[name].[ext]'),
+          name: './img/[name].[ext]',
         },
       },
       {

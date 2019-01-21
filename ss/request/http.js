@@ -7,11 +7,7 @@ import { fetch } from './axios'; // 导入http中创建的axios实例
 
 export default {
   // 获取文章列表
-  getTypeList() {
-    return fetch({ url: base.typeList });
-  },
-  // 获取文章列表
-  getDirectoryList(type) {
+  getList() {
     return fetch({ url: base.directoryList });
   },
 };

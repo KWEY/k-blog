@@ -1,50 +1,27 @@
-// https://eslint.org/docs/user-guide/configuring
-
 module.exports = {
-  root: true,
-  parserOptions: {
-    parser: 'babel-eslint'
-  },
-  env: {
-    browser: true,
-  },
-  // https://github.com/vuejs/eslint-plugin-vue#priority-a-essential-error-prevention
-  // consider switching to `plugin:vue/strongly-recommended` or `plugin:vue/recommended` for stricter rules.
-  extends: ['plugin:vue/essential', 'airbnb-base'],
-  // required to lint *.vue files
-  plugins: [
-    'vue'
+  extends: [
+      'eslint-config-alloy/vue',
   ],
-  // check if imports actually resolve
-  settings: {
-    'import/resolver': {
-      webpack: {
-        config: 'build/webpack.base.conf.js'
-      }
-    }
+  globals: {
+    // 这里填入你的项目需要的全局变量
+    // 这里值为 false 表示这个全局变量不允许被重新赋值，比如：
+    //
+    // Vue: false
   },
-  // add your custom rules here
   rules: {
-    // don't require .vue extension when importing
-    'import/extensions': ['error', 'always', {
-      js: 'never',
-      vue: 'never'
-    }],
-    // disallow reassignment of function parameters
-    // disallow parameter object manipulation except for specific exclusions
-    'no-param-reassign': ['error', {
-      props: true,
-      ignorePropertyModificationsFor: [
-        'state', // for vuex state
-        'acc', // for reduce accumulators
-        'e' // for e.returnvalue
-      ]
-    }],
-    // allow optionalDependencies
-    'import/no-extraneous-dependencies': ['error', {
-      optionalDependencies: ['test/unit/index.js']
-    }],
-    // allow debugger during development
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'
+    'no-tabs': 0,
+    // // @fixable 一个缩进必须用两个空格替代
+    // "indent": ["error", "tab", {
+    //   VariableDeclarator: 2,
+    // }]
+    'prefer-promise-reject-errors': 0,
+    'indent': [
+      'warn',
+      2,
+      {
+          SwitchCase: 1,
+          // flatTernaryExpressions: false
+      }
+    ],
   }
-}
+};

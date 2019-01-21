@@ -1,40 +1,33 @@
 <template>
-  <div class="kwe-index">
-    <div class="kwe-menu" @click="toggle">
-        <menu-svg class="kwe-menu-svg"/>
+  <div class="mse-index">
+    <div class="mse-menu" @click="toggle">
+        <menu-svg class="mse-menu-svg"/>
     </div>
     <left-panel :showLeft="showLeft"></left-panel>
-    <right-panel :type="type"></right-panel>
+    <right-panel></right-panel>
+    <div class="mse-to-top"><a href="#a0"><to-top-svg class="mse-to-top-svg"/></a></div>
   </div>
 </template>
 
 <script>
-import leftPanel from './left.vue';
-import rightPanel from './right.vue';
+import leftPanel from './mse/left.vue';
+import rightPanel from './mse/right.vue';
 import menusvg from '../assets/menu.svg';
+import totopsvg from '../assets/to-top.svg';
 
 export default {
-  name: 'index',
+  name: 'mse',
   components: {
     'left-panel': leftPanel,
     'right-panel': rightPanel,
     'menu-svg': menusvg,
-  },
-  beforeRouteEnter(to, from, next) {
-    next((vm) => {
-      vm.setType(to);
-    });
+    'to-top-svg': totopsvg,
   },
   data() {
     return {
       showLeft: '',
-      type: '',
     };
   },
-  // watch: {
-  //   // 如果路由有变化，会再次执行该方法
-  //   $route: 'setType',
-  // },
   methods: {
     toggle() {
       this.showLeft = this.showLeft ? '' : 'show-left';
@@ -45,15 +38,31 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="less">
-.kwe-index {
-  // background: rgba(0, 255, 255, .3);
+.mse-index {
   width: 100%;
   height: 100%;
-  background: url('../../static/img/3.jpg') center;
-  background-attachment: fixed;
-  background-size: auto 100%;
+  background: #fff;
+
+   .mse-to-top {
+    position: fixed;
+    bottom: 10px;
+    right: 40px;
+    width: 60px;
+    height: 60px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    cursor: pointer;
+    .mse-to-top-svg{
+      width: 100%;
+      height: 100%;
+      fill: #cdcdcd;
+      &:hover {
+        fill: #0fc;
+      }
+    }
+  }
 }
-.kwe-menu {
+.mse-menu {
   display: none;
   position: fixed;
   bottom: 20px;
@@ -71,7 +80,7 @@ export default {
     }
 }
 @media screen and (max-width: 800px){
-  .kwe-menu {
+  .mse-menu {
     display: block;
   }
 }

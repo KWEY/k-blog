@@ -2,23 +2,36 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import $http from '../request/http';
+import user from './modules/user';
 
 Vue.use(Vuex);
 
 // 数据
 const state = {
-  token: '',
-  lists: [], // 文章列表
+  token: null, // 用户信息,
+  typeList: null,
+  article: null,
+
 };
 
 // 事件
 const actions = {
   // 获取文章列表
-  fetchLists({ commit }, data) {
-    return $http.getList(data)
+  getTypeList({ commit }) {
+    return $http.getTypeList()
       .then((res) => {
         if (res) {
-          commit('setLists', res);
+          commit('TYPELIST', res);
+        }
+      });
+  },
+
+  // 获取文章列表
+  getDirectoryList({ commit }, data) {
+    return $http.getDirectoryList(data)
+      .then((res) => {
+        if (res) {
+          commit('ARTICLE', res);
         }
       });
   },
@@ -26,14 +39,18 @@ const actions = {
 
 // 改变
 const mutations = {
-  setLists(states, data) {
-    state.lists = data;
+  TYPELIST(states, data) {
+    state.typeList = data;
+  },
+  ARTICLE(states, data) {
+    state.article = data;
   },
 };
 
 // 获取
 const getters = {
-  getDirectory: states => states.lists,
+  getTypeList: states => states.typeList,
+  getDirectory: states => states.article,
 };
 
 export default new Vuex.Store({
@@ -41,4 +58,7 @@ export default new Vuex.Store({
   actions,
   mutations,
   getters,
+  modules: {
+    user,
+  }
 });

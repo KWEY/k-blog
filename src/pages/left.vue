@@ -1,5 +1,5 @@
 <template>
-  <div class="kwe-left" :class='showLeft'>
+  <div class="kwe-left" :class="showLeft">
     <div class="kwe-left-info">
       <div class="kwe-wrap">
         <title-svg class="kwe-img"/>
@@ -7,7 +7,7 @@
       <div class="kwe-title">{{title}}</div>
     </div>
     <div class="kwe-left-artList">
-      <collapse :typeList="typeList"></collapse>
+      <!-- <collapse :typeList="typeList"></collapse> -->
     </div>
     <div class="kwe-left-link">
       <a href="https://github.com/KWEY" target="_blank"><github-svg class="kwe-github"/></a>
@@ -16,12 +16,15 @@
 </template>
 
 <script>
-import collapse from '@/ui/collapse';
-import $http from '@/request/http';
+import collapse from './ui/collapse.vue';
 import githubsvg from '../assets/github.svg';
 import titlesvg from '../assets/title.svg';
 
 export default {
+  asyncData(store, router) {
+    console.log(router, 1111223333);
+    return store.dispatch('getTypeList'); // 服务端渲染触发
+  },
   name: 'leftPanel',
   components: {
     'github-svg': githubsvg,
@@ -31,25 +34,15 @@ export default {
   props: ['showLeft'],
   data() {
     return {
-      typeList: {},
     };
   },
   computed: {
     title() {
       return this.$store.state.user.name;
     },
-  },
-  mounted() {
-    // 获取type列表
-    const list = this.$store.state.typeList;
-    if (list) {
-      this.typeList = list;
-    } else {
-      $http.getTypeList().then((data) => {
-        this.typeList = data;
-        this.$store.dispatch('setTypeList', data);
-      });
-    }
+    typeList() {
+      return this.$store.state.typeList;
+    },
   },
 };
 </script>
