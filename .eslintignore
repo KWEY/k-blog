@@ -1,7 +1,4 @@
 /build/
-/config/
 /dist/
 /*.js
-/test/unit/coverage/
-
-./k-blog/build/*
+/src/entry-*.js
