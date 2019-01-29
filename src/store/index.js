@@ -11,7 +11,8 @@ const state = {
   token: null, // 用户信息,
   typeList: null,
   article: null,
-
+  mseMenu: null,
+  mseArticle: null,
 };
 
 // 事件
@@ -35,6 +36,24 @@ const actions = {
         }
       });
   },
+  // 获取mse目录
+  getMseDocList({ commit }) {
+    return $http.getMseDocList()
+      .then((res) => {
+        if (res) {
+          commit('MSE_MENU', res);
+        }
+      });
+  },
+  // 获取mse内容
+  getMseDoc({ commit }) {
+    return $http.getMseDoc()
+      .then((res) => {
+        if (res) {
+          commit('MSE_ARTICLE', res);
+        }
+      });
+  },
 };
 
 // 改变
@@ -45,12 +64,16 @@ const mutations = {
   ARTICLE(states, data) {
     state.article = data;
   },
+  MSE_MENU(states, data) {
+    state.mseMenu = data.typeList;
+  },
+  MSE_ARTICLE(states, data) {
+    state.mseArticle = data;
+  },
 };
 
 // 获取
 const getters = {
-  getTypeList: states => states.typeList,
-  getDirectory: states => states.article,
 };
 
 export default new Vuex.Store({

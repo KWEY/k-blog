@@ -9,22 +9,25 @@
 </template>
 
 <script>
-import leftPanel from './left.vue';
-import rightPanel from './right.vue';
-import menusvg from '../assets/menu.svg';
+import leftPanel from './components/left.vue';
+import rightPanel from './components/right.vue';
+import menusvg from './assets/menu.svg';
 
 export default {
+  asyncData(store, router) {
+    return Promise.all([store.dispatch('getTypeList'), store.dispatch('getDirectoryList', router.query.type || 'all')]);
+  },
   name: 'index',
   components: {
     'left-panel': leftPanel,
     'right-panel': rightPanel,
     'menu-svg': menusvg,
   },
-  beforeRouteEnter(to, from, next) {
-    next((vm) => {
-      vm.setType(to);
-    });
-  },
+  // beforeRouteEnter(to, from, next) {
+  //   next((vm) => {
+  //     vm.setType(to);
+  //   });
+  // },
   data() {
     return {
       showLeft: '',

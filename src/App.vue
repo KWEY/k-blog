@@ -9,37 +9,43 @@
 <script>
 
 export default {
-  /**
- * [SSR获取所有组件的asyncData并执行获得初始数据]
- * @param  {[Object]} store [Vuex Store]
- * 此函数会在组件实例化之前调用，所以它无法访问 this。需要将 store 和路由信息作为参数传递进去：
- */
-  // asyncData(store, router) {
-  //   return store.dispatch('fetchLists'); // 服务端渲染触发
-  // },
   name: 'home',
 	data() {
 		return { };
 	},
-	// 计算属性
-	// computed: {
-	// 	directory() {
-	// 		return this.$store.getters.getDirectory; // 文章列表
-	// 	},
-	// },
 };
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="less">
-html,body,div,p{
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+html, body {
+    height: 100%;
+    width: 100%;
 }
-body {
-	background: #eee;
+html, body, div, ul, li, p{
+    margin: 0;
+    padding: 0;
+    color: #33495e;
+    font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+}
+address, caption, cite, code, dfn, em, strong, th, var {
+    font-style: normal;
+    font-weight: normal;
 }
 li {
-	list-style: none;
+    list-style: none outside none;
+}
+input, textarea, select {
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+}
+a,
+a:link,
+a:link:hover,
+a:visited,
+a:hover,
+a:active{
+    text-decoration: none;
+    color:inherit;
 }
 </style>

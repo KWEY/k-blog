@@ -7,7 +7,7 @@
       <div class="kwe-title">{{title}}</div>
     </div>
     <div class="kwe-left-artList">
-      <!-- <collapse :typeList="typeList"></collapse> -->
+      <collapse v-if="typeList" :typeList="typeList"></collapse>
     </div>
     <div class="kwe-left-link">
       <a href="https://github.com/KWEY" target="_blank"><github-svg class="kwe-github"/></a>
@@ -16,15 +16,11 @@
 </template>
 
 <script>
-import collapse from './ui/collapse.vue';
+import collapse from '../ui/collapse.vue';
 import githubsvg from '../assets/github.svg';
 import titlesvg from '../assets/title.svg';
 
 export default {
-  asyncData(store, router) {
-    console.log(router, 1111223333);
-    return store.dispatch('getTypeList'); // 服务端渲染触发
-  },
   name: 'leftPanel',
   components: {
     'github-svg': githubsvg,

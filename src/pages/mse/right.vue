@@ -5,20 +5,17 @@
 </template>
 
 <script>
-import $http from '../../request/http.js';
 
 export default {
   name: 'rightPanel',
   data() {
     return {
-      article: '',
     };
   },
-  mounted() {
-    // 获取文档
-    $http.getMseDoc().then((data) => {
-      this.article = data;
-    });
+  computed: {
+    article() {
+      return this.$store.state.mseArticle;
+    },
   },
   methods: {
   },

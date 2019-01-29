@@ -22,7 +22,6 @@
 
 <script>
 import wangeditor from 'wangeditor';
-import $http from '../request/http.js';
 import Utils from './plugin/utils.vue';
 import select from './ui/select.vue';
 
@@ -44,21 +43,22 @@ export default {
     // 获取type列表
     const list = this.$store.state.typeList;
     if (!list) {
-      $http.getTypeList().then((data) => {
-        this.format(data);
-        this.$store.dispatch('setTypeList', data);
+      this.$store.dispatch('getTypeList').then(() => {
+        this.format(list);
       });
     } else {
       this.format(list);
     }
     // 引入编译器
     /* eslint-disable */
-    const editor = new wangeditor(this.$refs.editor)
-    editor.customConfig.uploadImgShowBase64 = true
-    editor.customConfig.onchange = (html) => {
-      this.context = html
+    if (navigator) {
+      const editor = new wangeditor(this.$refs.editor)
+      editor.customConfig.uploadImgShowBase64 = true
+      editor.customConfig.onchange = (html) => {
+        this.context = html
+      }
+      editor.create()
     }
-    editor.create()
     /* eslint-enable */
   },
   methods: {
@@ -67,7 +67,7 @@ export default {
       const list = data.list;
       const arr = [];
       list.forEach((ele) => {
-        if (ele.tid !== '123') {
+        if (ele.tid === '001') {
           Array.prototype.push.apply(arr, ele.list);
         }
       });

@@ -12,10 +12,13 @@
 <script>
 import leftPanel from './mse/left.vue';
 import rightPanel from './mse/right.vue';
-import menusvg from '../assets/menu.svg';
-import totopsvg from '../assets/to-top.svg';
+import menusvg from './assets/menu.svg';
+import totopsvg from './assets/to-top.svg';
 
 export default {
+  asyncData(store, router) {
+    return Promise.all([store.dispatch('getMseDocList'), store.dispatch('getMseDoc')]);
+  },
   name: 'mse',
   components: {
     'left-panel': leftPanel,

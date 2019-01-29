@@ -18,8 +18,7 @@
 </template>
 
 <script>
-import $http from '../../request/http.js';
-import homesvg from '../../assets/home.svg';
+import homesvg from '../assets/home.svg';
 
 export default {
   name: 'leftPanel',
@@ -29,14 +28,12 @@ export default {
   props: ['showLeft'],
   data() {
     return {
-      typeList: [],
     };
   },
-  mounted() {
-    // 获取文档
-    $http.getMseDocList().then((data) => {
-      this.typeList = data.typeList;
-    });
+  computed: {
+    typeList() {
+      return this.$store.state.mseMenu;
+    },
   },
 };
 </script>

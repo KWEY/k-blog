@@ -101,6 +101,11 @@
             "src": "/mse",
             "pid": "001",
             "name": "Media Source Extensions"
+          },
+          {
+            "src": "/mask",
+            "pid": "002",
+            "name": "CSS Masking Module"
           }
         ]
       }

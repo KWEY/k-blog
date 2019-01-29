@@ -2,6 +2,12 @@
 <script>
 export default {
   name: 'RemoteScript',
+  props: {
+    src: {
+      type: String,
+      required: true,
+    },
+  },
   render(createElement) {
     const self = this;
     return createElement('script', {
@@ -23,12 +29,6 @@ export default {
         },
       },
     });
-  },
-  props: {
-    src: {
-      type: String,
-      required: true,
-    },
   },
 };
 </script>

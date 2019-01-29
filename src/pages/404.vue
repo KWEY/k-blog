@@ -2,7 +2,7 @@
   <div class="kwe-404">
     <div class="kwe-404-wrap">
       <h1>404</h1>
-      <img class="kwe-error" src="../assets/1.jpg"/>
+      <img class="kwe-error" src="./assets/1.jpg"/>
     </div>
   </div>
 </template>

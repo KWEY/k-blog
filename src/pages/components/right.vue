@@ -13,9 +13,6 @@
 <script>
 
 export default {
-  asyncData(store, router) {
-    return store.dispatch('getDirectoryList', router.query.type || 'all'); // 服务端渲染触发
-  },
   name: 'rightPanel',
   props: ['type'],
   data() {
