@@ -32,7 +32,7 @@ module.exports = {
       // GIT remote
       repo: 'git@github.com:KWEY/k-blog.git',
       // path in the server
-      path: '/var/www/k-blog',
+      path: '/home/www/k-blog',
       // Pre-setup command or path to a script on your local machine
       'pre-setup': 'yum install git ; ls -la',
       // Post-setup commands or path to a script on the host machine
