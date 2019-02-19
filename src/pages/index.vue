@@ -43,7 +43,7 @@ export default {
   // background: rgba(0, 255, 255, .3);
   width: 100%;
   height: 100%;
-  background: url('../../static/img/3.jpg') center;
+  background: url('./assets/3.jpg') center;
   background-attachment: fixed;
   background-size: auto 100%;
 }

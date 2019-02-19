@@ -1,0 +1,6 @@
+{
+	"title": "npm 包发布流程",
+	"id": "001_001_07cb_071f",
+	"time": "2019/1/6 下午1:39:10",
+	"context": "<p>一：<code>npm adduser</code>用于在<a href=\"http://npmjs.com/\" rel=\"nofollow\">npmjs.com</a>注册一个用户。</p><p>二：已注册&nbsp;&nbsp;<span style=\"background-color: rgb(241, 241, 241);\">npm login</span></p><p><span style=\"background-color: rgb(241, 241, 241);\">三：&nbsp;</span><span style=\"background-color: rgb(241, 241, 241);\">npm publish</span></p><p><span style=\"background-color: rgb(241, 241, 241);\"><br></span></p><p>细节：</p><p>1.发布一个beta版，默认为latest<br></p><p>npm publish --tag beta<br></p><p><br></p><p>2.如果想废弃某个版本的模块，可以使用<code>npm deprecate</code>命令。</p><div><div><pre><code>$ npm deprecate my-thing@\"&lt; 0.2.3\" \"critical bug fixed in v0.2.3\"\n</code></pre></div></div><p>运行上面的命令以后，小于<code>0.2.3</code>版本的模块的<code>package.json</code>都会写入一行警告，用户安装这些版本时，这行警告就会在命令行显示</p><p><br></p><p>3.模块的维护者可以发布新版本。<code>npm owner</code>命令用于管理模块的维护者。</p><div><div><pre><code># 列出指定模块的维护者\n$ npm owner ls &lt;package name&gt;\n\n# 新增维护者\n$ npm owner add &lt;user&gt; &lt;package name&gt;\n\n# 删除维护者\n$ npm owner rm &lt;user&gt; &lt;package name&gt;</code></pre></div></div>"
+}
