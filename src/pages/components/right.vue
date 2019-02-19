@@ -22,7 +22,7 @@ export default {
   },
   computed: {
     directory() {
-      return this.$store.state.article;
+      return this.$store.state.articleList;
     },
   },
   watch: {

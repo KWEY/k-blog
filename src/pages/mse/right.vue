@@ -14,7 +14,7 @@ export default {
   },
   computed: {
     article() {
-      return this.$store.state.mseArticle;
+      return this.$store.state.mse.mseArticle;
     },
   },
   methods: {

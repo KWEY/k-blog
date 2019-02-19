@@ -32,7 +32,7 @@ export default {
   },
   computed: {
     typeList() {
-      return this.$store.state.mseMenu;
+      return this.$store.state.mse.mseMenu;
     },
   },
 };

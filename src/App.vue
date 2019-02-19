@@ -9,15 +9,16 @@
 <script>
 
 export default {
-  name: 'home',
-	data() {
-		return { };
-	},
+    name: 'home',
+    data() {
+        return { };
+    },
 };
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="less">
 html, body {
+    // display: flex;
     height: 100%;
     width: 100%;
 }

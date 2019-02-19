@@ -14,6 +14,10 @@ export default {
   getDirectoryList(type) {
     return fetch({ url: base.directoryList });
   },
+  // 获取文章
+  getArticle(data) {
+    return fetch({ url: `${base.article}${data.tid}/${data.id}.json` });
+  },
   // 获取mse目录
   getMseDocList() {
     return fetch({ url: base.mseMenu });

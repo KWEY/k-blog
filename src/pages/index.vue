@@ -23,21 +23,12 @@ export default {
     'right-panel': rightPanel,
     'menu-svg': menusvg,
   },
-  // beforeRouteEnter(to, from, next) {
-  //   next((vm) => {
-  //     vm.setType(to);
-  //   });
-  // },
   data() {
     return {
       showLeft: '',
       type: '',
     };
   },
-  // watch: {
-  //   // 如果路由有变化，会再次执行该方法
-  //   $route: 'setType',
-  // },
   methods: {
     toggle() {
       this.showLeft = this.showLeft ? '' : 'show-left';

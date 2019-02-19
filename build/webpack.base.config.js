@@ -1,8 +1,11 @@
 const path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const { VueLoaderPlugin } = require('vue-loader');
+const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
+const cssnano = require('cssnano');
+const autoprefixer = require('autoprefixer');
 
 module.exports = {
-  mode: 'development',
-  devtool: '#source-map',
   entry: {
     app: './src/entry-client.js',
     vendor: [
@@ -29,11 +32,11 @@ module.exports = {
         loader: 'vue-loader',
         options: {
           preserveWhitespace: false,
-          postcss: [
-            require('autoprefixer')({
-              browsers: ['last 3 versions'],
-            }),
-          ],
+          // postcss: [
+          //   require('autoprefixer')({
+          //     browsers: ['last 3 versions'],
+          //   }),
+          // ],
         },
       },
       {
@@ -50,7 +53,26 @@ module.exports = {
       },
       {
         test: /\.less$/,
-        loader: 'style-loader!css-loader!less-loader',
+        use: ExtractTextPlugin.extract({
+          use: [
+            {
+              loader: 'css-loader',
+              options: { minimize: true }
+            },
+            {
+              loader: 'postcss-loader',
+              options: {
+                ident: 'postcss',
+                sourceMap: false,
+                plugins: [autoprefixer, cssnano],
+              }
+            },
+            {
+              loader: 'less-loader',
+            },
+          ],
+          fallback: 'vue-style-loader'
+        })
       },
       {
         test: /\.(png|jpe?g|gif)(\?.*)?$/,
@@ -76,6 +98,14 @@ module.exports = {
     ],
   },
   performance: {
-    hints: process.env.NODE_ENV === 'production' ? 'warning' : false,
+    maxEntrypointSize: 300000,
+    hints: 'warning',
   },
+  plugins: [
+    new VueLoaderPlugin(),
+    new ExtractTextPlugin({
+      filename: 'common.css'
+    }),
+    new FriendlyErrorsPlugin()
+  ]
 };

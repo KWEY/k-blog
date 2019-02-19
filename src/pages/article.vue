@@ -9,31 +9,20 @@
 </template>
 
 <script>
-import $http from '../request/http.js';
 
 export default {
+  asyncData(store, router) {
+    return store.dispatch('getArticle', router.params.id);
+  },
   name: 'rightPanel',
   data() {
     return {
-      article: {},
     };
   },
-  mounted() {
-    // 获取目录列表
-    const id = this.$route.params.id;
-    const arr = id.split('_');
-    const article = this.$store.state.article;
-    if (article && article.id === id) {
-      this.article = article;
-    } else {
-      $http.getArticle({
-        id,
-        tid: arr[0],
-      }).then((data) => {
-        this.article = data;
-        this.$store.dispatch('setArticle', data);
-      });
-    }
+  computed: {
+    article() {
+      return this.$store.state.article.article;
+    },
   },
 };
 </script>
