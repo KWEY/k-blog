@@ -1,10 +1,22 @@
-# vue-ssr
+# k-blog
 
-// 安装依赖包
-npm install 
-// 开发模式
-npm run dev
-// 生产模式
-npm run build
-npm run start
-// 注意：vue 与 vue-server-renderer版本必须 一致。
+> My mind-blowing Nuxt.js project
+
+## Build Setup
+
+``` bash
+# install dependencies
+$ npm install
+
+# serve with hot reload at localhost:3000
+$ npm run dev
+
+# build for production and launch server
+$ npm run build
+$ npm start
+
+# generate static project
+$ npm run generate
+```
+
+For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).

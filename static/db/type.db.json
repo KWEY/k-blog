@@ -1,108 +1,114 @@
 {
-  "value": 0,
-  "list": [
-    {
-      "name": "待定...",
-      "tid": "001",
-      "list": [
-        {
-          "src": "/",
-          "pid": "001_001",
-          "name": "最新"
-        },
-        {
-          "src": "/index?type=html",
-          "pid": "001_002",
-          "name": "HTML"
-        },
-        {
-          "src": "/index?type=css",
-          "pid": "001_003",
-          "name": "CSS"
-        },
-        {
-          "src": "/index?type=js",
-          "pid": "001_004",
-          "name": "JS"
-        },
-        {
-          "src": "/index?type=es6",
-          "pid": "001_005",
-          "name": "ES6"
-        },
-        {
-          "src": "/index?type=network",
-          "pid": "001_006",
-          "name": "计算机网络"
-        },
-        {
-          "src": "/index?type=browser",
-          "pid": "001_007",
-          "name": "浏览器相关"
-        },
-        {
-          "src": "/index?type=tool",
-          "pid": "001_008",
-          "name": "工程化"
-        },
-        {
-          "src": "/index?type=model",
-          "pid": "001_009",
-          "name": "模块化"
-        },
-        {
-          "src": "/index?type=frame",
-          "pid": "001_010",
-          "name": "框架"
-        },
-        {
-          "src": "/index?type=node",
-          "pid": "001_011",
-          "name": "Nodejs"
-        },
-        {
-          "src": "/index?type=data",
-          "pid": "001_012",
-          "name": "数据结构"
-        },
-        {
-          "src": "/index?type=performance",
-          "pid": "001_013",
-          "name": "性能优化"
-        },
-        {
-          "src": "/index?type=other",
-          "pid": "001_014",
-          "name": "其他"
-        }
-      ]
-    },
-    {
-      "name": "工具集",
-      "tid": "002",
-      "list": [
-        {
-          "src": "/nav",
-          "pid": "001",
-          "name": "收藏夹"
-        },
-        {
-          "src": "/tojson",
-          "pid": "002",
-          "name": "ToJSON"
-        }
-      ]
-    },
-    {
-      "name": "文档库",
-      "tid": "003",
-      "list": [
-        {
-          "src": "/mse",
-          "pid": "001",
-          "name": "Media Source Extensions"
-        }
-      ]
-    }
-  ]
+    "tab": "001",
+    "value": "001_001",
+    "list": [
+      {
+        "title": "笔记",
+        "tid": "001",
+        "list": [
+          {
+            "src": "/",
+            "pid": "001_001",
+            "name": "最新"
+          },
+          {
+            "src": "/?type=html",
+            "pid": "001_002",
+            "name": "HTML"
+          },
+          {
+            "src": "/?type=css",
+            "pid": "001_003",
+            "name": "CSS"
+          },
+          {
+            "src": "/?type=js",
+            "pid": "001_004",
+            "name": "JS"
+          },
+          {
+            "src": "/?type=es6",
+            "pid": "001_005",
+            "name": "ES6"
+          },
+          {
+            "src": "/?type=network",
+            "pid": "001_006",
+            "name": "计算机网络"
+          },
+          {
+            "src": "/?type=browser",
+            "pid": "001_007",
+            "name": "浏览器相关"
+          },
+          {
+            "src": "/?type=tool",
+            "pid": "001_008",
+            "name": "工程化"
+          },
+          {
+            "src": "/?type=model",
+            "pid": "001_009",
+            "name": "模块化"
+          },
+          {
+            "src": "/?type=frame",
+            "pid": "001_010",
+            "name": "框架"
+          },
+          {
+            "src": "/?type=node",
+            "pid": "001_011",
+            "name": "Nodejs"
+          },
+          {
+            "src": "/?type=data",
+            "pid": "001_012",
+            "name": "数据结构"
+          },
+          {
+            "src": "/?type=performance",
+            "pid": "001_013",
+            "name": "性能优化"
+          },
+          {
+            "src": "/?type=other",
+            "pid": "001_014",
+            "name": "其他"
+          }
+        ]
+      },
+      {
+        "title": "工具集",
+        "tid": "002",
+        "list": [
+          {
+            "src": "/follow",
+            "pid": "002_001",
+            "name": "收藏夹"
+          },
+          {
+            "src": "/tojson",
+            "pid": "002_002",
+            "name": "ToJSON"
+          }
+        ]
+      },
+      {
+        "title": "文档库",
+        "tid": "003",
+        "list": [
+          {
+            "src": "/doc/mse",
+            "pid": "003_001",
+            "name": "Media Source Extensions"
+          },
+          {
+            "src": "/doc/mask",
+            "pid": "003_002",
+            "name": "CSS Masking Module"
+          }
+        ]
+      }
+    ]
 }
