@@ -1,5 +1,5 @@
-const cssnano = require('cssnano')
-const autoprefixer = require('autoprefixer')
+// const cssnano = require('cssnano')
+// const autoprefixer = require('autoprefixer')
 const pkg = require('./package')
 
 module.exports = {
@@ -61,10 +61,12 @@ module.exports = {
     ** You can extend webpack config here
     */
     extend(config, ctx) {
-      if (ctx.isClient) {
-        config.devtool = 'cheap-module-source-map'
-      }
       // Run ESLint on save
+      if (ctx.isDev) {
+        config.devtool = 'cheap-module-source-map'
+      } else {
+        config.devtool = ''
+      }
       if (ctx.isDev && ctx.isClient) {
         config.module.rules.push({
           enforce: 'pre',

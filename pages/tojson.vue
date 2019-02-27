@@ -28,7 +28,7 @@ import Utils from '@/plugins/utils'
 export default {
   name: 'Tojson',
   head: {
-    script: [{ src: 'http://localhost:3000/wangEditor.min.js' }]
+    script: [{ src: '//www.webq.top/static/plugins/wangEditor.min.js' }]
   },
   // components: {
   //   'k-select': select

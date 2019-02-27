@@ -1,3 +1,4 @@
+const path = require('path')
 const express = require('express')
 const consola = require('consola')
 const { Nuxt, Builder } = require('nuxt')
@@ -6,6 +7,15 @@ const app = express()
 // Import and Set Nuxt.js options
 const config = require('../nuxt.config.js')
 config.dev = !(process.env.NODE_ENV === 'production')
+
+const resolve = file => path.resolve(__dirname, file)
+const serve = (path, cache) => {
+  return express.static(resolve(path), {
+    maxAge: cache ? 1000 * 60 * 60 * 24 : 0
+  })
+}
+
+app.use('/static', serve('../static', true))
 
 async function start() {
   // Init Nuxt.js

@@ -9,8 +9,8 @@ export default {
   name: 'Follow',
   head: {
     script: [
-      { src: 'http://www.webq.top/static/plugins/jquery-2.1.1.js' },
-      { src: 'http://www.webq.top/static/plugins/nav.js' }
+      { src: '//www.webq.top/static/plugins/jquery-2.1.1.js' },
+      { src: '//www.webq.top/static/plugins/nav.js' }
     ]
   },
   data() {
