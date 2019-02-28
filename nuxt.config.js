@@ -8,14 +8,18 @@ module.exports = {
   /*
   ** Headers of the page
   */
+  icon: {
+    // Icon options
+    sizes: [16, 120]
+  },
   head: {
-    title: pkg.name,
+    title: 'kwe',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: pkg.description }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    link: [{ rel: 'icon', type: 'image/png', href: '/icon.png' }]
   },
 
   /*

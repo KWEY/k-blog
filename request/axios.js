@@ -75,11 +75,7 @@ const fetch = data => {
     instance
       .request(config)
       .then(res => {
-        if (res.data) {
-          resolve(res.data)
-        } else {
-          reject('fetch__err')
-        }
+        resolve(res.data)
       })
       .catch(err => {
         reject(err)

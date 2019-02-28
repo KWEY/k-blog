@@ -5,29 +5,40 @@
 </template>
 
 <script>
+import base from '../request/api'
 export default {
   name: 'Follow',
   head: {
-    script: [
-      { src: '//www.webq.top/static/plugins/jquery-2.1.1.js' },
-      { src: '//www.webq.top/static/plugins/nav.js' }
-    ]
+    script: [{ src: base.jq }, { src: base.nav }]
   },
   data() {
     return {
+      timer: 0,
       times: 0,
       loading: true
     }
   },
   mounted() {
-    /* eslint-disable */
-    if (NAV) {
-      new NAV.Nav({
-        className: 'kwe-nav-wrap',
-        url: '/db/nav-x.json'
-      })
-      /* eslint-enable */
-      this.loading = false
+    if (window.NAV) {
+      this.initNav()
+    } else {
+      this.timer = setInterval(() => {
+        this.initNav()
+      }, 400)
+    }
+  },
+  methods: {
+    initNav() {
+      if (window.NAV) {
+        clearInterval(this.timer)
+        /* eslint-disable */
+        new window.NAV.Nav({
+          className: 'kwe-nav-wrap',
+          url: '/db/nav-x.json'
+        })
+        /* eslint-enable */
+        this.loading = false
+      }
     }
   }
 }

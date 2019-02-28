@@ -21,6 +21,7 @@
 </template>
 
 <script>
+import base from '../request/api'
 import $http from '@/request/http'
 import Utils from '@/plugins/utils'
 // import select from '@/ui/select'
@@ -28,7 +29,7 @@ import Utils from '@/plugins/utils'
 export default {
   name: 'Tojson',
   head: {
-    script: [{ src: '//www.webq.top/static/plugins/wangEditor.min.js' }]
+    script: [{ src: base.editor }]
   },
   // components: {
   //   'k-select': select
@@ -36,6 +37,7 @@ export default {
   data() {
     return {
       typeList: [],
+      timer: 0,
       title: '',
       description: '',
       context: '',
@@ -53,16 +55,28 @@ export default {
       this.format(list)
     }
     // 引入编译器
-    /* eslint-disable */
-    const editor = new wangEditor(this.$refs.editor)
-    editor.customConfig.uploadImgShowBase64 = true
-    editor.customConfig.onchange = (html) => {
-      this.context = html
+    if (window.wangEditor) {
+      this.initEditor()
+    } else {
+      this.timer = setInterval(() => {
+        this.initEditor()
+      }, 400)
     }
-    editor.create()
-    /* eslint-enable */
   },
   methods: {
+    initEditor() {
+      if (window.wangEditor) {
+        clearInterval(this.timer)
+        /* eslint-disable */
+        const editor = new window.wangEditor(this.$refs.editor)
+        editor.customConfig.uploadImgShowBase64 = true
+        editor.customConfig.onchange = (html) => {
+          this.context = html
+        }
+        editor.create()
+        /* eslint-enable */
+      }
+    },
     // 格式化type，去除不需要的分组
     format(data) {
       const list = data.list

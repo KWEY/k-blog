@@ -41,13 +41,15 @@ export default {
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="less">
+body {
+  background: url('../assets/3.jpg') center;
+  background-attachment: fixed;
+  background-size: auto 100%;
+}
 .kwe-index {
   // background: rgba(0, 255, 255, .3);
   width: 100%;
   height: 100%;
-  // background: url('../assets/3.jpg') center;
-  background-attachment: fixed;
-  background-size: auto 100%;
 }
 .kwe-menu {
   display: none;

@@ -1,11 +1,5 @@
 [   
     {
-        "description": "做蒙版的时候发现所有值都精确的情况下，在Retina屏上依然会出现一条类似阴影的直线，经探索，原来是linear-gradient的问题",
-        "title": "linear-gradient采坑日记",
-        "id": "001_001_91ec_a447",
-        "time": "2019/1/19 下午4:11:06"
-    },
-    {
         "description": "第二部分 MediaSource对象",
         "title": "Media Source Extension",
         "id": "001_014_fc5b_d524",

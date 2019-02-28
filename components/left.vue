@@ -2,12 +2,12 @@
   <div class="kwe-left" :class="showleft">
     <div class="kwe-left-info">
       <div class="kwe-wrap">
-        <title-svg class="kwe-img" />
+        <img class="kwe-img" src="../assets/face.png" alt="kwe">
       </div>
       <div class="kwe-title">{{ title }}</div>
     </div>
     <div class="kwe-left-artList">
-      <collapse v-if="showleft" :type-list="typeList" />
+      <collapse :type-list="typeList" />
     </div>
     <div class="kwe-left-link">
       <a href="https://github.com/KWEY" target="_blank"><github-svg class="kwe-github" /></a>
@@ -18,17 +18,18 @@
 <script>
 import collapse from '@/ui/collapse.vue'
 import githubsvg from '@/assets/github.svg'
-import titlesvg from '@/assets/title.svg'
 
 export default {
   name: 'LeftPanel',
   components: {
     'github-svg': githubsvg,
-    'title-svg': titlesvg,
     collapse
   },
   props: {
-    showleft: Boolean
+    showleft: {
+      type: String,
+      default: ''
+    }
   },
   data() {
     return {}
@@ -53,6 +54,7 @@ export default {
   left: 0;
   width: 300px;
   height: 100%;
+  overflow-y: scroll;
   text-align: center;
   line-height: 2;
   background: #fff;
@@ -92,12 +94,15 @@ export default {
 
       .kwe-img {
         position: relative;
-        left: 0;
-        top: 0;
+        display: inline-block;
         width: 100%;
         height: 100%;
       }
     }
+  }
+  /* 外链 */
+  &-artList {
+    margin-bottom: 20px;
   }
   /* 外链 */
   &-link {
@@ -105,7 +110,7 @@ export default {
     width: 100%;
     left: 0;
     bottom: 0;
-    margin: 10px;
+    margin: 10px 0;
     .kwe-github {
       display: inline-block;
       width: 30px;

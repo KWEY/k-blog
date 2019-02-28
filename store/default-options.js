@@ -3,7 +3,7 @@
  */
 
 export const typeToId = {
-  all: '001',
+  all: '001_001',
   html: '001_002',
   css: '001_003',
   js: '001_004',

@@ -27,7 +27,10 @@ export default {
     'home-svg': homesvg
   },
   props: {
-    showLeft: Boolean
+    showLeft: {
+      type: String,
+      default: ''
+    }
   },
   data() {
     return {}
