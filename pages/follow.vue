@@ -9,6 +9,7 @@ import base from '../request/api'
 export default {
   name: 'Follow',
   head: {
+    title: 'Follow',
     script: [{ src: base.jq }, { src: base.nav }]
   },
   data() {

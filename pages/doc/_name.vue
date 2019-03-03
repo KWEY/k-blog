@@ -12,8 +12,8 @@
 </template>
 
 <script>
-import leftPanel from '@/components/doc/left.vue'
-import rightPanel from '@/components/doc/right.vue'
+import leftPanel from '@/components/doc/doc-left.vue'
+import rightPanel from '@/components/doc/doc-right.vue'
 import menusvg from '@/assets/menu.svg'
 import totopsvg from '@/assets/to-top.svg'
 export default {
@@ -30,7 +30,10 @@ export default {
     }
   },
   fetch({ store, route }) {
-    return store.dispatch('getDoc', route.params.id)
+    return store.dispatch('doc/getDoc', route.params.name)
+  },
+  mounted() {
+    document.title = this.$route.params.name
   },
   methods: {
     toggle() {

@@ -15,11 +15,17 @@
     "precommit": "npm run lint"
   },
   "dependencies": {
-    "cross-env": "^5.2.0",
-    "nuxt": "^2.4.0",
-    "express": "^4.16.4",
     "@nuxtjs/axios": "^5.3.6",
-    "@nuxtjs/pwa": "^2.6.0"
+    "@nuxtjs/pwa": "^2.6.0",
+    "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.4",
+    "cross-env": "^5.2.0",
+    "express": "^4.16.4",
+    "jsonwebtoken": "^8.5.0",
+    "md5": "^2.2.1",
+    "mongoose": "^5.4.16",
+    "nuxt": "^2.4.0",
+    "wc-messagebox": "^1.10.1"
   },
   "devDependencies": {
     "nodemon": "^1.18.9",

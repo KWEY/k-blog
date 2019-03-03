@@ -1,59 +1,55 @@
 <template>
-  <div class="kwe-json">
+  <div class="kwe-json" @click="closed">
     <div class="kwe-json-title">
       <div class="kwe-type">type: </div>
       <select v-model="selected" class="kwe-type-input">
         <option v-for="item in typeList" :key="item.pid" :value="item.pid">{{ item.name }}</option>
       </select>
       <div class="kwe-title">title: </div>
-      <input v-model="title" class="kwe-title-input" type="text">
+      <input v-model.trim="title" class="kwe-title-input" type="text">
     </div>
     <div class="kwe-json-description">
       <div class="kwe-description">description: </div>
-      <input v-model="description" type="text" class="kwe-description-input">
+      <input v-model.trim="description" type="text" class="kwe-description-input">
     </div>
-    <div class="kwe-json-context">
-      <p class="kwe-context">context: </p>
-      <div ref="editor" class="kwe-context-input" />
+    <div class="kwe-json-content">
+      <p class="kwe-content">content: <span class="kwe-upload" @click.stop="upload">上传</span></p>
+      <div ref="editor" class="kwe-content-input" />
     </div>
-    <div class="kwe-download" @click="download">下载</div>
+    <toast :show="toast.show" :content="toast.content" :close="toast.showClose" :type="toast.type" @close="closed" />
   </div>
 </template>
 
 <script>
+import Toast from '@/ui/toast'
 import base from '../request/api'
-import $http from '@/request/http'
 import Utils from '@/plugins/utils'
-// import select from '@/ui/select'
+import $http from '../request/http'
 
 export default {
-  name: 'Tojson',
+  name: 'Upload',
   head: {
     script: [{ src: base.editor }]
   },
-  // components: {
-  //   'k-select': select
-  // },
+  components: {
+    toast: Toast
+  },
   data() {
     return {
       typeList: [],
+      editor: null,
       timer: 0,
       title: '',
       description: '',
-      context: '',
-      selected: '001_001'
+      content: '',
+      selected: '001_002',
+      toast: {}
     }
   },
   mounted() {
     // 获取type列表
     const list = this.$store.state.typeList
-    if (!list) {
-      $http.getTypeList('all').then(typeList => {
-        this.format(typeList)
-      })
-    } else {
-      this.format(list)
-    }
+    this.format(list)
     // 引入编译器
     if (window.wangEditor) {
       this.initEditor()
@@ -68,12 +64,12 @@ export default {
       if (window.wangEditor) {
         clearInterval(this.timer)
         /* eslint-disable */
-        const editor = new window.wangEditor(this.$refs.editor)
-        editor.customConfig.uploadImgShowBase64 = true
-        editor.customConfig.onchange = (html) => {
-          this.context = html
+        this.editor = new window.wangEditor(this.$refs.editor)
+        this.editor.customConfig.uploadImgShowBase64 = true
+        this.editor.customConfig.onchange = (html) => {
+          this.content = html
         }
-        editor.create()
+        this.editor.create()
         /* eslint-enable */
       }
     },
@@ -82,20 +78,63 @@ export default {
       const list = data.list
       const arr = []
       list.forEach(ele => {
-        if (ele.tid !== '123') {
-          Array.prototype.push.apply(arr, ele.list)
+        if (ele.tid === '001') {
+          Array.prototype.push.apply(arr, ele.list.slice(1))
         }
       })
       this.typeList = arr
     },
     // 下载json文件
+    upload() {
+      const id = this.$store.state.author && this.$store.state.author.id
+      if (!this.title || !this.description || !this.content || !id) {
+        this.showToast('输入“title、description、content、id”', 'warn', true)
+        return
+      }
+      const data = {
+        title: this.title,
+        author: id,
+        description: this.description,
+        type: this.selected,
+        content: this.content,
+        created_at: new Date().toLocaleString()
+      }
+      $http.postArticle(data).then(res => {
+        if (res.success) {
+          this.title = ''
+          this.description = ''
+          this.editor.txt.clear()
+          this.showToast('上传成功', 'success')
+        } else {
+          const text = (res.err && res.err.message) || '上传失败'
+          this.showToast(text, 'warn', true)
+        }
+      })
+    },
+    showToast(content, type, showClose = false) {
+      this.toast = {
+        type,
+        content,
+        showClose,
+        show: true,
+        duration: 1000
+      }
+      if (!showClose) {
+        setTimeout(() => {
+          this.toast.show = false
+        }, this.toast.duration)
+      }
+    },
+    closed() {
+      this.toast.show = false
+    },
     download() {
       const guid = `${this.selected}_${Utils.guid(1)}_${Utils.guid(1)}`
       const text = {
         title: this.title,
         id: guid,
         time: new Date().toLocaleString(),
-        context: this.context
+        content: this.content
       }
       const index = {
         description: this.description,
@@ -132,10 +171,14 @@ export default {
   font-size: 14px;
   line-height: 1.5;
   .kwe-type,
-  .kwe-title,
-  .kwe-context,
-  .kwe-description {
+  .kwe-title {
     width: 60px;
+    text-align: left;
+    font-size: 16px;
+    line-height: 40px;
+  }
+  .kwe-content,
+  .kwe-description {
     text-align: left;
     font-size: 16px;
     line-height: 40px;
@@ -143,11 +186,21 @@ export default {
   .kwe-type-input {
     display: inline-block;
     width: 80px;
+    background: transparent;
+    border-color: #00a1d6;
     outline: none;
   }
-  .kwe-context-input {
+  .kwe-content-input {
+    .w-e-toolbar {
+      background: transparent !important;
+      border-color: #00a1d6 !important;
+    }
     .w-e-text-container {
       height: 600px !important;
+      border-color: #00a1d6 !important;
+    }
+    .w-e-text {
+      overflow-y: auto !important;
     }
   }
   &-title {
@@ -162,25 +215,24 @@ export default {
     padding: 2px;
     box-sizing: border-box;
     height: 40px;
-    border: 1px solid #ccc;
+    border: 1px solid #00a1d6;
+    background: transparent;
+    font-size: 20px;
     border-radius: 4px;
     outline: none;
   }
-  .kwe-download {
-    position: fixed;
-    right: 4px;
-    top: 50%;
-    width: 60px;
-    font-size: 16px;
-    line-height: 2;
-    color: #fff;
+  .kwe-upload {
+    float: right;
+    display: block;
+    width: 100px;
+    font-size: 18px;
+    line-height: 40px;
     text-align: center;
-    background: #00a1d6;
-    border-radius: 2px;
+    border-radius: 4px;
     cursor: pointer;
-    z-index: 10001;
+    z-index: 2;
     &:hover {
-      background: #0cc0ff;
+      color: #000;
     }
   }
 }

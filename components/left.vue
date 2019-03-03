@@ -2,9 +2,9 @@
   <div class="kwe-left" :class="showleft">
     <div class="kwe-left-info">
       <div class="kwe-wrap">
-        <img class="kwe-img" src="../assets/face.png" alt="kwe">
+        <img class="kwe-img" :src="author.avatar" alt="kwe">
       </div>
-      <div class="kwe-title">{{ title }}</div>
+      <div class="kwe-title">{{ author.username }}</div>
     </div>
     <div class="kwe-left-artList">
       <collapse :type-list="typeList" />
@@ -35,8 +35,8 @@ export default {
     return {}
   },
   computed: {
-    title() {
-      return this.$store.state.user.name
+    author() {
+      return this.$store.state.author
     },
     typeList() {
       return this.$store.state.typeList
@@ -54,7 +54,7 @@ export default {
   left: 0;
   width: 300px;
   height: 100%;
-  overflow-y: scroll;
+  overflow-y: auto;
   text-align: center;
   line-height: 2;
   background: #fff;

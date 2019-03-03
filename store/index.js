@@ -1,75 +1,78 @@
 // store.js
-import Vue from 'vue'
-import Vuex from 'vuex'
 import $http from '../request/http'
-import { typeToId } from './default-options.js'
-import user from './modules/user'
-import article from './modules/article'
-import doc from './modules/doc'
-Vue.use(Vuex)
+import { typeToId, typeList } from './default-options.js'
 
-const config = {
-  // 数据
-  state: {
-    token: null, // 用户信息,
-    typeList: null,
-    currentType: null,
-    articleList: null
-  },
-  // 事件
-  actions: {
-    // 获取类型列表
-    getTypeList({ commit, state }, type) {
-      if (state.typeList) {
-        return
-      }
-      return new Promise(resolve => {
-        $http.getTypeList().then(res => {
-          if (res) {
-            res.value = typeToId[type]
-            res.tab = res.value.split('_')[0]
-            commit('TYPELIST', res)
-            resolve(res)
-          }
-        })
-      })
-    },
-    // 获取文章列表
-    getDirectoryList({ commit, state }, type) {
-      if (state.currentType === type) {
-        return
-      }
-      commit('CURRENTTYPE', type)
-      commit('ARTICLE_LIST', null)
-      return new Promise(resolve => {
-        $http.getDirectoryList(typeToId[type]).then(res => {
-          if (res) {
-            commit('ARTICLE_LIST', res)
-            resolve(res)
-          }
-        })
-      })
+// 数据
+export const state = () => ({
+  localToken: '',
+  adminToken: '',
+  author: null, // 作者
+  typeList: typeList,
+  articleList: null,
+  total: 0
+})
+// 事件
+export const actions = {
+  async nuxtServerInit({ commit, state }, { req, res }) {
+    const cookies = req.cookies
+    if (cookies.localToken) {
+      commit('SET_LOCAL_TOKEN', cookies.localToken)
     }
-  },
-  // 改变
-  mutations: {
-    CURRENTTYPE(state, type) {
-      state.currentType = type
-    },
-    TYPELIST(state, typeList) {
-      state.typeList = typeList
-    },
-    ARTICLE_LIST(state, articleList) {
-      state.articleList = articleList
+    if (cookies.adminToken) {
+      commit('SET_ADMIN_TOKEN', cookies.adminToken)
     }
+    commit('SET_APP', res.locals.app)
+    const { data } = await $http.getAdmin()
+    commit('SET_ADMIN_INFO', data)
   },
-  // 获取
-  getters: {},
-  modules: {
-    user,
-    doc,
-    article
+  // 获取文章列表
+  async getArticles({ commit, state }, data) {
+    const typeId = typeToId[data.type]
+    const page = data.page
+    if (state.typeList.value === typeId && state.typeList.page === page) {
+      return
+    }
+    commit('ARTICLE_LIST', null)
+    await $http.getArticles(typeId, page).then(res => {
+      if (res.success) {
+        commit('CURRENTTYPE', { typeId, page })
+        commit('ARTICLE_LIST', res)
+      }
+    })
+  },
+  // 切换tab
+  changeTab({ commit, state }, tab) {
+    if (state.typeList.tab === tab) {
+      return
+    }
+    commit('CHANGETAB', tab)
   }
 }
-
-export default () => new Vuex.Store(config)
+// 改变
+export const mutations = {
+  SET_LOCAL_TOKEN(state, token) {
+    state.localToken = token
+  },
+  SET_ADMIN_TOKEN(state, token) {
+    state.adminToken = token
+  },
+  SET_APP(state) {
+    state.adminToken = ''
+  },
+  SET_ADMIN_INFO(state, data) {
+    state.author = data
+  },
+  CHANGETAB(state, tab) {
+    state.typeList.tab = tab
+  },
+  CURRENTTYPE(state, data) {
+    state.typeList.value = data.typeId
+    state.typeList.page = data.page
+  },
+  ARTICLE_LIST(state, res) {
+    state.articleList = res && res.data
+    state.total = res && res.total
+  }
+}
+// 获取
+export const getters = {}

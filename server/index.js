@@ -1,12 +1,15 @@
+require('./models')
 const path = require('path')
 const express = require('express')
 const consola = require('consola')
 const { Nuxt, Builder } = require('nuxt')
-const app = express()
+const cookieParser = require('cookie-parser')
+const bodyParser = require('body-parser')
 
 // Import and Set Nuxt.js options
 const config = require('../nuxt.config.js')
-config.dev = !(process.env.NODE_ENV === 'production')
+const globalConfig = require('./config')
+config.dev = !globalConfig.isPro
 
 const resolve = file => path.resolve(__dirname, file)
 const serve = (path, cache) => {
@@ -14,8 +17,26 @@ const serve = (path, cache) => {
     maxAge: cache ? 1000 * 60 * 60 * 24 : 0
   })
 }
-
+const app = express()
+app.use(bodyParser.json())
+app.use(cookieParser())
+app.use(function(req, res, next) {
+  // const domain = `${req.protocol}://${req.get('host')}`
+  // 前后端共享配置数据
+  res.locals.app = {
+    domain: globalConfig.app.domain,
+    baseUrl: globalConfig.app.domain + globalConfig.app.baseApi
+  }
+  next()
+})
 app.use('/static', serve('../static', true))
+app.use('/api', require('./api'))
+app.all('/api/*', (req, res) => {
+  res.json({
+    success: false,
+    err: 'api is invalid'
+  })
+})
 
 async function start() {
   // Init Nuxt.js

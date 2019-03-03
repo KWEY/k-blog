@@ -1,11 +1,5 @@
 <template>
   <div class="doc-left" :class="showLeft">
-    <div class="doc-home">
-      <router-link to="/">
-        <home-svg class="doc-home-svg" />
-        HOME
-      </router-link>
-    </div>
     <h1>目录</h1>
     <div class="doc-directory" style="text-align: center">
       <a href="https://w3c.github.io/media-source/#introduction" target="_blank">原文</a>
@@ -20,12 +14,8 @@
 </template>
 
 <script>
-import homesvg from '@/assets/home.svg'
 export default {
   name: 'LeftPanel',
-  components: {
-    'home-svg': homesvg
-  },
   props: {
     showLeft: {
       type: String,
@@ -61,16 +51,6 @@ export default {
   box-shadow: 0 0 2px 2px #ccc;
   z-index: 1;
   overflow-y: scroll;
-  .doc-home {
-    position: absolute;
-    &:hover {
-      color: #0fc;
-    }
-    .doc-home-svg {
-      width: 14px;
-      margin: 0 8px;
-    }
-  }
 }
 .doc-directory {
   position: relative;

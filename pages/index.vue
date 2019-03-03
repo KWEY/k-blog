@@ -25,12 +25,10 @@ export default {
       showleft: ''
     }
   },
-  fetch({ store, route }) {
+  async fetch({ store, route }) {
     const type = route.query.type || 'all'
-    return Promise.all([
-      store.dispatch('getTypeList', type),
-      store.dispatch('getDirectoryList', type)
-    ])
+    const page = route.query.page || 1
+    await store.dispatch('getArticles', { type, page })
   },
   methods: {
     toggle() {
@@ -41,11 +39,6 @@ export default {
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="less">
-body {
-  background: url('../assets/3.jpg') center;
-  background-attachment: fixed;
-  background-size: auto 100%;
-}
 .kwe-index {
   // background: rgba(0, 255, 255, .3);
   width: 100%;

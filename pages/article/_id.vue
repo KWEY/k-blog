@@ -4,7 +4,7 @@
       <div class="kwe-name">{{ article.title }}</div>
       <div class="kwe-time">{{ article.time }}</div>
     </div>
-    <div class="kwe-context" v-html="article.context" />
+    <div class="kwe-context" v-html="article.content" />
   </div>
 </template>
 
@@ -20,7 +20,10 @@ export default {
     }
   },
   fetch({ store, route }) {
-    return store.dispatch('getArticle', route.params.id)
+    return store.dispatch('article/getArticle', route.params.id)
+  },
+  mounted() {
+    document.title = this.article.title
   }
 }
 </script>

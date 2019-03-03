@@ -4,19 +4,30 @@
       <router-link :to="'/article/' + item.id">
         <div class="kwe-title">{{ item.title }}</div>
         <div class="kwe-description">{{ item.description }}</div>
-        <div class="kwe-time">{{ item.time }}</div>
+        <div class="kwe-time">{{ item.created_at }}</div>
       </router-link>
     </div>
+    <pages v-if="total > 1" :total="total" @change="change" />
   </div>
 </template>
 
 <script>
+import pages from '@/ui/pages.vue'
 export default {
   name: 'RightPanel',
+  components: {
+    pages: pages
+  },
   data() {
-    return {}
+    return {
+      type: 'all',
+      page: 1
+    }
   },
   computed: {
+    total() {
+      return this.$store.state.total
+    },
     articleList() {
       return this.$store.state.articleList
     }
@@ -24,14 +35,28 @@ export default {
   watch: {
     $route: {
       handler(val, oldVal) {
-        const type = val.query.type || 'all'
-        this.$store.dispatch('getDirectoryList', type)
+        this.type = val.query.type || 'all'
+        this.page = val.query.page || 1
+        this.getArticles()
       },
       // 深度观察监听
       deep: true
     }
   },
-  methods: {}
+  methods: {
+    change(current) {
+      if (this.page !== current) {
+        this.page = current
+        this.getArticles()
+      }
+    },
+    getArticles(type, page) {
+      this.$store.dispatch('getArticles', {
+        type: this.type,
+        page: this.page
+      })
+    }
+  }
 }
 </script>
 

@@ -13,7 +13,7 @@ export default {
   // 设置超时时间
   timeout: 10000,
   // 携带凭证
-  withCredentials: false,
+  withCredentials: true,
   // 返回数据类型
   responseType: 'json'
 }

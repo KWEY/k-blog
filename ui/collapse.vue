@@ -15,7 +15,6 @@
           :key="pid"
           :class="{active: pid === typeList.value}"
           class="eui-item"
-          @click="showType(pid)"
         >
           <nuxt-link :to="src">
             {{ name }}
@@ -40,18 +39,13 @@ export default {
   },
   methods: {
     toogle(tid) {
+      let tab = ''
       if (this.typeList.tab === tid) {
-        this.typeList.tab = -1
+        tab = -1
       } else {
-        this.typeList.tab = tid
+        tab = tid
       }
-    },
-    showType(pid) {
-      if (this.typeList.value === pid) {
-        this.typeList.value = -1
-      } else {
-        this.typeList.value = pid
-      }
+      this.$store.dispatch('changeTab', tab)
     }
   }
 }

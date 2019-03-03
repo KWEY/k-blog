@@ -1,12 +1,16 @@
 <template>
   <div class="eui-select">
     <div class="eui-select-header">
-        {{ typeList.value }}
+      {{ typeList.value }}
     </div>
     <ul class="eui-select-list">
-        <li class="eui-select-item"
+      <li
         v-for="(item, index) in typeList.list"
-        :key="index">{{item.name}}</li>
+        :key="index"
+        class="eui-select-item"
+      >
+        {{ item.name }}
+      </li>
     </ul>
   </div>
 </template>
@@ -16,25 +20,25 @@ export default {
   name: 'Select',
   props: ['typeList'],
   data() {
-    return {};
+    return {}
   },
   methods: {
     toogle(index) {
       if (this.typeList.value === index) {
-        this.typeList.value = -1;
+        this.typeList.value = -1
       } else {
-        this.typeList.value = index;
+        this.typeList.value = index
       }
-    },
-  },
-};
+    }
+  }
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="less">
 @gray: #808080;
 @smoke: #f5f5f5;
-@aqua: #AFDFE4;
+@aqua: #afdfe4;
 
 .eui-select {
   position: relative;
@@ -50,11 +54,11 @@ export default {
   background: #fff;
   cursor: pointer;
   &:hover &-list {
-      opacity: 1;
+    opacity: 1;
   }
 
   &:hover {
-      border-bottom-color: transparent;
+    border-bottom-color: transparent;
   }
   &.active::after {
     border-top-color: transparent;
@@ -63,53 +67,52 @@ export default {
   }
 
   &::after {
-    content: "";
-      position: absolute;
-      right: 2px;
-      top: 50%;
-      margin-top: -1px;
-      width: 0;
-      height: 0;
-      border: 3px solid transparent;
-      border-top: 3px solid @gray;
+    content: '';
+    position: absolute;
+    right: 2px;
+    top: 50%;
+    margin-top: -1px;
+    width: 0;
+    height: 0;
+    border: 3px solid transparent;
+    border-top: 3px solid @gray;
   }
 
   &-header {
-      cursor: text;
-      height: 20px;
-      line-height: 20px;
-      outline: none;
-      &[contenteditable="true"] {
-        text-overflow: unset;
-      }
-
+    cursor: text;
+    height: 20px;
+    line-height: 20px;
+    outline: none;
+    &[contenteditable='true'] {
+      text-overflow: unset;
+    }
   }
 
   &-list {
-      position: absolute;
-      left: -1px;
-      top: 100%;
-      right: -1px;
-      opacity: 0;
-      box-sizing: border-box;
-      border: 1px solid @gray;
-      border-top: none;
-      background: #fff;
-      transition: .3s all;
+    position: absolute;
+    left: -1px;
+    top: 100%;
+    right: -1px;
+    opacity: 0;
+    box-sizing: border-box;
+    border: 1px solid @gray;
+    border-top: none;
+    background: #fff;
+    transition: 0.3s all;
   }
 
   &-item {
-      padding: 0 8px 0 4px;
-      &-active{
-          background: @aqua;
-      }
-      &-disabled{
-          background: @smoke;
-          cursor: default;
-      }
-      &:hover {
-          background: @aqua;
-      }
+    padding: 0 8px 0 4px;
+    &-active {
+      background: @aqua;
+    }
+    &-disabled {
+      background: @smoke;
+      cursor: default;
+    }
+    &:hover {
+      background: @aqua;
+    }
   }
 }
 </style>
