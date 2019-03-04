@@ -2,8 +2,8 @@ import $http from '../request/http'
 
 export const state = () => ({
   currentDoc: null,
-  docMenu: null,
-  docArticle: null
+  docMenu: {},
+  docArticle: {}
 })
 export const actions = {
   // 获取doc内容

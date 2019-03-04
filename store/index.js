@@ -6,9 +6,9 @@ import { typeToId, typeList } from './default-options.js'
 export const state = () => ({
   localToken: '',
   adminToken: '',
-  author: null, // 作者
+  author: {}, // 作者
   typeList: typeList,
-  articleList: null,
+  articleList: {},
   total: 0
 })
 // 事件

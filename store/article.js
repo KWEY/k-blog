@@ -2,7 +2,7 @@ import $http from '../request/http'
 
 export const state = () => ({
   currentId: null,
-  article: null
+  article: {}
 })
 export const getters = {
   isAdmin(state) {
