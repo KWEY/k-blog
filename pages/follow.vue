@@ -46,10 +46,6 @@ export default {
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="less">
-html,
-body {
-  background: #fff;
-}
 .kwe-nav.loading {
   min-height: 200px;
   background: url('../assets/loading.gif') no-repeat center;

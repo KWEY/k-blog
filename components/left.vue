@@ -49,16 +49,14 @@ export default {
 <style lang="less">
 @top_bg: rgba(74, 74, 74, 1);
 .kwe-left {
-  position: fixed;
-  top: 0;
-  left: 0;
   width: 300px;
   height: 100%;
+  min-height: 700px;
   overflow-y: auto;
   text-align: center;
   line-height: 2;
   background: #fff;
-  transform: translateX(0);
+  transform: scaleX(1);
   transition: transform 0.3s;
   box-shadow: 0 0 2px 2px #ccc;
   z-index: 1;
@@ -120,10 +118,15 @@ export default {
 }
 @media screen and (max-width: 800px) {
   .kwe-left.show-left {
-    transform: translateX(0);
+    transform: scaleX(1);
   }
   .kwe-left {
-    transform: translateX(-100%);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 300px;
+    transform: scaleX(0);
   }
 }
 </style>

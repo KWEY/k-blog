@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="kwe-index">
     <div v-show="showHome" class="kwe-home">
       <router-link to="/">
         <home-svg class="kwe-home-svg" />HOME
@@ -43,14 +43,14 @@ export default {
 }
 </script>
 <style lang="less">
-body {
-  background: url('../assets/4.jpg') center;
-  background-attachment: fixed;
-  background-size: auto 100%;
+.kwe-index {
+  position: absolute;
+  width: 100%;
 }
 .kwe-home {
-  position: absolute;
+  position: fixed;
   top: 10px;
+  left: 10px;
   z-index: 2;
   &:hover {
     color: #0fc;

@@ -21,7 +21,9 @@ module.exports = {
     ],
     link: [{ rel: 'icon', type: 'image/png', href: '/icon.png' }]
   },
-
+  server: {
+    host: '127.0.0.1'
+  },
   /*
   ** Customize the progress-bar color
   */

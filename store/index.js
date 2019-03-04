@@ -22,6 +22,7 @@ export const actions = {
       commit('SET_ADMIN_TOKEN', cookies.adminToken)
     }
     commit('SET_APP', res.locals.app)
+    commit('CURRENTTYPE', {})
     const { data } = await $http.getAdmin()
     commit('SET_ADMIN_INFO', data)
   },
@@ -32,7 +33,6 @@ export const actions = {
     if (state.typeList.value === typeId && state.typeList.page === page) {
       return
     }
-    commit('ARTICLE_LIST', null)
     await $http.getArticles(typeId, page).then(res => {
       if (res.success) {
         commit('CURRENTTYPE', { typeId, page })

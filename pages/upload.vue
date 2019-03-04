@@ -49,7 +49,7 @@ export default {
   mounted() {
     // 获取type列表
     const list = this.$store.state.typeList
-    this.format(list)
+    list && this.format(list)
     // 引入编译器
     if (window.wangEditor) {
       this.initEditor()
@@ -217,9 +217,12 @@ export default {
     height: 40px;
     border: 1px solid #00a1d6;
     background: transparent;
-    font-size: 20px;
+    font-size: 16px;
     border-radius: 4px;
     outline: none;
+  }
+  .kwe-description-input {
+    font-size: 14px;
   }
   .kwe-upload {
     float: right;

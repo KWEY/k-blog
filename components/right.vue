@@ -63,17 +63,13 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="less">
 .kwe-right {
-  position: absolute;
-  left: 310px;
-  right: 0;
-  transform: translateX(0);
+  width: 800px;
   box-sizing: border-box;
   padding: 10px 0;
   min-height: 100%;
   text-align: center;
   line-height: 2;
   transition: left 0.3s;
-  // background: #eaeaea;
 
   .kwe-directory {
     width: 96%;
@@ -83,11 +79,11 @@ export default {
     transition: all 0.2s;
     background: #fff;
     box-sizing: border-box;
-    box-shadow: 0 0 2px 2px #ccc;
+    box-shadow: 0 0 2px 0px #ccc;
     cursor: pointer;
 
     &:hover {
-      box-shadow: 1px 1px 10px 1px #cc82ff;
+      box-shadow: 1px 1px 8px 0px #00a1d6;
     }
     .kwe-title {
       font-size: 16px;
@@ -105,9 +101,7 @@ export default {
 }
 @media screen and (max-width: 800px) {
   .kwe-right {
-    margin-left: 0;
-    left: 0;
-    // transform: translateX(-310px);
+    width: 100%;
   }
 }
 </style>

@@ -20,7 +20,8 @@ export default {
   height: 100%;
   text-align: center;
   &-wrap {
-    width: 600px;
+    width: 100%;
+    max-width: 600px;
     height: 100%;
     min-height: 600px;
     margin: 0 auto;

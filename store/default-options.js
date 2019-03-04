@@ -18,6 +18,22 @@ export const typeToId = {
   performance: '001_013',
   other: '001_014'
 }
+export const idToName = {
+  '001_001': ['最新', 'all'],
+  '001_002': ['HTML', 'html'],
+  '001_003': ['CSS', 'css'],
+  '001_004': ['JS', 'js'],
+  '001_005': ['ES6', 'es6'],
+  '001_006': ['计算机网络', 'network'],
+  '001_007': ['浏览器相关', 'browser'],
+  '001_008': ['工程化', 'tool'],
+  '001_009': ['模块化', 'model'],
+  '001_010': ['框架', 'frame'],
+  '001_011': ['Nodejs', 'node'],
+  '001_012': ['数据结构', 'data'],
+  '001_013': ['性能优化', 'performance'],
+  '001_014': ['其他', 'other']
+}
 
 export const typeList = {
   tab: '001',
@@ -30,7 +46,7 @@ export const typeList = {
       list: [
         {
           src: '/',
-          pid: '',
+          pid: '001_001',
           name: '最新'
         },
         {

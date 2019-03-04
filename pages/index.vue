@@ -40,9 +40,9 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="less">
 .kwe-index {
-  // background: rgba(0, 255, 255, .3);
+  display: flex;
+  justify-content: center;
   width: 100%;
-  height: 100%;
 }
 .kwe-menu {
   display: none;

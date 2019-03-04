@@ -23,21 +23,12 @@ export default {
   getArticle(id) {
     return fetch({ url: `${base.articles}/${id}` })
   },
-
-  // 获取文章列表
-  getDirectoryList(type) {
-    return fetch({ url: base.directoryList, params: { type } })
-  },
-  // 获取文章
-  // getArticle(data) {
-  //   return fetch({ url: `${base.article}${data.tid}/${data.id}.json` })
-  // },
   // 获取doc目录
   getDocList(doc) {
-    return fetch({ url: base.docMenu, params: { doc } })
+    return fetch({ url: `${base.doc + doc}-list.json` })
   },
   // 获取doc内容
   getDoc(doc) {
-    return fetch({ url: base.docInfo, params: { doc } })
+    return fetch({ url: `${base.doc + doc}.xml` })
   }
 }

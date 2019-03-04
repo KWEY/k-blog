@@ -1,4 +1,5 @@
 import $http from '../request/http'
+import { idToName } from './default-options.js'
 
 export const state = () => ({
   currentId: null,
@@ -12,6 +13,8 @@ export const getters = {
 
 export const mutations = {
   ARTICLE_CONTENT(state, data) {
+    const type = data.type
+    data.type = Array.isArray(type) ? type.map(id => idToName[id]) : []
     state.article = data
   },
   CURRENTID(state, id) {
@@ -25,7 +28,7 @@ export const actions = {
       return
     }
     commit('CURRENTID', id)
-    commit('ARTICLE_CONTENT', null)
+    commit('ARTICLE_CONTENT', {})
     return $http.getArticle(id).then(res => {
       if (res.success) {
         commit('ARTICLE_CONTENT', res.data)
