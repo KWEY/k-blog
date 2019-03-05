@@ -11,6 +11,6 @@ const base = {
   nav: `${baseUrl}/plugins/nav.js`,
   editor: `${baseUrl}/plugins/wangEditor.min.js`,
   article: `${baseUrl}/db/`,
-  doc: `${baseUrl}/static/db/doc/`
+  doc: `${baseUrl}/db/doc/`
 }
 export default base

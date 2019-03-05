@@ -1,18 +1,20 @@
 <template>
-  <div class="kwe-left" :class="showleft">
-    <div class="kwe-left-info">
-      <div class="kwe-wrap">
-        <img class="kwe-img" :src="author.avatar" alt="kwe">
+  <dir class="kwe-left-wrap" :class="showleft">
+    <div class="kwe-left">
+      <div class="kwe-left-info">
+        <div class="kwe-wrap">
+          <img class="kwe-img" :src="author.avatar" alt="kwe">
+        </div>
+        <div class="kwe-title">{{ author.username }}</div>
       </div>
-      <div class="kwe-title">{{ author.username }}</div>
+      <div class="kwe-left-artList">
+        <collapse :type-list="typeList" />
+      </div>
+      <div class="kwe-left-link">
+        <a href="https://github.com/KWEY" target="_blank"><github-svg class="kwe-github" /></a>
+      </div>
     </div>
-    <div class="kwe-left-artList">
-      <collapse :type-list="typeList" />
-    </div>
-    <div class="kwe-left-link">
-      <a href="https://github.com/KWEY" target="_blank"><github-svg class="kwe-github" /></a>
-    </div>
-  </div>
+  </dir>
 </template>
 
 <script>
@@ -48,7 +50,16 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="less">
 @top_bg: rgba(74, 74, 74, 1);
+.kwe-left-wrap {
+  flex: none;
+  position: relative;
+  width: 300px;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
 .kwe-left {
+  position: fixed;
   width: 300px;
   height: 100%;
   min-height: 700px;
@@ -117,8 +128,15 @@ export default {
   }
 }
 @media screen and (max-width: 800px) {
-  .kwe-left.show-left {
-    transform: scaleX(1);
+  .kwe-left-wrap {
+    width: 0;
+    overflow: hidden;
+  }
+  .kwe-left-wrap.show-left {
+    overflow: auto;
+    .kwe-left {
+      transform: scaleX(1);
+    }
   }
   .kwe-left {
     position: fixed;

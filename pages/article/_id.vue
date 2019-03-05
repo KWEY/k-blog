@@ -47,6 +47,14 @@ export default {
   img {
     max-width: 100%;
   }
+  a {
+    font-size: 16px;
+    color: #00a1d6;
+    cursor: pointer;
+    &:hover {
+      text-shadow: 1px 1px #ccc;
+    }
+  }
 
   .kwe-name {
     font-size: 26px;
@@ -63,11 +71,12 @@ export default {
       display: inline-block;
       margin-right: 8px;
       padding: 0 8px;
-      height: 21px;
+      height: 20px;
       min-width: 24px;
-      line-height: 21px;
+      line-height: 20px;
       border: 1px solid #ccc;
       border-radius: 100px;
+      font-size: 14px;
       text-align: center;
       &:hover {
         border-color: #00a1d6;

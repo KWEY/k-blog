@@ -2,7 +2,8 @@
   <div class="kwe-index">
     <div v-show="showHome" class="kwe-home">
       <router-link to="/">
-        <home-svg class="kwe-home-svg" />HOME
+        <home-svg class="kwe-home-svg" />
+        <span>HOME</span>
       </router-link>
     </div>
     <nuxt />
@@ -51,13 +52,21 @@ export default {
   position: fixed;
   top: 10px;
   left: 10px;
+  padding: 0px 12px;
+  border-radius: 12px;
+  color: #fff;
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 200;
+  background: rgba(0, 0, 0, 0.6);
   z-index: 2;
   &:hover {
-    color: #0fc;
+    background: rgba(0, 0, 0, 0.7);
   }
   .kwe-home-svg {
+    vertical-align: sub;
+    fill: #fff;
     width: 20px;
-    margin: 0 8px;
   }
 }
 </style>
