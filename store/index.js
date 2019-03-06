@@ -8,6 +8,7 @@ export const state = () => ({
   adminToken: '',
   author: {}, // 作者
   typeList: typeList,
+  cache: {},
   articleList: {},
   total: 0
 })
@@ -30,12 +31,19 @@ export const actions = {
   async getArticles({ commit, state }, data) {
     const typeId = typeToId[data.type]
     const page = data.page
+    const key = typeId + page
     if (state.typeList.value === typeId && state.typeList.page === page) {
+      return
+    }
+    if (state.cache[key]) {
+      commit('ARTICLE_CACHE', { typeId, page, key })
       return
     }
     await $http.getArticles(typeId, page).then(res => {
       if (res.success) {
         commit('CURRENTTYPE', { typeId, page })
+        res.page = page
+        res.typeId = typeId
         commit('ARTICLE_LIST', res)
       }
     })
@@ -70,8 +78,24 @@ export const mutations = {
     state.typeList.page = data.page
   },
   ARTICLE_LIST(state, res) {
-    state.articleList = res && res.data
-    state.total = res && res.total
+    if (res) {
+      state.articleList = res.data
+      state.total = res.total
+      // 路由变化是修过type
+      state.typeList.value = res.typeId
+      // 缓存数据
+      state.cache[res.typeId + res.page] = {
+        data: res.data,
+        total: res.total
+      }
+    }
+  },
+  ARTICLE_CACHE(state, data) {
+    state.total = state.cache[data.key].total
+    state.articleList = state.cache[data.key].data
+    // 路由变化是修过type
+    state.typeList.value = data.typeId
+    state.typeList.page = data.page
   }
 }
 // 获取

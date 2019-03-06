@@ -7,7 +7,7 @@
         <div class="kwe-time">{{ item.created_at }}</div>
       </router-link>
     </div>
-    <pages v-if="total > 1" :total="total" @change="change" />
+    <pages v-if="total > limit" :total="Math.ceil(total / limit)" :current="page" @change="change" />
   </div>
 </template>
 
@@ -20,6 +20,7 @@ export default {
   },
   data() {
     return {
+      limit: 15,
       type: 'all',
       page: 1
     }
@@ -36,7 +37,7 @@ export default {
     $route: {
       handler(val, oldVal) {
         this.type = val.query.type || 'all'
-        this.page = val.query.page || 1
+        this.page = +val.query.page || 1
         this.getArticles()
       },
       // 深度观察监听
@@ -53,7 +54,8 @@ export default {
     getArticles(type, page) {
       this.$store.dispatch('getArticles', {
         type: this.type,
-        page: this.page
+        page: this.page,
+        limit: this.limit
       })
     }
   }

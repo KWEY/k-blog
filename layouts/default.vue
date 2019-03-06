@@ -1,5 +1,5 @@
 <template>
-  <div class="kwe-index">
+  <div class="kwe-wrap">
     <div v-show="showHome" class="kwe-home">
       <router-link to="/">
         <home-svg class="kwe-home-svg" />
@@ -44,7 +44,7 @@ export default {
 }
 </script>
 <style lang="less">
-.kwe-index {
+.kwe-wrap {
   position: absolute;
   width: 100%;
 }
@@ -56,7 +56,6 @@ export default {
   border-radius: 12px;
   color: #fff;
   font-size: 14px;
-  line-height: 22px;
   font-weight: 200;
   background: rgba(0, 0, 0, 0.6);
   z-index: 2;

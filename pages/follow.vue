@@ -50,4 +50,17 @@ export default {
   min-height: 200px;
   background: url('../assets/loading.gif') no-repeat center;
 }
+.kwe-nav-wrap {
+  .nav-x {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    &-list {
+      height: 100%;
+      margin: -30px 0 0;
+      padding: 50px 10px;
+      box-sizing: border-box;
+    }
+  }
+}
 </style>
