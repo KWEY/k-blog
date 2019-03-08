@@ -97,7 +97,7 @@ export default {
         description: this.description,
         type: this.selected,
         content: this.content,
-        created_at: new Date().toLocaleString()
+        created_at: +new Date()
       }
       $http.postArticle(data).then(res => {
         if (res.success) {

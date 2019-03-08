@@ -16,6 +16,9 @@ export const typeToId = {
   node: '001_011',
   data: '001_012',
   performance: '001_013',
+  vue: '001_015',
+  mongoose: '001_016',
+  linux: '001_017',
   other: '001_014'
 }
 export const idToName = {
@@ -32,6 +35,9 @@ export const idToName = {
   '001_011': ['Nodejs', 'node'],
   '001_012': ['数据结构', 'data'],
   '001_013': ['性能优化', 'performance'],
+  '001_015': ['Vue', 'vue'],
+  '001_016': ['Mongoose', 'mongoose'],
+  '001_017': ['Linux', 'linux'],
   '001_014': ['其他', 'other']
 }
 
@@ -108,6 +114,21 @@ export const typeList = {
           src: '/?type=performance',
           pid: '001_013',
           name: '性能优化'
+        },
+        {
+          src: '/?type=vue',
+          pid: '001_015',
+          name: 'Vue'
+        },
+        {
+          src: '/?type=mongoose',
+          pid: '001_016',
+          name: 'Mongoose'
+        },
+        {
+          src: '/?type=linux',
+          pid: '001_017',
+          name: 'Linux'
         },
         {
           src: '/?type=other',

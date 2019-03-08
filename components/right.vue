@@ -4,7 +4,7 @@
       <router-link :to="'/article/' + item.id">
         <div class="kwe-title">{{ item.title }}</div>
         <div class="kwe-description">{{ item.description }}</div>
-        <div class="kwe-time">{{ item.created_at }}</div>
+        <div class="kwe-time">{{ new Date(item.created_at).toLocaleString() }}</div>
       </router-link>
     </div>
     <pages v-if="total > limit" :total="Math.ceil(total / limit)" :current="page" @change="change" />

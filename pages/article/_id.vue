@@ -3,7 +3,7 @@
     <div class="kwe-title">
       <div class="kwe-name">{{ article.title }}</div>
       <div class="kwe-bar-top">
-        <span class="time">{{ article.created_at }}</span>
+        <span class="time">{{ new Date(article.created_at).toLocaleString() }}</span>
         <span class="read-count">阅读数：{{ article.views }}</span>
         <span class="label">标签：</span>
         <router-link v-for="item of article.type" :key="item[1]" :to="'/?type=' + item[1]" class="kwe-link">{{ item[0] }}</router-link>
@@ -38,10 +38,10 @@ export default {
 <style lang="less">
 .kwe-article {
   width: 100%;
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto 100px;
   padding: 20px 8px;
-  font-size: 14px;
+  font-size: 16px;
   box-sizing: border-box;
   overflow: hidden;
   img {
@@ -55,7 +55,12 @@ export default {
       text-shadow: 1px 1px #ccc;
     }
   }
-
+  pre {
+    background: #eee;
+    padding: 4px 20px;
+    color: #07a;
+    border-radius: 4px;
+  }
   .kwe-name {
     font-size: 26px;
     text-align: center;
