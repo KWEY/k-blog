@@ -7,7 +7,6 @@ export const typeToId = {
   html: '001_002',
   css: '001_003',
   js: '001_004',
-  es6: '001_005',
   network: '001_006',
   browser: '001_007',
   tool: '001_008',
@@ -26,7 +25,6 @@ export const idToName = {
   '001_002': ['HTML', 'html'],
   '001_003': ['CSS', 'css'],
   '001_004': ['JS', 'js'],
-  '001_005': ['ES6', 'es6'],
   '001_006': ['计算机网络', 'network'],
   '001_007': ['浏览器相关', 'browser'],
   '001_008': ['工程化', 'tool'],
@@ -69,11 +67,6 @@ export const typeList = {
           src: '/?type=js',
           pid: '001_004',
           name: 'JS'
-        },
-        {
-          src: '/?type=es6',
-          pid: '001_005',
-          name: 'ES6'
         },
         {
           src: '/?type=network',

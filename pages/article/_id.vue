@@ -60,6 +60,15 @@ export default {
     padding: 4px 20px;
     color: #07a;
     border-radius: 4px;
+    overflow: auto;
+  }
+  table {
+    border-collapse: collapse;
+  }
+  table,
+  td,
+  th {
+    border: 1px solid #ccc;
   }
   .kwe-name {
     font-size: 26px;

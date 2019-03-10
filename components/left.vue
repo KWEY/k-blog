@@ -62,7 +62,6 @@ export default {
   position: fixed;
   width: 300px;
   height: 100%;
-  min-height: 700px;
   overflow-y: auto;
   text-align: center;
   line-height: 2;

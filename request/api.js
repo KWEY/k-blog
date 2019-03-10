@@ -2,8 +2,9 @@
  * 接口域名的管理
  */
 const isPro = process.env.NODE_ENV === 'production'
-const baseUrl = isPro ? 'http://www.webq.top' : 'http://127.0.0.1:3000'
+const baseUrl = isPro ? 'https://www.webq.top' : 'http://127.0.0.1:3000'
 const base = {
+  login: `${baseUrl}/api/login`,
   author: `${baseUrl}/api/admin`,
   upload: `${baseUrl}/api/article/post`,
   articles: `${baseUrl}/api/article`,

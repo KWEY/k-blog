@@ -12,6 +12,7 @@
 import leftPanel from '@/components/left.vue'
 import rightPanel from '@/components/right.vue'
 import menusvg from '@/assets/menu.svg'
+import { idToName } from '@/store/default-options.js'
 
 export default {
   name: 'Index',
@@ -25,14 +26,30 @@ export default {
       showleft: ''
     }
   },
+  computed: {
+    title() {
+      return idToName[this.$store.state.typeList.value][0]
+    }
+  },
+  watch: {
+    title(newName) {
+      this.setTitle(newName)
+    }
+  },
   async fetch({ store, route }) {
     const type = route.query.type || 'all'
     const page = route.query.page || 1
     await store.dispatch('getArticles', { type, page })
   },
+  mounted() {
+    this.setTitle(idToName[this.$store.state.typeList.value][0])
+  },
   methods: {
     toggle() {
       this.showleft = this.showleft ? '' : 'show-left'
+    },
+    setTitle(newName) {
+      document.title = `雪人的${newName}日志`
     }
   }
 }

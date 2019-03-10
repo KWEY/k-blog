@@ -2,9 +2,9 @@
   <div class="doc-left" :class="showLeft">
     <h1>目录</h1>
     <div class="doc-directory" style="text-align: center">
-      <a href="https://w3c.github.io/media-source/#introduction" target="_blank">原文</a>
+      <a :href="types.orginal" target="_blank">原文</a>
     </div>
-    <div v-for="item in typeList" :key="item.id" class="doc-directory">
+    <div v-for="item in types.typeList" :key="item.id" class="doc-directory">
       <a :href="item.id">
         <span class="doc-title">{{ item.title }}</span>
         <span class="doc-name">{{ item.name }}</span>
@@ -26,7 +26,7 @@ export default {
     return {}
   },
   computed: {
-    typeList() {
+    types() {
       return this.$store.state.doc.docMenu
     }
   }
@@ -36,7 +36,12 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="less">
 @top_bg: rgba(74, 74, 74, 1);
-
+.textOverflow(@width : 100%) {
+  width: @width;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
 .doc-left {
   position: fixed;
   top: 0;
@@ -55,6 +60,7 @@ export default {
 .doc-directory {
   position: relative;
   text-align: left;
+  .textOverflow();
   &:last-child {
     margin-bottom: 40px;
   }
@@ -81,6 +87,9 @@ export default {
     width: 50px;
     margin-left: 30px;
   }
+  // .doc-name {
+  //   .textOverflow();
+  // }
 }
 @media screen and (max-width: 800px) {
   .doc-left.show-left {

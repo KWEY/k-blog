@@ -37,14 +37,13 @@ export const actions = {
     }
     if (state.cache[key]) {
       commit('ARTICLE_CACHE', { typeId, page, key })
+      commit('CURRENTTYPE', { typeId, page })
       return
     }
     await $http.getArticles(typeId, page).then(res => {
       if (res.success) {
-        commit('CURRENTTYPE', { typeId, page })
-        res.page = page
-        res.typeId = typeId
         commit('ARTICLE_LIST', res)
+        commit('CURRENTTYPE', { typeId, page })
       }
     })
   },
@@ -81,8 +80,6 @@ export const mutations = {
     if (res) {
       state.articleList = res.data
       state.total = res.total
-      // 路由变化是修过type
-      state.typeList.value = res.typeId
       // 缓存数据
       state.cache[res.typeId + res.page] = {
         data: res.data,
@@ -93,9 +90,6 @@ export const mutations = {
   ARTICLE_CACHE(state, data) {
     state.total = state.cache[data.key].total
     state.articleList = state.cache[data.key].data
-    // 路由变化是修过type
-    state.typeList.value = data.typeId
-    state.typeList.page = data.page
   }
 }
 // 获取

@@ -7,6 +7,10 @@ import base from './api'
 import { fetch } from './axios'
 
 export default {
+  // 登录
+  login(data) {
+    return fetch({ data, url: base.login, method: 'post' })
+  },
   // 获取作者
   getAdmin() {
     return fetch({ url: base.author })
@@ -29,6 +33,6 @@ export default {
   },
   // 获取doc内容
   getDoc(doc) {
-    return fetch({ url: `${base.doc + doc}.xml` })
+    return fetch({ url: `${base.doc + doc}.xml`, responseType: 'xml' })
   }
 }

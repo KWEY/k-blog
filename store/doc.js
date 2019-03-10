@@ -34,7 +34,7 @@ export const mutations = {
     state.currentDoc = doc
   },
   DOC_MENU(state, data) {
-    state.docMenu = data && data.typeList
+    state.docMenu = data
   },
   DOC_ARTICLE(state, data) {
     state.docArticle = data

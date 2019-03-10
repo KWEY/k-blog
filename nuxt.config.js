@@ -13,7 +13,7 @@ module.exports = {
     sizes: [16, 120]
   },
   head: {
-    title: 'kwe',
+    title: '雪人的最新日志',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -47,8 +47,7 @@ module.exports = {
   */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios',
-    '@nuxtjs/pwa'
+    '@nuxtjs/axios'
   ],
   /*
   ** Axios module configuration

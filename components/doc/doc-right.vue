@@ -21,25 +21,34 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="less">
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 4px 0;
-}
-pre {
-  background: #def;
-}
 .doc-right {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 4px 0;
+  }
+  pre {
+    background: #def;
+  }
+  table {
+    border-collapse: collapse;
+  }
+  table,
+  td,
+  th {
+    border: 1px solid #ccc;
+  }
+  img {
+    max-width: 100%;
+  }
   position: absolute;
   left: 310px;
   right: 0;
-  max-width: 800px;
-  min-width: 500px;
   box-sizing: border-box;
-  padding: 10px;
+  padding: 16px;
   min-height: 100%;
   text-align: center;
   line-height: 2;
@@ -78,6 +87,10 @@ pre {
         width: 100%;
         line-height: 40px;
       }
+    }
+    .scroll {
+      max-width: 100%;
+      overflow: auto;
     }
   }
 }

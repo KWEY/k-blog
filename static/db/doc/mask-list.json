@@ -1,0 +1,195 @@
+{
+    "orginal": "https://www.w3.org/TR/css-masking-1/",
+    "typeList": [
+        {
+          "title": "1",
+          "name": "简介",
+          "id": "#a1"
+        },
+        {
+          "title": "1.1",
+          "name": "剪切",
+          "id": "#a1-1"
+        },
+        {
+          "title": "1.2",
+          "name": "屏蔽",
+          "id": "#a1-2"
+        },
+        {
+          "title": "2",
+          "name": "模块交互",
+          "id": "#a2"
+        },
+        {
+          "title": "3",
+          "name": "值",
+          "id": "#a3"
+        },
+        {
+          "title": "4",
+          "name": "术语",
+          "id": "#a4"
+        },
+        {
+          "title": "5",
+          "name": "剪切路径",
+          "id": "#a5"
+        },
+        {
+          "title": "5.1",
+          "name": "剪切形状：剪辑路径属性",
+          "id": "#a5-1"
+        },
+        {
+          "title": "6",
+          "name": "SVG剪切路径源",
+          "id": "#a6"
+        },
+        {
+          "title": "6.1",
+          "name": "clipPath元素",
+          "id": "#a6-1"
+        },
+        {
+          "title": "6.2",
+          "name": "绕组规则：剪辑 - 规则属性",
+          "id": "#a6-2"
+        },
+        {
+          "title": "7",
+          "name": "定位蒙版",
+          "id": "#a7"
+        },
+        {
+          "title": "7.1",
+          "name": "蒙版图像源：蒙版图像属性",
+          "id": "#a7-1"
+        },
+        {
+          "title": "7.2",
+          "name": "蒙版图像解释：蒙版模式属性",
+          "id": "#a7-2"
+        },
+        {
+          "title": "7.3",
+          "name": "平铺蒙版图像：蒙版重复属性",
+          "id": "#a7-3"
+        },
+        {
+          "title": "7.4",
+          "name": "定位蒙版图像：蒙版位置属性",
+          "id": "#a7-4"
+        },
+        {
+          "title": "7.5",
+          "name": "蒙版区域：蒙版剪辑属性",
+          "id": "#a7-5"
+        },
+        {
+          "title": "7.6",
+          "name": "定位区域：蒙版原点属性",
+          "id": "#a7-6"
+        },
+        {
+          "title": "7.7",
+          "name": "大小调整蒙版图像：蒙版大小属性",
+          "id": "#a7-7"
+        },
+        {
+          "title": "7.8",
+          "name": "合成蒙版图层：蒙版复合属性",
+          "id": "#a7-8"
+        },
+        {
+          "title": "7.9",
+          "name": "蒙版速记：蒙版属性",
+          "id": "#a7-9"
+        },
+        {
+          "title": "7.10",
+          "name": "掩模图像渲染模型",
+          "id": "#a7-10"
+        },
+        {
+          "title": "7.10.1",
+          "name": "掩模处理",
+          "id": "#a7-10-1"
+        },
+        {
+          "title": "7.10.2",
+          "name": "分层多个掩模图像",
+          "id": "#a7-10-2"
+        },
+        {
+          "title": "8",
+          "name": "Border-Box Mask",
+          "id": "#a8"
+        },
+        {
+          "title": "8.1",
+          "name": "Mask Border Image Source:mask-border-source属性",
+          "id": "#a8-1"
+        },
+        {
+          "title": "8.2",
+          "name": "Mask Border Image解释:mask-border-mode属性",
+          "id": "#a8-2"
+        },
+        {
+          "title": "8.3",
+          "name": "Mask Border Image Slicing:mask-border-slice属性",
+          "id": "#a8-3"
+        },
+        {
+          "title": "8.4",
+          "name": "Masking Areas:mask-border-width属性",
+          "id": "#a8-4"
+        },
+        {
+          "title": "8.5",
+          "name": "Edge Overhang:mask-border-outset属性",
+          "id": "#a8-5"
+        },
+        {
+          "title": "8.6",
+          "name": "Mask Border Image Tiling:mask-border-repeat属性",
+          "id": "#a8-6"
+        },
+        {
+          "title": "8.7",
+          "name": "Mask Border Image Shorthand:mask-border属性",
+          "id": "#a8-7"
+        },
+        {
+          "title": "8.8",
+          "name": "Masking with掩模边框图像",
+          "id": "#a8-8"
+        },
+        {
+          "title": "9",
+          "name": "SVG Mask Sources",
+          "id": "#a9"
+        },
+        {
+          "title": "9.1",
+          "name": "mask元素",
+          "id": "#a9-1"
+        },
+        {
+          "title": "9.2",
+          "name": "Mask Source解释：mask-type属性",
+          "id": "#a9-2"
+        },
+        {
+          "title": "10",
+          "name": "Security",
+          "id": "#a10"
+        },
+        {
+          "title": "11",
+          "name": "致谢",
+          "id": "#a11"
+        }
+    ]
+}

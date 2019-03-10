@@ -57,7 +57,7 @@ export default {
     width: 60px;
     height: 60px;
     border: 1px solid #ccc;
-    border-radius: 2px;
+    border-radius: 50%;
     cursor: pointer;
     .doc-to-top-svg {
       width: 100%;
