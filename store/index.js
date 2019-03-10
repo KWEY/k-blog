@@ -42,6 +42,8 @@ export const actions = {
     }
     await $http.getArticles(typeId, page).then(res => {
       if (res.success) {
+        res.typeId = typeId
+        res.page = page
         commit('ARTICLE_LIST', res)
         commit('CURRENTTYPE', { typeId, page })
       }
