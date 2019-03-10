@@ -48,7 +48,13 @@ export default {
     change(current) {
       if (this.page !== current) {
         this.page = current
-        this.getArticles()
+        this.$router.push({
+          path: '/',
+          query: {
+            type: this.type,
+            page: this.page
+          }
+        })
       }
     },
     getArticles(type, page) {
