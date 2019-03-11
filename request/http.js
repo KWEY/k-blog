@@ -7,6 +7,14 @@ import base from './api'
 import { fetch } from './axios'
 
 export default {
+  // 注册
+  register(data) {
+    return fetch({ data, url: base.register, method: 'post' })
+  },
+  // 查询当前用户名是否已注册
+  check(username) {
+    return fetch({ url: base.check, params: { username } })
+  },
   // 登录
   login(data) {
     return fetch({ data, url: base.login, method: 'post' })

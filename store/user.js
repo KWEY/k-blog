@@ -21,12 +21,9 @@ export const actions = {
   },
   login({ commit }, user) {
     return $http.login(user)
-    // return $http.login().then(({ success, data }) => {
-    //   console.log(data)
-    //   if (success && data) {
-    //     commit('LOGIN', data)
-    //   }
-    // })
+  },
+  register({ commit }, user) {
+    return $http.register(user)
   }
 }
 export const mutations = {

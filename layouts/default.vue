@@ -44,10 +44,6 @@ export default {
 }
 </script>
 <style lang="less">
-.kwe-wrap {
-  position: absolute;
-  width: 100%;
-}
 .kwe-home {
   position: fixed;
   top: 10px;

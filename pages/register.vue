@@ -1,62 +1,73 @@
 <template>
-  <div class="kwe-login" @click="hideResult">
-    <p class="kwe-title"><span class="kwe-name">登录</span></p>
+  <div class="kwe-register" @click="hideResult">
+    <p class="kwe-title"><span class="kwe-name">注册</span></p>
     <div v-show="result" class="kwe-result">{{ result }}</div>
-    <div class="kwe-login-wrap">
+    <div class="kwe-register-module">
       <div class="kwe-register-group">
         <input
           v-model.trim="user.username"
           type="text"
-          placeholder="昵称"
           autocomplete="off"
+          placeholder="昵称"
           @blur="checkName"
         >
         <span class="kwe-error">{{ message.username }}</span>
       </div>
       <div class="kwe-register-group">
-        <input 
+        <input
           v-model.trim="user.password"
           type="password"
-          placeholder="密码"
           autocomplete="off"
-          @keyup.enter="login"
+          placeholder="密码（6-16个字符组成，区分大小写"
           @blur="checkPassword"
         >
         <span class="kwe-error">{{ message.password }}</span>
       </div>
+      <div class="kwe-register-group">
+        <input
+          v-model.trim="user.tel"
+          type="text"
+          autocomplete="off"
+          placeholder="填写常用手机号"
+          @blur="checkTel"
+        >
+        <span class="kwe-error">{{ message.tel }}</span>
+      </div>
     </div>
-    <div class="kwe-btn-login" @click.stop="login">登 录</div>
-    <div class="kwe-to-register">
-      <router-link to="/register">没有账号，去注册></router-link>
+    <div class="kwe-btn-register" @click.stop="register">注 册</div>
+    <div class="kwe-to-login">
+      <router-link to="/login">已有账号，直接登录></router-link>
     </div>
   </div>
 </template>
 <script>
 import $http from '@/request/http'
 export default {
-  name: 'Login',
+  name: 'Register',
   data() {
     return {
       result: '',
       message: {
         username: '',
-        password: ''
+        password: '',
+        tel: ''
       },
       user: {
         username: '',
-        password: ''
+        password: '',
+        tel: ''
       }
     }
   },
   head() {
     return {
-      title: '登录 - ' + this.$store.state.user.username
+      title: '注册 - ' + this.$store.state.user.username
     }
   },
   methods: {
-    login() {
-      if (this.checkName(0) && this.checkPassword()) {
-        this.$store.dispatch('user/login', this.user).then(data => {
+    register() {
+      if (this.checkName(0) && this.checkPassword() && this.checkTel()) {
+        $http.register(this.user).then(data => {
           this.result = data.msg
           if (data.success) {
             this.user = {
@@ -87,9 +98,9 @@ export default {
           }
           $http.check(this.user.username).then(data => {
             if (data.success) {
-              this.message.username = '此昵称用户不存在(；′⌒`)'
-            } else {
               this.message.username = ''
+            } else {
+              this.message.username = data.msg
             }
           })
         }
@@ -107,6 +118,15 @@ export default {
         return true
       }
     },
+    checkTel() {
+      if (/^1\d{10}$/.test(this.user.tel)) {
+        this.message.tel = ''
+        return true
+      } else {
+        this.message.tel = '电话号码格式不对'
+        return false
+      }
+    },
     hideResult() {
       this.result = ''
     }
@@ -114,28 +134,12 @@ export default {
 }
 </script>
 <style lang="less">
-.kwe-login {
+.kwe-register {
   position: absolute;
   width: 100%;
   height: 100%;
   font-size: 14px;
   color: #606266;
-  .kwe-title {
-    max-width: 980px;
-    height: 28px;
-    margin: 28px auto;
-    border-bottom: 1px solid #ddd;
-    text-align: center;
-    .kwe-name {
-      height: 56px;
-      line-height: 56px;
-      margin: 0 auto;
-      padding: 0 20px;
-      font-size: 36px;
-      background: #fff;
-      text-align: center;
-    }
-  }
   .kwe-result {
     position: fixed;
     top: 90px;
@@ -152,7 +156,23 @@ export default {
     z-index: 2;
     cursor: pointer;
   }
-  &-wrap {
+  .kwe-title {
+    max-width: 980px;
+    height: 28px;
+    margin: 28px auto;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+    .kwe-name {
+      height: 56px;
+      line-height: 56px;
+      margin: 0 auto;
+      padding: 0 20px;
+      font-size: 36px;
+      background: #fff;
+      text-align: center;
+    }
+  }
+  &-module {
     width: 300px;
     margin: 80px auto 0;
     .kwe-register-group {
@@ -169,13 +189,13 @@ export default {
       }
     }
   }
-  .kwe-btn-login,
-  .kwe-to-register {
+  .kwe-btn-register,
+  .kwe-to-login {
     width: 300px;
     margin: 0 auto;
     line-height: 2.5;
   }
-  .kwe-btn-login {
+  .kwe-btn-register {
     text-align: center;
     border: 1px solid #ccc;
     cursor: pointer;
@@ -184,7 +204,7 @@ export default {
       border-color: #00a1d6;
     }
   }
-  .kwe-to-register {
+  .kwe-to-login {
     text-align: right;
     font-size: 12px;
     a {

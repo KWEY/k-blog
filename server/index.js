@@ -4,7 +4,9 @@ const express = require('express')
 const consola = require('consola')
 const { Nuxt, Builder } = require('nuxt')
 const cookieParser = require('cookie-parser')
+const session = require('express-session')
 const bodyParser = require('body-parser')
+const MongoStore = require('connect-mongo')(session)
 
 // Import and Set Nuxt.js options
 const config = require('../nuxt.config.js')
@@ -17,9 +19,25 @@ const serve = (path, cache) => {
     maxAge: cache ? 1000 * 60 * 60 * 24 : 0
   })
 }
+const secret = 'kwe'
 const app = express()
 app.use(bodyParser.json())
-app.use(cookieParser(Math.random().toString(36)))
+app.use(cookieParser(secret))
+app.use(
+  session({
+    secret: secret,
+    name: 'session_id',
+    saveUninitialized: false, // 在存储一些新数据之前，不创建session
+    resave: false, // 如果没有发生任何修改不储存session。
+    store: new MongoStore({
+      url: 'mongodb://127.0.0.1:27017/k-blog',
+      touchAfter: 24 * 3600 // 单位是秒
+    }),
+    cookie: {
+      maxAge: 24 * 3600 * 1000
+    }
+  })
+)
 app.use(function(req, res, next) {
   // const domain = `${req.protocol}://${req.get('host')}`
   // 前后端共享配置数据

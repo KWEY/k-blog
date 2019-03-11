@@ -106,7 +106,7 @@ export default {
           this.editor.txt.clear()
           this.showToast('上传成功', 'success')
         } else {
-          const text = (res.err && res.err.message) || '上传失败'
+          const text = res.msg || '上传失败'
           this.showToast(text, 'warn', true)
         }
       })

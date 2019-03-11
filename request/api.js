@@ -4,6 +4,8 @@
 const isPro = process.env.NODE_ENV === 'production'
 const baseUrl = isPro ? 'https://www.webq.top' : 'http://127.0.0.1:3000'
 const base = {
+  check: `${baseUrl}/api/user/check`,
+  register: `${baseUrl}/api/register`,
   login: `${baseUrl}/api/login`,
   author: `${baseUrl}/api/admin`,
   upload: `${baseUrl}/api/article/post`,
