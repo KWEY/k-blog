@@ -8,7 +8,7 @@
         <div class="kwe-title">{{ author.username }}</div>
       </div>
       <div class="kwe-left-artList">
-        <collapse :type-list="typeList" />
+        <collapse :type-list="typeList" @tab-change="tabChange" />
       </div>
       <div class="kwe-left-link">
         <a href="https://github.com/KWEY" target="_blank"><github-svg class="kwe-github" /></a>
@@ -42,6 +42,11 @@ export default {
     },
     typeList() {
       return this.$store.state.typeList
+    }
+  },
+  methods: {
+    tabChange(tab) {
+      this.$store.dispatch('changeTab', tab)
     }
   }
 }

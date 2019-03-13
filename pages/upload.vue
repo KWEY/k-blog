@@ -23,13 +23,15 @@
 <script>
 import Toast from '@/ui/toast'
 import base from '../request/api'
-import Utils from '@/plugins/utils'
 import $http from '../request/http'
 
 export default {
   name: 'Upload',
-  head: {
-    script: [{ src: base.editor }]
+  head() {
+    return {
+      title: '发布',
+      script: [{ src: base.editor }]
+    }
   },
   components: {
     toast: Toast
@@ -46,7 +48,22 @@ export default {
       toast: {}
     }
   },
+  computed: {
+    userStatus() {
+      return this.$store.state.user
+    }
+  },
+  watch: {
+    userStatus() {
+      if (!this.userStatus.isAdmin) {
+        this.noSendTip()
+      }
+    }
+  },
   mounted() {
+    if (!this.userStatus.isAdmin) {
+      this.noSendTip()
+    }
     // 获取type列表
     const list = this.$store.state.typeList
     list && this.format(list)
@@ -86,6 +103,10 @@ export default {
     },
     // 下载json文件
     upload() {
+      if (!this.userStatus.isAdmin) {
+        this.noSendTip()
+        return
+      }
       const id = this.$store.state.author && this.$store.state.author.id
       if (!this.title || !this.description || !this.content || !id) {
         this.showToast('输入“title、description、content、id”', 'warn', true)
@@ -128,36 +149,8 @@ export default {
     closed() {
       this.toast.show = false
     },
-    download() {
-      const guid = `${this.selected}_${Utils.guid(1)}_${Utils.guid(1)}`
-      const text = {
-        title: this.title,
-        id: guid,
-        time: new Date().toLocaleString(),
-        content: this.content
-      }
-      const index = {
-        description: this.description,
-        title: this.title,
-        id: guid,
-        time: new Date().toLocaleString()
-      }
-      try {
-        Utils.download({
-          text: JSON.stringify(index, null, '\t'),
-          type: 'text/json;charset=utf-8',
-          fileName: `000_${guid}.json`
-        })
-        Utils.download({
-          text: JSON.stringify(text, null, '\t'),
-          type: 'text/json;charset=utf-8',
-          fileName: `${guid}.json`
-        })
-      } catch (error) {
-        /* eslint-disable */
-        console.warn(error);
-        /* eslint-enable */
-      }
+    noSendTip() {
+      this.showToast('当前角色无法上传文章', 'warn', true)
     }
   }
 }
@@ -168,6 +161,7 @@ export default {
 .kwe-json {
   width: 800px;
   margin: 0 auto;
+  padding-top: 20px;
   font-size: 14px;
   line-height: 1.5;
   .kwe-type,

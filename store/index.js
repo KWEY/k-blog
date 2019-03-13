@@ -22,7 +22,7 @@ export const actions = {
     if (cookies.adminToken) {
       commit('SET_ADMIN_TOKEN', cookies.adminToken)
     }
-    commit('SET_APP', res.locals.app)
+    commit('SET_APP', res.locals.blog)
     commit('CURRENTTYPE', {})
     const { data } = await $http.getAdmin()
     commit('SET_ADMIN_INFO', data)

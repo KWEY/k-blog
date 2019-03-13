@@ -1,11 +1,11 @@
 <template>
   <div class="kwe-right">
     <div v-for="item in articleList" :key="item.id" class="kwe-directory">
-      <router-link :to="'/article/' + item.id">
-        <div class="kwe-title">{{ item.title }}</div>
+      <nuxt-link :to="'/article/' + item.id">
+        <h3 class="kwe-title">{{ item.title }}</h3>
         <div class="kwe-description">{{ item.description }}</div>
         <div class="kwe-time">{{ new Date(item.created_at).toLocaleString() }}</div>
-      </router-link>
+      </nuxt-link>
     </div>
     <pages v-if="total > limit" :total="Math.ceil(total / limit)" :current="page" @change="change" />
   </div>
@@ -73,7 +73,7 @@ export default {
 .kwe-right {
   width: 800px;
   box-sizing: border-box;
-  padding: 10px 0;
+  padding: 20px 0;
   min-height: 100%;
   text-align: center;
   line-height: 2;
@@ -94,6 +94,7 @@ export default {
       box-shadow: 1px 1px 8px 0px #00a1d6;
     }
     .kwe-title {
+      margin: 0;
       font-size: 16px;
       text-align: left;
     }

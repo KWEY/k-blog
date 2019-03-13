@@ -55,6 +55,7 @@ export default {
     position: fixed;
     width: 100%;
     height: 100%;
+    padding-top: 30px;
     &-list {
       height: 100%;
       margin: -30px 0 0;

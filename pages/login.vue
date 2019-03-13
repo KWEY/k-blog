@@ -5,13 +5,12 @@
     <div class="kwe-login-wrap">
       <div class="kwe-register-group">
         <input
-          v-model.trim="user.username"
-          type="text"
-          placeholder="昵称"
+          v-model.trim="user.tel"
+          placeholder="手机号"
           autocomplete="off"
-          @blur="checkName"
+          @blur="checkTel"
         >
-        <span class="kwe-error">{{ message.username }}</span>
+        <span class="kwe-error">{{ message.tel }}</span>
       </div>
       <div class="kwe-register-group">
         <input 
@@ -19,15 +18,15 @@
           type="password"
           placeholder="密码"
           autocomplete="off"
-          @keyup.enter="login"
           @blur="checkPassword"
+          @keyup.enter="keyup"
         >
         <span class="kwe-error">{{ message.password }}</span>
       </div>
     </div>
-    <div class="kwe-btn-login" @click.stop="login">登 录</div>
+    <div class="kwe-btn-login" :class="{'kwe-disabled': userStatus.isLogin}" @click.stop="login">登 录</div>
     <div class="kwe-to-register">
-      <router-link to="/register">没有账号，去注册></router-link>
+      <nuxt-link to="/register">没有账号，去注册></nuxt-link>
     </div>
   </div>
 </template>
@@ -39,28 +38,46 @@ export default {
     return {
       result: '',
       message: {
-        username: '',
+        tel: '',
         password: ''
       },
       user: {
-        username: '',
+        tel: '',
         password: ''
       }
     }
   },
+  computed: {
+    userStatus() {
+      return this.$store.state.user
+    }
+  },
   head() {
     return {
-      title: '登录 - ' + this.$store.state.user.username
+      title: '登录'
     }
+  },
+  watch: {
+    userStatus() {
+      setTimeout(() => {
+        this.userChange()
+      }, 1000)
+    }
+  },
+  mounted() {
+    this.userChange()
   },
   methods: {
     login() {
-      if (this.checkName(0) && this.checkPassword()) {
+      if (this.userStatus.isLogin) {
+        this.result = '已登录，若要切换账号，请先退出登录！'
+        return
+      }
+      if (this.checkTel(0) && this.checkPassword()) {
         this.$store.dispatch('user/login', this.user).then(data => {
           this.result = data.msg
           if (data.success) {
             this.user = {
-              username: '',
               password: '',
               tel: ''
             }
@@ -73,33 +90,28 @@ export default {
         this.result = '输入信息有误'
       }
     },
-    checkName(isclick) {
-      if (this.user.username) {
-        if (this.user.username.length > 10) {
-          this.message.username = '昵称太长'
-          return false
-        } else {
-          if (isclick === 0) {
-            if (this.message.username) {
-              return false
-            }
-            return true
+    checkTel(isclick) {
+      if (/^1\d{10}$/.test(this.user.tel)) {
+        if (isclick === 0) {
+          if (this.message.tel) {
+            return false
           }
-          $http.check(this.user.username).then(data => {
-            if (data.success) {
-              this.message.username = '此昵称用户不存在(；′⌒`)'
-            } else {
-              this.message.username = ''
-            }
-          })
+          return true
         }
+        $http.check(this.user.tel).then(data => {
+          if (data.success) {
+            this.message.tel = '此电话用户不存在(；′⌒`)'
+          } else {
+            this.message.tel = ''
+          }
+        })
       } else {
-        this.message.username = '昵称不能为空'
+        this.message.tel = '电话号码格式不对'
         return false
       }
     },
     checkPassword() {
-      if (this.user.password.length > 16 || this.user.password.length < 6) {
+      if (this.user.password.length > 16 || this.user.password.length < 3) {
         this.message.password = '密码由6-16个字符组成'
         return false
       } else {
@@ -109,6 +121,14 @@ export default {
     },
     hideResult() {
       this.result = ''
+    },
+    keyup(ev) {
+      ev.keyCode === 13 && this.login()
+    },
+    userChange() {
+      if (this.userStatus.isLogin) {
+        this.$router.push('/')
+      }
     }
   }
 }
@@ -141,7 +161,6 @@ export default {
     top: 90px;
     left: 50%;
     width: 400px;
-    height: 50px;
     text-align: center;
     line-height: 50px;
     color: #f45d90;
@@ -182,6 +201,11 @@ export default {
     &:hover {
       color: #00a1d6;
       border-color: #00a1d6;
+    }
+    &.kwe-disabled {
+      color: #ccc;
+      cursor: not-allowed;
+      border-color: #ccc;
     }
   }
   .kwe-to-register {

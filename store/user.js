@@ -1,9 +1,15 @@
 import $http from '../request/http'
 
+const defaultState = {
+  role: '',
+  isLogin: false,
+  isAdmin: false,
+  username: '路人',
+  tel: ''
+}
+
 export const state = () => ({
-  role: 'user',
-  islogin: false,
-  username: '路人'
+  ...defaultState
 })
 export const getters = {
   isAdmin(state) {
@@ -12,27 +18,49 @@ export const getters = {
 }
 
 export const actions = {
-  getUser({ commit }) {
-    $http.getUser().then(({ success, data }) => {
-      if (success && data) {
-        commit('SET_USER', data)
+  getUserStatus({ commit }) {
+    $http.getUserStatus().then(data => {
+      if (data.success) {
+        commit('UPDATE_USER', data.data)
       }
     })
   },
   login({ commit }, user) {
-    return $http.login(user)
+    return $http.login(user).then(data => {
+      if (data.success) {
+        commit('UPDATE_USER', data.data)
+      }
+      return new Promise((resolve, reject) => {
+        resolve(data)
+      })
+    })
+  },
+  logout({ commit }) {
+    return $http.logout().then(data => {
+      if (data.success) {
+        commit('UPDATE_USER', defaultState)
+      }
+      return new Promise((resolve, reject) => {
+        resolve(data)
+      })
+    })
   },
   register({ commit }, user) {
-    return $http.register(user)
+    return $http.register(user).then(data => {
+      if (data.success) {
+        commit('UPDATE_USER', data.data)
+      }
+      return new Promise((resolve, reject) => {
+        resolve(data)
+      })
+    })
   }
 }
 export const mutations = {
-  SET_USER(state, data) {
-    state = data
-  },
-  LOGIN(state, data) {
-    state.role = data.role
-    state.username = data.username
-    state.islogin = data.islogin
+  UPDATE_USER(state, data) {
+    this.state.user = {
+      ...state,
+      ...data
+    }
   }
 }

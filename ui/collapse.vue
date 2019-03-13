@@ -6,7 +6,7 @@
       :class="{active: tid === typeList.tab}"
       class="eui-list"
     >
-      <p class="eui-name" @click="toogle(tid)">
+      <p class="eui-name" @click.stop="toogle(tid)">
         {{ title }}
       </p>
       <ul class="eui-wrap">
@@ -45,7 +45,7 @@ export default {
       } else {
         tab = tid
       }
-      this.$store.dispatch('changeTab', tab)
+      this.$emit('tab-change', tab)
     }
   }
 }

@@ -6,7 +6,7 @@
         <span class="time">{{ new Date(article.created_at).toLocaleString() }}</span>
         <span class="read-count">阅读数：{{ article.views }}</span>
         <span class="label">标签：</span>
-        <router-link v-for="item of article.type" :key="item[1]" :to="'/?type=' + item[1]" class="kwe-link">{{ item[0] }}</router-link>
+        <nuxt-link v-for="item of article.type" :key="item[1]" :to="'/?type=' + item[1]" class="kwe-link">{{ item[0] }}</nuxt-link>
       </div>
     </div>
     <div class="kwe-description" v-text="article.description" />

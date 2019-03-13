@@ -23,7 +23,7 @@ app.use(cookieParser(Math.random().toString(36)))
 app.use(function(req, res, next) {
   // const domain = `${req.protocol}://${req.get('host')}`
   // 前后端共享配置数据
-  res.locals.app = {
+  res.locals.blog = {
     domain: globalConfig.app.domain,
     baseUrl: globalConfig.app.domain + globalConfig.app.baseApi
   }

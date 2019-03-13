@@ -1,6 +1,6 @@
 <template>
-  <div class="kwe-index">
-    <div class="kwe-menu" @click="toggle">
+  <div class="kwe-index" @click="toggleClick">
+    <div class="kwe-menu" @click.stop="toggle">
       <menu-svg class="kwe-menu-svg" />
     </div>
     <left-panel :showleft="showleft" />
@@ -50,6 +50,11 @@ export default {
     },
     setTitle(newName) {
       document.title = `雪人的${newName}日志`
+    },
+    toggleClick(tab) {
+      if (this.showleft) {
+        this.showleft = ''
+      }
     }
   }
 }
@@ -60,6 +65,7 @@ export default {
   display: flex;
   justify-content: center;
   width: 100%;
+  height: 100%;
 }
 .kwe-menu {
   display: none;
@@ -71,7 +77,7 @@ export default {
   height: 20px;
   z-index: 2;
   background: #ccc;
-  box-shadow: 0 0 2px 2p #ccc;
+  box-shadow: 0 0 2px 2px #ccc;
   cursor: pointer;
   &-svg {
     width: 100%;

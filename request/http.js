@@ -12,16 +12,24 @@ export default {
     return fetch({ data, url: base.register, method: 'post' })
   },
   // 查询当前用户名是否已注册
-  check(username) {
-    return fetch({ url: base.check, params: { username } })
+  check(tel, username) {
+    return fetch({ url: base.check, params: { tel, username } })
   },
   // 登录
   login(data) {
     return fetch({ data, url: base.login, method: 'post' })
   },
+  // 退出登录
+  logout() {
+    return fetch({ url: base.logout, method: 'post' })
+  },
   // 获取作者
   getAdmin() {
     return fetch({ url: base.author })
+  },
+  // 获取用户信息
+  getUserStatus() {
+    return fetch({ url: base.user })
   },
   // 发布文章
   postArticle(data) {

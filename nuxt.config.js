@@ -1,5 +1,3 @@
-// const cssnano = require('cssnano')
-// const autoprefixer = require('autoprefixer')
 const pkg = require('./package')
 
 module.exports = {
@@ -65,6 +63,16 @@ module.exports = {
     /*
     ** You can extend webpack config here
     */
+    postcss: {
+      preset: {
+        autoprefixer: {
+          browsers: ['ie >= 10', '> 8%']
+        }
+      }
+    },
+    loaders: {
+      less: {}
+    },
     extend(config, ctx) {
       // Run ESLint on save
       if (ctx.isDev) {
@@ -83,26 +91,6 @@ module.exports = {
       const urlLoader = config.module.rules.find(rule => rule.test.toString().match('gif'))
       if (urlLoader) {
         urlLoader.test = new RegExp(/\.(png|jpe?g|gif)$/)
-      }
-      const lessLoader = config.module.rules.find(rule => rule.test.toString().match('less'))
-      if (lessLoader) {
-        // lessLoader.use = [
-        //   {
-        //     loader: 'css-loader',
-        //     options: { minimize: true }
-        //   },
-        //   {
-        //     loader: 'postcss-loader',
-        //     options: {
-        //       ident: 'postcss',
-        //       sourceMap: false,
-        //       plugins: [autoprefixer, cssnano]
-        //     }
-        //   },
-        //   {
-        //     loader: 'less-loader'
-        //   }
-        // ]
       }
       config.module.rules.push({
         test: /\.svg$/,

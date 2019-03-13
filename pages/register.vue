@@ -28,15 +28,16 @@
           v-model.trim="user.tel"
           type="text"
           autocomplete="off"
-          placeholder="填写常用手机号"
+          placeholder="手机号,用于登录"
           @blur="checkTel"
+          @keyup.enter="keyup"
         >
         <span class="kwe-error">{{ message.tel }}</span>
       </div>
     </div>
     <div class="kwe-btn-register" @click.stop="register">注 册</div>
     <div class="kwe-to-login">
-      <router-link to="/login">已有账号，直接登录></router-link>
+      <nuxt-link to="/login">已有账号，直接登录></nuxt-link>
     </div>
   </div>
 </template>
@@ -61,13 +62,32 @@ export default {
   },
   head() {
     return {
-      title: '注册 - ' + this.$store.state.user.username
+      title: '注册'
     }
+  },
+  computed: {
+    userStatus() {
+      return this.$store.state.user
+    }
+  },
+  watch: {
+    userStatus() {
+      setTimeout(() => {
+        this.userChange()
+      }, 1000)
+    }
+  },
+  mounted() {
+    this.userChange()
   },
   methods: {
     register() {
-      if (this.checkName(0) && this.checkPassword() && this.checkTel()) {
-        $http.register(this.user).then(data => {
+      if (this.userStatus.isLogin) {
+        this.result = '已登录，若要注册新账号，请先退出登录！'
+        return
+      }
+      if (this.checkName(0) && this.checkPassword() && this.checkTel(0)) {
+        this.$store.dispatch('user/register', this.user).then(data => {
           this.result = data.msg
           if (data.success) {
             this.user = {
@@ -96,7 +116,7 @@ export default {
             }
             return true
           }
-          $http.check(this.user.username).then(data => {
+          $http.check(null, this.user.username).then(data => {
             if (data.success) {
               this.message.username = ''
             } else {
@@ -118,8 +138,21 @@ export default {
         return true
       }
     },
-    checkTel() {
+    checkTel(isclick) {
       if (/^1\d{10}$/.test(this.user.tel)) {
+        if (isclick === 0) {
+          if (this.message.tel) {
+            return false
+          }
+          return true
+        }
+        $http.check(this.user.tel).then(data => {
+          if (data.success) {
+            this.message.tel = ''
+          } else {
+            this.message.tel = '此电话用户已存在(；′⌒`)'
+          }
+        })
         this.message.tel = ''
         return true
       } else {
@@ -129,6 +162,14 @@ export default {
     },
     hideResult() {
       this.result = ''
+    },
+    keyup(ev) {
+      ev.keyCode === 13 && this.register()
+    },
+    userChange() {
+      if (this.userStatus.isLogin) {
+        this.$router.push('/')
+      }
     }
   }
 }
@@ -145,7 +186,6 @@ export default {
     top: 90px;
     left: 50%;
     width: 400px;
-    height: 50px;
     text-align: center;
     line-height: 50px;
     color: #f45d90;
