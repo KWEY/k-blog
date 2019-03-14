@@ -65,6 +65,9 @@ export default {
       title: '注册'
     }
   },
+  beforeRouteEnter(to, from, next) {
+    next(vm => vm.setData(from))
+  },
   computed: {
     userStatus() {
       return this.$store.state.user
@@ -81,6 +84,9 @@ export default {
     this.userChange()
   },
   methods: {
+    setData(from) {
+      this.routeFrom = from
+    },
     register() {
       if (this.userStatus.isLogin) {
         this.result = '已登录，若要注册新账号，请先退出登录！'
@@ -168,7 +174,11 @@ export default {
     },
     userChange() {
       if (this.userStatus.isLogin) {
-        this.$router.push('/')
+        let url = (this.routeFrom && this.routeFrom.fullPath) || '/'
+        if (url === '/login') {
+          url = '/'
+        }
+        this.$router.push(url)
       }
     }
   }

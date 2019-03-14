@@ -1,13 +1,18 @@
 <template>
   <div class="kwe-right">
-    <div v-for="item in articleList" :key="item.id" class="kwe-directory">
-      <nuxt-link :to="'/article/' + item.id">
-        <h3 class="kwe-title">{{ item.title }}</h3>
-        <div class="kwe-description">{{ item.description }}</div>
-        <div class="kwe-time">{{ new Date(item.created_at).toLocaleString() }}</div>
-      </nuxt-link>
-    </div>
-    <pages v-if="total > limit" :total="Math.ceil(total / limit)" :current="page" @change="change" />
+    <template v-if="articleList.length > 0">
+      <div v-for="item in articleList" :key="item.id" class="kwe-directory">
+        <nuxt-link :to="'/article/' + item.id">
+          <h3 class="kwe-title">{{ item.title }}</h3>
+          <div class="kwe-description">{{ item.description }}</div>
+          <div class="kwe-time">{{ new Date(item.created_at).toLocaleString() }}</div>
+        </nuxt-link>
+      </div>
+      <pages v-if="total > limit" :total="Math.ceil(total / limit)" :current="page" @change="change" />
+    </template>
+    <template v-else>
+      <div class="kwe-null">当前分类还未发布文章</div>
+    </template>
   </div>
 </template>
 

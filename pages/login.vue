@@ -36,6 +36,7 @@ export default {
   name: 'Login',
   data() {
     return {
+      routeFrom: null,
       result: '',
       message: {
         tel: '',
@@ -57,6 +58,9 @@ export default {
       title: '登录'
     }
   },
+  beforeRouteEnter(to, from, next) {
+    next(vm => vm.setData(from))
+  },
   watch: {
     userStatus() {
       setTimeout(() => {
@@ -68,6 +72,9 @@ export default {
     this.userChange()
   },
   methods: {
+    setData(from) {
+      this.routeFrom = from
+    },
     login() {
       if (this.userStatus.isLogin) {
         this.result = '已登录，若要切换账号，请先退出登录！'
@@ -127,7 +134,11 @@ export default {
     },
     userChange() {
       if (this.userStatus.isLogin) {
-        this.$router.push('/')
+        let url = (this.routeFrom && this.routeFrom.fullPath) || '/'
+        if (url === '/register') {
+          url = '/'
+        }
+        this.$router.push(url)
       }
     }
   }
