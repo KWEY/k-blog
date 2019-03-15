@@ -8,10 +8,6 @@ export const typeToId = {
   css: '001_003',
   js: '001_004',
   network: '001_006',
-  browser: '001_007',
-  tool: '001_008',
-  model: '001_009',
-  frame: '001_010',
   node: '001_011',
   data: '001_012',
   performance: '001_013',
@@ -26,10 +22,6 @@ export const idToName = {
   '001_003': ['CSS', 'css'],
   '001_004': ['JS', 'js'],
   '001_006': ['计算机网络', 'network'],
-  '001_007': ['浏览器相关', 'browser'],
-  '001_008': ['工程化', 'tool'],
-  '001_009': ['模块化', 'model'],
-  '001_010': ['框架', 'frame'],
   '001_011': ['Nodejs', 'node'],
   '001_012': ['数据结构', 'data'],
   '001_013': ['性能优化', 'performance'],
@@ -72,26 +64,6 @@ export const typeList = {
           src: '/?type=network',
           pid: '001_006',
           name: '计算机网络'
-        },
-        {
-          src: '/?type=browser',
-          pid: '001_007',
-          name: '浏览器相关'
-        },
-        {
-          src: '/?type=tool',
-          pid: '001_008',
-          name: '工程化'
-        },
-        {
-          src: '/?type=model',
-          pid: '001_009',
-          name: '模块化'
-        },
-        {
-          src: '/?type=frame',
-          pid: '001_010',
-          name: '框架'
         },
         {
           src: '/?type=node',

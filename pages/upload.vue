@@ -1,5 +1,5 @@
 <template>
-  <div class="kwe-json" @click="closed">
+  <div class="kwe-json" @click="closeToast">
     <div class="kwe-json-title">
       <div class="kwe-type">type: </div>
       <select v-model="selected" class="kwe-type-input">
@@ -16,7 +16,7 @@
       <p class="kwe-content">content: <span class="kwe-upload" @click.stop="upload">上传</span></p>
       <div ref="editor" class="kwe-content-input" />
     </div>
-    <toast :show="toast.show" :content="toast.content" :close="toast.showClose" :type="toast.type" @close="closed" />
+    <toast :show="toast.show" :content="toast.content" :close="toast.showClose" :type="toast.type" @close="closeToast" />
   </div>
 </template>
 
@@ -57,6 +57,8 @@ export default {
     userStatus() {
       if (!this.userStatus.isAdmin) {
         this.noSendTip()
+      } else {
+        this.closeToast()
       }
     }
   },
@@ -107,7 +109,7 @@ export default {
         this.noSendTip()
         return
       }
-      const id = this.$store.state.author && this.$store.state.author.id
+      const id = this.$store.state.author && this.$store.state.author._id
       if (!this.title || !this.description || !this.content || !id) {
         this.showToast('输入“title、description、content、id”', 'warn', true)
         return
@@ -146,7 +148,7 @@ export default {
         }, this.toast.duration)
       }
     },
-    closed() {
+    closeToast() {
       this.toast.show = false
     },
     noSendTip() {

@@ -60,7 +60,7 @@ export default {
     padding: 4px 20px;
     color: #07a;
     border-radius: 4px;
-    overflow: auto;
+    overflow-x: auto;
   }
   table {
     border-collapse: collapse;

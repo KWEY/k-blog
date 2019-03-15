@@ -79,6 +79,7 @@ export default {
   width: 800px;
   box-sizing: border-box;
   padding: 20px 0;
+  overflow-y: auto;
   min-height: 100%;
   text-align: center;
   line-height: 2;

@@ -90,7 +90,7 @@ export default {
     }
     .scroll {
       max-width: 100%;
-      overflow: auto;
+      overflow-x: auto;
     }
   }
 }

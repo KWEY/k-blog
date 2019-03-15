@@ -118,7 +118,7 @@ export default {
       }
     },
     checkPassword() {
-      if (this.user.password.length > 16 || this.user.password.length < 3) {
+      if (this.user.password.length > 16 || this.user.password.length < 6) {
         this.message.password = '密码由6-16个字符组成'
         return false
       } else {

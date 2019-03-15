@@ -1,5 +1,5 @@
 <template>
-  <div class="kwe-wrap">
+  <div class="kwe-default-wrap">
     <div class="kwe-top">
       <div>
         <nuxt-link v-show="showHome" to="/" class="kwe-home">
