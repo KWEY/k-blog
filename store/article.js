@@ -14,7 +14,11 @@ export const getters = {
 export const mutations = {
   ARTICLE_CONTENT(state, data) {
     const type = data.type
-    data.type = Array.isArray(type) ? type.map(id => idToName[id]) : []
+    data.type = Array.isArray(type)
+      ? type.map(id => {
+          return { id, name: idToName[id] }
+        })
+      : []
     state.article = data
   },
   CURRENTID(state, id) {
@@ -23,13 +27,13 @@ export const mutations = {
 }
 export const actions = {
   // 获取文章内容
-  getArticle({ commit, state }, id) {
-    if (state.currentId === id) {
+  getArticle({ commit, state }, data) {
+    if (state.currentId === data.id && !data.edit) {
       return
     }
-    commit('CURRENTID', id)
+    commit('CURRENTID', data.id)
     commit('ARTICLE_CONTENT', {})
-    return $http.getArticle(id).then(res => {
+    return $http.getArticle(data.id).then(res => {
       if (res.success) {
         commit('ARTICLE_CONTENT', res.data)
       }

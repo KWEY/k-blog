@@ -11,6 +11,8 @@ const base = {
   author: `${baseUrl}/api/admin`, // 获取作者信息
   user: `${baseUrl}/api/user`, // 获取用户信息
   upload: `${baseUrl}/api/article/post`, // 发布文章
+  update: `${baseUrl}/api/article/update`, // 更新文章
+  delete: `${baseUrl}/api/article/delete`, // 删除文章
   articles: `${baseUrl}/api/article`, // 获取文章列表，加上id获取指定文章
   jq: `${baseUrl}/plugins/jquery-2.1.1.js`, // jq地址
   nav: `${baseUrl}/plugins/nav.js`, // nav地址

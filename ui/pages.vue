@@ -1,6 +1,6 @@
 <template>
   <div class="eui-page">
-    <span class="btn-pager" :disabled="current == 1" @click="prePage">上一页</span>
+    <span class="btn-pager" :disabled="current === 1" @click="prePage">上一页</span>
     <span
       v-if="total !== 1"
       class="page-index"
@@ -21,7 +21,7 @@
       :class="{active: total === current}"
       @click="goPage(total)"
     >{{ total }}</span>
-    <span class="btn-pager" :disabled="current == total" @click="nextPage">下一页</span>
+    <span class="btn-pager" :disabled="current === total" @click="nextPage">下一页</span>
   </div>
 </template>
 <script>
@@ -42,6 +42,11 @@ export default {
       pages: [],
       backClipped: true,
       preClipped: false
+    }
+  },
+  watch: {
+    total() {
+      this.setPages(this.current)
     }
   },
   mounted() {
@@ -110,14 +115,16 @@ export default {
 </script>
 <style lang="less">
 .eui-page {
+  display: flex;
+  justify-content: center;
   text-align: center;
   .page-index,
   .btn-pager {
     display: inline-block;
-    margin-left: 10px;
-    width: 35px;
-    height: 30px;
-    line-height: 30px;
+    margin: 0 4px;
+    width: 30px;
+    font-size: 12px;
+    line-height: 2;
     border-radius: 2px;
     border: 1px solid #e3e3e3;
     cursor: pointer;
@@ -128,7 +135,7 @@ export default {
   }
   .btn-pager {
     padding: 0px;
-    width: 60px;
+    width: 50px;
     cursor: pointer;
   }
   .active {

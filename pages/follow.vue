@@ -10,7 +10,7 @@ export default {
   name: 'Follow',
   head: {
     title: 'Follow',
-    script: [{ src: base.jq }, { src: base.nav }]
+    script: [{ src: base.nav }]
   },
   data() {
     return {
@@ -52,8 +52,6 @@ export default {
 }
 .kwe-nav-wrap {
   .nav-x {
-    position: fixed;
-    width: 100%;
     height: 100%;
     padding-top: 30px;
     &-list {

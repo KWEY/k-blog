@@ -146,12 +146,11 @@ export default {
 </script>
 <style lang="less">
 .kwe-login {
-  position: absolute;
   width: 100%;
-  height: 100%;
   font-size: 14px;
   color: #606266;
   .kwe-title {
+    width: 100%;
     max-width: 980px;
     height: 28px;
     margin: 28px auto;
@@ -168,22 +167,24 @@ export default {
     }
   }
   .kwe-result {
-    position: fixed;
+    position: absolute;
     top: 90px;
     left: 50%;
-    width: 400px;
+    width: 95%;
+    max-width: 400px;
     text-align: center;
     line-height: 50px;
     color: #f45d90;
     font-size: 30px;
-    margin: 0 0 0 -200px;
+    transform: translateX(-50%);
     background: rgba(0, 0, 0, 0.4);
     box-shadow: 0 0 2px 1px #f45d90;
     z-index: 2;
     cursor: pointer;
   }
   &-wrap {
-    width: 300px;
+    width: 100%;
+    max-width: 300px;
     margin: 80px auto 0;
     .kwe-register-group {
       position: relative;
@@ -201,7 +202,7 @@ export default {
   }
   .kwe-btn-login,
   .kwe-to-register {
-    width: 300px;
+    max-width: 300px;
     margin: 0 auto;
     line-height: 2.5;
   }
@@ -229,8 +230,8 @@ export default {
   input {
     display: block;
     width: 100%;
-    line-height: 36px;
-    padding: 0 4px;
+    line-height: 24px;
+    padding: 6px 4px;
     box-sizing: border-box;
     border: 1px solid #ccc;
     outline: none;

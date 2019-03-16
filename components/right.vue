@@ -18,6 +18,7 @@
 
 <script>
 import pages from '@/ui/pages.vue'
+import { idToName } from '@/store/default-options.js'
 export default {
   name: 'RightPanel',
   components: {
@@ -26,7 +27,6 @@ export default {
   data() {
     return {
       limit: 15,
-      type: 'all',
       page: 1
     }
   },
@@ -41,13 +41,14 @@ export default {
   watch: {
     $route: {
       handler(val, oldVal) {
-        this.type = val.query.type || 'all'
         this.page = +val.query.page || 1
-        this.getArticles()
       },
       // 深度观察监听
       deep: true
     }
+  },
+  mounted() {
+    this.page = +this.$route.query.page || 1
   },
   methods: {
     change(current) {
@@ -56,18 +57,12 @@ export default {
         this.$router.push({
           path: '/',
           query: {
-            type: this.type,
-            page: this.page
+            type: idToName[this.$store.state.typeList.value][1],
+            page: this.page,
+            keyword: this.$route.query.keyword
           }
         })
       }
-    },
-    getArticles(type, page) {
-      this.$store.dispatch('getArticles', {
-        type: this.type,
-        page: this.page,
-        limit: this.limit
-      })
     }
   }
 }

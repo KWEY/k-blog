@@ -35,9 +35,17 @@ export default {
   postArticle(data) {
     return fetch({ data, url: base.upload, method: 'post' })
   },
+  // 更新文章
+  updateArticle(data) {
+    return fetch({ data, url: base.update, method: 'patch' })
+  },
+  // 更新文章
+  deleteArticle(params) {
+    return fetch({ params, url: base.delete, method: 'delete' })
+  },
   // 获取文章列表
-  getArticles(type, page) {
-    return fetch({ url: base.articles, params: { type, page } })
+  getArticles(params) {
+    return fetch({ params, url: base.articles })
   },
   // 获取文章
   getArticle(id) {

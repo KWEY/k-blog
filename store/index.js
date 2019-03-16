@@ -29,23 +29,34 @@ export const actions = {
   },
   // 获取文章列表
   async getArticles({ commit, state }, data) {
-    const typeId = typeToId[data.type]
-    const page = data.page
-    const key = typeId + page
-    if (state.typeList.value === typeId && state.typeList.page === page) {
+    const keyword = encodeURIComponent(data.keyword || '')
+    let type
+    if (keyword) {
+      type = '001_001'
+    } else {
+      type = typeToId[data.type] || '001_001'
+    }
+    const page = data.page || 1
+    const key = type + page + keyword
+    if (
+      state.typeList.value === type &&
+      state.typeList.page === page &&
+      state.typeList.keyword === keyword
+    ) {
       return
     }
     if (state.cache[key]) {
-      commit('ARTICLE_CACHE', { typeId, page, key })
-      commit('CURRENTTYPE', { typeId, page })
+      commit('ARTICLE_CACHE', { type, page, key })
+      commit('CURRENTTYPE', { type, page })
       return
     }
-    await $http.getArticles(typeId, page).then(res => {
+    await $http.getArticles({ type, page, keyword }).then(res => {
       if (res.success) {
-        res.typeId = typeId
+        res.type = type
         res.page = page
+        res.keyword = keyword
         commit('ARTICLE_LIST', res)
-        commit('CURRENTTYPE', { typeId, page })
+        commit('CURRENTTYPE', { type, page })
       }
     })
   },
@@ -75,7 +86,7 @@ export const mutations = {
     state.typeList.tab = tab
   },
   CURRENTTYPE(state, data) {
-    state.typeList.value = data.typeId
+    state.typeList.value = data.type
     state.typeList.page = data.page
   },
   ARTICLE_LIST(state, res) {
@@ -83,7 +94,7 @@ export const mutations = {
       state.articleList = res.data
       state.total = res.total
       // 缓存数据
-      state.cache[res.typeId + res.page] = {
+      state.cache[res.type + res.page + res.keyword] = {
         data: res.data,
         total: res.total
       }

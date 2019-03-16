@@ -1,12 +1,13 @@
 <template>
-  <div class="kwe-default-wrap">
+  <div class="kwe-default-wrap" :class="{'kwe-ismobile': isMobile}">
     <div class="kwe-top">
-      <div>
-        <nuxt-link v-show="showHome" to="/" class="kwe-home">
+      <div v-show="showHome">
+        <nuxt-link to="/" class="kwe-home">
           <home-svg class="kwe-home-svg" />
           <span>HOME</span>
         </nuxt-link>
       </div>
+      <search />
       <div class="kwe-user" :class="{login: !userStatus.isLogin}" @click="tologin">
         <div class="kwe-name">
           <span>{{ name }}</span>
@@ -26,12 +27,16 @@
 </template>
 <script>
 import homesvg from '@/assets/home.svg'
+import search from '@/components/search.vue'
 export default {
   components: {
+    search: search,
     'home-svg': homesvg
   },
   data() {
     return {
+      keyword: '',
+      isMobile: false,
       showHome: false
     }
   },
@@ -57,6 +62,7 @@ export default {
     }
   },
   mounted() {
+    this.isMobile = this.getMobile()
     this.getUserStatus()
     this.toogle(this.$route)
   },
@@ -80,29 +86,48 @@ export default {
       if (this.userStatus.isLogin) {
         this.$store.dispatch('user/logout')
       }
+    },
+    getMobile() {
+      const flag = navigator.userAgent.match(
+        /(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i
+      )
+      return flag
     }
   }
 }
 </script>
 <style lang="less">
+.kwe-default-wrap {
+  color: #33495e;
+  font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
+  &.kwe-ismobile {
+    .kwe-top {
+      position: relative;
+      opacity: 1;
+    }
+  }
+}
 .kwe-top {
   position: fixed;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   top: 0;
   left: 0;
   width: 100%;
-  height: 40px;
+  min-height: 40px;
   box-shadow: rgba(0, 0, 0, 0.1) 0 1px 2px;
   background: rgba(255, 255, 255, 0.7);
   z-index: 2;
   opacity: 0;
   transition: opacity 0.3s;
+  user-select: none;
   &:hover {
     opacity: 1;
   }
   .kwe-user {
     display: flex;
+    flex: none;
     position: relative;
     color: #00a1d6;
     min-width: 100px;

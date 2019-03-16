@@ -39,7 +39,8 @@ export default {
   async fetch({ store, route }) {
     const type = route.query.type || 'all'
     const page = route.query.page || 1
-    await store.dispatch('getArticles', { type, page })
+    const keyword = route.query.keyword || ''
+    await store.dispatch('getArticles', { type, page, keyword })
   },
   mounted() {
     this.setTitle(idToName[this.$store.state.typeList.value][0])

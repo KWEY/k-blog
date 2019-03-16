@@ -26,18 +26,22 @@ import base from '../request/api'
 import $http from '../request/http'
 
 export default {
-  name: 'Upload',
+  name: 'Edit',
   head() {
     return {
       title: '发布',
       script: [{ src: base.editor }]
     }
   },
+  beforeRouteEnter(to, from, next) {
+    next(vm => vm.setData(from))
+  },
   components: {
     toast: Toast
   },
   data() {
     return {
+      routeFrom: null,
       typeList: [],
       editor: null,
       timer: 0,
@@ -49,6 +53,9 @@ export default {
     }
   },
   computed: {
+    article() {
+      return this.$store.state.article.article
+    },
     userStatus() {
       return this.$store.state.user
     }
@@ -67,6 +74,9 @@ export default {
     this.updateUser()
   },
   methods: {
+    setData(from) {
+      this.routeFrom = from
+    },
     updateUser() {
       if (!this.userStatus.isAdmin) {
         this.noSendTip()
@@ -97,6 +107,7 @@ export default {
           this.content = html
         }
         this.editor.create()
+        this.setArticle()
         /* eslint-enable */
       }
     },
@@ -122,21 +133,31 @@ export default {
         this.showToast('输入“title、description、content、id”', 'warn', true)
         return
       }
+      const article = this.$store.state.article.article
       const data = {
         title: this.title,
-        author: id,
+        author: article.author.id,
+        id: article.id,
         description: this.description,
         type: [this.type],
-        content: this.content
+        content: this.content,
+        created_at: article.created_at
       }
-      $http.postArticle(data).then(res => {
+      $http.updateArticle(data).then(res => {
+        if (res.code === 2) {
+          this.showToast('恢复成功', 'success')
+          setTimeout(() => {
+            this.editSuccess('/')
+          }, 1000)
+          return
+        }
         if (res.success) {
-          this.title = ''
-          this.description = ''
-          this.editor.txt.clear()
-          this.showToast('上传成功', 'success')
+          this.showToast('更新成功', 'success')
+          setTimeout(() => {
+            this.editSuccess()
+          }, 1000)
         } else {
-          const text = res.msg || '上传失败'
+          const text = res.msg || '更新失败'
           this.showToast(text, 'warn', true)
         }
       })
@@ -160,6 +181,21 @@ export default {
     },
     noSendTip() {
       this.showToast('当前角色无法上传文章', 'warn', true)
+    },
+    setArticle() {
+      const article = this.$store.state.article.article
+      this.content = article.content
+      this.title = article.title
+      this.type = article.type && article.type[0].id
+      this.description = article.description
+      this.editor.txt.html(this.content)
+    },
+    editSuccess(url) {
+      url = url || (this.routeFrom && this.routeFrom.path) || '/'
+      if (url === '/register') {
+        url = '/'
+      }
+      this.$router.push(`${url}?edit=1`)
     }
   }
 }
