@@ -1,6 +1,6 @@
 <template>
   <div class="eui-page">
-    <span class="btn-pager" :disabled="current === 1" @click="prePage">上一页</span>
+    <span class="btn-pager" :disabled="current == 1" @click="prePage">上一页</span>
     <span
       v-if="total !== 1"
       class="page-index"
@@ -21,7 +21,7 @@
       :class="{active: total === current}"
       @click="goPage(total)"
     >{{ total }}</span>
-    <span class="btn-pager" :disabled="current === total" @click="nextPage">下一页</span>
+    <span class="btn-pager" :disabled="current == total" @click="nextPage">下一页</span>
   </div>
 </template>
 <script>

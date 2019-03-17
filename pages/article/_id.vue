@@ -3,7 +3,7 @@
     <div class="kwe-title">
       <div class="kwe-name">{{ article.title }}</div>
       <div class="kwe-bar-top">
-        <div v-if="article.updated_at > article.created_at" class="time">更新：{{ new Date(article.updated_at).toLocaleString() }}</div>
+        <div v-if="article.updated_at > (article.created_at + 10000)" class="time">更新：{{ new Date(article.updated_at).toLocaleString() }}</div>
         <div class="time">创建：{{ new Date(article.created_at).toLocaleString() }}</div>
         <div class="read-count">阅读数：{{ article.views }}</div>
         <div class="tag">
@@ -144,6 +144,9 @@ export default {
     line-height: 20px;
     color: #4d4d4d;
     border-bottom: 1px solid #e0e0e0;
+    .time {
+      margin: 0 2px;
+    }
     .read-count {
       margin: 0 16px;
     }

@@ -19,7 +19,8 @@ const serve = (path, cache) => {
 }
 const app = express()
 app.use(bodyParser.json())
-app.use(cookieParser(Math.random().toString(36)))
+app.use(cookieParser())
+// app.use(cookieParser(Math.random().toString(36)))
 app.use(function(req, res, next) {
   // const domain = `${req.protocol}://${req.get('host')}`
   // 前后端共享配置数据

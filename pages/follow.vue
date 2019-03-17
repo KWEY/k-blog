@@ -53,7 +53,7 @@ export default {
 .kwe-nav-wrap {
   .nav-x {
     height: 100%;
-    padding-top: 30px;
+    padding-top: 40px;
     &-list {
       height: 100%;
       margin: -30px 0 0;

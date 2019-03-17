@@ -28,8 +28,8 @@ export default {
     return fetch({ url: base.author })
   },
   // 获取用户信息
-  getUserStatus() {
-    return fetch({ url: base.user })
+  getUserStatus(userToken) {
+    return fetch({ url: base.user }, userToken)
   },
   // 发布文章
   postArticle(data) {

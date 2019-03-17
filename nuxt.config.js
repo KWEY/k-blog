@@ -19,8 +19,16 @@ module.exports = {
     ],
     link: [{ rel: 'icon', type: 'image/png', href: '/icon.png' }]
   },
+  render: {
+    resourceHints: false
+  },
   server: {
     host: '127.0.0.1'
+  },
+  router: {
+    scrollBehavior: (to, from, savedPosition) => {
+      return { x: 0, y: 0 }
+    }
   },
   /*
   ** Customize the progress-bar color

@@ -28,7 +28,8 @@ export default {
   },
   computed: {
     title() {
-      return idToName[this.$store.state.typeList.value][0]
+      const name = idToName[this.$store.state.typeList.value]
+      return (name && name[0]) || ''
     }
   },
   watch: {
@@ -43,7 +44,8 @@ export default {
     await store.dispatch('getArticles', { type, page, keyword })
   },
   mounted() {
-    this.setTitle(idToName[this.$store.state.typeList.value][0])
+    const name = idToName[this.$store.state.typeList.value]
+    this.setTitle((name && name[0]) || '')
   },
   methods: {
     toggle() {

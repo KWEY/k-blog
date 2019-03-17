@@ -71,7 +71,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="less">
 .kwe-right {
-  width: 800px;
+  width: 900px;
   box-sizing: border-box;
   padding: 20px 0;
   overflow-y: auto;

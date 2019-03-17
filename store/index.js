@@ -4,8 +4,8 @@ import { typeToId, typeList } from './default-options.js'
 
 // 数据
 export const state = () => ({
-  localToken: '',
-  adminToken: '',
+  userToken: '',
+  locals: {},
   author: {}, // 作者
   typeList: typeList,
   cache: {},
@@ -16,16 +16,14 @@ export const state = () => ({
 export const actions = {
   async nuxtServerInit({ commit, state }, { req, res }) {
     const cookies = req.cookies
-    if (cookies.localToken) {
-      commit('SET_LOCAL_TOKEN', cookies.localToken)
-    }
-    if (cookies.adminToken) {
-      commit('SET_ADMIN_TOKEN', cookies.adminToken)
+    if (cookies.userToken) {
+      commit('SET_LOCAL_TOKEN', cookies.userToken)
     }
     commit('SET_APP', res.locals.blog)
     commit('CURRENTTYPE', {})
     const { data } = await $http.getAdmin()
     commit('SET_ADMIN_INFO', data)
+    this.dispatch('user/getUserStatus')
   },
   // 获取文章列表
   async getArticles({ commit, state }, data) {
@@ -50,15 +48,17 @@ export const actions = {
       commit('CURRENTTYPE', { type, page })
       return
     }
-    await $http.getArticles({ type, page, keyword }).then(res => {
-      if (res.success) {
-        res.type = type
-        res.page = page
-        res.keyword = keyword
-        commit('ARTICLE_LIST', res)
-        commit('CURRENTTYPE', { type, page })
-      }
-    })
+    await $http
+      .getArticles({ type, page, keyword }, state.userToken)
+      .then(res => {
+        if (res.success) {
+          res.type = type
+          res.page = page
+          res.keyword = keyword
+          commit('ARTICLE_LIST', res)
+          commit('CURRENTTYPE', { type, page })
+        }
+      })
   },
   // 切换tab
   changeTab({ commit, state }, tab) {
@@ -71,13 +71,10 @@ export const actions = {
 // 改变
 export const mutations = {
   SET_LOCAL_TOKEN(state, token) {
-    state.localToken = token
+    state.userToken = token
   },
-  SET_ADMIN_TOKEN(state, token) {
-    state.adminToken = token
-  },
-  SET_APP(state) {
-    state.adminToken = ''
+  SET_APP(state, locals) {
+    state.locals = locals
   },
   SET_ADMIN_INFO(state, data) {
     state.author = data

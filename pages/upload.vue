@@ -170,7 +170,7 @@ export default {
 .kwe-json {
   width: 800px;
   margin: 0 auto;
-  padding-top: 20px;
+  padding-top: 30px;
   font-size: 14px;
   line-height: 1.5;
   .kwe-type,

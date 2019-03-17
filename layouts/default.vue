@@ -63,13 +63,9 @@ export default {
   },
   mounted() {
     this.isMobile = this.getMobile()
-    this.getUserStatus()
     this.toogle(this.$route)
   },
   methods: {
-    getUserStatus() {
-      this.$store.dispatch('user/getUserStatus')
-    },
     toogle(route) {
       if (route.path !== '/') {
         this.showHome = true
@@ -131,6 +127,7 @@ export default {
     position: relative;
     color: #00a1d6;
     min-width: 100px;
+    margin: 0 auto;
     line-height: 40px;
     text-align: center;
     &.login {
