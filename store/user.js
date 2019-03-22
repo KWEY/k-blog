@@ -19,7 +19,7 @@ export const getters = {
 
 export const actions = {
   getUserStatus({ commit }) {
-    $http.getUserStatus(this.state.userToken).then(data => {
+    $http.getUserStatus().then(data => {
       if (data.success) {
         commit('UPDATE_USER', data.data)
       }

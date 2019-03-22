@@ -8,7 +8,7 @@
         </nuxt-link>
       </div>
       <search />
-      <div class="kwe-user" :class="{login: !userStatus.isLogin}" @click="tologin">
+      <div v-if="!isMobile" class="kwe-user" :class="{login: !userStatus.isLogin}" @click="tologin">
         <div class="kwe-name">
           <span>{{ name }}</span>
           <div v-if="userStatus.isLogin" class="kwe-user-panel">
@@ -62,7 +62,10 @@ export default {
     }
   },
   mounted() {
-    this.isMobile = this.getMobile()
+    this.isMobile = this.$store.state.isMobile
+    if (!this.isMobile) {
+      this.$store.dispatch('user/getUserStatus')
+    }
     this.toogle(this.$route)
   },
   methods: {
@@ -82,12 +85,6 @@ export default {
       if (this.userStatus.isLogin) {
         this.$store.dispatch('user/logout')
       }
-    },
-    getMobile() {
-      const flag = navigator.userAgent.match(
-        /(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i
-      )
-      return flag
     }
   }
 }
@@ -180,6 +177,7 @@ export default {
     z-index: 2;
     &:hover {
       background: rgba(0, 0, 0, 0.7);
+      color: #fff;
     }
     .kwe-home-svg {
       vertical-align: sub;

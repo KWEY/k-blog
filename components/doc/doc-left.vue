@@ -1,5 +1,5 @@
 <template>
-  <div class="doc-left" :class="showLeft">
+  <div class="doc-left" :class="showLeft" @touchmove.stop @touchstart.stop>
     <h1>目录</h1>
     <div class="doc-directory" style="text-align: center">
       <a :href="types.orginal" target="_blank">原文</a>

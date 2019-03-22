@@ -1,6 +1,13 @@
 <template>
   <div class="kwe-nav" :class="{loading: loading}">
-    <div class="kwe-nav-wrap" />
+    <template v-if="isMobile">
+      <p class="kwe-mobile">
+        移动端暂时不支持此功能
+      </p>
+    </template>
+    <template v-else>
+      <div class="kwe-nav-wrap" />
+    </template>
   </div>
 </template>
 
@@ -16,10 +23,16 @@ export default {
     return {
       timer: 0,
       times: 0,
-      loading: true
+      loading: true,
+      isMobile: false
     }
   },
   mounted() {
+    this.isMobile = this.$store.state.isMobile
+    if (this.isMobile) {
+      this.loading = false
+      return
+    }
     if (window.NAV) {
       this.initNav()
     } else {
@@ -50,13 +63,17 @@ export default {
   min-height: 200px;
   background: url('../assets/loading.gif') no-repeat center;
 }
+.kwe-mobile {
+  margin: 60px 0;
+  text-align: center;
+}
 .kwe-nav-wrap {
   .nav-x {
     height: 100%;
     padding-top: 40px;
     &-list {
       height: 100%;
-      margin: -30px 0 0;
+      margin: -30px auto 0;
       padding: 50px 10px;
       box-sizing: border-box;
     }

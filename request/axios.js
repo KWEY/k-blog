@@ -67,20 +67,10 @@ instance.interceptors.response.use(
  *
  * @param {*} data
  */
-const fetch = (data, userToken) => {
+const fetch = data => {
   const config = {
     ...defaultConfig,
     ...data
-  }
-  if (userToken) {
-    instance.interceptors.request.use(
-      config => {
-        config.headers.cookie =
-          config.headers.cookie || `userToken=${userToken}`
-        return config
-      },
-      error => Promise.error(error)
-    )
   }
   return new Promise((resolve, reject) => {
     instance

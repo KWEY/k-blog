@@ -69,6 +69,11 @@ export default {
     }
   },
   mounted() {
+    const isMobile = this.$store.state.isMobile
+    if (isMobile) {
+      this.$router.push('/')
+      return
+    }
     this.userChange()
   },
   methods: {

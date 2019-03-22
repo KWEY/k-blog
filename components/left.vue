@@ -1,6 +1,6 @@
 <template>
   <dir class="kwe-left-wrap" :class="showleft">
-    <div class="kwe-left">
+    <div class="kwe-left" @touchmove.stop @touchstart.stop>
       <div class="kwe-left-info">
         <div class="kwe-wrap">
           <img class="kwe-img" :src="author.avatar" alt="kwe">

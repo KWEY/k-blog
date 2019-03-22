@@ -68,6 +68,32 @@ export default {
       }
     }
   }
+  img {
+    max-width: 100%;
+  }
+  a {
+    font-size: 16px;
+    color: #00a1d6;
+    cursor: pointer;
+    &:hover {
+      text-shadow: 1px 1px #ccc;
+    }
+  }
+  pre {
+    background: #eee;
+    padding: 4px 20px;
+    color: #07a;
+    border-radius: 4px;
+    overflow-x: auto;
+  }
+  table {
+    border-collapse: collapse;
+  }
+  table,
+  td,
+  th {
+    border: 1px solid #ccc;
+  }
 }
 .doc-menu {
   display: none;

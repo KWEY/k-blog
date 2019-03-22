@@ -13,9 +13,8 @@
   </transition>
 </template>
 <script>
-import mixins from './mixins'
 export default {
-  mixins: [mixins],
+  name: 'Toast',
   props: {
     show: {
       type: Boolean,
@@ -63,6 +62,14 @@ export default {
     textStyle() {
       return `eui-toast-${this.type}`
     }
+  },
+  mounted() {
+    const listener = () => {
+      this.closed()
+    }
+    window.addEventListener('hashchange', listener)
+    window.addEventListener('popstate', listener)
+    window.addEventListener('pagehide', listener)
   },
   methods: {
     closed() {

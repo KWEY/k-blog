@@ -132,22 +132,22 @@ enum EndOfStreamError {
 <P>decode:</P>
 <P>终止播放并发出解码错误信号。</P>
 <p class="note">JavaScript应用程序应使用此状态代码终止播放并出现解码错误。例如，如果在处理带外媒体数据时发生解析错误。</p>
-<div class="code">
-    <p>[Constructor]</p>
-    <p>interface MediaSource : EventTarget {</p>
-    <p>----readonly attribute SourceBufferList----sourceBuffers;</p>
-    <p>----readonly attribute SourceBufferList----activeSourceBuffers;</p>
-    <p>----readonly attribute ReadyState----------readyState;</p>
-    <p>-------------attribute unrestricted double duration;</p>
-    <p>-------------attribute EventHandler--------onsourceopen;</p>
-    <p>-------------attribute EventHandler--------onsourceended;</p>
-    <p>-------------attribute EventHandler--------onsourceclose;</p>
-    <p>----SourceBuffer addSourceBuffer(DOMString type);</p>
-    <p>----void---------removeSourceBuffer(SourceBuffer sourceBuffer);</p>
-    <p>----void---------endOfStream(optional EndOfStreamError error);</p>
-    <p>----void---------setLiveSeekableRange(double start, double end);</p>
-    <p>----void---------clearLiveSeekableRange();</p>
-    <p>----static boolean isTypeSupported(DOMString type);</p>
+<pre>
+    [Constructor]</p>
+    interface MediaSource : EventTarget {</p>
+        readonly attribute SourceBufferList sourceBuffers;</p>
+        readonly attribute SourceBufferList activeSourceBuffers;</p>
+        readonly attribute ReadyState       readyState;</p>
+                 attribute unrestricted double duration;</p>
+                 attribute EventHandler  onsourceopen;</p>
+                 attribute EventHandler  onsourceended;</p>
+                 attribute EventHandler  onsourceclose;</p>
+        SourceBuffer addSourceBuffer(DOMString type);</p>
+        void         removeSourceBuffer(SourceBuffer sourceBuffer);</p>
+        void         endOfStream(optional EndOfStreamError error);</p>
+        void         setLiveSeekableRange(double start, double end);</p>
+        void         clearLiveSeekableRange();</p>
+        static boolean isTypeSupported(DOMString type);</p>
 </div>
 <h4 id="a2-1"> 2.1. 属性</h4>
 <h5>sourceBuffers of type SourceBufferList, readonly</h5>
@@ -413,7 +413,26 @@ enum EndOfStreamError {
 <p>媒体段中的时间戳确定编码帧在演示中的放置位置。媒体片段可以按任何顺序附加</p>
 <p>sequence:</p>
 <p>媒体片段将被视为与时间相邻，与媒体片段中的时间戳无关。新媒体片段中的编码帧将紧接在先前媒体片段中的编码帧之后。如果需要新的偏移量以使新媒体段与先前媒体段相邻，则将更新timestampOffset属性。在“序列”模式下设置timestampOffset属性允许将媒体段放置在时间线中的特定位置，而不需要知道媒体段中的时间戳</p>
-<div class="code"><div><span>interface SourceBuffer : EventTarget {</span></div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>attribute AppendMode          mode;</span></div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>readonly attribute boolean             updating;</span></div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>readonly attribute TimeRanges          buffered;</span></div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>attribute double              timestampOffset;</span></div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>readonly attribute AudioTrackList      audioTracks;</span></div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>readonly attribute VideoTrackList      videoTracks;</span></div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>readonly attribute TextTrackList       textTracks;</span></div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>attribute double              appendWindowStart;</span></div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>attribute unrestricted double appendWindowEnd;</span></div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>attribute EventHandler        onupdatestart;</span></div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>attribute EventHandler        onupdate;</span></div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>attribute EventHandler        onupdateend;</span></div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>attribute EventHandler        onerror;</span></div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>attribute EventHandler        onabort;</span></div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>void appendBuffer(BufferSource data);</span></div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>void abort();</span></div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>void remove(double start, unrestricted double end);</span></div><div>};</div></div>
+<pre>
+    interface SourceBuffer : EventTarget {
+        attribute AppendMode          mode; 
+        readonly attribute boolean             updating;
+        readonly attribute TimeRanges          buffered;
+        attribute double              timestampOffset;
+        readonly attribute AudioTrackList      audioTracks;
+        readonly attribute VideoTrackList      videoTracks;
+        readonly attribute TextTrackList       textTracks;
+        attribute double              appendWindowStart;
+        attribute unrestricted double appendWindowEnd;
+        attribute EventHandler        onupdatestart;
+        attribute EventHandler        onupdate;
+        attribute EventHandler        onupdateend;
+        attribute EventHandler        onerror;
+        attribute EventHandler        onabort;
+        void appendBuffer(BufferSource data);
+        void abort();
+        void remove(double start, unrestricted double end);
+</pre>
 <h3 id="a3-1">3.1. 属性</h3>
 <h5>mode of type AppendMode:</h5>
 <p>控制如何处理媒体片段序列。创建对象后，此属性最初由addSourceBuffer（）设置。</p>
@@ -918,7 +937,14 @@ enum EndOfStreamError {
 <p class="note">这是为了允许将新的编码帧添加到轨道缓冲区，就好像它没有重叠轨道缓冲区中的任何帧一样。</p>
 <h3 class="4">4. SourceBufferList对象</h3>
 <p>SourceBufferList是SourceBuffer对象的简单容器对象。它在修改列表时提供只读数组访问和触发事件。</p>
-<div class="code"><div><span>interface SourceBufferList : EventTarget {</span></div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>readonly&nbsp; attribute&nbsp; &nbsp; &nbsp; unsigned long length;</span></div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>attribute&nbsp; &nbsp; &nbsp; EventHandler  onaddsourcebuffer;</span></div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>attribute&nbsp; &nbsp; &nbsp; EventHandler  onremovesourcebuffer;</span></div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>getter&nbsp; &nbsp; &nbsp; &nbsp;SourceBuffer (unsigned long index);</span></div><p></p><div><span>};</span></div></div>
+<pre>   
+    interface SourceBufferList : EventTarget {
+        readonly&nbsp; attribute&nbsp; &nbsp; &nbsp; unsigned long length;
+        attribute&nbsp; &nbsp; &nbsp; EventHandler  onaddsourcebuffer;
+        attribute&nbsp; &nbsp; &nbsp; EventHandler  onremovesourcebuffer;
+        getter&nbsp; &nbsp; &nbsp; &nbsp;SourceBuffer (unsigned long index);
+    };
+</pre>
 <h4 id="a4-1">4.1. Attributes</h4>
 <h5>length of type unsigned long, readonly</h5>
 <p>指示列表中SourceBuffer对象的数量。 </p>
@@ -942,7 +968,12 @@ enum EndOfStreamError {
 <p>--从列表中删除SourceBuffer时</p>
 <h3 id="a5">5. URL对象扩展</h3>
 <p>本节指定URL [FILE-API]对象定义的扩展。</p>
-<div class="code"><div><span>[Exposed=Window]</span></div><div><span>partial interface URL {</span></div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>static DOMString createObjectURL(MediaSource mediaSource);</span></div><p></p><div><span>}; </span></div></div>
+<pre>
+    [Exposed=Window]
+    partial interface URL {
+        static DOMString createObjectURL(MediaSource mediaSource);
+    };
+</pre>
 <h4 id="a5-1"> 5.1. 方法</h4>
 <p>createObjectURL, static</p>
 <p>为MediaSource对象创建URL。</p>
@@ -980,18 +1011,29 @@ enum EndOfStreamError {
 <p>4.返回此属性的当前值。</p>
 <h3 id="a7"> 7. AudioTrack扩展</h3>
 <p>本节指定HTML AudioTrack定义的扩展。 </p>
-<div class="code"><div><span>partial interface AudioTrack {</span></div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>readonly attribute SourceBuffer? sourceBuffer;</span></div><p></p><div><span>}; </span></div></div>
+<pre>
+    partial interface AudioTrack {
+        readonly attribute SourceBuffer? sourceBuffer;
+    }; 
+</pre>
 <h5>sourceBuffer of type SourceBuffer, readonly , nullable</h5>
 <p>返回创建此轨道的SourceBuffer。如果此轨道不是由SourceBuffer创建的，或者SourceBuffer已从其父媒体源的sourceBuffers属性中删除，则返回null。</p>
 <h3 id="a8"> 8. VideoTrack扩展</h3>
 <p>本节指定HTML VideoTrack定义的扩展。 </p>
-<div class="code"></div>
-<div>partial interface VideoTrack {</div> <div>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;readonly attribute SourceBuffer? sourceBuffer;</div> <div>};</div>
+<pre>
+    partial interface VideoTrack {
+        readonly attribute SourceBuffer? sourceBuffer;
+    };
+</pre>
 <h5>sourceBuffer of type SourceBuffer, readonly , nullable</h5>
 <p>返回创建此轨道的SourceBuffer。如果此轨道不是由SourceBuffer创建的，或者SourceBuffer已从其父媒体源的sourceBuffers属性中删除，则返回null。</p>
 <h3 id="a9">9. TextTrack扩展</h3>
 <p>本节指定HTML VideoTrack定义的扩展。 </p>
-<div class="code"><div>partial interface TextTrack {</div> <div>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;readonly attribute SourceBuffer? sourceBuffer;</div> <div>};</div></div>
+<pre>
+    partial interface TextTrack {
+        readonly attribute SourceBuffer? sourceBuffer;
+    };
+</pre>
 <h5>sourceBuffer of type SourceBuffer, readonly , nullable</h5>
 <p>返回创建此轨道的SourceBuffer。如果此轨道不是由SourceBuffer创建的，或者SourceBuffer已从其父媒体源的sourceBuffers属性中删除，则返回null。</p>
 <h3 id="a10">10. 字节流格式</h3>
@@ -1034,5 +1076,93 @@ enum EndOfStreamError {
 <h3 id="a11">11. 一致性</h3>
 <p>除了标记为非规范性的部分外，本规范中的所有创作指南，图表，示例和注释都是非规范性的。本规范中的其他所有内容都是规范性的。 关键词可以，必须，不得，应该，也不应该按照[RFC2119]中的描述进行解释。</p>
 <h3 id="a12">12. Examples</h3>
-<div class="code"><div><span>function onSourceOpen(videoTag, e) {</span></div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>var mediaSource = e.target;</span></div><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (mediaSource.sourceBuffers.length &gt; 0)return;</p><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>var sourceBuffer = mediaSource.addSourceBuffer('video/webm; codecs="vorbis,vp8"');</span></div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>videoTag.addEventListener('seeking', onSeeking.bind(videoTag, mediaSource));</span></div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>videoTag.addEventListener('progress', onProgress.bind(videoTag, mediaSource));</span></div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>var initSegment = GetInitializationSegment();</span></div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>if (initSegment == null) {</span></div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>// Error fetching the initialization segment. Signal end of stream with an error.</span></div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>mediaSource.endOfStream("network");</span></div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>return;</span></div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>}</span></div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>// Append the initialization segment.</span></div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>var firstAppendHandler = function(e) {</span></div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>var sourceBuffer = e.target;</span></div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>sourceBuffer.removeEventListener('updateend', firstAppendHandler);</span></div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>// Append some initial media data.</span></div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>appendNextMediaSegment(mediaSource);</span></div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>};</span></div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>sourceBuffer.addEventListener('updateend', firstAppendHandler);</span></div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>sourceBuffer.appendBuffer(initSegment);</span></div><div><span>              }</span></div><div><span>              function appendNextMediaSegment(mediaSource) {</span></div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>if (mediaSource.readyState == "closed")</span>return;</div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>// If we have run out of stream data, then signal end of stream.</span></div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>if (!HaveMoreMediaSegments()) {</span></div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>mediaSource.endOfStream();</span></div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>return;</span></div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>}</span></div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>// Make sure the previous append is not still pending.</span></div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>if (mediaSource.sourceBuffers[0].updating)</span>return;</div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>var mediaSegment = GetNextMediaSegment();</span></div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>if (!mediaSegment) {</span></div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>// Error fetching the next media segment.</span></div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>mediaSource.endOfStream("network");</span></div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>return;</span></div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>}</span></div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>// NOTE: If mediaSource.readyState == “ended”, this appendBuffer() call will</span></div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>// cause mediaSource.readyState to transition to "open". The web application</span></div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>// should be prepared to handle multiple “sourceopen” events.</span></div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>mediaSource.sourceBuffers[0].appendBuffer(mediaSegment);</span></div><div><span>              }</span></div><div><span>              function onSeeking(mediaSource, e) {</span></div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>var video = e.target;</span></div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>if (mediaSource.readyState == "open") {</span></div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>// Abort current segment append.</span></div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>mediaSource.sourceBuffers[0].abort();</span></div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>}</span></div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>// Notify the media segment loading code to start fetching data at the</span></div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>// new playback position.</span></div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>SeekToMediaSegmentAt(video.currentTime);</span></div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>// Append a media segment from the new playback position.</span></div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>appendNextMediaSegment(mediaSource);</span></div><div><span>              }</span></div><div><span>              function onProgress(mediaSource, e) {</span></div><div>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>appendNextMediaSegment(mediaSource);</span></div><div><span>              }</span></div><div><span>&lt;video id="v" autoplay&gt; &lt;/video&gt;</span></div><div><span>            var video = document.getElementById('v');</span></div><div><span>            var mediaSource = new MediaSource();</span></div><div><span>            mediaSource.addEventListener('sourceopen', onSourceOpen.bind(this, video));</span></div><div>video.src = window.URL.createObjectURL(mediaSource);</div></div>
+<pre> 
+ function onSourceOpen(videoTag, e) {
+    var mediaSource = e.target;
+
+    if (mediaSource.sourceBuffers.length > 0)
+        return;
+
+    var sourceBuffer = mediaSource.addSourceBuffer('video/webm; codecs="vorbis,vp8"');
+
+    videoTag.addEventListener('seeking', onSeeking.bind(videoTag, mediaSource));
+    videoTag.addEventListener('progress', onProgress.bind(videoTag, mediaSource));
+
+    var initSegment = GetInitializationSegment();
+
+    if (initSegment == null) {
+      // Error fetching the initialization segment. Signal end of stream with an error.
+      mediaSource.endOfStream("network");
+      return;
+    }
+
+    // Append the initialization segment.
+    var firstAppendHandler = function(e) {
+      var sourceBuffer = e.target;
+      sourceBuffer.removeEventListener('updateend', firstAppendHandler);
+
+      // Append some initial media data.
+      appendNextMediaSegment(mediaSource);
+    };
+    sourceBuffer.addEventListener('updateend', firstAppendHandler);
+    sourceBuffer.appendBuffer(initSegment);
+  }
+
+  function appendNextMediaSegment(mediaSource) {
+    if (mediaSource.readyState == "closed")
+      return;
+
+    // If we have run out of stream data, then signal end of stream.
+    if (!HaveMoreMediaSegments()) {
+      mediaSource.endOfStream();
+      return;
+    }
+
+    // Make sure the previous append is not still pending.
+    if (mediaSource.sourceBuffers[0].updating)
+        return;
+
+    var mediaSegment = GetNextMediaSegment();
+
+    if (!mediaSegment) {
+      // Error fetching the next media segment.
+      mediaSource.endOfStream("network");
+      return;
+    }
+
+    // NOTE: If mediaSource.readyState == “ended”, this appendBuffer() call will
+    // cause mediaSource.readyState to transition to "open". The web application
+    // should be prepared to handle multiple “sourceopen” events.
+    mediaSource.sourceBuffers[0].appendBuffer(mediaSegment);
+  }
+
+  function onSeeking(mediaSource, e) {
+    var video = e.target;
+
+    if (mediaSource.readyState == "open") {
+      // Abort current segment append.
+      mediaSource.sourceBuffers[0].abort();
+    }
+
+    // Notify the media segment loading code to start fetching data at the
+    // new playback position.
+    SeekToMediaSegmentAt(video.currentTime);
+
+    // Append a media segment from the new playback position.
+    appendNextMediaSegment(mediaSource);
+  }
+
+  function onProgress(mediaSource, e) {
+    appendNextMediaSegment(mediaSource);
+  }
+</'script>
+
+<'video id="v" autoplay> </'video>
+
+<'script>
+  var video = document.getElementById('v');
+  var mediaSource = new MediaSource();
+  mediaSource.addEventListener('sourceopen', onSourceOpen.bind(this, video));
+  video.src = window.URL.createObjectURL(mediaSource);
+</'script>
 </div>

@@ -10,20 +10,27 @@ export const state = () => ({
   typeList: typeList,
   cache: {},
   articleList: {},
-  total: 0
+  total: 0,
+  isMobile: true
 })
 // 事件
 export const actions = {
-  async nuxtServerInit({ commit, state }, { req, res }) {
+  async nuxtServerInit({ commit }, { req, res }) {
     const cookies = req.cookies
+    const ua = req.headers['user-agent']
     if (cookies.userToken) {
       commit('SET_LOCAL_TOKEN', cookies.userToken)
+    }
+    if (ua) {
+      const isMobile = ua.match(
+        /(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i
+      )
+      commit('ISMOBILE', isMobile)
     }
     commit('SET_APP', res.locals.blog)
     commit('CURRENTTYPE', {})
     const { data } = await $http.getAdmin()
     commit('SET_ADMIN_INFO', data)
-    this.dispatch('user/getUserStatus')
   },
   // 获取文章列表
   async getArticles({ commit, state }, data) {
@@ -100,6 +107,9 @@ export const mutations = {
   ARTICLE_CACHE(state, data) {
     state.total = state.cache[data.key].total
     state.articleList = state.cache[data.key].data
+  },
+  ISMOBILE(state, isMobile) {
+    state.isMobile = isMobile
   }
 }
 // 获取
