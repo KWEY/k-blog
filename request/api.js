@@ -16,6 +16,8 @@ const base = {
   articles: `${baseUrl}/api/article`, // 获取文章列表，加上id获取指定文章
   jq: `${baseUrl}/plugins/jquery-2.1.1.js`, // jq地址
   nav: `${baseUrl}/plugins/nav.js`, // nav地址
+  player: `${baseUrl}/plugins/weplayer.js`, // weplayer地址
+  demoFlv: `${baseUrl}/db/demo.flv`,
   editor: `${baseUrl}/plugins/wangEditor.min.js`, // editor地址
   doc: `${baseUrl}/db/doc/` // 文档地址
 }

@@ -110,6 +110,11 @@ export const typeList = {
           src: '/follow',
           pid: '002_001',
           name: '收藏夹'
+        },
+        {
+          src: '/weplayer',
+          pid: '002_002',
+          name: '播放器'
         }
       ]
     },
