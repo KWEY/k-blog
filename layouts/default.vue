@@ -23,13 +23,16 @@
       </div>
     </div>
     <nuxt />
+    <load v-show="loading" />
   </div>
 </template>
 <script>
 import homesvg from '@/assets/home.svg'
 import search from '@/components/search.vue'
+import load from '@/components/loading.vue'
 export default {
   components: {
+    load: load,
     search: search,
     'home-svg': homesvg
   },
@@ -41,6 +44,9 @@ export default {
     }
   },
   computed: {
+    loading() {
+      return this.$store.state.loading
+    },
     userStatus() {
       return this.$store.state.user
     },

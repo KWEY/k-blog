@@ -4,6 +4,7 @@ import { typeToId, typeList } from './default-options.js'
 
 // 数据
 export const state = () => ({
+  loading: false,
   userToken: '',
   locals: {},
   author: {}, // 作者
@@ -55,6 +56,7 @@ export const actions = {
       commit('CURRENTTYPE', { type, page })
       return
     }
+    commit('LOADING', true)
     await $http
       .getArticles({ type, page, keyword }, state.userToken)
       .then(res => {
@@ -64,6 +66,7 @@ export const actions = {
           res.keyword = keyword
           commit('ARTICLE_LIST', res)
           commit('CURRENTTYPE', { type, page })
+          commit('LOADING', false)
         }
       })
   },
@@ -73,6 +76,10 @@ export const actions = {
       return
     }
     commit('CHANGETAB', tab)
+  },
+  // loading
+  loading({ commit }, load) {
+    commit('LOADING', load)
   }
 }
 // 改变
@@ -110,6 +117,9 @@ export const mutations = {
   },
   ISMOBILE(state, isMobile) {
     state.isMobile = isMobile
+  },
+  LOADING(state, load) {
+    state.loading = load
   }
 }
 // 获取

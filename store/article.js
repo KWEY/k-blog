@@ -33,9 +33,11 @@ export const actions = {
     }
     commit('CURRENTID', data.id)
     commit('ARTICLE_CONTENT', {})
+    commit('LOADING', true, { root: true })
     return $http.getArticle(data.id).then(res => {
       if (res.success) {
         commit('ARTICLE_CONTENT', res.data)
+        commit('LOADING', false, { root: true })
       }
     })
   }
