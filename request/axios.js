@@ -67,7 +67,7 @@ instance.interceptors.response.use(
  *
  * @param {*} data
  */
-const fetch = data => {
+export const fetch = data => {
   const config = {
     ...defaultConfig,
     ...data
@@ -81,7 +81,8 @@ const fetch = data => {
       .catch(err => {
         reject(err)
       })
+  }).catch(err => {
+    console.warn(err)
   })
 }
-export { fetch }
 export default instance
