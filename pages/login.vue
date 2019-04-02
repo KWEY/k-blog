@@ -152,6 +152,7 @@ export default {
 <style lang="less">
 .kwe-login {
   width: 100%;
+  padding-top: 60px;
   font-size: 14px;
   color: #606266;
   .kwe-title {

@@ -1,52 +1,68 @@
 <template>
-  <dir class="kwe-left-wrap" :class="showleft">
-    <div class="kwe-left" @touchmove.stop @touchstart.stop>
-      <div class="kwe-left-info">
-        <div class="kwe-wrap">
-          <img class="kwe-img" :src="author.avatar" alt="kwe">
-        </div>
-        <div class="kwe-title">{{ author.username }}</div>
+  <div class="kwe-left">
+    <template v-if="articleList.length > 0">
+      <div v-for="item in articleList" :key="item.id" class="kwe-directory">
+        <nuxt-link :to="'/article/' + item.id">
+          <h3 class="kwe-title">{{ item.title }}</h3>
+          <div class="kwe-description">{{ item.description }}</div>
+          <div class="kwe-time">{{ new Date(item.created_at).toLocaleString() }}</div>
+        </nuxt-link>
       </div>
-      <div class="kwe-left-artList">
-        <collapse :type-list="typeList" @tab-change="tabChange" />
-      </div>
-      <div class="kwe-left-link">
-        <a href="https://github.com/KWEY" target="_blank"><github-svg class="kwe-github" /></a>
-      </div>
-    </div>
-  </dir>
+      <pages v-if="total > limit" :total="Math.ceil(total / limit)" :current="page" @change="change" />
+    </template>
+    <template v-else>
+      <div class="kwe-null">当前分类还未发布文章</div>
+    </template>
+  </div>
 </template>
 
 <script>
-import collapse from '@/ui/collapse.vue'
-import githubsvg from '@/assets/github.svg'
-
+import pages from '@/ui/pages.vue'
+import { idToName } from '@/store/default-options.js'
 export default {
-  name: 'LeftPanel',
+  name: 'RightPanel',
   components: {
-    'github-svg': githubsvg,
-    collapse
-  },
-  props: {
-    showleft: {
-      type: String,
-      default: ''
-    }
+    pages: pages
   },
   data() {
-    return {}
-  },
-  computed: {
-    author() {
-      return this.$store.state.author
-    },
-    typeList() {
-      return this.$store.state.typeList
+    return {
+      limit: 15,
+      page: 1
     }
   },
+  computed: {
+    total() {
+      return this.$store.state.total
+    },
+    articleList() {
+      return this.$store.state.articleList
+    }
+  },
+  watch: {
+    $route: {
+      handler(val, oldVal) {
+        this.page = +val.query.page || 1
+      },
+      // 深度观察监听
+      deep: true
+    }
+  },
+  mounted() {
+    this.page = +this.$route.query.page || 1
+  },
   methods: {
-    tabChange(tab) {
-      this.$store.dispatch('changeTab', tab)
+    change(current) {
+      if (this.page !== current) {
+        this.page = current
+        this.$router.push({
+          path: '/',
+          query: {
+            type: idToName[this.$store.state.typeList.value][1],
+            page: this.page,
+            keyword: this.$route.query.keyword
+          }
+        })
+      }
     }
   }
 }
@@ -54,101 +70,48 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="less">
-@top_bg: rgba(74, 74, 74, 1);
-.kwe-left-wrap {
-  flex: none;
-  position: relative;
-  width: 300px;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
 .kwe-left {
-  position: fixed;
-  width: 300px;
-  height: 100%;
+  width: 900px;
+  box-sizing: border-box;
+  padding: 20px 0;
   overflow-y: auto;
+  min-height: 100%;
   text-align: center;
   line-height: 2;
-  background: #fff;
-  transform: scaleX(1);
-  transition: transform 0.3s;
-  box-shadow: 0 0 2px 2px #ccc;
-  z-index: 1;
-  /* 个人信息 */
-  &-info {
-    height: 200px;
-    background: linear-gradient(
-      @top_bg,
-      @top_bg 100px,
-      transparent 100px,
-      transparent 100%
-    );
+  transition: left 0.3s;
 
-    .kwe-wrap::before {
-      position: absolute;
-      top: -10px;
-      left: -10px;
-      content: '';
-      display: inline-block;
-      width: 100px;
-      height: 100px;
-      background: #fff;
-      border-radius: 50%;
+  .kwe-directory {
+    width: 96%;
+    margin: 8px auto;
+    padding: 4px 8px;
+    border-radius: 2px;
+    transition: all 0.2s;
+    background: #fff;
+    box-sizing: border-box;
+    box-shadow: 0 0 2px 0px #ccc;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 1px 1px 8px 0px #00a1d6;
     }
-
-    .kwe-wrap {
-      position: relative;
-      display: inline-block;
-      width: 80px;
-      height: 80px;
-      margin-top: 60px;
-      border-radius: 50%;
-
-      .kwe-img {
-        position: relative;
-        display: inline-block;
-        width: 100%;
-        height: 100%;
-      }
+    .kwe-title {
+      margin: 0;
+      font-size: 16px;
+      text-align: left;
     }
-  }
-  /* 外链 */
-  &-artList {
-    margin-bottom: 20px;
-  }
-  /* 外链 */
-  &-link {
-    position: absolute;
-    width: 100%;
-    left: 0;
-    bottom: 0;
-    margin: 10px 0;
-    .kwe-github {
-      display: inline-block;
-      width: 30px;
-      height: 30px;
+    .kwe-description {
+      font-size: 12px;
+      text-align: left;
+    }
+    .kwe-time {
+      font-size: 14px;
+      text-align: left;
     }
   }
 }
 @media screen and (max-width: 800px) {
-  .kwe-left-wrap {
-    width: 0;
-    overflow: hidden;
-  }
-  .kwe-left-wrap.show-left {
-    overflow: auto;
-    .kwe-left {
-      transform: scaleX(1);
-    }
-  }
   .kwe-left {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 300px;
-    transform: scaleX(0);
+    width: 100%;
   }
 }
 </style>

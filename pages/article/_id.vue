@@ -97,8 +97,8 @@ export default {
 .kwe-article {
   width: 100%;
   max-width: 1000px;
-  margin: 0 auto 100px;
-  padding: 20px 8px;
+  margin: 0 auto;
+  padding: 60px 8px;
   font-size: 16px;
   box-sizing: border-box;
   overflow: hidden;

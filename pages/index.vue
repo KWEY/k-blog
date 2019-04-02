@@ -1,14 +1,18 @@
 <template>
-  <div class="kwe-index" @click="toggleClick">
-    <div class="kwe-menu" @click.stop="toggle">
-      <menu-svg class="kwe-menu-svg" />
+  <section class="kwe-section" @click="toggleClick">
+    <header-panel />
+    <div class="kwe-index" @click="toggleClick">
+      <div class="kwe-menu" @click.stop="toggle">
+        <menu-svg class="kwe-menu-svg" />
+      </div>
+      <left-panel />
+      <right-panel :showleft="showleft"/>
     </div>
-    <left-panel :showleft="showleft" />
-    <right-panel />
-  </div>
+  </section>
 </template>
 
 <script>
+import headerPanel from '@/components/header.vue'
 import leftPanel from '@/components/left.vue'
 import rightPanel from '@/components/right.vue'
 import menusvg from '@/assets/menu.svg'
@@ -17,6 +21,7 @@ import { idToName } from '@/store/default-options.js'
 export default {
   name: 'Index',
   components: {
+    'header-panel': headerPanel,
     'left-panel': leftPanel,
     'right-panel': rightPanel,
     'menu-svg': menusvg
@@ -42,6 +47,7 @@ export default {
     const page = route.query.page || 1
     const keyword = route.query.keyword || ''
     await store.dispatch('getArticles', { type, page, keyword })
+    await store.dispatch('statistical/getStatistical')
   },
   mounted() {
     const name = idToName[this.$store.state.typeList.value]
@@ -69,6 +75,7 @@ export default {
   justify-content: center;
   width: 100%;
   height: 100%;
+  margin-bottom: 40px;
 }
 .kwe-menu {
   display: none;
@@ -88,8 +95,8 @@ export default {
   }
 }
 @media screen and (max-width: 800px) {
-  .kwe-menu {
-    display: block;
-  }
+  // .kwe-menu {
+  //   display: block;
+  // }
 }
 </style>

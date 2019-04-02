@@ -70,10 +70,8 @@ export default {
 <style lang="less">
 .kwe-search {
   display: flex;
-  height: 39px;
-  min-width: 350px;
   height: 36px;
-  margin: 2px auto;
+  margin: 1px 0;
   background: #fff;
   border-radius: 18px;
   border: 1px solid #dfe1e5;
@@ -84,9 +82,9 @@ export default {
     background-color: transparent;
     border: none;
     margin: 0;
+    width: 100%;
     padding-left: 16px;
     color: rgba(0, 0, 0, 0.87);
-    word-wrap: break-word;
     outline: none;
     flex: 100%;
     -webkit-tap-highlight-color: transparent;
@@ -98,6 +96,11 @@ export default {
     color: #00a1d6;
     fill: #00a1d6;
     cursor: pointer;
+  }
+}
+@media screen and (max-width: 800px) {
+  .kwe-search {
+    height: 30px;
   }
 }
 </style>

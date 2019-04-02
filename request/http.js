@@ -7,6 +7,10 @@ import base from './api'
 import { fetch } from './axios'
 
 export default {
+  // 获取统计信息
+  statistical() {
+    return fetch({ url: base.statistical })
+  },
   // 注册
   register(data) {
     return fetch({ data, url: base.register, method: 'post' })

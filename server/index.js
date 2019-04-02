@@ -8,6 +8,7 @@ const bodyParser = require('body-parser')
 
 // Import and Set Nuxt.js options
 const config = require('../nuxt.config.js')
+const schedule = require('./schedule')
 const globalConfig = require('./config')
 config.dev = !globalConfig.isPro
 
@@ -38,7 +39,8 @@ app.all('/api/*', (req, res) => {
     err: 'api is invalid'
   })
 })
-
+// 定时任务
+schedule()
 async function start() {
   // Init Nuxt.js
   const nuxt = new Nuxt(config)

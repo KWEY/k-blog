@@ -4,6 +4,7 @@
 const isPro = process.env.NODE_ENV === 'production'
 const baseUrl = isPro ? 'https://www.webq.top' : 'http://127.0.0.1:3000'
 const base = {
+  statistical: `${baseUrl}/api/statistical`, // 获取统计信息
   check: `${baseUrl}/api/user/check`, // 查看是否存在当前用户
   register: `${baseUrl}/api/register`, // 注册
   login: `${baseUrl}/api/login`, // 登录

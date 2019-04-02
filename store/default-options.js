@@ -125,12 +125,12 @@ export const typeList = {
         {
           src: '/doc/mse',
           pid: '003_001',
-          name: 'Media Source Extensions'
+          name: 'MSE'
         },
         {
           src: '/doc/mask',
           pid: '003_002',
-          name: 'CSS Masking Module'
+          name: 'CSS Mask'
         }
       ]
     }

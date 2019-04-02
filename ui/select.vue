@@ -18,7 +18,12 @@
 <script>
 export default {
   name: 'Select',
-  props: ['typeList'],
+  props: {
+    typeList: {
+      type: Object,
+      default: () => {}
+    }
+  },
   data() {
     return {}
   },
