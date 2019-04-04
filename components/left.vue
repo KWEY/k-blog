@@ -20,7 +20,7 @@
 import pages from '@/ui/pages.vue'
 import { idToName } from '@/store/default-options.js'
 export default {
-  name: 'RightPanel',
+  name: 'LeftPanel',
   components: {
     pages: pages
   },
@@ -78,7 +78,7 @@ export default {
   min-height: 100%;
   text-align: center;
   line-height: 2;
-  transition: left 0.3s;
+  transition: left 0.5s;
 
   .kwe-directory {
     width: 96%;
@@ -89,6 +89,7 @@ export default {
     background: #fff;
     box-sizing: border-box;
     box-shadow: 0 0 2px 0px #ccc;
+    transition: box-shadow 0.5s;
     cursor: pointer;
 
     &:hover {

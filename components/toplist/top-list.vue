@@ -1,7 +1,7 @@
 <template>
   <div class="kwe-top">
     <div class="kwe-top-wrap">
-      <div>
+      <div class="kwe-home-wrap">
         <nuxt-link to="/" class="kwe-home">
           <homesvg class="kwe-home-svg" />
           <span>HOME</span>
@@ -70,6 +70,9 @@ export default {
     height: 40px;
     margin: 0 auto;
     box-shadow: rgba(0, 0, 0, 0.1) 0 1px 2px;
+    .kwe-home-wrap {
+      flex: none;
+    }
     .kwe-home {
       display: block;
       margin: 6px 0 6px 10px;

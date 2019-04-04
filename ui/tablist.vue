@@ -6,10 +6,8 @@
         <li
           v-for="({src, pid, name}) in list"
           :key="pid"
-          :class="{active: pid === typeList.value}"
-          class="eui-item"
         >
-          <nuxt-link :to="src">{{ name }}</nuxt-link>
+          <nuxt-link :to="src" class="eui-item" :class="{active: pid === typeList.value}">{{ name }}</nuxt-link>
         </li>
       </ul>
     </div>
@@ -65,11 +63,12 @@ export default {
       left: 0;
       min-width: 100px;
       font-size: 12px;
-      line-height: 2;
+      line-height: 3;
       background: @bg;
       box-shadow: rgba(0, 0, 0, 0.1) 0 1px 2px;
       cursor: pointer;
       .eui-item {
+        display: block;
         position: relative;
         padding: 0 20px;
         transition: padding 0.4s;
@@ -81,7 +80,7 @@ export default {
           position: absolute;
           top: 0;
           left: 8px;
-          line-height: 1.9;
+          line-height: 2.9;
           transform: scale(0.7, 1);
           transition: left 0.4s;
         }

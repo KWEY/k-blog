@@ -10,8 +10,8 @@
       </ul>
       <h3>今日数据：</h3>
       <ul class="kwe-statistical">
-        <li>访问量：{{ statistical.cvisit || 0 }}</li>
-        <li>查看量：{{ statistical.cview || 0 }}</li>
+        <li>访问量：{{ Math.ceil(statistical.cvisit) || 0 }}</li>
+        <li>查看量：{{ Math.ceil(statistical.cview) || 0 }}</li>
       </ul>
     </div>
   </div>
@@ -19,7 +19,7 @@
 
 <script>
 export default {
-  name: 'LeftPanel',
+  name: 'RightPanel',
   components: {},
   props: {
     showleft: {
@@ -45,20 +45,15 @@ export default {
 <style lang="less">
 @top_bg: rgba(74, 74, 74, 1);
 .kwe-right-wrap {
-  flex: none;
   position: relative;
   width: 300px;
-  height: 100%;
-  margin-top: 30px;
-  padding: 20px;
-  box-shadow: 0 0 1px 1px #ccc;
-  .kwe-right {
-    position: absolute;
-    width: 300px;
-    height: 400px;
-    text-align: center;
-    line-height: 400px;
-    background: #fff;
+  margin: 30px 0 30px;
+  box-shadow: 0 0 2px 0px #ccc;
+  .kwe-data {
+    box-sizing: border-box;
+    padding: 20px;
+    height: 100%;
+    width: 100%;
   }
 }
 @media screen and (max-width: 800px) {
@@ -69,16 +64,8 @@ export default {
   }
   .kwe-right-wrap.show-right {
     overflow: auto;
-    .kwe-right {
-      transform: scaleX(1);
-    }
   }
-  .kwe-right {
-    position: fixed;
-    top: 0;
-    right: 0;
-    height: 100%;
-    width: 300px;
+  .kwe-data {
     transform: scaleX(0);
   }
 }

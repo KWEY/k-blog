@@ -6,7 +6,7 @@
         <menu-svg class="kwe-menu-svg" />
       </div>
       <left-panel />
-      <right-panel :showleft="showleft"/>
+      <right-panel :showleft="showleft" />
     </div>
   </section>
 </template>
