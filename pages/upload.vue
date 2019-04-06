@@ -199,6 +199,7 @@ export default {
     outline: none;
   }
   .kwe-content-input {
+    background: #fff;
     .w-e-toolbar {
       background: transparent !important;
       border-color: #00a1d6 !important;
