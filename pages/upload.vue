@@ -173,6 +173,8 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="less">
 .kwe-json {
+  position: relative;
+  z-index: 1;
   width: 800px;
   margin: 0 auto;
   padding-top: 30px;
