@@ -1,50 +1,48 @@
 <template>
-  <div class="kwe-login" @click="hideResult">
-    <p class="kwe-title"><span class="kwe-name">登录</span></p>
+  <div class="kwe-password" @click="hideResult">
+    <p class="kwe-title"><span class="kwe-name">修改密码</span></p>
     <div v-show="result" class="kwe-result">{{ result }}</div>
-    <div class="kwe-login-wrap">
+    <div class="kwe-password-wrap">
       <div class="kwe-register-group">
-        <input
-          v-model.trim="user.tel"
-          placeholder="手机号"
+        <input 
+          v-model.trim="user.old"
+          type="password"
+          placeholder="旧密码"
           autocomplete="off"
-          @blur="checkTel"
+          @blur="checkPassword('old')"
         >
-        <span class="kwe-error">{{ message.tel }}</span>
+        <span class="kwe-error">{{ message.old }}</span>
       </div>
       <div class="kwe-register-group">
         <input 
-          v-model.trim="user.password"
+          v-model.trim="user.new"
           type="password"
-          placeholder="密码"
+          placeholder="新密码"
           autocomplete="off"
-          @blur="checkPassword"
+          @blur="checkPassword('new')"
           @keyup.enter="keyup"
         >
-        <span class="kwe-error">{{ message.password }}</span>
+        <span class="kwe-error">{{ message.new }}</span>
       </div>
     </div>
-    <div class="kwe-btn-login" :class="{'kwe-disabled': userStatus.isLogin}" @click.stop="login">登 录</div>
-    <div class="kwe-to-register">
-      <nuxt-link to="/register">没有账号，去注册></nuxt-link>
-    </div>
+    <div class="kwe-btn-password" @click.stop="password">修 改</div>
   </div>
 </template>
 <script>
-import $http from '@/request/http'
+// import $http from '@/request/http'
 export default {
-  name: 'Login',
+  name: 'Password',
   data() {
     return {
       routeFrom: null,
       result: '',
       message: {
-        tel: '',
-        password: ''
+        old: '',
+        new: ''
       },
       user: {
-        tel: '',
-        password: ''
+        old: '',
+        new: ''
       }
     }
   },
@@ -55,11 +53,11 @@ export default {
   },
   head() {
     return {
-      title: '登录'
+      title: '修改密码'
     }
   },
   beforeRouteEnter(to, from, next) {
-    next(vm => vm.setData(from))
+    next(vm => vm.setData(to, from))
   },
   watch: {
     userStatus() {
@@ -72,26 +70,48 @@ export default {
     const isMobile = this.$store.state.isMobile
     if (isMobile) {
       this.$router.push('/')
-      return
     }
-    this.userChange()
   },
   methods: {
-    setData(from) {
+    setData(to, from) {
       this.routeFrom = from
     },
-    login() {
-      if (this.userStatus.isLogin) {
-        this.result = '已登录，若要切换账号，请先退出登录！'
+    checkPassword(pass) {
+      if (this.user[pass].length > 16 || this.user[pass].length < 6) {
+        this.message[pass] = '密码由6-16个字符组成'
+        return false
+      } else {
+        this.message[pass] = ''
+        return true
+      }
+    },
+    hideResult() {
+      this.result = ''
+    },
+    keyup(ev) {
+      ev.keyCode === 13 && this.password()
+    },
+    userChange() {
+      if (!this.userStatus.isLogin) {
+        this.$router.push('/login')
+      }
+    },
+    password() {
+      if (!this.userStatus.isLogin) {
+        this.result = '未登录，请先退出登录！'
         return
       }
-      if (this.checkTel(0) && this.checkPassword()) {
-        this.$store.dispatch('user/login', this.user).then(data => {
+      if (this.user.old === this.user.new) {
+        this.result = '密码不能相同'
+        return
+      }
+      if (this.checkPassword('old') && this.checkPassword('new')) {
+        this.$store.dispatch('user/password', this.user).then(data => {
           this.result = data.msg
           if (data.success) {
             this.user = {
-              password: '',
-              tel: ''
+              old: '',
+              new: ''
             }
             setTimeout(() => {
               this.result = ''
@@ -101,56 +121,12 @@ export default {
       } else {
         this.result = '输入信息有误'
       }
-    },
-    checkTel(isclick) {
-      if (/^1\d{10}$/.test(this.user.tel)) {
-        if (isclick === 0) {
-          if (this.message.tel) {
-            return false
-          }
-          return true
-        }
-        $http.check(this.user.tel).then(data => {
-          if (data.success) {
-            this.message.tel = '此电话用户不存在(；′⌒`)'
-          } else {
-            this.message.tel = ''
-          }
-        })
-      } else {
-        this.message.tel = '电话号码格式不对'
-        return false
-      }
-    },
-    checkPassword() {
-      if (this.user.password.length > 16 || this.user.password.length < 6) {
-        this.message.password = '密码由6-16个字符组成'
-        return false
-      } else {
-        this.message.password = ''
-        return true
-      }
-    },
-    hideResult() {
-      this.result = ''
-    },
-    keyup(ev) {
-      ev.keyCode === 13 && this.login()
-    },
-    userChange() {
-      if (this.userStatus.isLogin) {
-        let url = (this.routeFrom && this.routeFrom.fullPath) || '/'
-        if (url === '/register' || url === '/password') {
-          url = '/'
-        }
-        this.$router.push(url)
-      }
     }
   }
 }
 </script>
 <style lang="less">
-.kwe-login {
+.kwe-password {
   width: 100%;
   padding-top: 60px;
   font-size: 14px;
@@ -206,31 +182,16 @@ export default {
       }
     }
   }
-  .kwe-btn-login,
-  .kwe-to-register {
+  .kwe-btn-password {
     max-width: 300px;
     margin: 0 auto;
     line-height: 2.5;
-  }
-  .kwe-btn-login {
     text-align: center;
     border: 1px solid #ccc;
     cursor: pointer;
     &:hover {
       color: #00a1d6;
       border-color: #00a1d6;
-    }
-    &.kwe-disabled {
-      color: #ccc;
-      cursor: not-allowed;
-      border-color: #ccc;
-    }
-  }
-  .kwe-to-register {
-    text-align: right;
-    font-size: 12px;
-    a {
-      color: #00a1d6;
     }
   }
   input {

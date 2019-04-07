@@ -3,7 +3,8 @@
     <div class="kwe-name">
       <span>{{ name }}</span>
       <div v-if="userStatus.isLogin" class="kwe-user-panel">
-        <span class="kwe-logout" @click="logout">退出登录</span>
+        <div class="kwe-logout" @click="logout">退出登录</div>
+        <div class="kwe-change" @click="changePassword">修改密码</div>
       </div>
     </div>
     <div v-show="userStatus.isAdmin" class="kwe-action">
@@ -47,9 +48,10 @@ export default {
       }
     },
     logout() {
-      if (this.userStatus.isLogin) {
-        this.$store.dispatch('user/logout')
-      }
+      this.$store.dispatch('user/logout')
+    },
+    changePassword() {
+      this.$router.push('/password')
     }
   }
 }
@@ -75,6 +77,7 @@ export default {
   .kwe-name {
     position: relative;
     width: 100px;
+    white-space: nowrap;
     &:hover .kwe-user-panel {
       display: block;
     }
@@ -95,12 +98,18 @@ export default {
     width: 100%;
     background: @bg;
     box-shadow: 1px 1px 1px #222;
-    .kwe-logout {
+    .kwe-logout,
+    .kwe-change {
       cursor: pointer;
       &:hover {
         text-shadow: 1px 1px 1px #00a1d6;
       }
     }
+  }
+}
+@media screen and (max-width: 800px) {
+  .eui-tablist {
+    font-size: 14px;
   }
 }
 </style>

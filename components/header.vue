@@ -6,6 +6,7 @@
         <div class="kwe-header-info">
           <div class="kwe-wrap" />
           <div class="kwe-title">{{ author.username }}</div>
+          <div class="kwe-motto">{{ author.motto }}</div>
         </div>
         <div class="kwe-header-tool">
           <div class="kwe-header-link">
@@ -90,6 +91,9 @@ export default {
         font-size: 30px;
         line-height: 2;
       }
+      .kwe-motto {
+        font-size: 14px;
+      }
     }
     .kwe-header-tool {
       text-align: center;
@@ -113,9 +117,16 @@ export default {
     &-author {
       flex-direction: initial;
       .kwe-header-info {
-        width: 200px;
+        width: 220px;
+        .kwe-wrap {
+          width: 80px;
+          height: 80px;
+        }
         .kwe-title {
-          font-size: 24px;
+          font-size: 20px;
+        }
+        .kwe-motto {
+          font-size: 12px;
         }
       }
       .kwe-header-tool {

@@ -45,12 +45,15 @@ export default {
 .eui-tablist {
   display: flex;
   white-space: nowrap;
+  width: 300px;
   .eui-list {
+    flex: 1;
     position: relative;
+    max-width: 100px;
     .eui-name {
-      min-width: 100px;
       box-sizing: border-box;
-      padding: 0 16px 0 36px;
+      flex: 1;
+      padding-left: 36px;
       line-height: 40px;
       &:hover {
         background: rgba(255, 255, 255, 0.3);
@@ -97,17 +100,25 @@ export default {
       display: block;
     }
     &:nth-child(1) {
+      flex-grow: 1;
       background: url('../assets/note.png') 14px center no-repeat;
       background-size: 18px;
     }
     &:nth-child(2) {
+      flex-grow: 1.2;
       background: url('../assets/tool.png') 14px center no-repeat;
       background-size: 20px;
     }
     &:nth-child(3) {
+      flex-grow: 1.2;
       background: url('../assets/doc.png') 14px center no-repeat;
       background-size: 16px;
     }
+  }
+}
+@media screen and (max-width: 800px) {
+  .eui-tablist {
+    font-size: 14px;
   }
 }
 </style>

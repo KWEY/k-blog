@@ -18,7 +18,7 @@
           v-model.trim="user.password"
           type="password"
           autocomplete="off"
-          placeholder="密码（6-16个字符组成，区分大小写"
+          placeholder="密码（6-16个字符组成，区分大小写）"
           @blur="checkPassword"
         >
         <span class="kwe-error">{{ message.password }}</span>
@@ -180,7 +180,7 @@ export default {
     userChange() {
       if (this.userStatus.isLogin) {
         let url = (this.routeFrom && this.routeFrom.fullPath) || '/'
-        if (url === '/login') {
+        if (url === '/login' || url === '/password') {
           url = '/'
         }
         this.$router.push(url)
@@ -224,7 +224,7 @@ export default {
       margin: 0 auto;
       padding: 0 20px;
       font-size: 36px;
-      background: #fff;
+      background: #efefef;
       text-align: center;
     }
   }
@@ -278,13 +278,7 @@ export default {
     border: 1px solid #ccc;
     outline: none;
     margin: 0 auto 30px auto;
-  }
-
-  button {
-    width: 300px;
-    height: 35px;
-    display: block;
-    margin: 0 auto;
+    background: transparent;
   }
 }
 </style>

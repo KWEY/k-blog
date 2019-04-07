@@ -27,6 +27,14 @@ export default {
   logout() {
     return fetch({ url: base.logout, method: 'post' })
   },
+  // 查看当前用户密码
+  checkPassword(password) {
+    return fetch({ url: base.checkPassword, params: { password } })
+  },
+  // 改密
+  password(data) {
+    return fetch({ data, url: base.password, method: 'patch' })
+  },
   // 获取作者
   getAdmin() {
     return fetch({ url: base.author })

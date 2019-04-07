@@ -6,6 +6,8 @@ const baseUrl = isPro ? 'https://www.webq.top' : 'http://127.0.0.1:3000'
 const base = {
   statistical: `${baseUrl}/api/statistical`, // 获取统计信息
   check: `${baseUrl}/api/user/check`, // 查看是否存在当前用户
+  checkPassword: `${baseUrl}/api/user/checkpassword`, // 查看当前用户密码
+  password: `${baseUrl}/api/password`, // 改密
   register: `${baseUrl}/api/register`, // 注册
   login: `${baseUrl}/api/login`, // 登录
   logout: `${baseUrl}/api/logout`, // 退出登录

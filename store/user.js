@@ -54,6 +54,16 @@ export const actions = {
         resolve(data)
       })
     })
+  },
+  password({ commit }, user) {
+    return $http.password(user).then(data => {
+      if (data.success) {
+        commit('UPDATE_USER', defaultState)
+      }
+      return new Promise((resolve, reject) => {
+        resolve(data)
+      })
+    })
   }
 }
 export const mutations = {
