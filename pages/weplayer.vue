@@ -58,10 +58,11 @@ export default {
       if (window.WEPlayer) {
         clearInterval(this.timer)
         /* eslint-disable */
-        new window.WEPlayer.default({
+        new window.WEPlayer({
           id: '.kwe-player-wrap',
           url: this.url,
-          autoplay: true
+          autoplay: true,
+          cors: 'cors'
         })
         /* eslint-enable */
         this.loading = false
