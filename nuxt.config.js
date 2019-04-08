@@ -99,6 +99,12 @@ module.exports = {
       const urlLoader = config.module.rules.find(rule => rule.test.toString().match('gif'))
       if (urlLoader) {
         urlLoader.test = new RegExp(/\.(png|jpe?g|gif)$/)
+        urlLoader.use = [
+          {
+            loader: 'url-loader',
+            options: { limit: 819200 }
+          }
+        ]
       }
       config.module.rules.push({
         test: /\.svg$/,
