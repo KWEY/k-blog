@@ -3,11 +3,10 @@
     <div class="kwe-title">
       <div class="kwe-name">{{ article.title }}</div>
       <div class="kwe-bar-top">
-        <div v-if="article.updated_at > (article.created_at + 10000)" class="time">更新：{{ new Date(article.updated_at).toLocaleString() }}</div>
-        <div class="time">创建：{{ new Date(article.created_at).toLocaleString() }}</div>
-        <div class="read-count">阅读数：{{ article.views }}</div>
+        <div v-if="article.updated_at > (article.created_at + 10000)" class="update">{{ new Date(article.updated_at).toLocaleString() }}</div>
+        <div class="time">{{ new Date(article.created_at).toLocaleString() }}</div>
+        <div class="read-count">{{ article.views }}</div>
         <div class="tag">
-          <span class="label">标签：</span>
           <nuxt-link v-for="item of article.type" :key="item.name[1]" :to="'/?type=' + item.name[1]" class="kwe-link">{{ item.name[0] }}</nuxt-link>
         </div>
         <template v-if="userStatus.isAdmin">
@@ -136,38 +135,61 @@ export default {
   }
   .kwe-bar-top {
     display: flex;
+    flex-direction: column;
     justify-content: flex-end;
+    align-items: flex-end;
     flex-wrap: wrap;
-    margin-bottom: 10px;
+    margin: 10px;
     padding-bottom: 14px;
     text-align: right;
     font-size: 12px;
-    line-height: 20px;
+    line-height: 2;
     color: #4d4d4d;
     border-bottom: 1px solid #e0e0e0;
+    .update {
+      padding-left: 26px;
+      background: url('../../assets/update.png') 2px center no-repeat;
+      background-size: 20px;
+    }
     .time {
-      margin: 0 2px;
+      padding-left: 26px;
+      background: url('../../assets/time.png') 2px center no-repeat;
+      background-size: 18px;
     }
     .read-count {
-      margin: 0 16px;
+      padding-left: 26px;
+      background: url('../../assets/view.png') 2px center no-repeat;
+      background-size: 20px;
     }
     .kwe-link {
+      position: relative;
       display: inline-block;
       box-sizing: border-box;
-      margin-right: 8px;
-      padding: 0 8px;
-      height: 20px;
+      margin-left: 16px;
+      padding-right: 8px;
       min-width: 24px;
       line-height: 20px;
+      height: 22px;
       border: 1px solid #ccc;
-      border-radius: 100px;
+      border-left-color: transparent;
       font-size: 12px;
       text-align: center;
       color: #00a1d6;
       cursor: pointer;
       &:hover {
-        border-color: #00a1d6;
         text-shadow: 1px 1px 1px #ccc;
+      }
+      &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 2px;
+        left: -9px;
+        width: 15px;
+        height: 15px;
+        transform: rotate(45deg);
+        border-left: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
       }
     }
   }

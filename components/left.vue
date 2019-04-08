@@ -4,9 +4,15 @@
       <div v-for="item in articleList" :key="item.id" class="kwe-directory">
         <nuxt-link :to="'/article/' + item.id">
           <h3 class="kwe-title">{{ item.title }}</h3>
-          <div class="kwe-description">{{ item.description }}</div>
-          <div class="kwe-time">{{ new Date(item.created_at).toLocaleString() }}</div>
         </nuxt-link>
+        <div class="kwe-description">{{ item.description }}</div>
+        <div class="kwe-bottom">
+          <div class="kwe-info">
+            <span class="kwe-times">{{ item.views }}</span>
+            <nuxt-link v-for="item of item.type" :key="item.name[1]" :to="'/?type=' + item.name[1]" class="kwe-type">{{ item.name[0] }}</nuxt-link>
+          </div>
+          <div class="kwe-time">{{ new Date(item.created_at).toLocaleString() }}</div>
+        </div>
       </div>
       <pages v-if="total > limit" :total="Math.ceil(total / limit)" :current="page" @change="change" />
     </template>
@@ -92,21 +98,63 @@ export default {
     transition: box-shadow 0.5s;
     cursor: pointer;
 
-    &:hover {
-      box-shadow: 1px 1px 8px 0px #00a1d6;
-    }
     .kwe-title {
       margin: 0;
       font-size: 16px;
       text-align: left;
+      &:hover {
+        color: #00a1d6;
+      }
     }
     .kwe-description {
+      margin: 6px 0 20px;
       font-size: 12px;
       text-align: left;
     }
-    .kwe-time {
-      font-size: 14px;
-      text-align: left;
+    .kwe-bottom {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      line-height: 2;
+      .kwe-info {
+        .kwe-times {
+          padding-left: 26px;
+          background: url('../assets/view.png') 2px center no-repeat;
+          background-size: 20px;
+        }
+        .kwe-type {
+          position: relative;
+          display: inline-block;
+          box-sizing: border-box;
+          margin-left: 16px;
+          padding-right: 8px;
+          line-height: 18px;
+          height: 20px;
+          border: 1px solid #ccc;
+          border-left-color: transparent;
+          font-size: 12px;
+          text-align: center;
+          color: #00a1d6;
+          &:hover {
+            text-shadow: 1px 1px 1px #ccc;
+          }
+          &:before {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 2px;
+            left: -8px;
+            width: 13px;
+            height: 13px;
+            transform: rotate(45deg);
+            border-left: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+          }
+        }
+      }
+      .kwe-time {
+        text-align: left;
+      }
     }
   }
 }

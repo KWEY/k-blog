@@ -48,7 +48,6 @@ export default {
   position: relative;
   width: 300px;
   margin: 30px 0 30px;
-  box-shadow: 0 0 2px 0px #ccc;
   .kwe-data {
     box-sizing: border-box;
     padding: 20px;

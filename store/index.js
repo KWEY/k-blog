@@ -1,7 +1,6 @@
 // store.js
 import $http from '../request/http'
-import { typeToId, typeList } from './default-options.js'
-
+import { typeToId, typeList, idToName } from './default-options.js'
 // 数据
 export const state = () => ({
   loading: false,
@@ -102,7 +101,16 @@ export const mutations = {
   },
   ARTICLE_LIST(state, res) {
     if (res) {
-      state.articleList = res.data
+      const list = res.data.map(ele => {
+        const type = ele.type
+        ele.type = Array.isArray(type)
+          ? type.map(id => {
+              return { id, name: idToName[id] }
+            })
+          : []
+        return ele
+      })
+      state.articleList = list
       state.total = res.total
       // 缓存数据
       state.cache[res.type + res.page + res.keyword] = {
