@@ -3,11 +3,23 @@
     <div class="kwe-title">
       <div class="kwe-name">{{ article.title }}</div>
       <div class="kwe-bar-top">
-        <div v-if="article.updated_at > (article.created_at + 10000)" class="update">{{ new Date(article.updated_at).toLocaleString() }}</div>
+        <div
+          v-if="article.updated_at > (article.created_at + 10000)"
+          class="update"
+        >
+          {{ new Date(article.updated_at).toLocaleString() }}
+        </div>
         <div class="time">{{ new Date(article.created_at).toLocaleString() }}</div>
         <div class="read-count">{{ article.views }}</div>
         <div class="tag">
-          <nuxt-link v-for="item of article.type" :key="item.name[1]" :to="'/?type=' + item.name[1]" class="kwe-link">{{ item.name[0] }}</nuxt-link>
+          <nuxt-link
+            v-for="item of article.type"
+            :key="item.name[1]"
+            :to="'/?type=' + item.name[1]"
+            class="kwe-link"
+          >
+            {{ item.name[0] }}
+          </nuxt-link>
         </div>
         <template v-if="userStatus.isAdmin">
           <div class="kwe-edit">
@@ -18,9 +30,15 @@
         </template>
       </div>
     </div>
-    <div class="kwe-description" v-text="article.description" />
-    <div class="kwe-context" v-html="article.content || '文章已删除'" />
-    <toast :show="toast.show" :content="toast.content" :close="toast.showClose" :type="toast.type" @close="closeToast" />
+    <div class="kwe-description" v-text="article.description"/>
+    <div class="kwe-context" v-html="article.content || '文章已删除'"/>
+    <toast
+      :show="toast.show"
+      :content="toast.content"
+      :close="toast.showClose"
+      :type="toast.type"
+      @close="closeToast"
+    />
   </div>
 </template>
 
@@ -98,9 +116,9 @@ export default {
 <style lang="less">
 .kwe-article {
   width: 100%;
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 60px 8px;
+  padding: 60px 20px;
   font-size: 16px;
   box-sizing: border-box;
   overflow: hidden;
@@ -142,8 +160,8 @@ export default {
     justify-content: flex-end;
     align-items: flex-end;
     flex-wrap: wrap;
-    margin: 10px;
-    padding-bottom: 14px;
+    margin: 10px 0;
+    padding: 14px;
     text-align: right;
     font-size: 12px;
     line-height: 2;
@@ -202,6 +220,11 @@ export default {
   .kwe-context {
     // color: #33495e;
     line-height: 1.5;
+  }
+}
+@media screen and (max-width: 800px) {
+  .kwe-article {
+    padding: 60px 10px;
   }
 }
 </style>
