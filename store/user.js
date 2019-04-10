@@ -1,6 +1,7 @@
 import $http from '../request/http'
 
 const defaultState = {
+  id: 0,
   role: '',
   isLogin: false,
   isAdmin: false,
@@ -68,6 +69,8 @@ export const actions = {
 }
 export const mutations = {
   UPDATE_USER(state, data) {
+    this.state.userToken = data.userToken || ''
+    this.state.cache = {}
     this.state.user = {
       ...state,
       ...data

@@ -11,7 +11,7 @@
         </div>
         <template v-if="userStatus.isAdmin">
           <div class="kwe-edit">
-            <span class="label">操作：</span>
+            <span class="label" :data-id="authorId">操作：</span>
             <nuxt-link to="/edit" class="kwe-link">编辑</nuxt-link>
             <span class="kwe-link kwe-delete" @click="deleteArticle">删除</span>
           </div>
@@ -43,6 +43,9 @@ export default {
     },
     userStatus() {
       return this.$store.state.user
+    },
+    authorId() {
+      return this.article.author ? this.article.author.id : ''
     }
   },
   fetch({ store, route }) {

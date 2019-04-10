@@ -6,6 +6,7 @@
         <li
           v-for="({src, pid, name}) in list"
           :key="pid"
+          :class="{'disabled': pid === '001_110' && !userStatus.isAdmin}"
         >
           <nuxt-link :to="src" class="eui-item" :class="{active: pid === typeList.value}">{{ name }}</nuxt-link>
         </li>
@@ -25,6 +26,11 @@ export default {
   },
   data() {
     return {}
+  },
+  computed: {
+    userStatus() {
+      return this.$store.state.user
+    }
   },
   methods: {
     toogle(tid) {
@@ -70,6 +76,9 @@ export default {
       background: @bg;
       box-shadow: rgba(0, 0, 0, 0.1) 0 1px 2px;
       cursor: pointer;
+      .disabled {
+        display: none;
+      }
       .eui-item {
         display: block;
         position: relative;

@@ -14,7 +14,8 @@ export const typeToId = {
   frame: '001_015',
   mongoose: '001_016',
   linux: '001_017',
-  other: '001_014'
+  other: '001_014',
+  owner: '001_110'
 }
 export const idToName = {
   '001_001': ['最新', 'all'],
@@ -28,7 +29,8 @@ export const idToName = {
   '001_015': ['框架', 'frame'],
   '001_016': ['Mongoose', 'mongoose'],
   '001_017': ['Linux', 'linux'],
-  '001_014': ['其他', 'other']
+  '001_014': ['其他', 'other'],
+  '001_110': ['个人', 'owner']
 }
 
 export const typeList = {
@@ -99,6 +101,11 @@ export const typeList = {
           src: '/?type=other',
           pid: '001_014',
           name: '其他'
+        },
+        {
+          src: '/?type=owner',
+          pid: '001_110',
+          name: '个人'
         }
       ]
     },

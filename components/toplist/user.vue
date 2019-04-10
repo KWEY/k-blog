@@ -48,7 +48,12 @@ export default {
       }
     },
     logout() {
-      this.$store.dispatch('user/logout')
+      this.$store.dispatch('user/logout').then(() => {
+        const type = this.$route.query.type || 'all'
+        const page = this.$route.query.page || 1
+        const keyword = this.$route.query.keyword || ''
+        this.$store.dispatch('getArticles', { type, page, keyword })
+      })
     },
     changePassword() {
       this.$router.push('/password')

@@ -57,7 +57,7 @@ export const actions = {
     }
     commit('LOADING', true)
     await $http
-      .getArticles({ type, page, keyword }, state.userToken)
+      .getArticles({ type, page, keyword, userToken: state.userToken })
       .then(res => {
         if (res.success) {
           res.type = type

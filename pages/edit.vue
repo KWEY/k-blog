@@ -1,5 +1,5 @@
 <template>
-  <div class="kwe-json" @click="closeToast">
+  <div class="kwe-json" :data-id="authorId" @click="closeToast">
     <div class="kwe-json-title">
       <div class="kwe-type">type: </div>
       <select v-model="type" class="kwe-type-input">
@@ -58,6 +58,9 @@ export default {
     },
     userStatus() {
       return this.$store.state.user
+    },
+    authorId() {
+      return this.article.author ? this.article.author.id : ''
     }
   },
   watch: {
@@ -141,7 +144,7 @@ export default {
       const article = this.$store.state.article.article
       const data = {
         title: this.title,
-        author: article.author.id,
+        author: id,
         id: article.id,
         description: this.description,
         type: [this.type],

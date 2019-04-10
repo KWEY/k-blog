@@ -9,7 +9,7 @@
         <div class="kwe-bottom">
           <div class="kwe-info">
             <span class="kwe-times">{{ item.views }}</span>
-            <nuxt-link v-for="item of item.type" :key="item.name[1]" :to="'/?type=' + item.name[1]" class="kwe-type">{{ item.name[0] }}</nuxt-link>
+            <nuxt-link v-for="ele of item.type" :key="ele.name[1]" :to="'/?type=' + ele.name[1]" class="kwe-type">{{ ele.name[0] }}</nuxt-link>
           </div>
           <div class="kwe-time">{{ new Date(item.created_at).toLocaleString() }}</div>
         </div>
