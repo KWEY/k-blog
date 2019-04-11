@@ -204,7 +204,7 @@ export default {
         content: '';
         display: block;
         position: absolute;
-        top: 3px;
+        top: 2px;
         left: -9px;
         width: 15px;
         height: 15px;
