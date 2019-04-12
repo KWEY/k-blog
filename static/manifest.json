@@ -1,0 +1,24 @@
+{
+  "dir": "ltr",
+  "lang": "en",
+  "name": "雪人的日志",
+  "scope": "/",
+  "display": "standalone",
+  "start_url": "/",
+  "short_name": "K-Blog",
+  "theme_color": "transparent",
+  "description": "Share More, Gain More. - K-Blog",
+  "orientation": "any",
+  "background_color": "transparent",
+  "related_applications": [],
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "./logo.png",
+      "sizes": "148x148",
+      "type": "image/png"
+    }
+  ],
+  "gcm_sender_id": "127022491622",
+  "gcm_user_visible_only": true
+}

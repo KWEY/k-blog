@@ -30,8 +30,8 @@
         </template>
       </div>
     </div>
-    <div class="kwe-description" v-text="article.description"/>
-    <div class="kwe-context" v-html="article.content || '文章已删除'"/>
+    <div class="kwe-description" v-text="article.description" />
+    <div class="kwe-context" v-html="article.content || '文章已删除'" />
     <toast
       :show="toast.show"
       :content="toast.content"

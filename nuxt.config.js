@@ -17,7 +17,10 @@ module.exports = {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: pkg.description }
     ],
-    link: [{ rel: 'icon', type: 'image/png', href: '/icon.png' }]
+    link: [
+      { rel: 'icon', type: 'image/png', href: '/icon.png' },
+      { rel: 'manifest', href: '/manifest.json' }
+    ]
   },
   render: {
     resourceHints: false
@@ -102,7 +105,7 @@ module.exports = {
         urlLoader.use = [
           {
             loader: 'url-loader',
-            options: { limit: 819200 }
+            options: { limit: 30480 }
           }
         ]
       }
