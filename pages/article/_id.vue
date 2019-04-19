@@ -4,7 +4,7 @@
       <div class="kwe-name">{{ article.title }}</div>
       <div class="kwe-bar-top">
         <div
-          v-if="article.updated_at > (article.created_at + 10000)"
+          v-if="article.updated_at > (article.created_at + 5000)"
           class="update"
         >
           {{ new Date(article.updated_at).toLocaleString() }}
