@@ -43,7 +43,7 @@ export default {
     // this.getUserIP(object => {
     //   console.log(object, '-----------')
     // })
-    this.set()
+    // this.set()
   },
 
   methods: {
