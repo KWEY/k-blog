@@ -1,0 +1,31 @@
+
+{
+  "apps": [{
+      "name": "k-blog", 
+      "script": "./server", 
+      "cwd": "/home/www/k-blog", 
+      "args": "", 
+      "interpreter": "", 
+      "interpreter_args": "", 
+      "watch": true, 
+      "ignore_watch": [                         
+          "node_modules",
+          "logs"
+      ],
+      "exec_mode": "cluster_mode", 
+      "instances": 4, 
+      "max_memory_restart": 8, 
+      "error_file": "./logs/blog-err.log", 
+      "out_file": "./logs/blog-out.log", 
+      "merge_logs": true, 
+      "log_date_format": "YYYY-MM-DD HH:mm:ss",
+      "min_uptime": "60s", 
+      "max_restarts": 30, 
+      "autorestart": true, 
+      "cron_restart": "", 
+      "restart_delay": "60s" , 
+      "env": {
+         "NODE_ENV": "production" 
+      }
+  }]
+}

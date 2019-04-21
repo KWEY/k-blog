@@ -31,6 +31,7 @@
   </div>
 </template>
 <script>
+import md5 from 'md5'
 import $http from '@/request/http'
 export default {
   name: 'Login',
@@ -86,18 +87,23 @@ export default {
         return
       }
       if (this.checkTel(0) && this.checkPassword()) {
-        this.$store.dispatch('user/login', this.user).then(data => {
-          this.result = data.msg
-          if (data.success) {
-            this.user = {
-              password: '',
-              tel: ''
+        this.$store
+          .dispatch('user/login', {
+            ...this.user,
+            password: md5(this.user.password)
+          })
+          .then(data => {
+            this.result = data.msg
+            if (data.success) {
+              this.user = {
+                password: '',
+                tel: ''
+              }
+              setTimeout(() => {
+                this.result = ''
+              }, 2000)
             }
-            setTimeout(() => {
-              this.result = ''
-            }, 2000)
-          }
-        })
+          })
       } else {
         this.result = '输入信息有误'
       }
