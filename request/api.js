@@ -5,6 +5,7 @@ const isPro = process.env.NODE_ENV === 'production'
 const baseUrl = isPro ? 'https://www.webq.top' : 'http://127.0.0.1:3000'
 const base = {
   statistical: `${baseUrl}/api/statistical`, // 获取统计信息
+  // 用户相关
   check: `${baseUrl}/api/user/check`, // 查看是否存在当前用户
   checkPassword: `${baseUrl}/api/user/checkpassword`, // 查看当前用户密码
   password: `${baseUrl}/api/password`, // 改密
@@ -13,15 +14,18 @@ const base = {
   logout: `${baseUrl}/api/logout`, // 退出登录
   author: `${baseUrl}/api/admin`, // 获取作者信息
   user: `${baseUrl}/api/user`, // 获取用户信息
+  // 文章相关
   upload: `${baseUrl}/api/article/post`, // 发布文章
   update: `${baseUrl}/api/article/update`, // 更新文章
   delete: `${baseUrl}/api/article/delete`, // 删除文章
   articles: `${baseUrl}/api/article`, // 获取文章列表，加上id获取指定文章
+  // 静态文件相关
   jq: `${baseUrl}/plugins/jquery-2.1.1.js`, // jq地址
   nav: `${baseUrl}/plugins/nav.js`, // nav地址
   player: `${baseUrl}/plugins/weplayer.js`, // weplayer地址
   demoFlv: `${baseUrl}/db/demo.flv`,
   editor: `${baseUrl}/plugins/wangEditor.min.js`, // editor地址
+  // 文档相关
   doc: `${baseUrl}/db/doc/` // 文档地址
 }
 export default base

@@ -1,0 +1,766 @@
+
+{
+  "orginal": "https://www.adobe.com/content/dam/acom/en/devnet/flv/video_file_format_spec_v10_1.pdf",
+  "typeList": [
+      {
+        "title": "1",
+        "name": "f4v文件格式",
+        "id": "#a1"
+      },
+      {
+        "title": "1.1",
+        "name": "概述",
+        "id": "#a1-1"
+      },
+      {
+        "title": "1.2",
+        "name": "简单数据类型",
+        "id": "#a1-2"
+      },
+      {
+        "title": "1.3",
+        "name": "f4v方框格式",
+        "id": "#a1-3"
+      },
+      {
+        "title": "1.4",
+        "name": "f4v盒层次结构",
+        "id": "#a1-4"
+      },
+      {
+        "title": "1.5",
+        "name": "样本描述框层次结构",
+        "id": "#a1-5"
+      },
+      {
+        "title": "1.6",
+        "name": "搬运不受支持的箱子",
+        "id": "#a1-6"
+      },
+      {
+        "title": "1.7",
+        "name": "盒子的订购",
+        "id": "#a1-7"
+      },
+      {
+        "title": "1.8",
+        "name": "支持的媒体类型",
+        "id": "#a1-8"
+      },
+      {
+        "title": "1.8.1",
+        "name": "支持的音频类型 ",
+        "id": "#a1-8-1"
+      },
+      {
+        "title": "1.8.2",
+        "name": "支持的视频类型",
+        "id": "#a1-8-2"
+      },
+      {
+        "title": "1.8.3",
+        "name": "支持的数据类型",
+        "id": "#a1-8-3"
+      },
+      {
+        "title": "2",
+        "name": "f4v方框定义",
+        "id": "#a2"
+      },
+      {
+        "title": "2.1",
+        "name": "文件类型框",
+        "id": "#a2-1"
+      },
+      {
+        "title": "2.2",
+        "name": "渐进式下载信息框",
+        "id": "#a2-2"
+      },
+      {
+        "title": "2.3",
+        "name": "Movie box",
+        "id": "#a2-3"
+      },
+      {
+        "title": "2.4",
+        "name": "Movie Header box",
+        "id": "#a2-4"
+      },
+      {
+        "title": "2.5",
+        "name": "Track box",
+        "id": "#a2-5"
+      },
+      {
+        "title": "2.5.1",
+        "name": "Track Header box",
+        "id": "#a2-5-1"
+      },
+      {
+        "title": "2.5.2",
+        "name": "Edit box",
+        "id": "#a2-5-2"
+      },
+      {
+        "title": "2.6",
+        "name": "Media box",
+        "id": "#a2-6"
+      },
+      {
+        "title": "2.6.1",
+        "name": "Media Header box",
+        "id": "#a2-6-1"
+      },
+      {
+        "title": "2.6.2",
+        "name": "Handler Reference box",
+        "id": "#a2-6-2"
+      },
+      {
+        "title": "2.7",
+        "name": "Media Information box",
+        "id": "#a2-7"
+      },
+      {
+        "title": "2.7.1",
+        "name": "Video Media Header box",
+        "id": "#a2-7-1"
+      },
+      {
+        "title": "2.7.2",
+        "name": "Sound Media Header box",
+        "id": "#a2-7-2"
+      },
+      {
+        "title": "2.7.3",
+        "name": "Hint Media Header box",
+        "id": "#a2-7-3"
+      },
+      {
+        "title": "2.7.4",
+        "name": "Null Media Header box",
+        "id": "#a2-7-4"
+      },
+      {
+        "title": "2.7.5",
+        "name": "Data Information box",
+        "id": "#a2-7-5"
+      },
+      {
+        "title": "2.7.6",
+        "name": "Sample Table box",
+        "id": "#a2-7-6"
+      },
+      {
+        "title": "2.7.6.1",
+        "name": "Decoding Time to Sample box",
+        "id": "#a2-7-6-1"
+      },
+      {
+        "title": "2.7.6.2",
+        "name": "Composition Time to Sample box",
+        "id": "#a2-7-6-2"
+      },
+      {
+        "title": "2.7.6.3",
+        "name": "Sample to Chunk box",
+        "id": "#a2-7-6-3"
+      },
+      {
+        "title": "2.7.6.4",
+        "name": "Sample Size box",
+        "id": "#a2-7-6-4"
+      },
+      {
+        "title": "2.7.6.5",
+        "name": "Chunk Offset box",
+        "id": "#a2-7-6-5"
+      },
+      {
+        "title": "2.7.6.6",
+        "name": "Sync Sample box",
+        "id": "#a2-7-6-6"
+      },
+      {
+        "title": "2.7.6.7",
+        "name": "Independent and Disposable Samples box",
+        "id": "#a2-7-6-7"
+      },
+      {
+        "title": "2.8",
+        "name": "Sample Description Box Structure",
+        "id": "#a2-8"
+      },
+      {
+        "title": "2.8.1",
+        "name": "Sample Description box",
+        "id": "#a2-8-1"
+      },
+      {
+        "title": "2.8.2",
+        "name": "VisualSampleEntry box",
+        "id": "#a2-8-2"
+      },
+      {
+        "title": "2.8.3",
+        "name": "AudioSampleEntry box",
+        "id": "#a2-8-3"
+      },
+      {
+        "title": "2.8.4",
+        "name": "MetaDataSampleEntry box",
+        "id": "#a2-8-4"
+      },
+      {
+        "title": "2.8.5",
+        "name": "SampleEntry box ",
+        "id": "#a2-8-5"
+      },
+      {
+        "title": "2.8.6",
+        "name": "HintSampleEntry box",
+        "id": "#a2-8-6"
+      },
+      {
+        "title": "2.8.7",
+        "name": "带有片段的HTTP流的示例描述",
+        "id": "#a2-8-7"
+      },
+      {
+        "title": "2.8.7.1",
+        "name": "Adobe MUX提示示例输入框 ",
+        "id": "#a2-8-7-1"
+      },
+      {
+        "title": "2.8.7.2",
+        "name": "Adobe MUX提示进程框",
+        "id": "#a2-8-7-2"
+      },
+      {
+        "title": "2.8.7.3",
+        "name": "Adobe MUX时间偏移框",
+        "id": "#a2-8-7-3"
+      },
+      {
+        "title": "2.8.8",
+        "name": "受保护内容的样品说明",
+        "id": "#a2-8-8"
+      },
+      {
+        "title": "2.8.8.1",
+        "name": "加密视频盒",
+        "id": "#a2-8-8-1"
+      },
+      {
+        "title": "2.8.8.2",
+        "name": "加密的音频盒",
+        "id": "#a2-8-8-2"
+      },
+      {
+        "title": "2.8.8.3",
+        "name": "加密数据箱",
+        "id": "#a2-8-8-3"
+      },
+      {
+        "title": "2.8.8.4",
+        "name": "保护方案信息框",
+        "id": "#a2-8-8-4"
+      },
+      {
+        "title": "2.8.8.5",
+        "name": "原始格式框",
+        "id": "#a2-8-8-5"
+      },
+      {
+        "title": "2.8.8.6",
+        "name": "方案类型框",
+        "id": "#a2-8-8-6"
+      },
+      {
+        "title": "2.8.8.7",
+        "name": "方案信息框",
+        "id": "#a2-8-8-7"
+      },
+      {
+        "title": "2.8.8.8",
+        "name": "Boxes for Adobe's Protection Scheme",
+        "id": "#a2-8-8-8"
+      },
+      {
+        "title": "2.9",
+        "name": "Movie Extends box",
+        "id": "#a2-9"
+      },
+      {
+        "title": "2.9.1",
+        "name": "Movie Extends Header box ",
+        "id": "#a2-9-1"
+      },
+      {
+        "title": "2.9.2",
+        "name": "Track Extends box",
+        "id": "#a2-9-2"
+      },
+      {
+        "title": "2.10",
+        "name": "User Data box",
+        "id": "#a2-10"
+      },
+      {
+        "title": "2.11",
+        "name": "用于HTTP流的F4V设备",
+        "id": "#a2-11"
+      },
+      {
+        "title": "2.11.1",
+        "name": "Fragment Random Access box",
+        "id": "#a2-11-1"
+      },
+      {
+        "title": "2.11.2",
+        "name": "Bootstrap Info box",
+        "id": "#a2-11-2"
+      },
+      {
+        "title": "2.12",
+        "name": "Movie Fragment box",
+        "id": "#a2-12"
+      },
+      {
+        "title": "2.12.1",
+        "name": "Movie Fragment Header box",
+        "id": "#a2-12-1"
+      },
+      {
+        "title": "2.12.2",
+        "name": "Track Fragment box",
+        "id": "#a2-12-2"
+      },
+      {
+        "title": "2.13",
+        "name": "Media Data box ",
+        "id": "#a2-13"
+      },
+      {
+        "title": "2.13.1",
+        "name": "提示HTTP流的跟踪示例",
+        "id": "#a2-13-1"
+      },
+      {
+        "title": "2.14",
+        "name": "Meta box",
+        "id": "#a2-14"
+      },
+      {
+        "title": "2.15",
+        "name": "Free Space boxes ",
+        "id": "#a2-15"
+      },
+      {
+        "title": "2.16",
+        "name": "Movie Fragment Random Access box",
+        "id": "#a2-16"
+      },
+      {
+        "title": "2.16.1",
+        "name": "Track Fragment Random Access box ",
+        "id": "#a2-16-1"
+      },
+      {
+        "title": "2.16.2",
+        "name": "Movie Fragment Random Access Offset box",
+        "id": "#a2-16-2"
+      },
+      {
+        "title": "3",
+        "name": "F4V Metadata",
+        "id": "#a3"
+      },
+      {
+        "title": "3.1",
+        "name": "Tag box",
+        "id": "#a3-1"
+      },
+      {
+        "title": "3.2",
+        "name": "XMP Metadata box",
+        "id": "#a3-2"
+      },
+      {
+        "title": "3.3",
+        "name": "ilst box",
+        "id": "#a3-3"
+      },
+      {
+        "title": "3.4",
+        "name": "Text Track Metadata ",
+        "id": "#a3-4"
+      },
+      {
+        "title": "3.4.1",
+        "name": "Style box",
+        "id": "#a3-4-1"
+      },
+      {
+        "title": "3.4.2",
+        "name": "Highlight box",
+        "id": "#a3-4-2"
+      },
+      {
+        "title": "3.4.3",
+        "name": "Highlight Color box",
+        "id": "#a3-4-3"
+      },
+      {
+        "title": "3.4.4",
+        "name": "Karaoke box",
+        "id": "#a3-4-4"
+      },
+      {
+        "title": "3.4.5",
+        "name": "Scroll Delay box",
+        "id": "#a3-4-5"
+      },
+      {
+        "title": "3.4.6",
+        "name": "Drop Shadow Offset box",
+        "id": "#a3-4-6"
+      },
+      {
+        "title": "3.4.7",
+        "name": "Drop Shadow Alpha box",
+        "id": "#a3-4-7"
+      },
+      {
+        "title": "3.4.8",
+        "name": "Hypertext box",
+        "id": "#a3-4-8"
+      },
+      {
+        "title": "3.4.9",
+        "name": "Text Box box",
+        "id": "#a3-4=9"
+      },
+      {
+        "title": "3.4.10",
+        "name": "Blinking box",
+        "id": "#a3-4-10"
+      },
+      {
+        "title": "3.4.11",
+        "name": "Text Wrap box",
+        "id": "#a3-4-11"
+      },
+      {
+        "title": "4",
+        "name": "附件A.嵌入提示点",
+        "id": "#a4"
+      },
+      {
+        "title": "4.1",
+        "name": "概述",
+        "id": "#a4-1"
+      },
+      {
+        "title": "4.2",
+        "name": "AMF样本格式",
+        "id": "#a4-2"
+      },
+      {
+        "title": "4.3",
+        "name": "AMF数据跟踪结构",
+        "id": "#a4-3"
+      },
+      {
+        "title": "4.3.1",
+        "name": "解码数据轨",
+        "id": "#a4-3-1"
+      },
+      {
+        "title": "4.4",
+        "name": "渐进式下载",
+        "id": "#a4-4"
+      },
+      {
+        "title": "4.5",
+        "name": "多个数据轨",
+        "id": "#a4-5"
+      },
+      {
+        "title": "5",
+        "name": "附录B.Flash播放器元数据",
+        "id": "#a5"
+      },
+      {
+        "title": "5.1",
+        "name": "流属性",
+        "id": "#a5-1"
+      },
+      {
+        "title": "5.2",
+        "name": "图像元数据",
+        "id": "#a5-2"
+      },
+      {
+        "title": "6",
+        "name": "附录C.HTTP流：文件结构",
+        "id": "#a6"
+      },
+      {
+        "title": "6.1",
+        "name": "概述",
+        "id": "#a6-1"
+      },
+      {
+        "title": "6.2",
+        "name": "HTTP流段",
+        "id": "#a6-2"
+      },
+      {
+        "title": "6.3",
+        "name": "HTTP流片段",
+        "id": "#a6-3"
+      },
+      {
+        "title": "6.4",
+        "name": "URL构造",
+        "id": "#a6-4"
+      },
+      {
+        "title": "6.5",
+        "name": "Adobe多路提示跟踪格式",
+        "id": "#a6-5"
+      },
+      {
+        "title": "7",
+        "name": "附录D.F4V加密-",
+        "id": "#a7"
+      },
+      {
+        "title": "7.1",
+        "name": "概述",
+        "id": "#a7-1"
+      },
+      {
+        "title": "7.2",
+        "name": "加密过程",
+        "id": "#a7-2"
+      },
+      {
+        "title": "7.3",
+        "name": "样本的加密",
+        "id": "#a7-3"
+      },
+      {
+        "title": "7.3.1",
+        "name": "接入单元头",
+        "id": "#a7-3-1"
+      },
+      {
+        "title": "7.3.2",
+        "name": "加密样本的填充",
+        "id": "#a7-3-2"
+      },
+      {
+        "title": "8",
+        "name": "附录E.FLV文件格式",
+        "id": "#a8"
+      },
+      {
+        "title": "8.1",
+        "name": "1概述",
+        "id": "#a8-1"
+      },
+      {
+        "title": "8.2",
+        "name": "FLV标题",
+        "id": "#a8-2"
+      },
+      {
+        "title": "8.3",
+        "name": "FLV文件正文",
+        "id": "#a8-3"
+      },
+      {
+        "title": "8.4",
+        "name": "FLV标记定义",
+        "id": "#a8-4"
+      },
+      {
+        "title": "8.4.1",
+        "name": "FLV标签",
+        "id": "#a8-4-1"
+      },
+      {
+        "title": "8.4.2",
+        "name": "音频标签",
+        "id": "#a8-4-2"
+      },
+      {
+        "title": "8.4.2.1",
+        "name": "音频数据",
+        "id": "#a8-4-2-1"
+      },
+      {
+        "title": "8.4.2.2",
+        "name": "aacaudiodata",
+        "id": "#a8-4-2-2"
+      },
+      {
+        "title": "8.4.3",
+        "name": "视频标签",
+        "id": "#a8-4-3"
+      },
+      {
+        "title": "8.4.3.1",
+        "name": "视频数据",
+        "id": "#a8-4-3-1"
+      },
+      {
+        "title": "8.4.3.2",
+        "name": "avcvideopacket",
+        "id": "#a8-4-3-2"
+      },
+      {
+        "title": "8.4.4",
+        "name": "数据标签",
+        "id": "#a8-4-4"
+      },
+      {
+        "title": "8.4.4.1",
+        "name": "1脚本数据",
+        "id": "#a8-4-4-1"
+      },
+      {
+        "title": "8.4.4.2",
+        "name": "2脚本数据值",
+        "id": "#a8-4-4-2"
+      },
+      {
+        "title": "8.4.4.3",
+        "name": "脚本数据日期",
+        "id": "#a8-4-4-3"
+      },
+      {
+        "title": "8.4.4.4",
+        "name": "脚本数据ecmaarray",
+        "id": "#a8-4-4-4"
+      },
+      {
+        "title": "8.4.4.5",
+        "name": "脚本数据字符串",
+        "id": "#a8-4-4-5"
+      },
+      {
+        "title": "8.4.4.6",
+        "name": "脚本数据对象",
+        "id": "#a8-4-4-6"
+      },
+      {
+        "title": "8.4.4.7",
+        "name": "脚本数据对象结束",
+        "id": "#a8-4-4-7"
+      },
+      {
+        "title": "8.4.4.8",
+        "name": "ScriptDataObjectProperty",
+        "id": "#a8-4-4-8"
+      },
+      {
+        "title": "8.4.4.9",
+        "name": "脚本数据限制数组",
+        "id": "#a8-4-4-9"
+      },
+      {
+        "title": "8.4.4.10",
+        "name": "脚本数据字符串",
+        "id": "#a8-4-4-10"
+      },
+      {
+        "title": "8.5",
+        "name": "元数据",
+        "id": "#a8-5"
+      },
+      {
+        "title": "8.6",
+        "name": "flv中的xmp元数据",
+        "id": "#a8-6"
+      },
+      {
+        "title": "9",
+        "name": "附件F.FLV加密",
+        "id": "#a9"
+      },
+      {
+        "title": "9.1",
+        "name": "概述",
+        "id": "#a9-1"
+      },
+      {
+        "title": "9.2",
+        "name": "标题信息",
+        "id": "#a9-2"
+      },
+      {
+        "title": "9.2.1",
+        "name": "AdditionalHeader对象",
+        "id": "#a9-2-1"
+      },
+      {
+        "title": "9.2.2",
+        "name": "加密头对象",
+        "id": "#a9-2-2"
+      },
+      {
+        "title": "9.2.3",
+        "name": "标准编码参数对象",
+        "id": "#a9-2-3"
+      },
+      {
+        "title": "9.2.4",
+        "name": "AES-CBC加密参数对象",
+        "id": "#a9-2-4"
+      },
+      {
+        "title": "9.2.5",
+        "name": "密钥信息对象",
+        "id": "#a9-2-5"
+      },
+      {
+        "title": "9.2.6",
+        "name": "FlashAccessv2对象",
+        "id": "#a9-2-6"
+      },
+      {
+        "title": "9.3",
+        "name": "内容加密",
+        "id": "#a9-3"
+      },
+      {
+        "title": "9.3.1",
+        "name": "加密标记头",
+        "id": "#a9-3-1"
+      },
+      {
+        "title": "9.3.2",
+        "name": "滤波器参数",
+        "id": "#a9-3-2"
+      },
+      {
+        "title": "9.3.3",
+        "name": "加密正文",
+        "id": "#a9-3-3"
+      },
+      {
+        "title": "9.3.3.1",
+        "name": "填料",
+        "id": "#a9-3-3-1"
+      },
+      {
+        "title": "9.4",
+        "name": "加密和元数据",
+        "id": "#a9-4"
+      }
+  ]
+}

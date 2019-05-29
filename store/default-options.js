@@ -138,6 +138,11 @@ export const typeList = {
           src: '/doc/mask',
           pid: '003_002',
           name: 'CSS Mask'
+        },
+        {
+          src: '/doc/f4v',
+          pid: '003_003',
+          name: 'F4V'
         }
       ]
     }

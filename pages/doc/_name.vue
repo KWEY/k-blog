@@ -49,13 +49,15 @@ export default {
   width: 100%;
   height: 100%;
   background: #fff;
-
+  h1 {
+    margin: 50px 0 0;
+  }
   .doc-to-top {
     position: fixed;
-    bottom: 10px;
+    bottom: 50%;
     right: 40px;
-    width: 60px;
-    height: 60px;
+    width: 40px;
+    height: 40px;
     border: 1px solid #ccc;
     border-radius: 50%;
     cursor: pointer;
