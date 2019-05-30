@@ -55,6 +55,7 @@ export default {
   transition: left 0.3s;
   text-align: left;
   background: #fff;
+  word-break: break-word;
   .doc-title {
     font-size: 20px;
     color: #005a9c;
