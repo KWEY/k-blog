@@ -5,8 +5,8 @@
       <h3>统计：</h3>
       <ul class="kwe-statistical">
         <li>笔记：（ {{ total || 0 }} ）篇</li>
-        <li>工具页：（ 2 ） 页</li>
-        <li>文档：（ 2 ）篇</li>
+        <li>工具页：（ {{ typeList.list[1].list.length }} ） 页</li>
+        <li>文档：（ {{ typeList.list[2].list.length }} ）篇</li>
       </ul>
       <h3>今日数据：</h3>
       <ul class="kwe-statistical">
@@ -36,6 +36,9 @@ export default {
     },
     total() {
       return this.$store.state.total
+    },
+    typeList() {
+      return this.$store.state.typeList
     }
   }
 }
