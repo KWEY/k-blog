@@ -12,8 +12,8 @@ export const actions = {
       return
     }
     commit('CURRENT_DOC', doc)
-    commit('DOC_MENU', null)
-    commit('DOC_ARTICLE', null)
+    commit('DOC_MENU', {})
+    commit('DOC_ARTICLE', {})
     const type = $http.getDocList(doc)
     const doces = $http.getDoc(doc)
     await type.then(res => {

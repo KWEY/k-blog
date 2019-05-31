@@ -74,7 +74,7 @@ export default {
     max-width: 100%;
   }
   a {
-    font-size: 16px;
+    font-size: 14px;
     color: #00a1d6;
     cursor: pointer;
     &:hover {

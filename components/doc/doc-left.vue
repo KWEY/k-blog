@@ -49,7 +49,7 @@ export default {
   width: 300px;
   height: 100%;
   text-align: center;
-  line-height: 2;
+  line-height: 1.5;
   background: #fff;
   transform: translateX(0);
   transition: transform 0.3s;

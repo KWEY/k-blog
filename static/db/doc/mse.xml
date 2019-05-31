@@ -86,69 +86,69 @@
 <p>Presentation Start Time </p>
 <p>--演示开始时间是演示文稿中最早的时间点，指定初始播放位置和最早可能的位置。使用此规范创建的所有演示文稿的演示文稿开始时间均为0</p>
 <p class="note">为了确定HTMLMediaElement.buffered是否包含包含当前播放位置的TimeRange，实现可以选择允许在演示时或之后的当前播放位置开始时间和第一个TimeRange播放第一个TimeRange之前，如果TimeRange在一个相当短的时间内开始，比如1秒，在演示开始时间之后。这种容差适应了这样的现实：多路复用流通常不会在演示开始时精确地开始所有轨道。无论此容差如何，实现都必须报告实际缓冲范围。 </p>
-<P>Presentation Interval </P>
+<p>Presentation Interval </p>
 <p>--编码帧的表示间隔是从其表示时间戳到表示时间戳加上编码帧的持续时间的时间间隔。例如，如果编码帧具有10秒的呈现时间戳和100毫秒的编码帧持续时间，则呈现间隔将是[10-10.1]。请注意，范围的起点是包含的，但范围的结尾是独占的。</p>
-<P>Presentation Order </P>
+<p>Presentation Order </p>
 <p>--编码帧在演示文稿中呈现的顺序。通过按照其呈现时间戳以单调递增的顺序对编码帧进行排序来实现呈现顺序。</p>
-<P>Presentation Timestamp</P>
+<p>Presentation Timestamp</p>
 <p>--对演示文稿中特定时间的引用。编码帧中的呈现时间戳指示何时应该呈现帧。</p>
-<P>Random Access Point </P>
+<p>Random Access Point </p>
 <p>--媒体片段中的一个位置，可以在不依赖片段中任何先前数据的情况下开始解码和连续播放。对于视频，这往往是I帧的位置。在音频的情况下，大多数音频帧可以被视为随机接入点。由于视频轨道往往具有更稀疏的随机接入点分布，因此这些点的位置通常被认为是多路复用流的随机接入点。</p>
-<P>SourceBuffer字节流格式规范</P>
+<p>SourceBuffer字节流格式规范</p>
 <p>--特定的字节流格式规范，描述SourceBuffer实例接受的字节流的格式。根据传递给创建对象的addSourceBuffer（）调用的类型，选择SourceBuffer对象的字节流格式规范。</p>
-<P>SourceBuffer configuration</P>
+<p>SourceBuffer configuration</p>
 <p>--一个特定的一组轨道，分布在一个或多个由单个MediaSource实例拥有的SourceBuffer对象上。</p>
 <p>--Implementations必须支持至少1个具有以下配置的MediaSource对象：</p>
 <p>----单个SourceBuffer，带有1个音轨和/或1个视</p>
 <p>----Two SourceBuffers，其中一个处理单个音轨，另一个处理单个视频轨道。</p>
-<P>--MediaSource对象必须支持上述每个配置，但它们一次只需要支持一个配置。一次支持多个配置或其他配置是实施质量问题。</P>
-<P>Track Description</P>
+<p>--MediaSource对象必须支持上述每个配置，但它们一次只需要支持一个配置。一次支持多个配置或其他配置是实施质量问题。</p>
+<p>Track Description</p>
 <p>--字节流格式特定结构，为单个轨道提供Track ID，编解码器配置和其他元数据。单个初始化段内的每个轨道描述都具有唯一的轨道ID。如果Track ID在初始化段中不唯一，则UA必须运行追加错误算法。 </p>
-<P>Track ID </P>
+<p>Track ID </p>
 <p>--Track ID是一种字节流格式特定的标识符，它将字节流的各部分标记为特定轨道的一部分。轨道描述中的轨道ID标识媒体段的哪些部分属于该轨道。</p>
 <h3 id="a2"> 2. MediaSource对象</h3>
-<P>MediaSource对象表示HTMLMediaElement的媒体数据源。它跟踪此源的readyState以及可用于将媒体数据添加到演示文稿的SourceBuffer对象列表。 MediaSource对象由Web应用程序创建，然后附加到HTMLMediaElement。应用程序使用sourceBuffers中的SourceBuffer对象将媒体数据添加到此源。在播放期间需要时，HTMLMediaElement从MediaSource对象中提取此媒体数据。 </P>
-<P>每个MediaSource对象都有一个实时可搜索范围变量，用于存储规范化的TimeRanges对象。创建MediaSource对象时，此变量初始化为空的TimeRanges对象，由setLiveSeekableRange（）和clearLiveSeekableRange（）维护，并在HTMLMediaElement Extensions中用于修改HTMLMediaElement.seekable行为。</P>
+<p>MediaSource对象表示HTMLMediaElement的媒体数据源。它跟踪此源的readyState以及可用于将媒体数据添加到演示文稿的SourceBuffer对象列表。 MediaSource对象由Web应用程序创建，然后附加到HTMLMediaElement。应用程序使用sourceBuffers中的SourceBuffer对象将媒体数据添加到此源。在播放期间需要时，HTMLMediaElement从MediaSource对象中提取此媒体数据。 </p>
+<p>每个MediaSource对象都有一个实时可搜索范围变量，用于存储规范化的TimeRanges对象。创建MediaSource对象时，此变量初始化为空的TimeRanges对象，由setLiveSeekableRange（）和clearLiveSeekableRange（）维护，并在HTMLMediaElement Extensions中用于修改HTMLMediaElement.seekable行为。</p>
 <pre>
 enum ReadyState {
     "closed",
     "open",
     "ended"
 }; </pre>
-<P>closed:</P>
-<P>表示源当前未附加到媒体元素。</P>
-<P>open:</P>
-<P>open源已由媒体元素打开，可以将数据附加到sourceBuffers中的SourceBuffer对象。</P>
-<P>ended:</P>
-<P>ends源仍然附加到媒体元素，但是已经调用了endOfStream（）</P>
+<p>closed:</p>
+<p>表示源当前未附加到媒体元素。</p>
+<p>open:</p>
+<p>open源已由媒体元素打开，可以将数据附加到sourceBuffers中的SourceBuffer对象。</p>
+<p>ended:</p>
+<p>ends源仍然附加到媒体元素，但是已经调用了endOfStream（）</p>
 <pre>
 enum EndOfStreamError {
     "network",
     "decode"
 }; </pre>
-<P>network:</P>
-<P>终止播放并发出网络错误信号。</P>
+<p>network:</p>
+<p>终止播放并发出网络错误信号。</p>
 <p class="note">JavaScript应用程序应使用此状态代码终止播放时出现网络错误。例如，如果在获取媒体数据时发生网络错误。</p>
-<P>decode:</P>
-<P>终止播放并发出解码错误信号。</P>
+<p>decode:</p>
+<p>终止播放并发出解码错误信号。</p>
 <p class="note">JavaScript应用程序应使用此状态代码终止播放并出现解码错误。例如，如果在处理带外媒体数据时发生解析错误。</p>
 <pre>
-    [Constructor]</p>
-    interface MediaSource : EventTarget {</p>
-        readonly attribute SourceBufferList sourceBuffers;</p>
-        readonly attribute SourceBufferList activeSourceBuffers;</p>
-        readonly attribute ReadyState       readyState;</p>
-                 attribute unrestricted double duration;</p>
-                 attribute EventHandler  onsourceopen;</p>
-                 attribute EventHandler  onsourceended;</p>
-                 attribute EventHandler  onsourceclose;</p>
-        SourceBuffer addSourceBuffer(DOMString type);</p>
-        void         removeSourceBuffer(SourceBuffer sourceBuffer);</p>
-        void         endOfStream(optional EndOfStreamError error);</p>
-        void         setLiveSeekableRange(double start, double end);</p>
-        void         clearLiveSeekableRange();</p>
-        static boolean isTypeSupported(DOMString type);</p>
-</div>
+    [Constructor]
+    interface MediaSource : EventTarget {
+        readonly attribute SourceBufferList sourceBuffers;
+        readonly attribute SourceBufferList activeSourceBuffers;
+        readonly attribute ReadyState       readyState;
+                 attribute unrestricted double duration;
+                 attribute EventHandler  onsourceopen;
+                 attribute EventHandler  onsourceended;
+                 attribute EventHandler  onsourceclose;
+        SourceBuffer addSourceBuffer(DOMString type);
+        void         removeSourceBuffer(SourceBuffer sourceBuffer);
+        void         endOfStream(optional EndOfStreamError error);
+        void         setLiveSeekableRange(double start, double end);
+        void         clearLiveSeekableRange();
+        static boolean isTypeSupported(DOMString type);
+</pre>
 <h4 id="a2-1"> 2.1. 属性</h4>
 <h5>sourceBuffers of type SourceBufferList, readonly</h5>
 <p>包含与此MediaSource关联的SourceBuffer对象列表。当readyState等于“已关闭”时，此列表将为空。一旦readyState转换为“open”，可以使用addSourceBuffer（）将SourceBuffer对象添加到此列表中。</p>
@@ -565,6 +565,7 @@ enum EndOfStreamError {
 <p class="note"> 对于跟踪缓冲区范围，这些显示时间范围基于呈现时间戳，帧持续时间以及跨多个源缓冲区中的跟踪缓冲区中的编码帧组的潜在编码帧组开始时间。 </p>
 <p>出于规范目的，此信息被视为存储在规范化的TimeRanges对象中。相交的跟踪缓冲区范围用于报告HTMLMediaElement.buffered，因此必须支持HTMLMediaElement.buffered的每个范围内的不间断回放。</p>
 <p class="note">这些编码帧组开始时间与编码帧处理算法中提到的略有不同，因为它们是不连续后所有轨道缓冲区中最早的表示时间戳。不管模式如何，不连续性可以在编码帧处理算法内发生，或者由编码帧移除算法产生。用于确定跟踪缓冲区范围的不相交性的阈值是特定于实现的。例如，为了减少意外的回放停顿，实现可以通过合并由小于目前在该轨道缓冲器中缓冲的最大帧持续时间的2倍的间隙分开的相邻范围来近似编码帧处理算法的不连续性检测逻辑。实现还可以使用编码的帧组开始时间作为跨越多路径SourceBuffer中的轨道缓冲器的范围开始时间，以进一步减少意外的播放停顿。</p>
+
 <h3 id="a3-4">3.4. Event Summary</h3>
 <p>updatestart:</p>
 <p>updating从false转换为true。</p>
@@ -1071,8 +1072,6 @@ enum EndOfStreamError {
 <p>5.未提供计算媒体段序列中每个样本的全局呈现时间戳所需的信息。</p>
 <p>例如，如果I1与M1，M2，M3相关联，则上述必须适用于所有组合I1 + M1，I1 + M2，I1 + M1 + M2，I1 + M2 + M3等。</p>
 <p>Byte流规格必须至少定义确保上述要求成立的约束条件。可以定义附加约束，例如以简化实现。</p>
-<p class="note"></p>
-
 <h3 id="a11">11. 一致性</h3>
 <p>除了标记为非规范性的部分外，本规范中的所有创作指南，图表，示例和注释都是非规范性的。本规范中的其他所有内容都是规范性的。 关键词可以，必须，不得，应该，也不应该按照[RFC2119]中的描述进行解释。</p>
 <h3 id="a12">12. Examples</h3>
@@ -1165,4 +1164,5 @@ enum EndOfStreamError {
   mediaSource.addEventListener('sourceopen', onSourceOpen.bind(this, video));
   video.src = window.URL.createObjectURL(mediaSource);
 </'script>
+</pre> 
 </div>

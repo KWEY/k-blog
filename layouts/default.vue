@@ -1,9 +1,9 @@
 <template>
   <div class="kwe-default-wrap">
-    <top-list/>
-    <nuxt/>
-    <footer-panel v-if="showHome" :sw="sw"/>
-    <load v-show="loading"/>
+    <top-list />
+    <nuxt />
+    <footer-panel v-if="showHome" :sw="sw" />
+    <load v-show="loading" />
   </div>
 </template>
 <script>

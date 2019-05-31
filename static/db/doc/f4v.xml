@@ -2699,3 +2699,4 @@ Padding     UI8 [Padding Length]	加密填充。
 <h4 id="a9-4">F.4加密和元数据</h4>
 <p>当FLV加密时，OnMetadata脚本数据应始终保持清晰。</p>
 <p>不同的flv解析器需要这一点来成功地传输flv，媒体播放器也需要这一点来为使用提供一些上下文信息。</p>
+</div>
