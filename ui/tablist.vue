@@ -1,12 +1,19 @@
 <template>
   <div class="eui-tablist">
     <div v-for="({title, tid, list}) in typeList.list" :key="tid" class="eui-list">
-      <p class="eui-name" @click.stop="toogle(tid)">{{ title }}</p>
-      <ul class="eui-wrap">
+      <p 
+        class="eui-name"
+        @click.stop="toogle(tid)"
+        @touchstart="touchstart(tid)"
+      >
+        {{ title }}
+      </p>
+      <ul class="eui-wrap" :class="{'disabled': tid === currentTid}">
         <li
           v-for="({src, pid, name}) in list"
           :key="pid"
           :class="{'disabled': pid === '001_110' && !userStatus.isAdmin}"
+          @touchend="touchend(tid)"
         >
           <nuxt-link :to="src" class="eui-item" :class="{active: pid === typeList.value}">{{ name }}</nuxt-link>
         </li>
@@ -25,7 +32,9 @@ export default {
     }
   },
   data() {
-    return {}
+    return {
+      currentTid: ''
+    }
   },
   computed: {
     userStatus() {
@@ -41,6 +50,16 @@ export default {
         tab = tid
       }
       this.$emit('tab-change', tab)
+    },
+    touchstart(e) {
+      setTimeout(() => {
+        this.currentTid = ''
+      }, 1)
+    },
+    touchend(tid) {
+      setTimeout(() => {
+        this.currentTid = tid
+      }, 100)
     }
   }
 }
@@ -76,6 +95,9 @@ export default {
       background: @bg;
       box-shadow: rgba(0, 0, 0, 0.1) 0 1px 2px;
       cursor: pointer;
+      &.disabled {
+        display: none !important;
+      }
       .disabled {
         display: none;
       }

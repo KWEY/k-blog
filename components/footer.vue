@@ -1,8 +1,8 @@
 <template>
   <footer class="kwe-foot">
-    <div>ヽ(́◕◞౪◟◕‵)ﾉ距2019年5月18日20：35(́◕◞౪◟◕‵)ﾉ</div>
-    <div class="kwe-duration">{{ duration }}</div>
-    <div class="kwe-sw">{{ sw }}</div>
+    <div>ヽ(́◕◞౪◟◕‵)ﾉ--我也是有底线的--(́◕◞౪◟◕‵)ﾉ</div>
+    <!-- <div class="kwe-duration">{{ duration }}</div>
+    <div class="kwe-sw">{{ sw }}</div>-->
   </footer>
 </template>
 
@@ -54,15 +54,16 @@ export default {
 .kwe-foot {
   position: relative;
   text-align: center;
-  height: 200px;
+  height: 100px;
   box-shadow: 0 -1px 2px 2px #ccc;
   box-sizing: border-box;
-  padding-top: 75px;
+  color: #9acfea;
+  background: rgba(8, 40, 70, 0.85);
+  line-height: 100px;
   .kwe-sw {
     position: absolute;
     top: 0;
     width: 100%;
-    line-height: 150px;
   }
 }
 </style>
