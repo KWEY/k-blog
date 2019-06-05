@@ -143,6 +143,11 @@ export const typeList = {
           src: '/doc/f4v',
           pid: '003_003',
           name: 'F4V'
+        },
+        {
+          src: '/doc/h264',
+          pid: '003_004',
+          name: 'H.264'
         }
       ]
     }
