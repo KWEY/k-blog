@@ -15,7 +15,7 @@ export default {
   data() {
     return {
       keyword: '',
-      limit: 15,
+      limit: 25,
       type: 'all',
       page: 1
     }

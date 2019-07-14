@@ -26,7 +26,7 @@ exports.getArticles = async (req, res, next) => {
   }
   keyword = decodeURIComponent(keyword)
   page = Number((page - 1) * limit) || 0
-  limit = Number(limit) || 15
+  limit = Number(limit) || 25
   if (!owner) {
     findOption.type = { $ne: ['001_110'] }
   }
