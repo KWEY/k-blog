@@ -43,10 +43,10 @@ export default {
   },
   methods: {
     initNav() {
-      if (window.NAV) {
+      if (window.Nav) {
         clearInterval(this.timer)
         /* eslint-disable */
-        new window.NAV.Nav({
+        new window.Nav({
           className: 'kwe-nav-wrap',
           url: '/db/nav-x.json'
         })
