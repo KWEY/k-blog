@@ -6,7 +6,7 @@ const { addCview } = require('./statistical')
 
 exports.getArticles = async (req, res, next) => {
   const { type = '', userToken = '' } = req.query
-  let { page = 1, limit = 25, keyword = '' } = req.query
+  let { page = 1, limit = 15, keyword = '' } = req.query
   let findOption = {}
   let owner = false
   if (userToken) {
@@ -26,7 +26,7 @@ exports.getArticles = async (req, res, next) => {
   }
   keyword = decodeURIComponent(keyword)
   page = Number((page - 1) * limit) || 0
-  limit = Number(limit) || 25
+  limit = Number(limit) || 15
   if (!owner) {
     findOption.type = { $ne: ['001_110'] }
   }

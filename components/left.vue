@@ -32,7 +32,7 @@ export default {
   },
   data() {
     return {
-      limit: 25,
+      limit: 15,
       page: 1
     }
   },
