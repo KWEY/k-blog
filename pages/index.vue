@@ -76,7 +76,7 @@ export default {
   width: 80%;
   min-width: 1000px;
   height: 100%;
-  margin-bottom: 40px;
+  margin: 0 auto 40px;
 }
 .kwe-menu {
   display: none;
