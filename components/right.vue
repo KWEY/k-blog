@@ -50,6 +50,7 @@ export default {
 .kwe-right-wrap {
   position: relative;
   width: 300px;
+  flex: none;
   margin: 30px 0 30px;
   .kwe-data {
     box-sizing: border-box;

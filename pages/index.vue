@@ -73,7 +73,8 @@ export default {
 .kwe-index {
   display: flex;
   justify-content: center;
-  width: 100%;
+  width: 80%;
+  min-width: 1000px;
   height: 100%;
   margin-bottom: 40px;
 }
