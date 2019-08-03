@@ -8,7 +8,7 @@ export const state = () => ({
 export const actions = {
   async getStatistical({ commit }) {
     await $http.statistical().then(data => {
-      if (data.success) {
+      if (data && data.success) {
         commit('UPDATE_INFO', data.data)
       }
     })

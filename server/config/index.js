@@ -7,7 +7,7 @@ const config = {
     tel: 16602113192,
     password: 'asdasd',
     email: 'zhangjq92@163.com',
-    motto: '代码是写给人看的，顺便给机器拿去玩玩'
+    motto: '那不叫挑食，叫吃饭有选择'
   },
   jwt: {
     secret: 'kwe',

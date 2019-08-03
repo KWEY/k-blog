@@ -6,7 +6,7 @@
     <left-panel :show-left="showLeft" />
     <right-panel />
     <div class="doc-to-top">
-      <a href="#a0"><to-top-svg class="doc-to-top-svg" /></a>
+      <a href="#a0"><rocketsvg-svg class="doc-to-top-svg" /></a>
     </div>
   </div>
 </template>
@@ -15,14 +15,15 @@
 import leftPanel from '@/components/doc/doc-left.vue'
 import rightPanel from '@/components/doc/doc-right.vue'
 import menusvg from '@/assets/menu.svg'
-import totopsvg from '@/assets/to-top.svg'
+// import totopsvg from '@/assets/to-top.svg'
+import rocketsvg from '@/assets/rocket.svg'
 export default {
   name: 'Doc',
   components: {
     'left-panel': leftPanel,
     'right-panel': rightPanel,
     'menu-svg': menusvg,
-    'to-top-svg': totopsvg
+    'rocketsvg-svg': rocketsvg
   },
   data() {
     return {
@@ -54,12 +55,11 @@ export default {
   }
   .doc-to-top {
     position: fixed;
-    bottom: 50%;
+    bottom: 10%;
     right: 40px;
     width: 40px;
     height: 40px;
-    border: 1px solid #ccc;
-    border-radius: 50%;
+    transform: rotate(-45deg);
     cursor: pointer;
     .doc-to-top-svg {
       width: 100%;
@@ -95,6 +95,7 @@ export default {
   td,
   th {
     border: 1px solid #ccc;
+    min-width: 100px;
   }
 }
 .doc-menu {

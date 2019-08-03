@@ -1,0 +1,160 @@
+{
+    "orginal": "https://gitlab.com/help/ci/yaml/README.md",
+    "typeList": [
+        {
+          "title": "1",
+          "name": "介绍",
+          "id": "#a1"
+        },
+        {
+          "title": "2",
+          "name": "验证 .gitlab-ci.yml",
+          "id": "#a2"
+        },
+        {
+          "title": "3",
+          "name": "Unavailable names for jobs",
+          "id": "#a3"
+        },
+        {
+          "title": "4",
+          "name": "使用保留关键字",
+          "id": "#a4"
+        },
+        {
+          "title": "5",
+          "name": "配置参数",
+          "id": "#a5"
+        },
+        {
+          "title": "6",
+          "name": "设置默认参数",
+          "id": "#a6"
+        },
+        {
+          "title": "7",
+          "name": "参数详细信息",
+          "id": "#a7"
+        },
+        {
+          "title": "7.1",
+          "name": "script",
+          "id": "#a7-1"
+        },
+        {
+          "title": "7.2",
+          "name": "image",
+          "id": "#a7-2"
+        },
+        {
+          "title": "7.3",
+          "name": "services",
+          "id": "#a7-3"
+        },
+        {
+          "title": "7.4",
+          "name": "before_script / after_script",
+          "id": "#a7-4"
+        },
+        {
+          "title": "7.5",
+          "name": "stages",
+          "id": "#a7-5"
+        },
+        {
+          "title": "7.6",
+          "name": "stage",
+          "id": "#a7-6"
+        },
+        {
+          "title": "7.7",
+          "name": "only/except (basic)",
+          "id": "#a7-7"
+        },
+        {
+          "title": "7.8",
+          "name": "only/except (advanced)高级",
+          "id": "#a7-8"
+        },
+        {
+          "title": "7.9",
+          "name": "tags",
+          "id": "#a7-9"
+        },
+        {
+          "title": "7.10",
+          "name": "allow_failure",
+          "id": "#a7-10"
+        },
+        {
+          "title": "7.11",
+          "name": "when",
+          "id": "#a7-11"
+        },
+        {
+          "title": "7.12",
+          "name": "environment",
+          "id": "#a7-12"
+        },
+        {
+          "title": "7.13",
+          "name": "cache",
+          "id": "#a7-13"
+        },
+        {
+          "title": "7.14",
+          "name": "artifacts",
+          "id": "#a7-14"
+        },
+        {
+          "title": "7.15",
+          "name": "dependencies",
+          "id": "#a7-15"
+        },
+        {
+          "title": "7.16",
+          "name": "coverage",
+          "id": "#a7-16"
+        },
+        {
+          "title": "7.17",
+          "name": "retry",
+          "id": "#a7-17"
+        },
+        {
+          "title": "7.18",
+          "name": "parallel",
+          "id": "#a7-18"
+        },
+        {
+          "title": "7.19",
+          "name": "trigger (PREMIUM)",
+          "id": "#a7-19"
+        },
+        {
+          "title": "7.20",
+          "name": "include",
+          "id": "#a7-10"
+        },
+        {
+          "title": "7.21",
+          "name": "extends",
+          "id": "#a7-21"
+        },
+        {
+          "title": "7.22",
+          "name": "pages",
+          "id": "#a7-22"
+        },
+        {
+          "title": "7.23",
+          "name": "variables",
+          "id": "#a7-23"
+        },
+        {
+          "title": "8",
+          "name": "废弃参数",
+          "id": "#a8"
+        }
+    ]
+}
