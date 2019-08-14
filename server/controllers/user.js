@@ -192,7 +192,33 @@ const getUserInfo = async (req, res, next) => {
     })
   }
 }
-// 获取管理员信息
+// 获取ip
+const getIp = (req, res, next) => {
+  let ip =
+    req.headers['x-forwarded-for'] ||
+    req.ip ||
+    req.connection.remoteAddress ||
+    req.socket.remoteAddress ||
+    req.connection.socket.remoteAddress ||
+    ''
+  if (ip.split(',').length > 0) {
+    ip = ip.split(',')[0]
+  }
+  ip = ip.substr(ip.lastIndexOf(':') + 1, ip.length)
+  if (ip) {
+    const geoip = require('geoip-lite')
+    const geo = geoip.lookup(ip)
+    res.json({
+      success: true,
+      data: geo
+    })
+    return
+  }
+  res.json({
+    success: false,
+    data: ''
+  })
+}
 const getAdminInfo = async (req, res, next) => {
   const role = config.user.role
   const domain = res.locals.blog.domain
@@ -279,6 +305,7 @@ const patchAdminPassword = async (req, res, next) => {
 }
 module.exports = {
   login,
+  getIp,
   logout,
   register,
   getUserInfo,

@@ -8,6 +8,7 @@
       <left-panel />
       <right-panel :showleft="showleft" />
     </div>
+    <div class="hide">{{ local }}</div>
   </section>
 </template>
 
@@ -17,6 +18,7 @@ import leftPanel from '@/components/left.vue'
 import rightPanel from '@/components/right.vue'
 import menusvg from '@/assets/menu.svg'
 import { idToName } from '@/store/default-options.js'
+import $http from '../request/http'
 
 export default {
   name: 'Index',
@@ -28,7 +30,8 @@ export default {
   },
   data() {
     return {
-      showleft: ''
+      showleft: '',
+      local: ''
     }
   },
   computed: {
@@ -52,6 +55,10 @@ export default {
   mounted() {
     const name = idToName[this.$store.state.typeList.value]
     this.setTitle((name && name[0]) || '')
+    $http.getIp().then(res => {
+      this.local = res.data
+      console.log(res)
+    })
   },
   methods: {
     toggle() {
