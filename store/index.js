@@ -8,6 +8,7 @@ export const state = () => ({
   locals: {},
   author: {}, // 作者
   typeList: typeList,
+  recommendList: [],
   cache: {},
   articleList: {},
   total: 0,
@@ -68,6 +69,11 @@ export const actions = {
           commit('LOADING', false)
         }
       })
+    await $http.getRecommend().then(res => {
+      if (res.success) {
+        commit('RECOMMEND_LIST', res.data)
+      }
+    })
   },
   // 切换tab
   changeTab({ commit, state }, tab) {
@@ -128,6 +134,9 @@ export const mutations = {
   },
   LOADING(state, load) {
     state.loading = load
+  },
+  RECOMMEND_LIST(state, data) {
+    state.recommendList = data
   }
 }
 // 获取

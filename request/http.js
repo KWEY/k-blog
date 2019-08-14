@@ -70,5 +70,9 @@ export default {
   // 获取doc内容
   getDoc(doc) {
     return fetch({ url: `${base.doc + doc}.xml`, responseType: 'xml' })
+  },
+  // 获取推荐内容
+  getRecommend(params) {
+    return fetch({ params, url: base.recommend })
   }
 }

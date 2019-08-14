@@ -8,10 +8,36 @@
         <li>工具页：（ {{ typeList.list[1].list.length }} ） 页</li>
         <li>文档：（ {{ typeList.list[2].list.length }} ）篇</li>
       </ul>
-      <h3>今日数据：</h3>
-      <ul class="kwe-statistical">
+      <h3 v-if="userStatus.isAdmin">今日数据：</h3>
+      <ul v-if="userStatus.isAdmin" class="kwe-statistical">
         <li>访问量：{{ Math.ceil(statistical.cvisit) || 0 }}</li>
         <li>查看量：{{ Math.ceil(statistical.cview) || 0 }}</li>
+      </ul>
+      <h3 v-if="recommend.length > 0">今日推荐：</h3>
+      <ul v-if="recommend.length > 0" class="kwe-recommend">
+        <li v-for="ele of recommend" :key="ele.aid" class="kwe-recommend-list">
+          <div class="card-box">
+            <div class="pic-box">
+              <div class="pic">
+                <a :href="'https://www.bilibili.com/video/av' + ele.aid" target="_blank">
+                  <img :src="'/recommend/' + ele.aid + '.jpg'" :alt="ele.title" class="img">
+                </a>
+                <span class="duration">{{ ele.duration }}</span>
+              </div>
+            </div>
+            <div class="info">
+              <a
+                :href="'https://www.bilibili.com/video/av' + ele.aid"
+                class="title"
+                target="_blank"
+              >{{ ele.title }}</a>
+              <div class="count up">
+                <a :href="'//space.bilibili.com/' + ele.mid" target="_blank">{{ ele.author }}</a>
+              </div>
+              <div class="count">{{ parseNum(ele.play) }}播放 {{ parseNum(ele.coins) }}硬币</div>
+            </div>
+          </div>
+        </li>
       </ul>
     </div>
   </div>
@@ -31,14 +57,28 @@ export default {
     return {}
   },
   computed: {
+    userStatus() {
+      return this.$store.state.user
+    },
     statistical() {
       return this.$store.state.statistical
     },
     total() {
       return this.$store.state.total
     },
+    recommend() {
+      return this.$store.state.recommendList
+    },
     typeList() {
       return this.$store.state.typeList
+    }
+  },
+  methods: {
+    parseNum(num) {
+      if (num > 10000) {
+        return (num / 10000).toFixed(1) + 'w'
+      }
+      return num
     }
   }
 }
@@ -49,14 +89,75 @@ export default {
 @top_bg: rgba(74, 74, 74, 1);
 .kwe-right-wrap {
   position: relative;
-  width: 300px;
+  width: 340px;
   flex: none;
   margin: 30px 0 30px;
   .kwe-data {
     box-sizing: border-box;
-    padding: 20px;
+    padding: 20px 0 0 20px;
     height: 100%;
     width: 100%;
+  }
+  .kwe-recommend {
+    font-size: 12px;
+    &-list {
+      padding: 6px 0;
+    }
+    .card-box {
+      display: flex;
+      .pic-box {
+        position: relative;
+        width: 141px;
+        border-radius: 2px;
+        background: #f4f5f7;
+        .img {
+          display: block;
+          width: 100%;
+        }
+        .duration {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          background: rgba(0, 0, 0, 0.6);
+          color: #fff;
+          padding: 2px 6px;
+          z-index: 5;
+        }
+      }
+      .info {
+        margin-left: 10px;
+        flex: 1;
+        font-size: 0;
+        .title {
+          height: 36px;
+          line-height: 18px;
+          font-size: 14px;
+          font-weight: 500;
+          margin-bottom: 6px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          &:hover {
+            color: #00a1d6;
+          }
+        }
+        .count.up {
+          width: 160px;
+          margin-bottom: 4px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+        .count {
+          display: inline-block;
+          height: 16px;
+          width: 100%;
+          color: #999;
+          font-size: 12px;
+        }
+      }
+    }
   }
 }
 @media screen and (max-width: 800px) {

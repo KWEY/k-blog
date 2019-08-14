@@ -27,6 +27,8 @@ const base = {
   editor: `${baseUrl}/plugins/wangEditor.min.js`, // editor地址
   // 文档相关
   doc: `${baseUrl}/db/doc/`, // 文档地址
-  f4v: `${baseUrl}/db/f4v.pdf` // 文档地址
+  f4v: `${baseUrl}/db/f4v.pdf`, // 文档地址
+  // 推荐列表
+  recommend: `${baseUrl}/api/recommend` //
 }
 export default base

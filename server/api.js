@@ -5,6 +5,7 @@ const auth = require('./middlewares/auth')
 const user = require('./controllers/user')
 const article = require('./controllers/article')
 const statistical = require('./controllers/statistical')
+const recommend = require('./controllers/recommend')
 
 // 文章
 router
@@ -20,6 +21,10 @@ router
   .patch('/article/update', auth('userToken'), article.patchArticle)
   // 删除文章
   .delete('/article/delete', auth('userToken'), article.deleteArticle)
+// 文章
+router
+  // 获取文章列表
+  .get('/recommend', recommend.recommendList)
 
 // user
 router
