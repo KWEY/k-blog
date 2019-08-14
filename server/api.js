@@ -9,6 +9,7 @@ const statistical = require('./controllers/statistical')
 // 文章
 router
   // 获取文章列表
+  .get('/ip', user.getIp)
   .get('/statistical', statistical.getData)
   // 获取文章列表
   .get('/article', article.getArticles)

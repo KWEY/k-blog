@@ -7,6 +7,10 @@ import base from './api'
 import { fetch } from './axios'
 
 export default {
+  // 获取ip信息
+  getIp() {
+    return fetch({ url: base.ip })
+  },
   // 获取统计信息
   statistical() {
     return fetch({ url: base.statistical })
