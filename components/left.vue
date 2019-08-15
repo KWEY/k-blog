@@ -9,12 +9,23 @@
         <div class="kwe-bottom">
           <div class="kwe-info">
             <span class="kwe-times">{{ item.views }}</span>
-            <nuxt-link v-for="ele of item.type" :key="ele.name[1]" :to="'/?type=' + ele.name[1]" class="kwe-type">{{ ele.name[0] }}</nuxt-link>
+            <nuxt-link
+              v-for="ele of item.type"
+              :key="ele.name[1]"
+              :to="'/?type=' + ele.name[1]"
+              class="kwe-type"
+              >{{ ele.name[0] }}</nuxt-link
+            >
           </div>
           <div class="kwe-time">{{ new Date(item.created_at).toLocaleString() }}</div>
         </div>
       </div>
-      <pages v-if="total > limit" :total="Math.ceil(total / limit)" :current="page" @change="change" />
+      <pages
+        v-if="total > limit"
+        :total="Math.ceil(total / limit)"
+        :current="page"
+        @change="change"
+      />
     </template>
     <template v-else>
       <div class="kwe-null">当前分类还未发布文章</div>
@@ -77,6 +88,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="less">
 .kwe-left {
+  flex-grow: 1;
   box-sizing: border-box;
   padding: 20px 0;
   overflow-y: auto;

@@ -38,7 +38,7 @@ exports.getArticles = async (req, res, next) => {
       }
     }
   } else if (keyword) {
-    const reg = new RegExp(keyword, 'i')
+    const reg = new RegExp(keyword, 'gi')
     // 根据keyword 搜索查询
     findOption = {
       $or: [

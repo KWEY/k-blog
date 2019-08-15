@@ -6,7 +6,9 @@
     <left-panel :show-left="showLeft" />
     <right-panel />
     <div class="doc-to-top">
-      <a href="#a0"><rocketsvg-svg class="doc-to-top-svg" /></a>
+      <a href="#a0">
+        <rocketsvg-svg class="doc-to-top-svg" />
+      </a>
     </div>
   </div>
 </template>
@@ -15,7 +17,6 @@
 import leftPanel from '@/components/doc/doc-left.vue'
 import rightPanel from '@/components/doc/doc-right.vue'
 import menusvg from '@/assets/menu.svg'
-// import totopsvg from '@/assets/to-top.svg'
 import rocketsvg from '@/assets/rocket.svg'
 export default {
   name: 'Doc',

@@ -5,7 +5,7 @@
     </template>
     <template v-else>
       <div class="kwe-player-input">
-        <input v-model.trim="url" placeholder="输入url" autocomplete="off" @keyup.enter="keyup">
+        <input v-model.trim="url" placeholder="输入url" autocomplete="off" @keyup.enter="keyup" />
         <button class="kwe-btn-player" @click.stop="setData">播放器</button>
       </div>
       <div ref="player" class="kwe-player-wrap" />

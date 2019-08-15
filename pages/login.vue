@@ -1,30 +1,29 @@
 <template>
   <div class="kwe-login" @click="hideResult">
-    <p class="kwe-title"><span class="kwe-name">登录</span></p>
+    <p class="kwe-title">
+      <span class="kwe-name">登录</span>
+    </p>
     <div v-show="result" class="kwe-result">{{ result }}</div>
     <div class="kwe-login-wrap">
       <div class="kwe-register-group">
-        <input
-          v-model.trim="user.tel"
-          placeholder="手机号"
-          autocomplete="off"
-          @blur="checkTel"
-        >
+        <input v-model.trim="user.tel" placeholder="手机号" autocomplete="off" @blur="checkTel" />
         <span class="kwe-error">{{ message.tel }}</span>
       </div>
       <div class="kwe-register-group">
-        <input 
+        <input
           v-model.trim="user.password"
           type="password"
           placeholder="密码"
           autocomplete="off"
           @blur="checkPassword"
           @keyup.enter="keyup"
-        >
+        />
         <span class="kwe-error">{{ message.password }}</span>
       </div>
     </div>
-    <div class="kwe-btn-login" :class="{'kwe-disabled': userStatus.isLogin}" @click.stop="login">登 录</div>
+    <div class="kwe-btn-login" :class="{ 'kwe-disabled': userStatus.isLogin }" @click.stop="login">
+      登 录
+    </div>
     <div class="kwe-to-register">
       <nuxt-link to="/register">没有账号，去注册></nuxt-link>
     </div>

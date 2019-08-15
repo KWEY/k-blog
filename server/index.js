@@ -5,6 +5,7 @@ const consola = require('consola')
 const { Nuxt, Builder } = require('nuxt')
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
+const requestIp = require('request-ip')
 
 // Import and Set Nuxt.js options
 const config = require('../nuxt.config.js')
@@ -21,6 +22,7 @@ const serve = (path, cache) => {
 const app = express()
 app.use(bodyParser.json())
 app.use(cookieParser())
+app.use(requestIp.mw())
 // app.use(cookieParser(Math.random().toString(36)))
 app.use(function(req, res, next) {
   // const domain = `${req.protocol}://${req.get('host')}`

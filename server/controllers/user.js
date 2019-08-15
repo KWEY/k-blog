@@ -36,11 +36,13 @@ const login = async (req, res, next) => {
       if (config.isPro) {
         res.cookie('userToken', t, {
           httpOnly: true,
-          domain: '.webq.top'
+          domain: '.webq.top',
+          'Max-Age': 24 * 60 * 60
         })
       } else {
         res.cookie('userToken', t, {
-          httpOnly: true
+          httpOnly: true,
+          'Max-Age': 24 * 60 * 60
         })
       }
       res.json({
@@ -194,17 +196,7 @@ const getUserInfo = async (req, res, next) => {
 }
 // 获取ip
 const getIp = (req, res, next) => {
-  let ip =
-    req.headers['x-forwarded-for'] ||
-    req.ip ||
-    req.connection.remoteAddress ||
-    req.socket.remoteAddress ||
-    req.connection.socket.remoteAddress ||
-    ''
-  if (ip.split(',').length > 0) {
-    ip = ip.split(',')[0]
-  }
-  ip = ip.substr(ip.lastIndexOf(':') + 1, ip.length)
+  const ip = req.clientIp
   if (ip) {
     const geoip = require('geoip-lite')
     const geo = geoip.lookup(ip)

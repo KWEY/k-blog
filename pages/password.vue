@@ -1,27 +1,29 @@
 <template>
   <div class="kwe-password" @click="hideResult">
-    <p class="kwe-title"><span class="kwe-name">修改密码</span></p>
+    <p class="kwe-title">
+      <span class="kwe-name">修改密码</span>
+    </p>
     <div v-show="result" class="kwe-result">{{ result }}</div>
     <div class="kwe-password-wrap">
       <div class="kwe-register-group">
-        <input 
+        <input
           v-model.trim="user.old"
           type="password"
           placeholder="旧密码"
           autocomplete="off"
           @blur="checkPassword('old')"
-        >
+        />
         <span class="kwe-error">{{ message.old }}</span>
       </div>
       <div class="kwe-register-group">
-        <input 
+        <input
           v-model.trim="user.new"
           type="password"
           placeholder="新密码"
           autocomplete="off"
           @blur="checkPassword('new')"
           @keyup.enter="keyup"
-        >
+        />
         <span class="kwe-error">{{ message.new }}</span>
       </div>
     </div>

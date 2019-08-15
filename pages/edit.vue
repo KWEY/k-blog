@@ -1,22 +1,31 @@
 <template>
   <div class="kwe-json" :data-id="authorId" @click="closeToast">
     <div class="kwe-json-title">
-      <div class="kwe-type">type: </div>
+      <div class="kwe-type">type:</div>
       <select v-model="type" class="kwe-type-input">
         <option v-for="item in typeList" :key="item.pid" :value="item.pid">{{ item.name }}</option>
       </select>
-      <div class="kwe-title">title: </div>
-      <input v-model.trim="title" class="kwe-title-input" type="text">
+      <div class="kwe-title">title:</div>
+      <input v-model.trim="title" class="kwe-title-input" type="text" />
     </div>
     <div class="kwe-json-description">
-      <div class="kwe-description">description: </div>
-      <input v-model.trim="description" type="text" class="kwe-description-input">
+      <div class="kwe-description">description:</div>
+      <input v-model.trim="description" type="text" class="kwe-description-input" />
     </div>
     <div class="kwe-json-content">
-      <p class="kwe-content">content: <span class="kwe-upload" @click.stop="upload">上传</span></p>
+      <p class="kwe-content">
+        content:
+        <span class="kwe-upload" @click.stop="upload">上传</span>
+      </p>
       <div ref="editor" class="kwe-content-input" />
     </div>
-    <toast :show="toast.show" :content="toast.content" :close="toast.showClose" :type="toast.type" @close="closeToast" />
+    <toast
+      :show="toast.show"
+      :content="toast.content"
+      :close="toast.showClose"
+      :type="toast.type"
+      @close="closeToast"
+    />
   </div>
 </template>
 
@@ -111,7 +120,7 @@ export default {
         /* eslint-disable */
         this.editor = new window.wangEditor(this.$refs.editor)
         this.editor.customConfig.uploadImgShowBase64 = true
-        this.editor.customConfig.onchange = (html) => {
+        this.editor.customConfig.onchange = html => {
           this.content = html
         }
         this.editor.create()
@@ -151,24 +160,29 @@ export default {
         content: this.content,
         created_at: article.created_at
       }
-      $http.updateArticle(data).then(res => {
-        if (res.code === 2) {
-          this.showToast('恢复成功', 'success')
-          setTimeout(() => {
-            this.editSuccess('/')
-          }, 1000)
-          return
-        }
-        if (res.success) {
-          this.showToast('更新成功', 'success')
-          setTimeout(() => {
-            this.editSuccess()
-          }, 1000)
-        } else {
-          const text = res.msg || '更新失败'
-          this.showToast(text, 'warn', true)
-        }
-      })
+      $http
+        .updateArticle(data)
+        .then(res => {
+          if (res.code === 2) {
+            this.showToast('恢复成功', 'success')
+            setTimeout(() => {
+              this.editSuccess('/')
+            }, 1000)
+            return
+          }
+          if (res.success) {
+            this.showToast('更新成功', 'success')
+            setTimeout(() => {
+              this.editSuccess()
+            }, 1000)
+          } else {
+            const text = res.msg || '更新失败'
+            this.showToast(text, 'warn', true)
+          }
+        })
+        .catch(err => {
+          this.showToast(err, 'warn', true)
+        })
     },
     showToast(content, type, showClose = false) {
       this.toast = {

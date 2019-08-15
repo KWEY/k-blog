@@ -1,6 +1,8 @@
 <template>
   <div class="kwe-register" @click="hideResult">
-    <p class="kwe-title"><span class="kwe-name">注册</span></p>
+    <p class="kwe-title">
+      <span class="kwe-name">注册</span>
+    </p>
     <div v-show="result" class="kwe-result">{{ result }}</div>
     <div class="kwe-register-module">
       <div class="kwe-register-group">
@@ -10,7 +12,7 @@
           autocomplete="off"
           placeholder="昵称"
           @blur="checkName"
-        >
+        />
         <span class="kwe-error">{{ message.username }}</span>
       </div>
       <div class="kwe-register-group">
@@ -20,7 +22,7 @@
           autocomplete="off"
           placeholder="密码（6-16个字符组成，区分大小写）"
           @blur="checkPassword"
-        >
+        />
         <span class="kwe-error">{{ message.password }}</span>
       </div>
       <div class="kwe-register-group">
@@ -31,7 +33,7 @@
           placeholder="手机号,用于登录"
           @blur="checkTel"
           @keyup.enter="keyup"
-        >
+        />
         <span class="kwe-error">{{ message.tel }}</span>
       </div>
     </div>

@@ -3,10 +3,7 @@
     <div class="kwe-title">
       <div class="kwe-name">{{ article.title }}</div>
       <div class="kwe-bar-top">
-        <div
-          v-if="article.updated_at > (article.created_at + 5000)"
-          class="update"
-        >
+        <div v-if="article.updated_at > article.created_at + 5000" class="update">
           {{ new Date(article.updated_at).toLocaleString() }}
         </div>
         <div class="time">{{ new Date(article.created_at).toLocaleString() }}</div>
@@ -17,9 +14,8 @@
             :key="item.name[1]"
             :to="'/?type=' + item.name[1]"
             class="kwe-link"
+            >{{ item.name[0] }}</nuxt-link
           >
-            {{ item.name[0] }}
-          </nuxt-link>
         </div>
         <template v-if="userStatus.isAdmin">
           <div class="kwe-edit">
@@ -122,7 +118,6 @@ export default {
   font-size: 16px;
   box-sizing: border-box;
   overflow: hidden;
-  background: #fff;
   img {
     max-width: 100%;
   }
