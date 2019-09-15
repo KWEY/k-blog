@@ -153,6 +153,11 @@ export const typeList = {
           src: '/doc/ci',
           pid: '003_005',
           name: 'CI'
+        },
+        {
+          src: '/doc/dp',
+          pid: '003_006',
+          name: '设计模式'
         }
       ]
     }
