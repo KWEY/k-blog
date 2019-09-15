@@ -5,9 +5,9 @@ const config = {
     role: 'superAdmin',
     username: '雪人',
     tel: 16602113192,
-    password: 'asdasd',
+    password: '123123',
     email: 'zhangjq92@163.com',
-    motto: '那不叫挑食，叫有选择的吃'
+    motto: '那不叫挑食，叫有选择的补充能量'
   },
   jwt: {
     secret: 'kwe',
