@@ -197,10 +197,10 @@ const getUserInfo = async (req, res, next) => {
 }
 // 获取ip
 const getIp = async (req, res, next) => {
-  const ip = req.clientIp
+  const clientIp = req.clientIp
   const geoip = require('geoip-lite')
-  const geo = geoip.lookup(ip)
-  if (ip && geo) {
+  const geo = geoip.lookup(clientIp)
+  if (clientIp && geo) {
     const ip = await new Ip({
       ip,
       ...geo
@@ -212,16 +212,29 @@ const getIp = async (req, res, next) => {
     })
     return
   }
-  res.json({
-    success: true,
-    data: {
-      ip,
-      geoip,
+  let ipp
+  try {
+    ipp = {
+      ip: clientIp,
+      geo,
       as: req.ip,
       rrip: req.headers['x-forwarded-for'] || req.connection.remoteAddress,
       rip: req.clientIp
     }
+  } catch (error) {
+    ipp = {
+      ip: clientIp,
+      geo,
+      as: req.ip,
+      rip: req.clientIp
+    }
+  }
+  console.log(ipp);
+  res.json({
+    success: true,
+    data: JSON.stringify(ipp)
   })
+  return
   res.json({
     success: false,
     data: ''
