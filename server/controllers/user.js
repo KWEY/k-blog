@@ -197,8 +197,7 @@ const getUserInfo = async (req, res, next) => {
 }
 // 获取ip
 const getIp = async (req, res, next) => {
-  // const clientIp = req.clientIp
-  const clientIp = '207.97.227.239'
+  const clientIp = req.clientIp
   const geoip = require('geoip-lite')
   const geo = geoip.lookup(clientIp)
   if (clientIp && geo) {
