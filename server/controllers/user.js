@@ -213,6 +213,16 @@ const getIp = async (req, res, next) => {
     return
   }
   res.json({
+    success: true,
+    data: {
+      ip,
+      geoip,
+      as: req.ip,
+      rrip: req.headers['x-forwarded-for'] || req.connection.remoteAddress,
+      rip: req.clientIp
+    }
+  })
+  res.json({
     success: false,
     data: ''
   })
