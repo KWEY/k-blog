@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 // const md5 = require('md5')
 const config = require('../config')
 const User = mongoose.model('User')
+const Ip = mongoose.model('Ip')
 const token = require('../utils/token')
 const { getNextSequenceValue } = require('./counter')
 const { addCvisit } = require('./statistical')
@@ -195,11 +196,16 @@ const getUserInfo = async (req, res, next) => {
   }
 }
 // 获取ip
-const getIp = (req, res, next) => {
+const getIp = async (req, res, next) => {
   const ip = req.clientIp
-  if (ip) {
-    const geoip = require('geoip-lite')
-    const geo = geoip.lookup(ip)
+  const geoip = require('geoip-lite')
+  const geo = geoip.lookup(ip)
+  if (ip && geo) {
+    const ip = await new Ip({
+      ip,
+      ...geo
+    })
+    await ip.save()
     res.json({
       success: true,
       data: geo

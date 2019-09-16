@@ -9,13 +9,10 @@
     "dev": "cross-env NODE_ENV=development nodemon server/index.js --watch server",
     "build": "nuxt build",
     "start": "cross-env NODE_ENV=production pm2 start server/index.js",
-    "restart": "cross-env NODE_ENV=production pm2 restart server/index.js",
-    "generate": "nuxt generate",
-    "lint": "eslint --ext .js,.vue --ignore-path .gitignore ."
+    "restart": "cross-env NODE_ENV=production pm2 restart server/index.js"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "pretty-quick --staged",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
@@ -39,20 +36,8 @@
   "devDependencies": {
     "@commitlint/cli": "^8.1.0",
     "@commitlint/config-conventional": "^8.1.0",
-    "@nuxtjs/eslint-config": "^0.0.1",
     "autoprefixer": "^6.7.7",
     "babel-eslint": "^8.2.1",
-    "eslint": "^5.0.1",
-    "eslint-config-prettier": "^3.1.0",
-    "eslint-config-standard": ">=12.0.0",
-    "eslint-loader": "^2.0.0",
-    "eslint-plugin-import": ">=2.14.0",
-    "eslint-plugin-jest": ">=21.24.1",
-    "eslint-plugin-node": ">=7.0.1",
-    "eslint-plugin-prettier": "2.6.2",
-    "eslint-plugin-promise": ">=4.0.1",
-    "eslint-plugin-standard": ">=4.0.0",
-    "eslint-plugin-vue": "^5.0.0",
     "husky": "^3.0.2",
     "less": "^3.9.0",
     "less-loader": "^4.1.0",

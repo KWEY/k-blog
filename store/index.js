@@ -57,18 +57,16 @@ export const actions = {
       return
     }
     commit('LOADING', true)
-    await $http
-      .getArticles({ type, page, keyword, userToken: state.userToken })
-      .then(res => {
-        if (res.success) {
-          res.type = type
-          res.page = page
-          res.keyword = keyword
-          commit('ARTICLE_LIST', res)
-          commit('CURRENTTYPE', { type, page })
-          commit('LOADING', false)
-        }
-      })
+    await $http.getArticles({ type, page, keyword, userToken: state.userToken }).then(res => {
+      if (res.success) {
+        res.type = type
+        res.page = page
+        res.keyword = keyword
+        commit('ARTICLE_LIST', res)
+        commit('CURRENTTYPE', { type, page })
+        commit('LOADING', false)
+      }
+    })
     await $http.getRecommend().then(res => {
       if (res.success) {
         commit('RECOMMEND_LIST', res.data)

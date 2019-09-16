@@ -91,14 +91,6 @@ module.exports = {
       } else {
         config.devtool = ''
       }
-      if (ctx.isDev && ctx.isClient) {
-        config.module.rules.push({
-          enforce: 'pre',
-          test: /\.(js|vue)$/,
-          loader: 'eslint-loader',
-          exclude: /(node_modules)/
-        })
-      }
       const urlLoader = config.module.rules.find(rule => rule.test.toString().match('gif'))
       if (urlLoader) {
         urlLoader.test = new RegExp(/\.(png|jpe?g|gif)$/)

@@ -20,6 +20,8 @@ const serve = (path, cache) => {
   })
 }
 const app = express()
+app.set('trust proxy', true);
+
 app.use(bodyParser.json())
 app.use(cookieParser())
 app.use(requestIp.mw())
