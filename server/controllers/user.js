@@ -202,7 +202,7 @@ const getIp = async (req, res, next) => {
   const geo = geoip.lookup(clientIp)
   if (clientIp && geo) {
     const ip = await new Ip({
-      ip,
+      ip: clientIp,
       ...geo
     })
     await ip.save()
