@@ -20,9 +20,9 @@
             <div class="pic-box">
               <div class="pic">
                 <a :href="'https://www.bilibili.com/video/av' + ele.aid" target="_blank">
-                  <img :src="'/recommend/' + ele.aid + '.jpg'" :alt="ele.title" class="img">
+                  <img :src="'/recommend/' + ele.aid + '.jpg'" :alt="ele.title" class="img" />
                 </a>
-                <span class="duration">{{ ele.duration }}</span>
+                <span class="duration">{{ parseTime(ele.duration) }}</span>
               </div>
             </div>
             <div class="info">
@@ -32,9 +32,12 @@
                 target="_blank"
               >{{ ele.title }}</a>
               <div class="count up">
-                <a :href="'//space.bilibili.com/' + ele.mid" target="_blank">{{ ele.author }}</a>
+                <a
+                  :href="'//space.bilibili.com/' + ele.owner.mid"
+                  target="_blank"
+                >{{ ele.owner.name }}</a>
               </div>
-              <div class="count">{{ parseNum(ele.play) }}播放 {{ parseNum(ele.coins) }}硬币</div>
+              <div class="count">{{ parseNum(ele.stat.view) }}播放 {{ parseNum(ele.stat.danmaku) }}弹幕</div>
             </div>
           </div>
         </li>
@@ -79,6 +82,19 @@ export default {
         return (num / 10000).toFixed(1) + 'w'
       }
       return num
+    },
+    parseTime(dur) {
+      const sec = String('00' + dur % 60).slice(-2)
+      const min = String('00' + Math.floor((dur - sec) / 60)).slice(-2)
+      if (dur < 60) {
+        return `00 : ${sec}`
+      } else if (dur < 3600) {
+        return `${min} : ${sec}`
+      } else {
+        const hour = String('00' + Math.floor((dur - min * 60 - sec) / 3600)).slice(-2)
+        return `${hour} : ${min} : ${sec}`
+      }
+      return dur
     }
   }
 }
@@ -100,6 +116,8 @@ export default {
   }
   .kwe-recommend {
     font-size: 12px;
+    max-height: 1500px;
+    overflow-y: auto;
     &-list {
       padding: 6px 0;
     }
