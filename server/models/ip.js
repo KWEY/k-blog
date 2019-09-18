@@ -10,6 +10,10 @@ const IpSchema = new Schema({
     type: Array,
     default: []
   },
+  time: {
+    type: String,
+    default: ''
+  },
   country: {
     type: String,
     default: ''

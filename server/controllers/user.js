@@ -203,6 +203,7 @@ const getIp = async (req, res, next) => {
   if (clientIp && geo) {
     const ip = await new Ip({
       ip: clientIp,
+      time: new Date().toString(),
       ...geo
     })
     await ip.save()
