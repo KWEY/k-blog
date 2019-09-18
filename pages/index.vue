@@ -56,8 +56,8 @@ export default {
     const name = idToName[this.$store.state.typeList.value]
     this.setTitle((name && name[0]) || '')
     $http.getIp().then(res => {
-      this.local = res.data
-      console.log(res)
+      // this.local = res.data
+      // console.log(res)
     })
   },
   methods: {
