@@ -4,6 +4,8 @@
 const isPro = process.env.NODE_ENV === 'production'
 const baseUrl = isPro ? 'https://www.webq.top' : 'http://127.0.0.1:3000'
 const base = {
+  iplist: `${baseUrl}/api/iplist`, // 获取ip list信息
+  deleteip: `${baseUrl}/api/deleteip`, // 删除ip信息
   ip: `${baseUrl}/api/ip`, // 获取ip信息
   statistical: `${baseUrl}/api/statistical`, // 获取统计信息
   // 用户相关

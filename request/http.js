@@ -7,6 +7,14 @@ import base from './api'
 import { fetch } from './axios'
 
 export default {
+  // 获取ip list信息
+  getIpList(params) {
+    return fetch({params, url: base.iplist })
+  },
+  // 删除ip
+  deleteIp(params) {
+    return fetch({params, url: base.deleteip,  method: 'delete' })
+  },
   // 获取ip信息
   getIp() {
     return fetch({ url: base.ip })

@@ -11,6 +11,9 @@
       <nuxt-link to="/upload" class="kwe-upload">
         <span>UPLOAD</span>
       </nuxt-link>
+      <nuxt-link to="/manage" class="kwe-upload">
+        <span>MANAGE</span>
+      </nuxt-link>
     </div>
   </div>
 </template>

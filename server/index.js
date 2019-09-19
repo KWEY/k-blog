@@ -6,6 +6,7 @@ const { Nuxt, Builder } = require('nuxt')
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 const requestIp = require('request-ip')
+require('../global/date')
 
 // Import and Set Nuxt.js options
 const config = require('../nuxt.config.js')
@@ -19,6 +20,7 @@ const serve = (path, cache) => {
     maxAge: cache ? 1000 * 60 * 60 * 24 : 0
   })
 }
+
 const app = express()
 app.set('trust proxy', true);
 

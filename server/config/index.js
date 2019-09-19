@@ -11,7 +11,7 @@ const config = {
   },
   jwt: {
     secret: 'kwe',
-    expiresIn: '1D'
+    expiresIn: '365d'
   },
   mongodb: {
     host: '127.0.0.1',

@@ -1,8 +1,9 @@
 const express = require('express')
 const router = express.Router()
 const check = require('./middlewares/check')
-const auth = require('./middlewares/auth')
+const author = require('./middlewares/auth')
 const user = require('./controllers/user')
+const position = require('./controllers/position')
 const article = require('./controllers/article')
 const statistical = require('./controllers/statistical')
 const recommend = require('./controllers/recommend')
@@ -10,18 +11,20 @@ const recommend = require('./controllers/recommend')
 // 文章
 router
   // 获取文章列表
-  .get('/ip', user.getIp)
+  .get('/iplist', author.admin('userToken'), position.getIpList)
+  .delete('/deleteip', author.admin('userToken'), position.deleteIp)
+  .get('/ip', position.getIp)
   .get('/statistical', statistical.getData)
   // 获取文章列表
   .get('/article', article.getArticles)
   // 获取指定id文章
   .get('/article/:id', check.params(['id']), article.getArticle)
   // 上传文章
-  .post('/article/post', auth('userToken'), article.postArticle)
+  .post('/article/post', author.auth('userToken'), article.postArticle)
   // 更新文章
-  .patch('/article/update', auth('userToken'), article.patchArticle)
+  .patch('/article/update', author.auth('userToken'), article.patchArticle)
   // 删除文章
-  .delete('/article/delete', auth('userToken'), article.deleteArticle)
+  .delete('/article/delete', author.auth('userToken'), article.deleteArticle)
 // 文章
 router
   // 获取文章列表
@@ -32,7 +35,7 @@ router
   // 获取作者信息
   .get('/admin', user.getAdminInfo)
   // 获取用户信息
-  .get('/user', auth('userToken'), user.getUserInfo)
+  .get('/user', author.auth('userToken'), user.getUserInfo)
   // 核对用户名
   .get('/user/check', check.querys(['tel', 'username']), user.getUserCheck)
   // 核对用户密码
@@ -46,12 +49,12 @@ router
     user.register
   )
   // 退出登录
-  .post('/logout', auth('userToken'), user.logout)
-  //   .patch('/admin', auth('adminToken'), user.patchAdminInfo )
+  .post('/logout', author.auth('userToken'), user.logout)
+  //   .patch('/admin', author.auth('adminToken'), user.patchAdminInfo )
   .patch(
     '/password',
     check.bodyParams(['old', 'new']),
-    auth('userToken'),
+    author.auth('userToken'),
     user.patchAdminPassword
   )
 

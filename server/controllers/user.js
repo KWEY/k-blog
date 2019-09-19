@@ -2,7 +2,6 @@ const mongoose = require('mongoose')
 // const md5 = require('md5')
 const config = require('../config')
 const User = mongoose.model('User')
-const Ip = mongoose.model('Ip')
 const token = require('../utils/token')
 const { getNextSequenceValue } = require('./counter')
 const { addCvisit } = require('./statistical')
@@ -38,12 +37,12 @@ const login = async (req, res, next) => {
         res.cookie('userToken', t, {
           httpOnly: true,
           domain: '.webq.top',
-          'Max-Age': 24 * 60 * 60
+          'Max-Age': 24 * 60 * 60 * 365
         })
       } else {
         res.cookie('userToken', t, {
           httpOnly: true,
-          'Max-Age': 24 * 60 * 60
+          'Max-Age': 24 * 60 * 60 * 365
         })
       }
       res.json({
@@ -195,29 +194,6 @@ const getUserInfo = async (req, res, next) => {
     })
   }
 }
-// 获取ip
-const getIp = async (req, res, next) => {
-  const clientIp = req.clientIp
-  const geoip = require('geoip-lite')
-  const geo = geoip.lookup(clientIp)
-  if (clientIp && geo) {
-    const ip = await new Ip({
-      ip: clientIp,
-      time: new Date().toString(),
-      ...geo
-    })
-    await ip.save()
-    res.json({
-      success: true,
-      data: JSON.stringify(geo)
-    })
-    return
-  }
-  res.json({
-    success: false,
-    data: ''
-  })
-}
 const getAdminInfo = async (req, res, next) => {
   const role = config.user.role
   const domain = res.locals.blog.domain
@@ -304,7 +280,6 @@ const patchAdminPassword = async (req, res, next) => {
 }
 module.exports = {
   login,
-  getIp,
   logout,
   register,
   getUserInfo,
