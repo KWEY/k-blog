@@ -126,11 +126,16 @@ export default {
       .pic-box {
         position: relative;
         width: 141px;
+        height: 85px;
         border-radius: 2px;
         background: #f4f5f7;
+        .pic {
+          height: 100%;
+        }
         .img {
           display: block;
           width: 100%;
+          height: 100%;
         }
         .duration {
           position: absolute;
