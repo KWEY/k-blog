@@ -70,6 +70,7 @@ export default {
   },
   mounted() {
     document.title = this.article.title
+    $http.track({flag: 'Doc-'})
   },
   methods: {
     deleteArticle() {

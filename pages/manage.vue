@@ -16,23 +16,25 @@
     </div>
     <div class="kwe-manage-list">
       <div class="kwe-type">
-        <div class="kwe-ip">Ip</div>
-        <div class="kwe-ip">Date</div>
-        <div class="kwe-ip">Hour</div>
-        <div class="kwe-ip kwe-country">Country</div>
-        <div class="kwe-ip">City</div>
-        <div class="kwe-ip">LL</div>
-        <div class="kwe-ip">操作</div>
+        <div class="kwe-log">Ip</div>
+        <div class="kwe-log">Date</div>
+        <div class="kwe-log">Hour</div>
+        <div class="kwe-log kwe-country">Flag</div>
+        <div class="kwe-log kwe-country">Country</div>
+        <div class="kwe-log">City</div>
+        <div class="kwe-log">LL</div>
+        <div class="kwe-log">操作</div>
       </div>
       <div class="kwe-type" v-for="item in ipList" :key="item.id">
-        <div class="kwe-ip">{{ item.ip }}</div>
-        <div class="kwe-ip">{{ item.date }}</div>
-        <div class="kwe-ip">{{ item.hour }}</div>
-        <div class="kwe-ip kwe-country">{{ item.country }}</div>
-        <div class="kwe-ip">{{ item.city }}</div>
-        <div class="kwe-ip">{{ item.ll }}</div>
-        <div class="kwe-ip">
-          <span class="kwe-delete" @click.stop="deleteIp(item.id)">删除</span>
+        <div class="kwe-log">{{ item.ip }}</div>
+        <div class="kwe-log">{{ item.date }}</div>
+        <div class="kwe-log">{{ item.hour }}</div>
+        <div class="kwe-log kwe-country">{{ item.flag }}</div>
+        <div class="kwe-log kwe-country">{{ item.country }}</div>
+        <div class="kwe-log">{{ item.city }}</div>
+        <div class="kwe-log">{{ item.ll }}</div>
+        <div class="kwe-log">
+          <span class="kwe-delete" @click.stop="deleteLog(item.id)">删除</span>
         </div>
       </div>
       <div v-if="ipList.length === 0" class="kwe-noinfo">搜到0条数据</div>
@@ -93,7 +95,7 @@ export default {
         this.noSendTip()
         return
       }
-      $http.getIpList({
+      $http.getLogList({
         page: this.page,
         date: this.date,
       }).then(res => {
@@ -110,12 +112,12 @@ export default {
       this.page++
       this.search()
     },
-    deleteIp(id) {
+    deleteLog(id) {
       if (!this.userStatus.isAdmin) {
         this.noSendTip()
         return
       }
-      $http.deleteIp({
+      $http.deleteLog({
         id
       }).then(res => {
         if (res.success) {
@@ -200,7 +202,7 @@ export default {
       width: 100%;
       justify-content: flex-start;
       border-bottom: 1px solid #00a1d6;
-      .kwe-ip {
+      .kwe-log {
         width: 50px;
         padding: 0 4px;
         flex: 1 1 auto;

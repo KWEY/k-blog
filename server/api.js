@@ -3,7 +3,7 @@ const router = express.Router()
 const check = require('./middlewares/check')
 const author = require('./middlewares/auth')
 const user = require('./controllers/user')
-const position = require('./controllers/position')
+const weblog = require('./controllers/weblog')
 const article = require('./controllers/article')
 const statistical = require('./controllers/statistical')
 const recommend = require('./controllers/recommend')
@@ -11,9 +11,9 @@ const recommend = require('./controllers/recommend')
 // 文章
 router
   // 获取文章列表
-  .get('/iplist', author.admin('userToken'), position.getIpList)
-  .delete('/deleteip', author.admin('userToken'), position.deleteIp)
-  .get('/ip', position.getIp)
+  .get('/loglist', author.admin('userToken'), weblog.getLogList)
+  .delete('/deletelog', author.admin('userToken'), weblog.deleteLog)
+  .post('/track', weblog.track)
   .get('/statistical', statistical.getData)
   // 获取文章列表
   .get('/article', article.getArticles)

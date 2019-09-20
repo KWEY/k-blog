@@ -18,6 +18,7 @@ import leftPanel from '@/components/doc/doc-left.vue'
 import rightPanel from '@/components/doc/doc-right.vue'
 import menusvg from '@/assets/menu.svg'
 import rocketsvg from '@/assets/rocket.svg'
+import $http from '../../request/http'
 export default {
   name: 'Doc',
   components: {
@@ -36,6 +37,7 @@ export default {
   },
   mounted() {
     document.title = this.$route.params.name
+    $http.track({flag: 'Doc-'})
   },
   methods: {
     toggle() {

@@ -6,7 +6,7 @@ require('./user')
 require('./comment')
 require('./article')
 require('./statistical')
-require('./ip')
+require('./weblog')
 
 const User = mongoose.model('User')
 const Counter = mongoose.model('Counter')

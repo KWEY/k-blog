@@ -7,17 +7,17 @@ import base from './api'
 import { fetch } from './axios'
 
 export default {
-  // 获取ip list信息
-  getIpList(params) {
-    return fetch({params, url: base.iplist })
+  // 获取log list信息
+  getLogList(params) {
+    return fetch({params, url: base.loglist })
   },
-  // 删除ip
-  deleteIp(params) {
-    return fetch({params, url: base.deleteip,  method: 'delete' })
+  // 删除log 
+  deleteLog(params) {
+    return fetch({params, url: base.deletelog,  method: 'delete' })
   },
-  // 获取ip信息
-  getIp() {
-    return fetch({ url: base.ip })
+  // 上报埋点
+  track(data) {
+    return fetch({ data, url: base.track, method: 'post' })
   },
   // 获取统计信息
   statistical() {

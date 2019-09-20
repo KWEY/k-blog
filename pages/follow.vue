@@ -13,6 +13,7 @@
 
 <script>
 import base from '../request/api'
+import $http from '../request/http'
 export default {
   name: 'Follow',
   head: {
@@ -40,6 +41,7 @@ export default {
         this.initNav()
       }, 400)
     }
+    $http.track({flag: 'Follow'})
   },
   methods: {
     initNav() {

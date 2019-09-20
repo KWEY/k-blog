@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-const IpSchema = new Schema({
+const WeblogSchema = new Schema({
   ip: {
     type: String,
     default: '',
@@ -11,6 +11,14 @@ const IpSchema = new Schema({
     default: []
   },
   date: {
+    type: String,
+    default: ''
+  },
+  ua: {
+    type: String,
+    default: ''
+  },
+  flag: {
     type: String,
     default: ''
   },
@@ -52,7 +60,7 @@ const IpSchema = new Schema({
   }
 })
 
-IpSchema.options.toJSON = {
+WeblogSchema.options.toJSON = {
   virtuals: true,
   versionKey: false,
   transform(doc, ret) {
@@ -61,4 +69,4 @@ IpSchema.options.toJSON = {
   }
 }
 
-mongoose.model('Ip', IpSchema)
+mongoose.model('Weblog', WeblogSchema)
