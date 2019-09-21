@@ -21,7 +21,7 @@
         <div class="kwe-log">Hour</div>
         <div class="kwe-log kwe-country">Flag</div>
         <div class="kwe-log kwe-country">Country</div>
-        <div class="kwe-log">City</div>
+        <div class="kwe-log">Timezone</div>
         <div class="kwe-log">LL</div>
         <div class="kwe-log">操作</div>
       </div>
@@ -31,7 +31,7 @@
         <div class="kwe-log">{{ item.hour }}</div>
         <div class="kwe-log kwe-country">{{ item.flag }}</div>
         <div class="kwe-log kwe-country">{{ item.country }}</div>
-        <div class="kwe-log">{{ item.city }}</div>
+        <div class="kwe-log">{{ item.timezone }}</div>
         <div class="kwe-log">{{ item.ll }}</div>
         <div class="kwe-log">
           <span class="kwe-delete" @click.stop="deleteLog(item.id)">删除</span>

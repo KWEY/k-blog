@@ -37,7 +37,7 @@ export default {
   },
   mounted() {
     document.title = this.$route.params.name
-    $http.track({flag: 'Doc-'})
+    $http.track({flag: 'Doc-' + document.title})
   },
   methods: {
     toggle() {

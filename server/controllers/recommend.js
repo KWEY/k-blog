@@ -101,11 +101,10 @@ exports.recommendList01 = async (req, res, next) => {
       })
     })
 }
-
 async function picture(src, name) {
   await download
     .image({
-      url: src,
+      url: src + '@336w_190h.webp',
       dest: `./static/recommend/${name}.jpg`
     })
     .catch(err => {

@@ -14,10 +14,11 @@ const track = async (req, res, next) => {
   const geo = geoip.lookup(clientIp)
   const date = new Date()
   if (clientIp && geo) {
-    const { flag = '' } = req.body
+    const { flag = '', params = '' } = req.body
     const log = await new Weblog({
       ua,
       flag,
+      params,
       ip: clientIp,
       date: date.Format('yyyyMMdd'),
       hour: date.Format('hh'),
@@ -53,7 +54,7 @@ const getLogList = async (req, res, next) => {
     date: 1,
     hour: 1,
     country: 1,
-    city: 1,
+    timezone: 1,
     ll: 1
   })
     .skip(page)

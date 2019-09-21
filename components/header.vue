@@ -9,7 +9,7 @@
           <div class="kwe-motto">{{ author.motto }}</div>
         </div>
         <div class="kwe-header-tool">
-          <div class="kwe-header-link">
+          <div class="kwe-header-link" @click.stop="github">
             <a href="https://github.com/KWEY" target="_blank">
               <github-svg class="kwe-github" />
             </a>
@@ -24,6 +24,7 @@
 <script>
 import search from './search'
 import githubsvg from '@/assets/github.svg'
+import $http from '../request/http'
 
 export default {
   name: 'LeftPanel',
@@ -43,6 +44,11 @@ export default {
   computed: {
     author() {
       return this.$store.state.author
+    }
+  },
+  methods: {
+    github() {
+      $http.track({flag: 'Github'})
     }
   }
 }

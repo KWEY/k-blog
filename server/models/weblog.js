@@ -42,6 +42,10 @@ const WeblogSchema = new Schema({
     type: String,
     default: ''
   },
+  params: {
+    type: String,
+    default: ''
+  },
   city: {
     type: String,
     default: ''

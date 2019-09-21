@@ -7,6 +7,8 @@
 
 <script>
 import searchsvg from '@/assets/search.svg'
+import $http from '../request/http'
+
 export default {
   name: 'Search',
   components: {
@@ -53,6 +55,7 @@ export default {
           }
         })
       }
+      $http.track({flag: 'Search', params: this.keyword})
     },
     getArticles() {
       this.$store.dispatch('getArticles', {

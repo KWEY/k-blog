@@ -2,6 +2,10 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const ArticleSchema = new Schema({
+  id: {
+    type: Number,
+    required: 0
+  },
   title: {
     type: String,
     required: true
@@ -59,10 +63,6 @@ const ArticleSchema = new Schema({
 ArticleSchema.options.toJSON = {
   virtuals: true,
   versionKey: false,
-  transform(doc, ret) {
-    ret.id = ret._id
-    delete ret._id
-  }
 }
 
 mongoose.model('Article', ArticleSchema)

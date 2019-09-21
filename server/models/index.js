@@ -5,6 +5,7 @@ require('./counter')
 require('./user')
 require('./comment')
 require('./article')
+require('./articleid')
 require('./statistical')
 require('./weblog')
 

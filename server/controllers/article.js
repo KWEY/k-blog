@@ -3,6 +3,7 @@ const Article = mongoose.model('Article')
 const User = mongoose.model('User')
 const token = require('../utils/token')
 const { addCview } = require('./statistical')
+const { getArticleId } = require('./articleid')
 
 exports.getArticles = async (req, res, next) => {
   const { type = '', userToken = '' } = req.query
@@ -65,6 +66,7 @@ exports.getArticles = async (req, res, next) => {
       description: 1,
       views: 1,
       type: 1,
+      id: 1,
       created_at: 1
     })
       .skip(page)
@@ -92,7 +94,7 @@ exports.getArticle = async (req, res, next) => {
   const id = req.params.id
   try {
     const article = await Article.findOne({
-      _id: id
+      id
     })
       .populate({
         path: 'author',
@@ -108,7 +110,7 @@ exports.getArticle = async (req, res, next) => {
     addCview()
     await Article.findOneAndUpdate(
       {
-        _id: id
+        id
       },
       {
         views: article.views + 1
@@ -131,6 +133,8 @@ exports.getArticle = async (req, res, next) => {
 exports.postArticle = async (req, res, next) => {
   let body = req.body
   try {
+    const data = await getArticleId()
+    body.id = data.num
     body = await new Article(body)
     await body.save()
     res.json({
@@ -152,7 +156,7 @@ exports.patchArticle = async (req, res, next) => {
   let body = req.body
   body.updated_at = Date.now()
   try {
-    body = await Article.findOneAndUpdate({ _id: body.id }, body).exec()
+    body = await Article.findOneAndUpdate({ id: body.id }, body).exec()
     if (!body) {
       req.body.created_at = Date.now()
       body = await new Article(req.body)
@@ -181,7 +185,7 @@ exports.patchArticle = async (req, res, next) => {
 exports.deleteArticle = async (req, res, next) => {
   const id = req.query.id
   try {
-    await Article.findOneAndDelete({ _id: id }).exec()
+    await Article.findOneAndDelete({ id }).exec()
     res.json({
       success: true,
       data: ''
