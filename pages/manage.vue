@@ -4,6 +4,13 @@
     <div class="kwe-manage-search">
       <div class="kwe-manage-wrap">
         <span class="kwe-input-title">页数：</span>
+        <select v-model="logid" class="kwe-title-input">
+          <option value ="001">op</option>
+          <option value ="002">event</option>
+        </select>
+      </div>
+      <div class="kwe-manage-wrap">
+        <span class="kwe-input-title">表名：</span>
         <input v-model.trim="page" class="kwe-title-input" type="number"/>
       </div>
       <div class="kwe-manage-wrap">
@@ -16,18 +23,18 @@
     </div>
     <div class="kwe-manage-list">
       <div class="kwe-type">
-        <div class="kwe-log">Ip</div>
+        <div class="kwe-log kwe-country">Ip</div>
         <div class="kwe-log kwe-country">Hour</div>
-        <div class="kwe-log kwe-country">Flag</div>
+        <div class="kwe-log">Flag</div>
         <div class="kwe-log">ctime</div>
         <div class="kwe-log">params</div>
         <div class="kwe-log">LL</div>
         <div class="kwe-log">操作</div>
       </div>
       <div class="kwe-type" v-for="item in ipList" :key="item.id">
-        <div class="kwe-log">{{ item.ip }}</div>
+        <div class="kwe-log kwe-country">{{ item.ip }}</div>
         <div class="kwe-log kwe-country">{{ item.hour }}</div>
-        <div class="kwe-log kwe-country">{{ item.flag }}</div>
+        <div class="kwe-log">{{ item.flag }}</div>
         <div class="kwe-log">{{ item.ctime }}</div>
         <div class="kwe-log">{{ item.params }}</div>
         <div class="kwe-log">{{ item.ll }}</div>
@@ -67,6 +74,7 @@ export default {
       ipList: [],
       page: 1,
       date: '',
+      logid: '001',
       toast: {}
     }
   },
@@ -94,6 +102,7 @@ export default {
         return
       }
       $http.getLogList({
+        logid: this.logid,
         page: this.page,
         date: this.date,
       }).then(res => {
@@ -205,6 +214,7 @@ export default {
         padding: 0 4px;
         flex: 1 1 auto;
         border-right: 1px solid #00a1d6;
+        overflow: hidden;
         &:last-child {
           border: none;
         }
