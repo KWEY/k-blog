@@ -8,10 +8,12 @@
         </div>
         <div class="time">{{ new Date(article.created_at).toLocaleString() }}</div>
         <div class="read-count">{{ article.views }}</div>
-        <div class="tag">
+        <div class="tag" 
+          v-for="item of article.type"
+          :key="item.name[1]"
+          @click.stop="articleType(item.name[1])"
+        >
           <nuxt-link
-            v-for="item of article.type"
-            :key="item.name[1]"
             :to="'/?type=' + item.name[1]"
             class="kwe-link"
             >{{ item.name[0] }}</nuxt-link
@@ -104,6 +106,9 @@ export default {
     deleteSuccess() {
       // 防错删
       this.$router.push('/')
+    },
+    articleType(id) {
+      $http.track({flag: 'articleType', params: id})
     }
   }
 }

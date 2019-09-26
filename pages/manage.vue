@@ -17,21 +17,19 @@
     <div class="kwe-manage-list">
       <div class="kwe-type">
         <div class="kwe-log">Ip</div>
-        <div class="kwe-log">Date</div>
-        <div class="kwe-log">Hour</div>
+        <div class="kwe-log kwe-country">Hour</div>
         <div class="kwe-log kwe-country">Flag</div>
-        <div class="kwe-log kwe-country">Country</div>
-        <div class="kwe-log">Timezone</div>
+        <div class="kwe-log">ctime</div>
+        <div class="kwe-log">params</div>
         <div class="kwe-log">LL</div>
         <div class="kwe-log">操作</div>
       </div>
       <div class="kwe-type" v-for="item in ipList" :key="item.id">
         <div class="kwe-log">{{ item.ip }}</div>
-        <div class="kwe-log">{{ item.date }}</div>
-        <div class="kwe-log">{{ item.hour }}</div>
+        <div class="kwe-log kwe-country">{{ item.hour }}</div>
         <div class="kwe-log kwe-country">{{ item.flag }}</div>
-        <div class="kwe-log kwe-country">{{ item.country }}</div>
-        <div class="kwe-log">{{ item.timezone }}</div>
+        <div class="kwe-log">{{ item.ctime }}</div>
+        <div class="kwe-log">{{ item.params }}</div>
         <div class="kwe-log">{{ item.ll }}</div>
         <div class="kwe-log">
           <span class="kwe-delete" @click.stop="deleteLog(item.id)">删除</span>
@@ -103,12 +101,12 @@ export default {
         console.log(res)
       })
     },
-    prev(id) {
+    prev() {
       const pre = this.page - 1
       this.page = Math.max(1, pre)
       this.search()
     },
-    next(id) {
+    next() {
       this.page++
       this.search()
     },

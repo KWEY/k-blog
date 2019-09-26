@@ -3,7 +3,6 @@
     <div v-for="({title, tid, list}) in typeList.list" :key="tid" class="eui-list">
       <p 
         class="eui-name"
-        @click.stop="toogle(tid)"
         @touchstart="touchstart(tid)"
       >
         {{ title }}
@@ -14,6 +13,7 @@
           :key="pid"
           :class="{'disabled': pid === '001_110' && !userStatus.isAdmin}"
           @touchend="touchend(tid)"
+          @click.stop="toogle(tid)"
         >
           <nuxt-link :to="src" class="eui-item" :class="{active: pid === typeList.value}">{{ name }}</nuxt-link>
         </li>

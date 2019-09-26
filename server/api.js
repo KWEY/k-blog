@@ -5,6 +5,7 @@ const author = require('./middlewares/auth')
 const user = require('./controllers/user')
 const weblog = require('./controllers/weblog')
 const article = require('./controllers/article')
+const comment = require('./controllers/comment')
 const statistical = require('./controllers/statistical')
 const recommend = require('./controllers/recommend')
 
@@ -25,6 +26,12 @@ router
   .patch('/article/update', author.auth('userToken'), article.patchArticle)
   // 删除文章
   .delete('/article/delete', author.auth('userToken'), article.deleteArticle)
+  // 获取评论列表
+  .get('/comment/list', comment.getComments)
+  // 上传评论
+  .post('/comment/post', author.auth('userToken'), comment.postComment)
+  // 删除评论
+  .delete('/comment/delete', author.auth('userToken'), comment.deleteComment)
 // 文章
 router
   // 获取文章列表

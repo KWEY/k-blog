@@ -1,7 +1,7 @@
 <template>
   <div class="kwe-top">
     <div class="kwe-top-wrap">
-      <div class="kwe-home-wrap">
+      <div class="kwe-home-wrap" @click="toHome">
         <nuxt-link to="/" class="kwe-home">
           <homesvg class="kwe-home-svg" />
           <span>HOME</span>
@@ -18,6 +18,7 @@ import homesvg from '@/assets/home.svg'
 import tablist from '@/ui/tablist.vue'
 
 import user from './user'
+import $http from '../../request/http'
 
 export default {
   name: 'Toplist',
@@ -42,7 +43,11 @@ export default {
   },
   methods: {
     tabChange(tab) {
+      $http.track({flag: 'changeTab', params: tab})
       this.$store.dispatch('changeTab', tab)
+    },
+    toHome() {
+      $http.track({flag: 'home'})
     }
   }
 }

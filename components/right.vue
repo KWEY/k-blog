@@ -15,7 +15,7 @@
       </ul>
       <h3 v-if="recommend.length > 0">今日推荐：</h3>
       <ul v-if="recommend.length > 0" class="kwe-recommend">
-        <li v-for="ele of recommend" :key="ele.aid" class="kwe-recommend-list">
+        <li v-for="ele of recommend" :key="ele.aid" class="kwe-recommend-list" @click.stop="recommendV(ele.aid)">
           <div class="card-box">
             <div class="pic-box">
               <div class="pic">
@@ -47,6 +47,7 @@
 </template>
 
 <script>
+import $http from '../request/http'
 export default {
   name: 'RightPanel',
   components: {},
@@ -95,6 +96,9 @@ export default {
         return `${hour} : ${min} : ${sec}`
       }
       return dur
+    },
+    recommendV(aid) {
+      $http.track({flag: 'recVideo', params: aid})
     }
   }
 }

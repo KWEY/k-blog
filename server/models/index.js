@@ -8,6 +8,7 @@ require('./article')
 require('./articleid')
 require('./statistical')
 require('./weblog')
+require('./weblogop')
 
 const User = mongoose.model('User')
 const Counter = mongoose.model('Counter')

@@ -1,9 +1,12 @@
 const mongoose = require('mongoose')
 const Weblog = mongoose.model('Weblog')
+const WeblogOp = mongoose.model('WeblogOp')
+const trackId = ['001', '002']
 
 //
 const track = async (req, res, next) => {
-  const ua =req.headers['user-agent']
+  const ua = req.headers['user-agent']
+  const body = req.body
   let clientIp
   if (process.env.NODE_ENV === 'development') {
     clientIp = '27.115.6.196'
@@ -14,16 +17,21 @@ const track = async (req, res, next) => {
   const geo = geoip.lookup(clientIp)
   const date = new Date()
   if (clientIp && geo) {
-    const { flag = '', params = '' } = req.body
-    const log = await new Weblog({
+    const da = {
       ua,
-      flag,
-      params,
       ip: clientIp,
+      ctime: date.getTime(),
       date: date.Format('yyyyMMdd'),
       hour: date.Format('hh'),
+      ...body,
       ...geo
-    })
+    }
+    let log
+    if (body.logid === trackId[0]) {
+      log = await new WeblogOp(da)
+    } else {
+      log = await new Weblog(da)
+    }
     await log.save()
     res.json({
       success: true,
@@ -37,7 +45,7 @@ const track = async (req, res, next) => {
 }
 // 获取list
 const getLogList = async (req, res, next) => {
-  let { page = 1, limit = 100, date = '', hour = '' } = req.query
+  let { page = 1, limit = 100, date = '', hour = '', logid = '001' } = req.query
   page = Number((page - 1) * limit) || 0
   limit = Number(limit) || 100
   
@@ -48,13 +56,19 @@ const getLogList = async (req, res, next) => {
   if (hour) {
     findOption.hour = hour
   }
-  const data = await Weblog.find(findOption, {
+  let ModuleLog
+  if (logid === trackId[0]) {
+    ModuleLog = WeblogOp
+  } else {
+    ModuleLog = Weblog
+  }
+  const data = await ModuleLog.find(findOption, {
     ip: 1,
     flag: 1,
     date: 1,
     hour: 1,
-    country: 1,
-    timezone: 1,
+    ctime: 1,
+    params: 1,
     ll: 1
   })
     .skip(page)
@@ -67,9 +81,15 @@ const getLogList = async (req, res, next) => {
 }
 // 
 const deleteLog = async (req, res, next) => {
-  const id = req.query.id
+  const {id, logid = '001'} = req.query
   try {
-    await Weblog.findOneAndDelete({ _id: id }).exec()
+    let ModuleLog
+    if (logid === trackId[0]) {
+      ModuleLog = WeblogOp
+    } else {
+      ModuleLog = Weblog
+    }
+    await ModuleLog.findOneAndDelete({ _id: id }).exec()
     res.json({
       success: true,
       data: ''

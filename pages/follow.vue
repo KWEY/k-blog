@@ -50,7 +50,13 @@ export default {
         /* eslint-disable */
         new window.Nav({
           className: 'kwe-nav-wrap',
-          url: '/db/nav-x.json'
+          url: '/db/nav-x.json',
+          callback: (data) => {
+            data && $http.track({
+              flag: 'nav-' + data.flag,
+              params: data.params || ''
+            })
+          }
         })
         /* eslint-enable */
         this.loading = false

@@ -4,6 +4,7 @@
 // 导入接口域名列表
 import base from './api'
 // 导入http中创建的axios实例
+import { track } from './track'
 import { fetch } from './axios'
 
 export default {
@@ -17,6 +18,7 @@ export default {
   },
   // 上报埋点
   track(data) {
+    track(data)
     return fetch({ data, url: base.track, method: 'post' })
   },
   // 获取统计信息

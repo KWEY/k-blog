@@ -55,11 +55,18 @@ export default {
   mounted() {
     const name = idToName[this.$store.state.typeList.value]
     this.setTitle((name && name[0]) || '')
-    $http.track({flag: 'Index'})
+    $http.track({
+      flag: 'enter',
+      params: 'index'
+    })
   },
   methods: {
     toggle() {
       this.showleft = this.showleft ? '' : 'show-left'
+      $http.track({
+        flag: 'show_left',
+        params: !this.showleft
+      })
     },
     setTitle(newName) {
       document.title = `雪人的${newName}日志`

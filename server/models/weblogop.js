@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-const WeblogSchema = new Schema({
+const WeblogOpSchema = new Schema({
   ip: {
     type: String,
     default: '',
@@ -68,7 +68,7 @@ const WeblogSchema = new Schema({
   }
 })
 
-WeblogSchema.options.toJSON = {
+WeblogOpSchema.options.toJSON = {
   virtuals: true,
   versionKey: false,
   transform(doc, ret) {
@@ -77,4 +77,4 @@ WeblogSchema.options.toJSON = {
   }
 }
 
-mongoose.model('Weblog', WeblogSchema)
+mongoose.model('WeblogOp', WeblogOpSchema)

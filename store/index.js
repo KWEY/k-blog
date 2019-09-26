@@ -75,6 +75,7 @@ export const actions = {
   },
   // 切换tab
   changeTab({ commit, state }, tab) {
+    console.log('change---------');
     if (state.typeList.tab === tab) {
       return
     }

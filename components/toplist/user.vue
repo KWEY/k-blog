@@ -19,6 +19,8 @@
 </template>
 
 <script>
+import $http from '../../request/http'
+
 export default {
   name: 'User',
   data() {
@@ -47,6 +49,7 @@ export default {
   methods: {
     tologin() {
       if (!this.userStatus.isLogin) {
+        $http.track({flag: 'login'})
         this.$router.push('/login')
       }
     },
@@ -57,8 +60,10 @@ export default {
         const keyword = this.$route.query.keyword || ''
         this.$store.dispatch('getArticles', { type, page, keyword })
       })
+      $http.track({flag: 'logout'})
     },
     changePassword() {
+      $http.track({flag: 'password'})
       this.$router.push('/password')
     }
   }

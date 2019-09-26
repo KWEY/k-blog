@@ -1,21 +1,25 @@
 <template>
   <div class="kwe-left">
     <template v-if="articleList.length > 0">
-      <div v-for="item in articleList" :key="item.id" class="kwe-directory">
-        <nuxt-link :to="'/article/' + item.id">
+      <div v-for="item in articleList" :key="item.id" class="kwe-directory" >
+        <nuxt-link :to="'/article/' + item.id" @click.stop="articleId(item.id)">
           <h3 class="kwe-title">{{ item.title }}</h3>
         </nuxt-link>
         <div class="kwe-description">{{ item.description }}</div>
         <div class="kwe-bottom">
           <div class="kwe-info">
             <span class="kwe-times">{{ item.views }}</span>
-            <nuxt-link
+            <span
               v-for="ele of item.type"
               :key="ele.name[1]"
-              :to="'/?type=' + ele.name[1]"
-              class="kwe-type"
-              >{{ ele.name[0] }}</nuxt-link
+              @click.stop="articleType(ele.name[1])"
             >
+              <nuxt-link
+                :to="'/?type=' + ele.name[1]"
+                class="kwe-type"
+                >{{ ele.name[0] }}</nuxt-link
+              >
+            </span>
           </div>
           <div class="kwe-time">{{ new Date(item.created_at).toLocaleString() }}</div>
         </div>
@@ -36,6 +40,8 @@
 <script>
 import pages from '@/ui/pages.vue'
 import { idToName } from '@/store/default-options.js'
+import $http from '../request/http'
+
 export default {
   name: 'LeftPanel',
   components: {
@@ -80,6 +86,12 @@ export default {
           }
         })
       }
+    },
+    articleId(id) {
+      $http.track({flag: 'article', params: id})
+    },
+    articleType(id) {
+      $http.track({flag: 'articleType', params: id})
     }
   }
 }
