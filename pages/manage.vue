@@ -125,7 +125,8 @@ export default {
         return
       }
       $http.deleteLog({
-        id
+        id,
+        logid: this.logid,
       }).then(res => {
         if (res.success) {
           this.showToast('删除成功', 'success')

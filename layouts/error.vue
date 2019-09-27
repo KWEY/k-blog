@@ -8,11 +8,18 @@
 </template>
 
 <script>
+import $http from '../request/http'
 export default {
   name: 'To404',
   data() {
     return {}
-  }
+  },
+  mounted() {
+    $http.track({
+      flag: 'enter',
+      params: window.location.href
+    })
+  },
 }
 </script>
 <style lang="less">

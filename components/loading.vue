@@ -22,6 +22,6 @@ export default {
   z-index: 100;
   line-height: 100vh;
   text-align: center;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.6);
 }
 </style>

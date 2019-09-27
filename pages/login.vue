@@ -106,6 +106,9 @@ export default {
       } else {
         this.result = '输入信息有误'
       }
+      $http.track({
+        flag: 'login'
+      })
     },
     checkTel(isclick) {
       if (/^1\d{10}$/.test(this.user.tel)) {

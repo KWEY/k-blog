@@ -43,7 +43,6 @@ export default {
   },
   methods: {
     tabChange(tab) {
-      $http.track({flag: 'changeTab', params: tab})
       this.$store.dispatch('changeTab', tab)
     },
     toHome() {

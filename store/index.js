@@ -64,8 +64,8 @@ export const actions = {
         res.keyword = keyword
         commit('ARTICLE_LIST', res)
         commit('CURRENTTYPE', { type, page })
-        commit('LOADING', false)
       }
+      commit('LOADING', false)
     })
     await $http.getRecommend().then(res => {
       if (res.success) {
@@ -75,7 +75,6 @@ export const actions = {
   },
   // 切换tab
   changeTab({ commit, state }, tab) {
-    console.log('change---------');
     if (state.typeList.tab === tab) {
       return
     }

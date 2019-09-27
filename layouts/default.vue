@@ -11,6 +11,7 @@
 import footerPanel from '@/components/footer.vue'
 import toplist from '@/components/toplist/top-list.vue'
 import load from '@/components/loading.vue'
+import $http from '../request/http'
 export default {
   components: {
     load: load,
@@ -49,6 +50,10 @@ export default {
       } else {
         this.showHome = false
       }
+      $http.track({
+        flag: 'enter',
+        params: window.location.href
+      })
     },
     set() {
       if ('PushManager' in window && 'serviceWorker' in navigator) {

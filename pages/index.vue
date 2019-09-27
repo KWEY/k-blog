@@ -55,10 +55,6 @@ export default {
   mounted() {
     const name = idToName[this.$store.state.typeList.value]
     this.setTitle((name && name[0]) || '')
-    $http.track({
-      flag: 'enter',
-      params: 'index'
-    })
   },
   methods: {
     toggle() {

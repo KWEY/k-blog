@@ -1,0 +1,4124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>第一个 Python 程序</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="./base.css">
+</style>
+</head>
+<body>
+<h1>第一个 Python 程序</h1>
+<h2>目标</h2>
+<ul>
+<li>第一个 <code>HelloPython</code> 程序</li>
+<li><code>Python 2.x</code> 与 <code>3​​.x</code> 版本简介</li>
+<li>
+执行 <code>Python</code> 程序的三种方式
+<ul>
+<li>解释器 —— <code>python</code> / <code>python3</code></li>
+<li>交互式 —— <code>ipython</code></li>
+<li>集成开发环境 —— <code>PyCharm</code></li>
+</ul>
+</li>
+</ul>
+<h2>01. 第一个 <code>HelloPython</code> 程序</h2>
+<h3>1.1 Python 源程序的基本概念</h3>
+<ol>
+<li>Python 源程序就是<strong>一个特殊格式的文本文件</strong>，可以<strong>使用任意文本编辑软件</strong>做 <code>Python</code> 的开发</li>
+<li>Python 程序的 <strong>文件扩展名</strong> 通常都是 <code>.py</code></li>
+</ol>
+<h3>1.2 演练步骤</h3>
+<ul>
+<li>在桌面下，新建 <code>认识Python</code> 目录</li>
+<li>在 <code>认识Python</code> 目录下新建 <code>01-HelloPython.py</code> 文件</li>
+<li>使用 <strong>gedit</strong> 编辑 <code>01-HelloPython.py</code> 并且输入以下内容：</li>
+</ul>
+<p><code>python
+print(&quot;hello python&quot;)
+print(&quot;hello world&quot;)</code></p>
+<ul>
+<li>在终端中输入以下命令执行 <code>01-HelloPython.py</code></li>
+</ul>
+<p><code>bash
+$ python 01-HelloPython.py</code></p>
+<blockquote>
+<p><code>print</code> 是 <code>python</code> 中我们学习的第一个 <strong>函数</strong></p>
+<p><code>print</code> 函数的作用，可以把 <strong>&quot;&quot;</strong> 内部的内容，输出到屏幕上</p>
+</blockquote>
+<h3>1.3 演练扩展 —— 认识错误（BUG）</h3>
+<h4>关于错误</h4>
+<ul>
+<li>编写的程序<strong>不能正常执行</strong>，或者<strong>执行的结果不是我们期望的</strong></li>
+<li>
+俗称 <code>BUG</code>，是程序员在开发时非常常见的，初学者常见错误的原因包括：
+<ol>
+<li>手误</li>
+<li>对已经学习过的知识理解还存在不足</li>
+<li>对语言还有需要学习和提升的内容</li>
+</ol>
+</li>
+<li>在学习语言时，不仅要<strong>学会语言的语法</strong>，而且还要<strong>学会如何认识错误和解决错误的方法</strong></li>
+</ul>
+<blockquote>
+<p>每一个程序员都是在不断地修改错误中成长的</p>
+</blockquote>
+<h4>第一个演练中的常见错误</h4>
+<ul>
+<li>1&gt; <strong>手误</strong>，例如使用 <code>pirnt(&quot;Hello world&quot;)</code> </li>
+</ul>
+<p>```
+NameError: name 'pirnt' is not defined</p>
+<p>名称错误：'pirnt' 名字没有定义
+```</p>
+<ul>
+<li>2&gt; 将多条 <code>print</code> 写在一行</li>
+</ul>
+<p>```
+SyntaxError: invalid syntax</p>
+<p>语法错误：语法无效
+```</p>
+<blockquote>
+<p>每行代码负责完成一个动作</p>
+</blockquote>
+<ul>
+<li>3&gt; 缩进错误</li>
+</ul>
+<p>```
+IndentationError: unexpected indent</p>
+<p>缩进错误：不期望出现的缩进
+```</p>
+<blockquote>
+<ul>
+<li>Python 是一个格式非常严格的程序设计语言</li>
+<li>目前而言，大家记住每行代码前面都不要增加空格</li>
+</ul>
+</blockquote>
+<ul>
+<li>4&gt; <strong>python 2.x 默认不支持中文</strong> </li>
+</ul>
+<p>目前市场上有两个 Python 的版本并存着，分别是 <code>Python 2.x</code> 和 <code>Python 3.x</code></p>
+<ul>
+<li><strong>Python 2.x 默认不支持中文</strong>，具体原因，等到介绍 <strong>字符编码</strong> 时给大家讲解</li>
+<li>Python 2.x 的解释器名称是 <strong>python</strong></li>
+<li>Python 3.x 的解释器名称是 <strong>python3</strong></li>
+</ul>
+<p>```
+SyntaxError: Non-ASCII character '\xe4' in file 01-HelloPython.py on line 3, 
+but no encoding declared; 
+see http://python.org/dev/peps/pep-0263/ for details</p>
+<p>语法错误： 在 01-HelloPython.py 中第 3 行出现了非 ASCII 字符 '\xe4'，但是没有声明文件编码
+请访问 http://python.org/dev/peps/pep-0263/ 了解详细信息
+```</p>
+<blockquote>
+<ul>
+<li><code>ASCII</code> 字符只包含 <code>256</code> 个字符，不支持中文</li>
+<li>有关字符编码的问题，后续会讲</li>
+</ul>
+</blockquote>
+<h4>单词列表</h4>
+<p><code>* error 错误
+* name 名字
+* defined 已经定义
+* syntax 语法
+* invalid 无效
+* Indentation 索引
+* unexpected 意外的，不期望的
+* character 字符
+* line 行
+* encoding 编码
+* declared 声明
+* details 细节，详细信息
+* ASCII 一种字符编码</code></p>
+<h2>02. <code>Python 2.x</code> 与 <code>3​​.x</code> 版本简介</h2>
+<p>目前市场上有两个 Python 的版本并存着，分别是 <code>Python 2.x</code> 和 <code>Python 3.x</code></p>
+<blockquote>
+<p>新的 Python 程序建议使用 <code>Python 3.0</code> 版本的语法</p>
+</blockquote>
+<ul>
+<li>
+Python 2.x 是 <strong>过去的版本</strong>
+<ul>
+<li>解释器名称是 <strong>python</strong></li>
+</ul>
+</li>
+<li>
+Python 3.x 是 <strong>现在和未来 主流的版本</strong>
+<ul>
+<li>解释器名称是 <strong>python3</strong></li>
+<li>相对于 <code>Python</code> 的早期版本，这是一个 <strong>较大的升级</strong></li>
+<li>
+为了不带入过多的累赘，<code>Python 3.0</code> 在设计的时候 <strong>没有考虑向下兼容</strong>
+<ul>
+<li>许多早期 <code>Python</code> 版本设计的程序都无法在 <code>Python 3.0</code> 上正常执行</li>
+</ul>
+</li>
+<li>Python 3.0 发布于 <strong>2008 年</strong></li>
+<li>
+到目前为止，Python 3.0 的稳定版本已经有很多年了
+<ul>
+<li>Python 3.3 发布于 2012</li>
+<li>Python 3.4 发布于 2014</li>
+<li>Python 3.5 发布于 2015</li>
+<li>Python 3.6 发布于 2016</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+为了照顾现有的程序，官方提供了一个过渡版本 —— <strong>Python 2.6</strong>
+<ul>
+<li>基本使用了 <code>Python 2.x</code> 的语法和库</li>
+<li>同时考虑了向 <code>Python 3.0</code> 的迁移，<strong>允许使用部分</strong> <code>Python 3.0</code> 的语法与函数</li>
+<li>2010 年中推出的 <code>Python 2.7</code> 被确定为 <strong>最后一个Python 2.x 版本</strong></li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>提示：如果开发时，无法立即使用 Python 3.0（还有极少的第三方库不支持 3.0 的语法），建议</p>
+<ul>
+<li>先使用 <code>Python 3.0</code> 版本进行开发</li>
+<li>然后使用 <code>Python 2.6</code>、<code>Python 2.7</code> 来执行，并且做一些兼容性的处理</li>
+</ul>
+</blockquote>
+<h2>03. 执行 Python 程序的三种方式</h2>
+<h3>3.1. 解释器 <code>python</code> / <code>python3</code></h3>
+<h4>Python 的解释器</h4>
+<p>```bash</p>
+<h1>使用 python 2.x 解释器</h1>
+<p>$ python xxx.py</p>
+<h1>使用 python 3.x 解释器</h1>
+<p>$ python3 xxx.py
+```</p>
+<h5>其他解释器（知道）</h5>
+<p><strong>Python 的解释器</strong> 如今有多个语言的实现，包括：</p>
+<ul>
+<li><code>CPython</code> —— 官方版本的 C 语言实现</li>
+<li><code>Jython</code> —— 可以运行在 Java 平台</li>
+<li><code>IronPython</code> —— 可以运行在 .NET 和 Mono 平台</li>
+<li><code>PyPy</code> —— Python 实现的，支持 JIT 即时编译</li>
+</ul>
+<h3>3.2. 交互式运行 Python 程序</h3>
+<ul>
+<li>直接在终端中运行解释器，而不输入要执行的文件名</li>
+<li>在 Python 的 <code>Shell</code> 中直接输入 <strong>Python 的代码</strong>，会立即看到程序执行结果</li>
+</ul>
+<h4>1) 交互式运行 Python 的优缺点</h4>
+<h5>优点</h5>
+<ul>
+<li>适合于学习/验证 Python 语法或者局部代码</li>
+</ul>
+<h5>缺点</h5>
+<ul>
+<li>代码不能保存</li>
+<li>不适合运行太大的程序</li>
+</ul>
+<h4>2) 退出 官方的解释器</h4>
+<h5>1&gt; 直接输入 <code>exit()</code></h5>
+<p>```python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>exit()
+```</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<h5>2&gt; 使用热键退出</h5>
+<p>在 python 解释器中，按热键 <code>ctrl + d</code> 可以退出解释器</p>
+<p><img src="./img/016.jpg" alt="001_积跬步以至千里" /></p>
+<h4>3) IPython</h4>
+<ul>
+<li>IPython 中 的 “I” 代表 <strong>交互 interactive</strong></li>
+</ul>
+<h5>特点</h5>
+<ul>
+<li>
+IPython 是一个 python 的 <strong>交互式 shell</strong>，比默认的 <code>python shell</code> 好用得多
+<ul>
+<li>支持自动补全</li>
+<li>自动缩进</li>
+<li>支持 <code>bash shell</code> 命令</li>
+<li>内置了许多很有用的功能和函数</li>
+</ul>
+</li>
+<li>IPython 是基于 BSD 开源的</li>
+</ul>
+<h5>版本</h5>
+<ul>
+<li>Python 2.x 使用的解释器是 <strong>ipython</strong></li>
+<li>
+<p>Python 3.x 使用的解释器是 <strong>ipython3</strong></p>
+</li>
+<li>
+<p>要退出解释器可以有以下两种方式：</p>
+</li>
+</ul>
+<h5>1&gt; 直接输入 <code>exit</code></h5>
+<p><code>python
+In [1]: exit</code></p>
+<h5>2&gt; 使用热键退出</h5>
+<p>在 IPython 解释器中，按热键 <code>ctrl + d</code>，<code>IPython</code> 会询问是否退出解释器</p>
+<h4>IPython 的安装</h4>
+<p><code>bash
+$ sudo apt install ipython</code></p>
+
+<!-- 05_注释 -->
+<h1>注释</h1>
+<h2>目标</h2>
+<ul>
+<li>注释的作用</li>
+<li>单行注释（行注释）</li>
+<li>多行注释（块注释）</li>
+</ul>
+<h2>01. 注释的作用</h2>
+<blockquote>
+<p>使用用自己熟悉的语言，在程序中对某些代码进行标注说明，增强程序的可读性</p>
+</blockquote>
+<h2>02. 单行注释(行注释)</h2>
+<ul>
+<li>
+<p>以 <code>#</code> 开头，<code>#</code> 右边的所有东西都被当做说明文字，而不是真正要执行的程序，只起到辅助说明作用</p>
+</li>
+<li>
+<p>示例代码如下：</p>
+</li>
+</ul>
+<p>```python</p>
+<h1>这是第一个单行注释</h1>
+<p>print(&quot;hello python&quot;)
+```</p>
+<blockquote>
+<p>为了保证代码的可读性，<code>#</code> 后面建议先添加一个空格，然后再编写相应的说明文字</p>
+</blockquote>
+<h3>在代码后面增加的单行注释</h3>
+<ul>
+<li>在程序开发时，同样可以使用 <code>#</code> 在代码的后面（旁边）增加说明性的文字</li>
+<li>
+<p>但是，需要注意的是，<strong>为了保证代码的可读性</strong>，<strong>注释和代码之间</strong> 至少要有 <strong>两个空格</strong></p>
+</li>
+<li>
+<p>示例代码如下：</p>
+</li>
+</ul>
+<p><code>python
+print(&quot;hello python&quot;)  # 输出 `hello python`</code></p>
+<h2>03. 多行注释（块注释）</h2>
+<ul>
+<li>如果希望编写的 <strong>注释信息很多，一行无法显示</strong>，就可以使用多行注释</li>
+<li>
+<p>要在 Python 程序中使用多行注释，可以用 <strong>一对 连续的 三个 引号</strong>(单引号和双引号都可以)</p>
+</li>
+<li>
+<p>示例代码如下：</p>
+</li>
+</ul>
+<p>```python
+&quot;&quot;&quot;
+这是一个多行注释</p>
+<p>在多行注释之间，可以写很多很多的内容……
+&quot;&quot;&quot; 
+print(&quot;hello python&quot;)
+```</p>
+<h3>什么时候需要使用注释？</h3>
+<ol>
+<li><strong>注释不是越多越好</strong>，对于一目了然的代码，不需要添加注释</li>
+<li>对于 <strong>复杂的操作</strong>，应该在操作开始前写上若干行注释</li>
+<li>对于 <strong>不是一目了然的代码</strong>，应在其行尾添加注释（为了提高可读性，注释应该至少离开代码 2 个空格）</li>
+<li>绝不要描述代码，假设阅读代码的人比你更懂 Python，他只是不知道你的代码要做什么</li>
+</ol>
+<blockquote>
+<p>在一些正规的开发团队，通常会有 <strong>代码审核</strong> 的惯例，就是一个团队中彼此阅读对方的代码</p>
+</blockquote>
+<h3>关于代码规范</h3>
+<ul>
+<li><code>Python</code> 官方提供有一系列 PEP（Python Enhancement Proposals） 文档</li>
+<li>其中第 8 篇文档专门针对 <strong>Python 的代码格式</strong> 给出了建议，也就是俗称的 <strong>PEP 8</strong></li>
+<li>文档地址：https://www.python.org/dev/peps/pep-0008/</li>
+<li>谷歌有对应的中文文档：http://zh-google-styleguide.readthedocs.io/en/latest/google-python-styleguide/python<em>style</em>rules/</li>
+</ul>
+<blockquote>
+<p>任何语言的程序员，编写出符合规范的代码，是开始程序生涯的第一步</p>
+</blockquote>
+
+<!-- 06_算数运算符 -->
+<h1>算数运算符</h1>
+<p><strong>计算机</strong>，顾名思义就是负责进行 <strong>数学计算</strong> 并且 <strong>存储计算结果</strong> 的电子设备</p>
+<h2>目标</h2>
+<ul>
+<li>算术运算符的基本使用</li>
+</ul>
+<h2>01. 算数运算符</h2>
+<ul>
+<li>算数运算符是 <strong>运算符的一种</strong></li>
+<li>是完成基本的算术运算使用的符号，用来处理四则运算</li>
+</ul>
+<p>| 运算符| 描述 | 实例 |
+| :---: | :---: | --- |
+| + | 加 | 10 + 20 = 30 |
+| - | 减 | 10 - 20 = -10 |
+| * | 乘 | 10 * 20 = 200 |
+| / | 除 | 10 / 20 = 0.5 |
+| // | 取整除 | 返回除法的整数部分（商） 9 // 2 输出结果 4 |
+| % | 取余数 | 返回除法的余数 9 % 2 = 1 |
+| ** | 幂 | 又称次方、乘方，2 ** 3 = 8 |</p>
+<ul>
+<li>在 Python 中 <code>*</code> 运算符还可以用于字符串，计算结果就是字符串重复指定次数的结果</li>
+</ul>
+<p><code>python
+In [1]: &quot;-&quot; * 50
+Out[1]: '----------------------------------------'</code></p>
+<h2>02. 算数运算符的优先级</h2>
+<ul>
+<li>
+<p>和数学中的运算符的优先级一致，在 Python 中进行数学计算时，同样也是：</p>
+<ul>
+<li><strong>先乘除后加减</strong></li>
+<li>同级运算符是 <strong>从左至右</strong> 计算</li>
+<li>可以使用 <code>()</code> 调整计算的优先级</li>
+</ul>
+</li>
+<li>
+<p>以下表格的算数优先级由高到最低顺序排列</p>
+</li>
+</ul>
+<p>| 运算符 | 描述 |
+| --- | --- |
+| ** | 幂 (最高优先级) |
+| * / % // | 乘、除、取余数、取整除 |
+| + - | 加法、减法 |</p>
+<ul>
+<li>
+例如：
+<ul>
+<li><code>2 + 3 * 5 = 17</code></li>
+<li><code>(2 + 3) * 5 = 25</code></li>
+<li><code>2 * 3 + 5 = 11</code></li>
+<li><code>2 * (3 + 5) = 16</code></li>
+</ul>
+</li>
+</ul>
+<!-- 07_程序执行原理（科普） -->
+<h1>程序执行原理（科普）</h1>
+<h2>目标</h2>
+<ul>
+<li>计算机中的 <strong>三大件</strong></li>
+<li>程序执行的原理</li>
+<li>程序的作用</li>
+</ul>
+<h2>01. 计算机中的三大件</h2>
+<p>计算机中包含有较多的硬件，但是一个程序要运行，有 <strong>三个</strong> 核心的硬件，分别是：</p>
+<ol>
+<li>
+<strong>CPU</strong> 
+<ul>
+<li>中央处理器，是一块超大规模的集成电路</li>
+<li>负责 <strong>处理数据</strong>／<strong>计算</strong></li>
+</ul>
+</li>
+<li>
+<strong>内存</strong>
+<ul>
+<li><strong>临时</strong> 存储数据（断电之后，数据会消失）</li>
+<li>速度快</li>
+<li>空间小（单位价格高）</li>
+</ul>
+</li>
+<li>
+<strong>硬盘</strong> 
+<ul>
+<li><strong>永久</strong> 存储数据</li>
+<li>速度慢</li>
+<li>空间大（单位价格低）</li>
+</ul>
+</li>
+</ol>
+<p>| CPU | 内存 | 硬盘 |
+| :---: | :---: | :---: |
+<h3>思考题</h3>
+<ol>
+<li>
+计算机中哪一个硬件设备负责执行程序？
+<ul>
+<li><strong>CPU</strong></li>
+</ul>
+</li>
+<li>
+<strong>内存</strong> 的速度快还是 <strong>硬盘</strong> 的速度快？
+<ul>
+<li><strong>内存</strong></li>
+</ul>
+</li>
+<li>
+我们的程序是安装在内存中的，还是安装在硬盘中的？
+<ul>
+<li>硬盘</li>
+</ul>
+</li>
+<li>
+<strong>我买了一个内存条，有 500G 的空间！！！</strong>，这句话对吗？
+<ul>
+<li>不对，内存条通常只有 <code>4G</code> / <code>8G</code> / <code>16G</code> / <code>32G</code></li>
+</ul>
+</li>
+<li>
+<strong>计算机关机之后，内存中的数据都会消失</strong>，这句话对吗？
+<ul>
+<li>正确 </li>
+</ul>
+</li>
+</ol>
+<h2>02. 程序执行的原理</h2>
+<ol>
+<li>程序 <strong>运行之前</strong>，程序是 <strong>保存在硬盘</strong> 中的</li>
+<li>
+当要运行一个程序时
+<ul>
+<li>操作系统会首先让 <strong>CPU</strong> 把程序复制到 <strong>内存</strong> 中</li>
+<li><strong>CPU</strong> 执行 <strong>内存</strong> 中的 <strong>程序代码</strong></li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p><strong>程序要执行，首先要被加载到内存</strong></p>
+</blockquote>
+<h3>2.1 Python 程序执行原理</h3>
+<p><img src="./img/015.png" alt="003_Python程序执行示意图" /></p>
+<ol>
+<li>操作系统会首先让 <strong>CPU</strong> 把 <strong>Python 解释器</strong> 的程序复制到 <strong>内存</strong> 中</li>
+<li><strong>Python 解释器</strong> 根据语法规则，<strong>从上向下</strong> 让 <strong>CPU</strong> 翻译 <strong>Python 程序中的代码</strong></li>
+<li><strong>CPU</strong> 负责执行翻译完成的代码</li>
+</ol>
+<h4>Python 的解释器有多大？</h4>
+<ul>
+<li>执行以下终端命令可以查看 Python 解释器的大小</li>
+</ul>
+<p>```bash</p>
+<h1>1. 确认解释器所在位置</h1>
+<p>$ which python</p>
+<h1>2. 查看 python 文件大小(只是一个软链接)</h1>
+<p>$ ls -lh /usr/bin/python</p>
+<h1>3. 查看具体文件大小</h1>
+<p>$ ls -lh /usr/bin/python2.7
+```</p>
+<blockquote>
+<p>提示：建立 <strong>软链接</strong> 的目的，是为了方便使用者不用记住使用的解释器是 <strong>哪一个具体版本</strong></p>
+</blockquote>
+<h2>03. 程序的作用</h2>
+<blockquote>
+<p>程序就是 <strong>用来处理数据</strong> 的！</p>
+</blockquote>
+<ul>
+<li><strong>新闻软件</strong> 提供的 <strong>新闻内容、评论……</strong> 是数据</li>
+<li><strong>电商软件</strong> 提供的 <strong>商品信息、配送信息……</strong> 是数据</li>
+<li><strong>运动类软件</strong> 提供的 <strong>运动数据……</strong> 是数据</li>
+<li><strong>地图类软件</strong> 提供的 <strong>地图信息、定位信息、车辆信息……</strong> 是数据</li>
+<li><strong>即时通讯软件</strong> 提供的 <strong>聊天信息、好友信息……</strong> 是数据</li>
+<li>……</li>
+</ul>
+<h3>3.1 思考 QQ 程序的启动过程</h3>
+<ol>
+<li>QQ 在<strong>运行之前</strong>，是保存在 <strong>硬盘</strong> 中的</li>
+<li><strong>运行之后</strong>，QQ 程序就会被加载到 <strong>内存</strong> 中了</li>
+</ol>
+<h3>3.2 思考 QQ 程序的 <strong>登录</strong> 过程</h3>
+<ol>
+<li>读取用户输入的 <strong>QQ 号码</strong></li>
+<li>读取用户输入的 <strong>QQ 密码</strong></li>
+<li>将 <strong>QQ 号码</strong> 和 <strong>QQ 密码</strong> 发送给腾讯的服务器，等待服务器确认用户信息</li>
+</ol>
+<h4>思考 1</h4>
+<blockquote>
+<p>在 QQ 这个程序将 <strong>QQ 号码</strong> 和 <strong>QQ 密码</strong> 发送给服务器之前，<strong>是否需要先存储一下 QQ 号码 和 密码?</strong></p>
+</blockquote>
+<p><strong>答案</strong></p>
+<p>肯定需要！—— 否则 QQ 这个程序就不知道把什么内容发送给服务器了！</p>
+<h4>思考 2</h4>
+<blockquote>
+<p>QQ 这个程序把 <strong>QQ 号码</strong> 和 <strong>QQ 密码</strong> 保存在哪里？</p>
+</blockquote>
+<p><strong>答案</strong></p>
+<p>保存在 <strong>内存</strong> 中，因为 QQ 程序自己就在内存中</p>
+<h4>思考 3</h4>
+<blockquote>
+<p>QQ 这个程序是怎么保存用户的 <strong>QQ 号码</strong> 和 <strong>QQ 密码</strong> 的？</p>
+</blockquote>
+<p><strong>答案</strong></p>
+<ol>
+<li>
+在内存中为 <strong>QQ 号码</strong> 和 <strong>QQ 密码</strong> 各自分配一块空间
+<ul>
+<li>在 QQ 程序结束之前，这两块空间是由 QQ 程序负责管理的，其他任何程序都不允许使用</li>
+<li>在 QQ 自己使用完成之前，这两块空间始终都只负责保存 <strong>QQ 号码</strong> 和 <strong>QQ 密码</strong></li>
+</ul>
+</li>
+<li>使用一个 <strong>别名</strong> 标记 <strong>QQ 号码</strong> 和 <strong>QQ 密码</strong> 在内存中的位置</li>
+</ol>
+<p><img src="./img/014.png" alt="004_QQ号码和密码内存示意图" /></p>
+<blockquote>
+<ul>
+<li>在程序内部，为 <strong>QQ 号码</strong> 和 <strong>QQ 密码</strong> 在内存中分配的空间就叫做 <strong>变量</strong></li>
+<li><strong>程序就是用来处理数据的，而变量就是用来存储数据的</strong></li>
+</ul>
+</blockquote>
+
+<!-- 08_变量的基本使用 -->
+<h1>变量的基本使用</h1>
+<blockquote>
+<p><strong>程序就是用来处理数据的，而变量就是用来存储数据的</strong></p>
+</blockquote>
+<h2>目标</h2>
+<ul>
+<li>变量定义</li>
+<li>变量的类型</li>
+<li>变量的命名</li>
+</ul>
+<h2>01. 变量定义</h2>
+<ul>
+<li>在 Python 中，每个变量 <strong>在使用前都必须赋值</strong>，变量 <strong>赋值以后</strong> 该变量 <strong>才会被创建</strong></li>
+<li>
+等号（=）用来给变量赋值
+<ul>
+<li><code>=</code> 左边是一个变量名</li>
+<li><code>=</code> 右边是存储在变量中的值</li>
+</ul>
+</li>
+</ul>
+<p><code>python
+变量名 = 值</code></p>
+<blockquote>
+<p>变量定义之后，后续就可以直接使用了</p>
+</blockquote>
+<h3>1) 变量演练1 —— iPython</h3>
+<p>```python</p>
+<h1>定义 qq_number 的变量用来保存 qq 号码</h1>
+<p>In [1]: qq_number = &quot;1234567&quot;</p>
+<h1>输出 qq_number 中保存的内容</h1>
+<p>In [2]: qq_number
+Out[2]: '1234567'</p>
+<h1>定义 qq_password 的变量用来保存 qq 密码</h1>
+<p>In [3]: qq_password = &quot;123&quot;</p>
+<h1>输出 qq_password 中保存的内容</h1>
+<p>In [4]: qq_password
+Out[4]: '123'
+```</p>
+<blockquote>
+<p>使用交互式方式，如果要查看变量内容，直接输入变量名即可，不需要使用 <code>print</code> 函数</p>
+</blockquote>
+<h3>2) 变量演练 2 —— PyCharm</h3>
+<p>```python</p>
+<h1>定义 qq 号码变量</h1>
+<p>qq_number = &quot;1234567&quot;</p>
+<h1>定义 qq 密码变量</h1>
+<p>qq_password = &quot;123&quot;</p>
+<h1>在程序中，如果要输出变量的内容，需要使用 print 函数</h1>
+<p>print(qq<em>number)
+print(qq</em>password)
+```</p>
+<blockquote>
+<p>使用解释器执行，如果要输出变量的内容，必须要要使用 <code>print</code> 函数</p>
+</blockquote>
+<h3>3) 变量演练 3 —— 超市买苹果</h3>
+<blockquote>
+<ul>
+<li>可以用 <strong>其他变量的计算结果</strong> 来定义变量</li>
+<li>变量定义之后，后续就可以直接使用了</li>
+</ul>
+</blockquote>
+<p><strong>需求</strong></p>
+<ul>
+<li>苹果的价格是 <strong>8.5 元/斤</strong></li>
+<li>买了 <strong>7.5 斤</strong> 苹果</li>
+<li>计算付款金额</li>
+</ul>
+<p>```python</p>
+<h1>定义苹果价格变量</h1>
+<p>price = 8.5</p>
+<h1>定义购买重量</h1>
+<p>weight = 7.5</p>
+<h1>计算金额</h1>
+<p>money = price * weight</p>
+<p>print(money)
+```</p>
+<h4>思考题</h4>
+<ul>
+<li>如果 <strong>只要买苹果，就返 5 块钱</strong></li>
+<li>请重新计算购买金额</li>
+</ul>
+<p>```python</p>
+<h1>定义苹果价格变量</h1>
+<p>price = 8.5</p>
+<h1>定义购买重量</h1>
+<p>weight = 7.5</p>
+<h1>计算金额</h1>
+<p>money = price * weight</p>
+<h1>只要买苹果就返 5 元</h1>
+<p>money = money - 5
+print(money)
+```</p>
+<p><strong>提问</strong></p>
+<ul>
+<li>
+上述代码中，一共定义有几个变量？
+<ul>
+<li>三个：<code>price</code>／<code>weight</code>／<code>money</code></li>
+</ul>
+</li>
+<li>
+<code>money = money - 5</code> 是在定义新的变量还是在使用变量？
+<ul>
+<li>直接使用之前已经定义的变量</li>
+<li>变量名 只有在 <strong>第一次出现</strong> 才是 <strong>定义变量</strong></li>
+<li>变量名 再次出现，不是定义变量，而是直接使用之前定义过的变量</li>
+</ul>
+</li>
+<li>
+在程序开发中，可以修改之前定义变量中保存的值吗？
+<ul>
+<li>可以</li>
+<li>变量中存储的值，就是可以 <strong>变</strong> 的</li>
+</ul>
+</li>
+</ul>
+<h2>02. 变量的类型</h2>
+<ul>
+<li>
+在内存中创建一个变量，会包括：
+<ol>
+<li>变量的名称</li>
+<li>变量保存的数据</li>
+<li>变量存储数据的类型</li>
+<li>变量的地址（标示）</li>
+</ol>
+</li>
+</ul>
+<h3>2.1 变量类型的演练 —— 个人信息</h3>
+<p><strong>需求</strong></p>
+<ul>
+<li>定义变量保存小明的个人信息</li>
+<li>姓名：<strong>小明</strong></li>
+<li>年龄：<strong>18</strong> 岁</li>
+<li>性别：<strong>是</strong>男生</li>
+<li>身高：<strong>1.75</strong> 米</li>
+<li>体重：<strong>75.0</strong> 公斤</li>
+</ul>
+<blockquote>
+<p>利用 <strong>单步调试</strong> 确认变量中保存数据的类型</p>
+</blockquote>
+<p><strong>提问</strong></p>
+<ol>
+<li>
+在演练中，一共有几种数据类型？
+<ul>
+<li>4 种</li>
+<li><code>str</code> —— 字符串</li>
+<li><code>bool</code> —— 布尔（真假）</li>
+<li><code>int</code> —— 整数</li>
+<li><code>float</code> —— 浮点数（小数）</li>
+</ul>
+</li>
+<li>
+在 <code>Python</code> 中定义变量时需要指定类型吗？
+<ul>
+<li>不需要</li>
+<li><code>Python</code> 可以根据 <code>=</code> 等号右侧的值，自动推导出变量中存储数据的类型</li>
+</ul>
+</li>
+</ol>
+<h3>2.2 变量的类型</h3>
+<ul>
+<li>在 <code>Python</code> 中定义变量是 <strong>不需要指定类型</strong>（在其他很多高级语言中都需要）</li>
+<li>数据类型可以分为 <strong>数字型</strong> 和 <strong>非数字型</strong></li>
+<li>
+数字型
+<ul>
+<li>整型 (<code>int</code>)</li>
+<li>浮点型（<code>float</code>）</li>
+<li>
+布尔型（<code>bool</code>） 
+<ul>
+<li>真 <code>True</code> <code>非 0 数</code> —— <strong>非零即真</strong></li>
+<li>假 <code>False</code> <code>0</code></li>
+</ul>
+</li>
+<li>
+复数型 (<code>complex</code>)
+<ul>
+<li>主要用于科学计算，例如：平面场问题、波动问题、电感电容等问题</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+非数字型
+<ul>
+<li>字符串</li>
+<li>列表</li>
+<li>元组</li>
+<li>字典</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>提示：在 Python 2.x 中，<strong>整数</strong> 根据保存数值的长度还分为：
+  * <code>int</code>（整数）
+  * <code>long</code>（长整数）</p>
+</blockquote>
+<ul>
+<li>使用 <code>type</code> 函数可以查看一个变量的类型</li>
+</ul>
+<p><code>python
+In [1]: type(name)</code></p>
+<h3>2.3 不同类型变量之间的计算</h3>
+<h4>1) <strong>数字型变量</strong> 之间可以直接计算</h4>
+<ul>
+<li>在 Python 中，两个数字型变量是可以直接进行 算数运算的</li>
+<li>
+如果变量是 <code>bool</code> 型，在计算时
+<ul>
+<li><code>True</code> 对应的数字是 <code>1</code></li>
+<li><code>False</code> 对应的数字是 <code>0</code></li>
+</ul>
+</li>
+</ul>
+<p><strong>演练步骤</strong></p>
+<ol>
+<li>定义整数 <code>i = 10</code></li>
+<li>定义浮点数 <code>f = 10.5</code></li>
+<li>
+<p>定义布尔型 <code>b = True</code></p>
+</li>
+<li>
+<p>在 iPython 中，使用上述三个变量相互进行算术运算</p>
+</li>
+</ol>
+<h4>2) <strong>字符串变量</strong> 之间使用 <code>+</code> 拼接字符串</h4>
+<ul>
+<li>在 Python 中，字符串之间可以使用 <code>+</code> 拼接生成新的字符串</li>
+</ul>
+<p>```python
+In [1]: first_name = &quot;三&quot;</p>
+<p>In [2]: last_name = &quot;张&quot;</p>
+<p>In [3]: first<em>name + last</em>name
+Out[3]: '三张'
+```</p>
+<h4>3) <strong>字符串变量</strong> 可以和 <strong>整数</strong> 使用 <code>*</code> 重复拼接相同的字符串</h4>
+<p><code>python
+In [1]: &quot;-&quot; * 50
+Out[1]: '--------------------------------------------------'</code></p>
+<h4>4) <strong>数字型变量</strong> 和 <strong>字符串</strong> 之间 <strong>不能进行其他计算</strong></h4>
+<p>```python
+In [1]: first_name = &quot;zhang&quot;</p>
+<p>In [2]: x = 10</p>
+<h2>In [3]: x + first_name</h2>
+<p>TypeError: unsupported operand type(s) for +: 'int' and 'str'
+类型错误：<code>+</code> 不支持的操作类型：<code>int</code> 和 <code>str</code>
+```</p>
+<h3>2.4 变量的输入</h3>
+<ul>
+<li>所谓 <strong>输入</strong>，就是 <strong>用代码</strong> <strong>获取</strong> 用户通过 <strong>键盘</strong> 输入的信息</li>
+<li>例如：去银行取钱，在 ATM 上输入密码</li>
+<li>在 Python 中，如果要获取用户在 <strong>键盘</strong> 上的输入信息，需要使用到 <code>input</code> 函数</li>
+</ul>
+<h4>1) 关于函数</h4>
+<ul>
+<li>一个 <strong>提前准备好的功能</strong>(别人或者自己写的代码)，<strong>可以直接使用</strong>，而 <strong>不用关心内部的细节</strong></li>
+<li>目前已经学习过的函数</li>
+</ul>
+<p>| 函数 | 说明 |
+| --- | --- |
+| print(x) | 将 x 输出到控制台 |
+| type(x) | 查看 x 的变量类型 |</p>
+<h4>2) input 函数实现键盘输入</h4>
+<ul>
+<li>在 Python 中可以使用 <code>input</code> 函数从键盘等待用户的输入</li>
+<li>用户输入的 <strong>任何内容</strong> Python 都认为是一个 <strong>字符串</strong></li>
+<li>语法如下：</li>
+</ul>
+<p><code>python
+字符串变量 = input(&quot;提示信息：&quot;)</code></p>
+<h4>3) 类型转换函数</h4>
+<p>| 函数 | 说明 |
+| --- | --- |
+| int(x) | 将 x 转换为一个整数 |
+| float(x) | 将 x 转换到一个浮点数 |</p>
+<h4>4) 变量输入演练 —— 超市买苹果增强版</h4>
+<p><strong>需求</strong></p>
+<ul>
+<li><strong>收银员输入</strong> 苹果的价格，单位：<strong>元／斤</strong></li>
+<li><strong>收银员输入</strong> 用户购买苹果的重量，单位：<strong>斤</strong></li>
+<li>计算并且 <strong>输出</strong> 付款金额</li>
+</ul>
+<h5>演练方式 1</h5>
+<p>```python</p>
+<h1>1. 输入苹果单价</h1>
+<p>price_str = input(&quot;请输入苹果价格：&quot;)</p>
+<h1>2. 要求苹果重量</h1>
+<p>weight_str = input(&quot;请输入苹果重量：&quot;)</p>
+<h1>3. 计算金额</h1>
+<h1>1&gt; 将苹果单价转换成小数</h1>
+<p>price = float(price_str)</p>
+<h1>2&gt; 将苹果重量转换成小数</h1>
+<p>weight = float(weight_str)</p>
+<h1>3&gt; 计算付款金额</h1>
+<p>money = price * weight</p>
+<p>print(money)
+```</p>
+<p><strong>提问</strong></p>
+<ol>
+<li>
+演练中，针对 <strong>价格</strong> 定义了几个变量？
+<ul>
+<li><strong>两个</strong></li>
+<li><code>price_str</code> 记录用户输入的价格字符串</li>
+<li><code>price</code> 记录转换后的价格数值</li>
+</ul>
+</li>
+<li><strong>思考</strong> —— 如果开发中，需要用户通过控制台 输入 <strong>很多个 数字<strong>，针对每一个数字都要定义两个变量，</strong>方便吗</strong>？ </li>
+</ol>
+<h5>演练方式 2 —— 买苹果改进版</h5>
+<ol>
+<li><strong>定义</strong> 一个 <strong>浮点变量</strong> 接收用户输入的同时，就使用 <code>float</code> 函数进行转换</li>
+</ol>
+<p><code>python
+price = float(input(&quot;请输入价格:&quot;))</code></p>
+<ul>
+<li>
+<p>改进后的好处：</p>
+</li>
+<li>
+<p>节约空间，只需要为一个变量分配空间</p>
+</li>
+<li>
+<p>起名字方便，不需要为中间变量起名字</p>
+</li>
+<li>
+<p>改进后的“缺点”：</p>
+</li>
+<li>
+<p>初学者需要知道，两个函数能够嵌套使用，稍微有一些难度</p>
+</li>
+</ul>
+<p><strong>提示</strong></p>
+<ul>
+<li>如果输入的不是一个数字，程序执行时会出错，有关数据转换的高级话题，后续会讲！</li>
+</ul>
+<h3>2.5 变量的格式化输出</h3>
+<blockquote>
+<p>苹果单价 <code>9.00</code> 元／斤，购买了 <code>5.00</code> 斤，需要支付 <code>45.00</code> 元</p>
+</blockquote>
+<ul>
+<li>在 Python 中可以使用 <code>print</code> 函数将信息输出到控制台</li>
+<li>如果希望输出文字信息的同时，<strong>一起输出</strong> <strong>数据</strong>，就需要使用到 <strong>格式化操作符</strong></li>
+<li>
+<code>%</code> 被称为 <strong>格式化操作符</strong>，专门用于处理字符串中的格式
+<ul>
+<li>包含 <code>%</code> 的字符串，被称为 <strong>格式化字符串</strong></li>
+<li><code>%</code> 和不同的 <strong>字符</strong> 连用，<strong>不同类型的数据</strong> 需要使用 <strong>不同的格式化字符</strong></li>
+</ul>
+</li>
+</ul>
+<p>| 格式化字符 | 含义 |
+| --- | --- |
+| %s | 字符串 |
+| %d | 有符号十进制整数，<code>%06d</code> 表示输出的整数显示位数，不足的地方使用 <code>0</code> 补全 |
+| %f | 浮点数，<code>%.2f</code> 表示小数点后只显示两位 |
+| %% | 输出 <code>%</code> |</p>
+<ul>
+<li>语法格式如下：</li>
+</ul>
+<p>```python
+print(&quot;格式化字符串&quot; % 变量1)</p>
+<p>print(&quot;格式化字符串&quot; % (变量1, 变量2...))
+```</p>
+<h4>格式化输出演练 —— 基本练习</h4>
+<p><strong>需求</strong></p>
+<ol>
+<li>定义字符串变量 <code>name</code>，输出 <strong>我的名字叫 小明，请多多关照！</strong></li>
+<li>定义整数变量 <code>student_no</code>，输出 <strong>我的学号是 000001</strong></li>
+<li>定义小数 <code>price</code>、<code>weight</code>、<code>money</code>，输出 <strong>苹果单价 9.00 元／斤，购买了 5.00 斤，需要支付 45.00 元</strong></li>
+<li>定义一个小数 <code>scale</code>，输出 <strong>数据比例是 10.00%</strong></li>
+</ol>
+<p><code>python
+print(&quot;我的名字叫 %s，请多多关照！&quot; % name)
+print(&quot;我的学号是 %06d&quot; % student_no)
+print(&quot;苹果单价 %.02f 元／斤，购买 %.02f 斤，需要支付 %.02f 元&quot; % (price, weight, money))
+print(&quot;数据比例是 %.02f%%&quot; % (scale * 100))</code></p>
+<h4>课后练习 —— 个人名片</h4>
+<p><strong>需求</strong></p>
+<ul>
+<li>在控制台依次提示用户输入：<strong>姓名</strong>、<strong>公司<strong>、</strong>职位</strong>、<strong>电话</strong>、<strong>邮箱</strong></li>
+<li>按照以下格式输出：</li>
+</ul>
+<p>```</p>
+<hr />
+<p>公司名称</p>
+<p>姓名 (职位)</p>
+<p>电话：电话
+邮箱：邮箱</p>
+<hr />
+<p>```</p>
+<p>实现代码如下：</p>
+<p>```python
+&quot;&quot;&quot;
+在控制台依次提示用户输入：姓名、公司、职位、电话、电子邮箱
+&quot;&quot;&quot;
+name = input(&quot;请输入姓名：&quot;)
+company = input(&quot;请输入公司：&quot;)
+title = input(&quot;请输入职位：&quot;)
+phone = input(&quot;请输入电话：&quot;)
+email = input(&quot;请输入邮箱：&quot;)</p>
+<p>print(&quot;<em>&quot; * 50)
+print(company)
+print()
+print(&quot;%s (%s)&quot; % (name, title))
+print()
+print(&quot;电话：%s&quot; % phone)
+print(&quot;邮箱：%s&quot; % email)
+print(&quot;</em>&quot; * 50)</p>
+<p>```</p>
+
+<!-- 09_变量的命名 -->
+<h1>变量的命名</h1>
+<h2>目标</h2>
+<ul>
+<li>标识符和关键字</li>
+<li>变量的命名规则</li>
+</ul>
+<h2>0.1 标识符和关键字</h2>
+<h3>1.1 标识符</h3>
+<blockquote>
+<p>标示符就是程序员定义的 <strong>变量名</strong>、<strong>函数名</strong></p>
+<p><strong>名字</strong> 需要有 <strong>见名知义</strong> 的效果，见下图：</p>
+</blockquote>
+<ul>
+<li>标示符可以由 <strong>字母</strong>、<strong>下划线</strong> 和 <strong>数字</strong> 组成</li>
+<li><strong>不能以数字开头</strong></li>
+<li><strong>不能与关键字重名</strong></li>
+</ul>
+<p>思考：下面的标示符哪些是正确的，哪些不正确为什么？</p>
+<p><code>fromNo12
+from#12
+my_Boolean
+my-Boolean
+Obj2
+2ndObj
+myInt
+My_tExt
+_test
+test!32
+haha(da)tt
+jack_rose
+jack&amp;rose
+GUI
+G.U.I</code></p>
+<h3>1.2 关键字</h3>
+<ul>
+<li><strong>关键字</strong> 就是在 <code>Python</code> 内部已经使用的标识符</li>
+<li><strong>关键字</strong> 具有特殊的功能和含义</li>
+<li>开发者 <strong>不允许定义和关键字相同的名字的标示符</strong></li>
+</ul>
+<p>通过以下命令可以查看 <code>Python</code> 中的关键字</p>
+<p><code>python
+In [1]: import keyword
+In [2]: print(keyword.kwlist)</code></p>
+<blockquote>
+<p>提示：<strong>关键字的学习及使用</strong>，会在后面的课程中不断介绍</p>
+<ul>
+<li>
+<p><code>import</code> <strong>关键字</strong> 可以导入一个 <strong>“工具包”</strong></p>
+</li>
+<li>
+<p>在 <code>Python</code> 中不同的工具包，提供有不同的工具</p>
+</li>
+</ul>
+</blockquote>
+<h2>02. 变量的命名规则</h2>
+<blockquote>
+<p><strong>命名规则</strong> 可以被视为一种 <strong>惯例</strong>，并无绝对与强制
+目的是为了 <strong>增加代码的识别和可读性</strong></p>
+</blockquote>
+<p><strong>注意</strong> <code>Python</code> 中的 <strong>标识符</strong> 是 <strong>区分大小写的</strong></p>
+<ol>
+<li>在定义变量时，为了保证代码格式，<code>=</code> 的左右应该各保留一个空格</li>
+<li>
+在 <code>Python</code> 中，如果 <strong>变量名</strong> 需要由 <strong>二个</strong> 或 <strong>多个单词</strong> 组成时，可以按照以下方式命名
+<ol>
+<li>每个单词都使用小写字母</li>
+<li>单词与单词之间使用 <strong><code>_</code>下划线</strong> 连接</li>
+<li>例如：<code>first_name</code>、<code>last_name</code>、<code>qq_number</code>、<code>qq_password</code></li>
+</ol>
+</li>
+</ol>
+<h3>驼峰命名法</h3>
+<ul>
+<li>当 <strong>变量名</strong> 是由二个或多个单词组成时，还可以利用驼峰命名法来命名</li>
+<li>
+<strong>小驼峰式命名法</strong>
+<ul>
+<li>第一个单词以小写字母开始，后续单词的首字母大写</li>
+<li>例如：<code>firstName</code>、<code>lastName</code></li>
+</ul>
+</li>
+<li>
+<strong>大驼峰式命名法</strong>
+<ul>
+<li>每一个单词的首字母都采用大写字母</li>
+<li>例如：<code>FirstName</code>、<code>LastName</code>、<code>CamelCase</code> </li>
+</ul>
+</li>
+</ul>
+<!-- 10_判断（if）语句 -->
+<h1>判断（if）语句</h1>
+<h2>目标</h2>
+<ul>
+<li>开发中的应用场景</li>
+<li>if 语句体验</li>
+<li>if 语句进阶</li>
+<li>综合应用</li>
+</ul>
+<h2>01. 开发中的应用场景</h2>
+<p>生活中的判断几乎是无所不在的，我们每天都在做各种各样的选择，如果这样？如果那样？……</p>
+<h3>程序中的判断</h3>
+<p>```python
+if 今天发工资:</p>
+<pre><code>先还信用卡的钱
+
+if 有剩余:
+
+    又可以happy了，O(∩_∩)O哈哈~
+
+else:
+
+    噢，no。。。还的等30天
+</code></pre>
+
+<p>else:</p>
+<pre><code>盼着发工资
+</code></pre>
+
+<p>```</p>
+<h3>判断的定义</h3>
+<ul>
+<li>如果 <strong>条件满足</strong>，才能做某件事情，</li>
+<li>如果 <strong>条件不满足</strong>，就做另外一件事情，或者什么也不做</li>
+</ul>
+<blockquote>
+<p>正是因为有了判断，才使得程序世界丰富多彩，充满变化！</p>
+<p><strong>判断语句</strong> 又被称为 “分支语句”，正是因为有了判断，才让程序有了很多的分支</p>
+</blockquote>
+<h2>02. if 语句体验</h2>
+<h3>2.1 if 判断语句基本语法</h3>
+<p>在 <code>Python</code> 中，<strong>if 语句</strong> 就是用来进行判断的，格式如下：</p>
+<p><code>python
+if 要判断的条件:
+    条件成立时，要做的事情
+    ……</code></p>
+<blockquote>
+<p>注意：代码的缩进为一个 <code>tab</code> 键，或者 <strong>4</strong> 个空格 —— <strong>建议使用空格</strong></p>
+<ul>
+<li>在 Python 开发中，Tab 和空格不要混用！</li>
+</ul>
+</blockquote>
+<p><strong>我们可以把整个 if 语句看成一个完整的代码块</strong></p>
+<h3>2.2 判断语句演练 —— 判断年龄</h3>
+<p><strong>需求</strong></p>
+<ol>
+<li>定义一个整数变量记录年龄</li>
+<li>判断是否满 18 岁 （<strong>&gt;=</strong>）</li>
+<li>如果满 18 岁，允许进网吧嗨皮</li>
+</ol>
+<p>```python</p>
+<h1>1. 定义年龄变量</h1>
+<p>age = 18</p>
+<h1>2. 判断是否满 18 岁</h1>
+<h1>if 语句以及缩进部分的代码是一个完整的代码块</h1>
+<p>if age &gt;= 18:
+    print(&quot;可以进网吧嗨皮……&quot;)</p>
+<h1>3. 思考！- 无论条件是否满足都会执行</h1>
+<p>print(&quot;这句代码什么时候执行?&quot;)
+```</p>
+<p><strong>注意</strong>：</p>
+<ul>
+<li><code>if</code> 语句以及缩进部分是一个 <strong>完整的代码块</strong></li>
+</ul>
+<h3>2.3 else 处理条件不满足的情况</h3>
+<p><strong>思考</strong></p>
+<p>在使用 <code>if</code> 判断时，只能做到满足条件时要做的事情。那如果需要在 <strong>不满足条件的时候</strong>，做某些事情，该如何做呢？</p>
+<p><strong>答案</strong></p>
+<p><code>else</code>，格式如下：</p>
+<p><code>python
+if 要判断的条件:
+    条件成立时，要做的事情
+    ……
+else:
+    条件不成立时，要做的事情
+    ……</code></p>
+<p><strong>注意</strong>：</p>
+<ul>
+<li><code>if</code> 和 <code>else</code> 语句以及各自的缩进部分共同是一个 <strong>完整的代码块</strong></li>
+</ul>
+<h3>2.4 判断语句演练 —— 判断年龄改进</h3>
+<p><strong>需求</strong></p>
+<ol>
+<li>输入用户年龄</li>
+<li>判断是否满 18 岁 （<strong>&gt;=</strong>）</li>
+<li>如果满 18 岁，允许进网吧嗨皮</li>
+<li>如果未满 18 岁，提示回家写作业</li>
+</ol>
+<p>```python</p>
+<h1>1. 输入用户年龄</h1>
+<p>age = int(input(&quot;今年多大了？&quot;))</p>
+<h1>2. 判断是否满 18 岁</h1>
+<h1>if 语句以及缩进部分的代码是一个完整的语法块</h1>
+<p>if age &gt;= 18:
+    print(&quot;可以进网吧嗨皮……&quot;)
+else:
+    print(&quot;你还没长大，应该回家写作业！&quot;)</p>
+<h1>3. 思考！- 无论条件是否满足都会执行</h1>
+<p>print(&quot;这句代码什么时候执行?&quot;)
+```</p>
+<h2>03. 逻辑运算</h2>
+<ul>
+<li>在程序开发中，通常 <strong>在判断条件时</strong>，会需要同时判断多个条件</li>
+<li>只有多个条件都满足，才能够执行后续代码，这个时候需要使用到 <strong>逻辑运算符</strong></li>
+<li><strong>逻辑运算符</strong> 可以把 <strong>多个条件</strong> 按照 <strong>逻辑</strong> 进行 <strong>连接</strong>，变成 <strong>更复杂的条件</strong></li>
+<li>Python 中的 <strong>逻辑运算符</strong> 包括：<strong>与 and<strong>／</strong>或 or</strong>／<strong>非 not</strong> 三种</li>
+</ul>
+<h3>3.1 <code>and</code></h3>
+<p><code>条件1 and 条件2</code></p>
+<ul>
+<li><strong>与</strong>／<strong>并且</strong></li>
+<li>两个条件同时满足，返回 <code>True</code></li>
+<li>只要有一个不满足，就返回 <code>False</code></li>
+</ul>
+<p>| 条件 1 | 条件 2 | 结果 |
+| :---: | :---: | :---: |
+| 成立 | 成立 | 成立 |
+| 成立 | 不成立 | 不成立 |
+| 不成立 | 成立 | 不成立 |
+| 不成立 | 不成立 | 不成立 |</p>
+<h3>3.2 <code>or</code></h3>
+<p><code>条件1 or 条件2</code></p>
+<ul>
+<li><strong>或</strong>／<strong>或者</strong></li>
+<li>两个条件只要有一个满足，返回 <code>True</code></li>
+<li>两个条件都不满足，返回 <code>False</code></li>
+</ul>
+<p>| 条件 1 | 条件 2 | 结果 |
+| :---: | :---: | :---: |
+| 成立 | 成立 | 成立 |
+| 成立 | 不成立 | 成立 |
+| 不成立 | 成立 | 成立 |
+| 不成立 | 不成立 | 不成立 |</p>
+<h3>3.3 <code>not</code></h3>
+<p><code>not 条件</code></p>
+<ul>
+<li><strong>非</strong>／<strong>不是</strong></li>
+</ul>
+<p>| 条件 | 结果 |
+| :---: | :---: |
+| 成立 | 不成立 |
+| 不成立 | 成立 |</p>
+<h4>逻辑运算演练</h4>
+<ol>
+<li>
+练习1: 定义一个整数变量 <code>age</code>，编写代码判断年龄是否正确
+<ul>
+<li>要求人的年龄在 0-120 之间</li>
+</ul>
+</li>
+<li>
+练习2: 定义两个整数变量 <code>python_score</code>、<code>c_score</code>，编写代码判断成绩
+<ul>
+<li>要求只要有一门成绩 &gt; 60 分就算合格</li>
+</ul>
+</li>
+<li>
+练习3: 定义一个布尔型变量 <code>is_employee</code>，编写代码判断是否是本公司员工
+<ul>
+<li>如果不是提示不允许入内</li>
+</ul>
+</li>
+</ol>
+<p>答案 1：</p>
+<p>```python</p>
+<h1>练习1: 定义一个整数变量 age，编写代码判断年龄是否正确</h1>
+<p>age = 100</p>
+<h1>要求人的年龄在 0-120 之间</h1>
+<p>if age &gt;= 0 and age &lt;= 120:
+    print(&quot;年龄正确&quot;)
+else:
+    print(&quot;年龄不正确&quot;)</p>
+<p>```</p>
+<p>答案 2：</p>
+<p>```python</p>
+<h1>练习2: 定义两个整数变量 python<em>score、c</em>score，编写代码判断成绩</h1>
+<p>python<em>score = 50
+c</em>score = 50</p>
+<h1>要求只要有一门成绩 &gt; 60 分就算合格</h1>
+<p>if python<em>score &gt; 60 or c</em>score &gt; 60:
+    print(&quot;考试通过&quot;)
+else:
+    print(&quot;再接再厉！&quot;)
+```</p>
+<p>答案 3：</p>
+<p>```python</p>
+<h1>练习3: 定义一个布尔型变量 <code>is_employee</code>，编写代码判断是否是本公司员工</h1>
+<p>is_employee = True</p>
+<h1>如果不是提示不允许入内</h1>
+<p>if not is_employee:
+    print(&quot;非公勿内&quot;)
+```</p>
+<h2>04. if 语句进阶</h2>
+<h3>4.1 <code>elif</code></h3>
+<ul>
+<li>在开发中，使用 <code>if</code> 可以 <strong>判断条件</strong></li>
+<li>使用 <code>else</code> 可以处理 <strong>条件不成立</strong> 的情况</li>
+<li>但是，如果希望 <strong>再增加一些条件</strong>，<strong>条件不同，需要执行的代码也不同</strong> 时，就可以使用 <code>elif</code> </li>
+<li>语法格式如下：</li>
+</ul>
+<p><code>python
+if 条件1:
+    条件1满足执行的代码
+    ……
+elif 条件2:
+    条件2满足时，执行的代码
+    ……
+elif 条件3:
+    条件3满足时，执行的代码
+    ……
+else:
+    以上条件都不满足时，执行的代码
+    ……</code></p>
+<ul>
+<li>对比逻辑运算符的代码</li>
+</ul>
+<p><code>python
+if 条件1 and 条件2:
+    条件1满足 并且 条件2满足 执行的代码
+    ……</code></p>
+<p><strong>注意</strong></p>
+<ol>
+<li><code>elif</code> 和 <code>else</code> 都必须和 <code>if</code> 联合使用，而不能单独使用</li>
+<li>可以将 <code>if</code>、<code>elif</code> 和 <code>else</code> 以及各自缩进的代码，看成一个 <strong>完整的代码块</strong></li>
+</ol>
+<h4>elif 演练 —— 女友的节日</h4>
+<p><strong>需求</strong></p>
+<ol>
+<li>定义 <code>holiday_name</code> 字符串变量记录节日名称</li>
+<li>如果是 <strong>情人节</strong> 应该 <strong>买玫瑰<strong>／</strong>看电影</strong></li>
+<li>如果是 <strong>平安夜</strong> 应该 <strong>买苹果<strong>／</strong>吃大餐</strong></li>
+<li>如果是 <strong>生日</strong> 应该 <strong>买蛋糕</strong></li>
+<li>其他的日子每天都是节日啊……</li>
+</ol>
+<p>```
+holiday_name = &quot;平安夜&quot;</p>
+<p>if holiday<em>name == &quot;情人节&quot;:
+    print(&quot;买玫瑰&quot;)
+    print(&quot;看电影&quot;)
+elif holiday</em>name == &quot;平安夜&quot;:
+    print(&quot;买苹果&quot;)
+    print(&quot;吃大餐&quot;)
+elif holiday_name == &quot;生日&quot;:
+    print(&quot;买蛋糕&quot;)
+else:
+    print(&quot;每天都是节日啊……&quot;)</p>
+<p>```</p>
+<h3>4.2 <code>if</code> 的嵌套</h3>
+<blockquote>
+<p><strong>elif</strong> 的应用场景是：<strong>同时</strong> 判断 <strong>多个条件</strong>，所有的条件是 <strong>平级</strong> 的</p>
+</blockquote>
+<ul>
+<li>在开发中，使用 <code>if</code> 进行条件判断，如果希望 <strong>在条件成立的执行语句中</strong> 再 <strong>增加条件判断</strong>，就可以使用 <strong>if 的嵌套</strong></li>
+<li><strong>if 的嵌套</strong> 的应用场景就是：<strong>在之前条件满足的前提下，再增加额外的判断</strong></li>
+<li><strong>if 的嵌套</strong> 的语法格式，<strong>除了缩进之外</strong> 和之前的没有区别</li>
+<li>语法格式如下：</li>
+</ul>
+<p>```python
+if 条件 1:
+    条件 1 满足执行的代码
+    ……</p>
+<pre><code>if 条件 1 基础上的条件 2:
+    条件 2 满足时，执行的代码
+    ……    
+
+# 条件 2 不满足的处理
+else:
+    条件 2 不满足时，执行的代码
+</code></pre>
+
+<h1>条件 1 不满足的处理</h1>
+<p>else:
+    条件1 不满足时，执行的代码
+    ……
+```</p>
+<h4>if 的嵌套 演练 —— 火车站安检</h4>
+<p><strong>需求</strong></p>
+<ol>
+<li>定义布尔型变量 <code>has_ticket</code> 表示是否有车票</li>
+<li>定义整型变量 <code>knife_length</code> 表示刀的长度，单位：厘米</li>
+<li>首先检查是否有车票，如果有，才允许进行 <strong>安检</strong></li>
+<li>
+安检时，需要检查刀的长度，判断是否超过 20 厘米
+<ul>
+<li>如果超过 20 厘米，提示刀的长度，不允许上车</li>
+<li>如果不超过 20 厘米，安检通过</li>
+</ul>
+</li>
+<li>如果没有车票，不允许进门</li>
+</ol>
+<p>```python</p>
+<h1>定义布尔型变量 has_ticket 表示是否有车票</h1>
+<p>has_ticket = True</p>
+<h1>定义整数型变量 knife_length 表示刀的长度，单位：厘米</h1>
+<p>knife_length = 20</p>
+<h1>首先检查是否有车票，如果有，才允许进行 安检</h1>
+<p>if has_ticket:
+    print(&quot;有车票，可以开始安检...&quot;)</p>
+<pre><code># 安检时，需要检查刀的长度，判断是否超过 20 厘米
+# 如果超过 20 厘米，提示刀的长度，不允许上车
+if knife_length &gt;= 20:
+    print(&quot;不允许携带 %d 厘米长的刀上车&quot; % knife_length)
+# 如果不超过 20 厘米，安检通过
+else:
+    print(&quot;安检通过，祝您旅途愉快……&quot;)
+</code></pre>
+
+<h1>如果没有车票，不允许进门</h1>
+<p>else:
+    print(&quot;大哥，您要先买票啊&quot;)</p>
+<p>```</p>
+<h2>05. 综合应用 —— 石头剪刀布</h2>
+<p><strong>目标</strong></p>
+<ol>
+<li>强化 <strong>多个条件</strong> 的 <strong>逻辑运算</strong></li>
+<li>体会 <code>import</code> 导入模块（“工具包”）的使用</li>
+</ol>
+<p><strong>需求</strong></p>
+<ol>
+<li>从控制台输入要出的拳 —— 石头（1）／剪刀（2）／布（3）</li>
+<li>电脑 <strong>随机</strong> 出拳 —— 先假定电脑只会出石头，完成整体代码功能</li>
+<li>比较胜负</li>
+</ol>
+<p>| 序号 | 规则 |
+| :---: | :---: |
+| 1 | 石头 胜 剪刀 |
+| 2 | 剪刀 胜 布 | 
+| 3 | 布 胜 石头 |</p>
+<h3>5.1 基础代码实现</h3>
+<ul>
+<li>先 <strong>假定电脑就只会出石头</strong>，完成整体代码功能</li>
+</ul>
+<p>```python</p>
+<h1>从控制台输入要出的拳 —— 石头（1）／剪刀（2）／布（3）</h1>
+<p>player = int(input(&quot;请出拳 石头（1）／剪刀（2）／布（3）：&quot;))</p>
+<h1>电脑 随机 出拳 - 假定电脑永远出石头</h1>
+<p>computer = 1</p>
+<h1>比较胜负</h1>
+<h1>如果条件判断的内容太长，可以在最外侧的条件增加一对大括号</h1>
+<h1>再在每一个条件之间，使用回车，PyCharm 可以自动增加 8 个空格</h1>
+<p>if ((player == 1 and computer == 2) or
+        (player == 2 and computer == 3) or
+        (player == 3 and computer == 1)):</p>
+<pre><code>print(&quot;噢耶！！！电脑弱爆了！！！&quot;)
+</code></pre>
+
+<p>elif player == computer:
+    print(&quot;心有灵犀，再来一盘！&quot;)
+else:
+    print(&quot;不行，我要和你决战到天亮！&quot;)</p>
+<p>```</p>
+<h3>5.2 随机数的处理</h3>
+<ul>
+<li>在 <code>Python</code> 中，要使用随机数，首先需要导入 <strong>随机数</strong> 的 <strong>模块</strong> —— “工具包”</li>
+</ul>
+<p><code>python
+import random</code></p>
+<ul>
+<li>
+<p>导入模块后，可以直接在 <strong>模块名称</strong> 后面敲一个 <code>.</code> 然后按 <code>Tab</code> 键，会提示该模块中包含的所有函数</p>
+</li>
+<li>
+<p><code>random.randint(a, b)</code> ，返回 <code>[a, b]</code> 之间的整数，包含 <code>a</code> 和 <code>b</code></p>
+</li>
+<li>例如：</li>
+</ul>
+<p><code>python
+random.randint(12, 20)  # 生成的随机数n: 12 &lt;= n &lt;= 20   
+random.randint(20, 20)  # 结果永远是 20   
+random.randint(20, 10)  # 该语句是错误的，下限必须小于上限</code></p>
+<!-- 11_运算符 -->
+<h1>运算符</h1>
+<h2>目标</h2>
+<ul>
+<li>算数运算符</li>
+<li>比较（关系）运算符</li>
+<li>逻辑运算符</li>
+<li>赋值运算符</li>
+<li>运算符的优先级</li>
+</ul>
+<p>数学符号表链接：<a href="https://zh.wikipedia.org/wiki/数学符号表">https://zh.wikipedia.org/wiki/数学符号表</a></p>
+<h2>01. 算数运算符</h2>
+<ul>
+<li>是完成基本的算术运算使用的符号，用来处理四则运算</li>
+</ul>
+<p>| 运算符| 描述 | 实例 |
+| :---: | :---: | --- |
+| + | 加 | 10 + 20 = 30 |
+| - | 减 | 10 - 20 = -10 |
+| * | 乘 | 10 * 20 = 200 |
+| / | 除 | 10 / 20 = 0.5 |
+| // | 取整除 | 返回除法的整数部分（商） 9 // 2 输出结果 4 |
+| % | 取余数 | 返回除法的余数 9 % 2 = 1 |
+| ** | 幂 | 又称次方、乘方，2 ** 3 = 8 |</p>
+<ul>
+<li>在 Python 中 <code>*</code> 运算符还可以用于字符串，计算结果就是字符串重复指定次数的结果</li>
+</ul>
+<p><code>python
+In [1]: &quot;-&quot; * 50
+Out[1]: '----------------------------------------'</code></p>
+<h2>02. 比较（关系）运算符</h2>
+<p>| 运算符 | 描述 |
+| --- | --- |
+| == | 检查两个操作数的值是否 <strong>相等</strong>，如果是，则条件成立，返回 True |
+| != | 检查两个操作数的值是否 <strong>不相等</strong>，如果是，则条件成立，返回 True |
+| &gt; | 检查左操作数的值是否 <strong>大于</strong> 右操作数的值，如果是，则条件成立，返回 True |
+| &lt; | 检查左操作数的值是否 <strong>小于</strong> 右操作数的值，如果是，则条件成立，返回 True |
+| &gt;= | 检查左操作数的值是否 <strong>大于或等于</strong> 右操作数的值，如果是，则条件成立，返回 True |
+| &lt;= | 检查左操作数的值是否 <strong>小于或等于</strong> 右操作数的值，如果是，则条件成立，返回 True |</p>
+<blockquote>
+<p>Python 2.x 中判断 <strong>不等于</strong> 还可以使用 <code>&lt;&gt;</code> 运算符</p>
+<p><code>!=</code> 在 Python 2.x 中同样可以用来判断 <strong>不等于</strong></p>
+</blockquote>
+<h2>03. 逻辑运算符</h2>
+<p>| 运算符 | 逻辑表达式 | 描述 |
+| --- | --- | --- |
+| and | x and y | 只有 x 和 y 的值都为 True，才会返回 True<br />否则只要 x 或者 y 有一个值为 False，就返回 False |
+| or | x or y | 只要 x 或者 y 有一个值为 True，就返回 True<br />只有 x 和 y 的值都为 False，才会返回 False |
+| not | not x | 如果 x 为 True，返回 False<br />如果 x 为 False，返回 True |</p>
+<h2>04. 赋值运算符</h2>
+<ul>
+<li>在 Python 中，使用 <code>=</code> 可以给变量赋值</li>
+<li>在算术运算时，为了简化代码的编写，<code>Python</code> 还提供了一系列的 与 <strong>算术运算符</strong> 对应的 <strong>赋值运算符</strong></li>
+<li>注意：<strong>赋值运算符中间不能使用空格</strong></li>
+</ul>
+<p>| 运算符 | 描述 | 实例 |
+| --- | --- | --- |
+| = | 简单的赋值运算符 | c = a + b 将 a + b 的运算结果赋值为 c |
+| += | 加法赋值运算符 | c += a 等效于 c = c + a |
+| -= | 减法赋值运算符 | c -= a 等效于 c = c - a |
+| *= | 乘法赋值运算符	 | c *= a 等效于 c = c * a |
+| /= | 除法赋值运算符 | c /= a 等效于 c = c / a |
+| //= | 取整除赋值运算符 | c //= a 等效于 c = c // a |
+| %= | 取 <strong>模</strong> (余数)赋值运算符 | c %= a 等效于 c = c % a |
+| **= | 幂赋值运算符 | c **= a 等效于 c = c ** a |</p>
+<h2>05. 运算符的优先级</h2>
+<ul>
+<li>以下表格的算数优先级由高到最低顺序排列</li>
+</ul>
+<p>| 运算符 | 描述 |
+| --- | --- |
+| ** | 幂 (最高优先级) |
+| * / % // | 乘、除、取余数、取整除 |
+| + - | 加法、减法 |
+| &lt;= &lt; &gt; &gt;= | 比较运算符 |
+| == != | 等于运算符 |
+| = %= /= //= -= += *= **= | 赋值运算符 |
+| not or and | 逻辑运算符 |</p>
+
+<!-- 12_循环 -->
+<h1>循环</h1>
+<h2>目标</h2>
+<ul>
+<li>程序的三大流程</li>
+<li>while 循环基本使用</li>
+<li>break 和 continue</li>
+<li>while 循环嵌套</li>
+</ul>
+<h2>01. 程序的三大流程</h2>
+<ul>
+<li>
+<p>在程序开发中，一共有三种流程方式：</p>
+<ul>
+<li><strong>顺序</strong> —— <strong>从上向下</strong>，顺序执行代码</li>
+<li><strong>分支</strong> —— 根据条件判断，决定执行代码的 <strong>分支</strong></li>
+<li><strong>循环</strong> —— 让 <strong>特定代码 重复</strong> 执行</li>
+</ul>
+<p><img src="./img/013.png" alt="001_程序三大流程" /></p>
+</li>
+</ul>
+<h2>02. <code>while</code> 循环基本使用</h2>
+<ul>
+<li>循环的作用就是让 <strong>指定的代码</strong> 重复的执行</li>
+<li>
+<p><code>while</code> 循环最常用的应用场景就是 <strong>让执行的代码</strong> 按照 <strong>指定的次数</strong> <strong>重复</strong> 执行</p>
+</li>
+<li>
+<p>需求 —— 打印 5 遍 <code>Hello Python</code></p>
+</li>
+<li>思考 —— 如果要求打印 100 遍怎么办？</li>
+</ul>
+<h3>2.1 <code>while</code> 语句基本语法</h3>
+<p>```python
+初始条件设置 —— 通常是重复执行的 计数器</p>
+<p>while 条件(判断 计数器 是否达到 目标次数):
+    条件满足时，做的事情1
+    条件满足时，做的事情2
+    条件满足时，做的事情3
+    ...(省略)...</p>
+<pre><code>处理条件(计数器 + 1)
+</code></pre>
+
+<p>```</p>
+<p><strong>注意</strong>：</p>
+<ul>
+<li><code>while</code> 语句以及缩进部分是一个 <strong>完整的代码块</strong></li>
+</ul>
+<h4>第一个 while 循环</h4>
+<p><strong>需求</strong></p>
+<ul>
+<li>打印 5 遍 Hello Python</li>
+</ul>
+<p>```while</p>
+<h1>1. 定义重复次数计数器</h1>
+<p>i = 1</p>
+<h1>2. 使用 while 判断条件</h1>
+<p>while i &lt;= 5:
+    # 要重复执行的代码
+    print(&quot;Hello Python&quot;)</p>
+<pre><code># 处理计数器 i
+i = i + 1
+</code></pre>
+
+<p>print(&quot;循环结束后的 i = %d&quot; % i)
+```</p>
+<blockquote>
+<p>注意：循环结束后，之前定义的计数器条件的数值是依旧存在的</p>
+</blockquote>
+<h4>死循环</h4>
+<blockquote>
+<p>由于程序员的原因，<strong>忘记</strong> 在循环内部 <strong>修改循环的判断条件</strong>，导致循环持续执行，程序无法终止！</p>
+</blockquote>
+<h3>2.2 赋值运算符</h3>
+<ul>
+<li>在 Python 中，使用 <code>=</code> 可以给变量赋值</li>
+<li>在算术运算时，为了简化代码的编写，<code>Python</code> 还提供了一系列的 与 <strong>算术运算符</strong> 对应的 <strong>赋值运算符</strong></li>
+<li>注意：<strong>赋值运算符中间不能使用空格</strong></li>
+</ul>
+<p>| 运算符 | 描述 | 实例 |
+| --- | --- | --- |
+| = | 简单的赋值运算符 | c = a + b 将 a + b 的运算结果赋值为 c |
+| += | 加法赋值运算符 | c += a 等效于 c = c + a |
+| -= | 减法赋值运算符 | c -= a 等效于 c = c - a |
+| *= | 乘法赋值运算符	 | c *= a 等效于 c = c * a |
+| /= | 除法赋值运算符 | c /= a 等效于 c = c / a |
+| //= | 取整除赋值运算符 | c //= a 等效于 c = c // a |
+| %= | 取 <strong>模</strong> (余数)赋值运算符 | c %= a 等效于 c = c % a |
+| **= | 幂赋值运算符 | c **= a 等效于 c = c ** a |</p>
+<h3>2.3 Python 中的计数方法</h3>
+<p>常见的计数方法有两种，可以分别称为：</p>
+<ul>
+<li><strong>自然计数法</strong>（从 <code>1</code> 开始）—— 更符合人类的习惯</li>
+<li><strong>程序计数法</strong>（从 <code>0</code> 开始）—— 几乎所有的程序语言都选择从 0 开始计数</li>
+</ul>
+<p>因此，大家在编写程序时，应该尽量养成习惯：<strong>除非需求的特殊要求，否则 循环 的计数都从 0 开始</strong></p>
+<h3>2.4 循环计算</h3>
+<blockquote>
+<p>在程序开发中，通常会遇到 <strong>利用循环</strong> <strong>重复计算</strong> 的需求</p>
+</blockquote>
+<p>遇到这种需求，可以：</p>
+<ol>
+<li>在 <code>while</code> 上方定义一个变量，用于 <strong>存放最终计算结果</strong></li>
+<li>在循环体内部，每次循环都用 <strong>最新的计算结果</strong>，<strong>更新</strong> 之前定义的变量</li>
+</ol>
+<p><strong>需求</strong></p>
+<ul>
+<li>计算 0 ~ 100 之间所有数字的累计求和结果</li>
+</ul>
+<p>```python</p>
+<h1>计算 0 ~ 100 之间所有数字的累计求和结果</h1>
+<h1>0. 定义最终结果的变量</h1>
+<p>result = 0</p>
+<h1>1. 定义一个整数的变量记录循环的次数</h1>
+<p>i = 0</p>
+<h1>2. 开始循环</h1>
+<p>while i &lt;= 100:
+    print(i)</p>
+<pre><code># 每一次循环，都让 result 这个变量和 i 这个计数器相加
+result += i
+
+# 处理计数器
+i += 1
+</code></pre>
+
+<p>print(&quot;0~100之间的数字求和结果 = %d&quot; % result)</p>
+<p>```</p>
+<h4>需求进阶</h4>
+<ul>
+<li>计算 0 ~ 100 之间 所有 <strong>偶数</strong> 的累计求和结果</li>
+</ul>
+<p>开发步骤</p>
+<ol>
+<li>编写循环 <strong>确认</strong> <strong>要计算的数字</strong></li>
+<li>添加 <strong>结果</strong> 变量，在循环内部 <strong>处理计算结果</strong></li>
+</ol>
+<p>```python</p>
+<h1>0. 最终结果</h1>
+<p>result = 0</p>
+<h1>1. 计数器</h1>
+<p>i = 0</p>
+<h1>2. 开始循环</h1>
+<p>while i &lt;= 100:</p>
+<pre><code># 判断偶数
+if i % 2 == 0:
+    print(i)
+    result += i
+
+# 处理计数器
+i += 1
+</code></pre>
+
+<p>print(&quot;0~100之间偶数求和结果 = %d&quot; % result)</p>
+<p>```</p>
+<h2>03. break 和 continue</h2>
+<blockquote>
+<p><code>break</code> 和 <code>continue</code> 是专门在循环中使用的关键字</p>
+</blockquote>
+<ul>
+<li><code>break</code> <strong>某一条件满足时</strong>，退出循环，不再执行后续重复的代码</li>
+<li><code>continue</code> <strong>某一条件满足时</strong>，不执行后续重复的代码</li>
+</ul>
+<blockquote>
+<p><code>break</code> 和 <code>continue</code> 只针对 <strong>当前所在循环</strong> 有效</p>
+</blockquote>
+<p><img src="./img/012.png" alt="002_循环流程图-w400" /></p>
+<h3>3.1 break</h3>
+<ul>
+<li><strong>在循环过程中</strong>，如果 <strong>某一个条件满足后<strong>，</strong>不</strong> 再希望 <strong>循环继续执行</strong>，可以使用 <code>break</code> 退出循环</li>
+</ul>
+<p>```python
+i = 0</p>
+<p>while i &lt; 10:</p>
+<pre><code># break 某一条件满足时，退出循环，不再执行后续重复的代码
+# i == 3
+if i == 3:
+    break
+
+print(i)
+
+i += 1
+</code></pre>
+
+<p>print(&quot;over&quot;)
+```</p>
+<blockquote>
+<p><code>break</code> 只针对当前所在循环有效</p>
+</blockquote>
+<h3>3.2 continue</h3>
+<ul>
+<li><strong>在循环过程中</strong>，如果 <strong>某一个条件满足后<strong>，</strong>不</strong> 希望 <strong>执行循环代码，但是又不希望退出循环</strong>，可以使用 <code>continue</code></li>
+<li>也就是：在整个循环中，<strong>只有某些条件</strong>，不需要执行循环代码，而其他条件都需要执行</li>
+</ul>
+<p>```python
+i = 0</p>
+<p>while i &lt; 10:</p>
+<pre><code># 当 i == 7 时，不希望执行需要重复执行的代码
+if i == 7:
+    # 在使用 continue 之前，同样应该修改计数器
+    # 否则会出现死循环
+    i += 1
+
+    continue
+
+# 重复执行的代码
+print(i)
+
+i += 1
+</code></pre>
+
+<p>```</p>
+<ul>
+<li>需要注意：使用 <code>continue</code> 时，<strong>条件处理部分的代码，需要特别注意</strong>，不小心会出现 <strong>死循环</strong></li>
+</ul>
+<blockquote>
+<p><code>continue</code> 只针对当前所在循环有效</p>
+</blockquote>
+<h2>04. <code>while</code> 循环嵌套</h2>
+<h3>4.1 循环嵌套</h3>
+<ul>
+<li><code>while</code> 嵌套就是：<code>while</code> 里面还有 <code>while</code></li>
+</ul>
+<p>```python
+while 条件 1:
+    条件满足时，做的事情1
+    条件满足时，做的事情2
+    条件满足时，做的事情3
+    ...(省略)...</p>
+<pre><code>while 条件 2:
+    条件满足时，做的事情1
+    条件满足时，做的事情2
+    条件满足时，做的事情3
+    ...(省略)...
+
+    处理条件 2
+
+处理条件 1
+</code></pre>
+
+<p>```</p>
+<h3>4.2 循环嵌套演练 —— 九九乘法表</h3>
+<h4>第 1 步：用嵌套打印小星星</h4>
+<p><strong>需求</strong></p>
+<ul>
+<li>在控制台连续输出五行 <code>*</code>，每一行星号的数量依次递增</li>
+</ul>
+<p>```
+*
+**</p>
+<hr />
+<hr />
+<hr />
+<p>```</p>
+<ul>
+<li>使用字符串 * 打印</li>
+</ul>
+<p>```python</p>
+<h1>1. 定义一个计数器变量，从数字1开始，循环会比较方便</h1>
+<p>row = 1</p>
+<p>while row &lt;= 5:</p>
+<pre><code>print(&quot;*&quot; * row)
+
+row += 1
+</code></pre>
+
+<p>```</p>
+<h4>第 2 步：使用循环嵌套打印小星星</h4>
+<p><strong>知识点</strong> 对 <code>print</code> 函数的使用做一个增强</p>
+<ul>
+<li>在默认情况下，<code>print</code> 函数输出内容之后，会自动在内容末尾增加换行</li>
+<li>如果不希望末尾增加换行，可以在 <code>print</code> 函数输出内容的后面增加 <code>, end=&quot;&quot;</code></li>
+<li>
+<p>其中 <code>&quot;&quot;</code> 中间可以指定 <code>print</code> 函数输出内容之后，继续希望显示的内容</p>
+</li>
+<li>
+<p>语法格式如下：</p>
+</li>
+</ul>
+<p>```python</p>
+<h1>向控制台输出内容结束之后，不会换行</h1>
+<p>print(&quot;*&quot;, end=&quot;&quot;)</p>
+<h1>单纯的换行</h1>
+<p>print(&quot;&quot;)
+```</p>
+<blockquote>
+<p><code>end=&quot;&quot;</code> 表示向控制台输出内容结束之后，不会换行</p>
+</blockquote>
+<p><strong>假设</strong> <code>Python</code> <strong>没有提供</strong> 字符串的 <code>*</code> 操作 <strong>拼接字符串</strong></p>
+<p><strong>需求</strong></p>
+<ul>
+<li>在控制台连续输出五行 <code>*</code>，每一行星号的数量依次递增</li>
+</ul>
+<p>```
+*
+**</p>
+<hr />
+<hr />
+<hr />
+<p>```</p>
+<p><strong>开发步骤</strong></p>
+<ul>
+<li>1&gt; 完成 5 行内容的简单输出</li>
+<li>
+2&gt; 分析每行内部的 <code>*</code> 应该如何处理？
+<ul>
+<li>每行显示的星星和当前所在的行数是一致的</li>
+<li>嵌套一个小的循环，专门处理每一行中 <code>列</code> 的星星显示  
+</li>
+</ul>
+</li>
+</ul>
+<p>```python
+row = 1</p>
+<p>while row &lt;= 5:</p>
+<pre><code># 假设 python 没有提供字符串 * 操作
+# 在循环内部，再增加一个循环，实现每一行的 星星 打印
+col = 1
+
+while col &lt;= row:
+    print(&quot;*&quot;, end=&quot;&quot;)
+
+    col += 1
+
+# 每一行星号输出完成后，再增加一个换行
+print(&quot;&quot;)
+
+row += 1
+</code></pre>
+
+<p>```</p>
+<h4>第 3 步： 九九乘法表</h4>
+<p><strong>需求</strong> 输出 九九乘法表，格式如下：</p>
+<p>```
+1 * 1 = 1	
+1 * 2 = 2	2 * 2 = 4	
+1 * 3 = 3	2 * 3 = 6	3 * 3 = 9	
+1 * 4 = 4	2 * 4 = 8	3 * 4 = 12	4 * 4 = 16	
+1 * 5 = 5	2 * 5 = 10	3 * 5 = 15	4 * 5 = 20	5 * 5 = 25	
+1 * 6 = 6	2 * 6 = 12	3 * 6 = 18	4 * 6 = 24	5 * 6 = 30	6 * 6 = 36	
+1 * 7 = 7	2 * 7 = 14	3 * 7 = 21	4 * 7 = 28	5 * 7 = 35	6 * 7 = 42	7 * 7 = 49	
+1 * 8 = 8	2 * 8 = 16	3 * 8 = 24	4 * 8 = 32	5 * 8 = 40	6 * 8 = 48	7 * 8 = 56	8 * 8 = 64	
+1 * 9 = 9	2 * 9 = 18	3 * 9 = 27	4 * 9 = 36	5 * 9 = 45	6 * 9 = 54	7 * 9 = 63	8 * 9 = 72	9 * 9 = 81</p>
+<p>```</p>
+<p><strong>开发步骤</strong></p>
+<ul>
+<li>1. 打印 9 行小星星</li>
+</ul>
+<p>```
+*
+**</p>
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<p>```</p>
+<ul>
+<li>2. 将每一个 <code>*</code> 替换成对应的行与列相乘</li>
+</ul>
+<p>```python</p>
+<h1>定义起始行</h1>
+<p>row = 1</p>
+<h1>最大打印 9 行</h1>
+<p>while row &lt;= 9:
+    # 定义起始列
+    col = 1</p>
+<pre><code># 最大打印 row 列
+while col &lt;= row:
+
+    # end = &quot;&quot;，表示输出结束后，不换行
+    # &quot;\t&quot; 可以在控制台输出一个制表符，协助在输出文本时对齐
+    print(&quot;%d * %d = %d&quot; % (col, row, row * col), end=&quot;\t&quot;)
+
+    # 列数 + 1
+    col += 1
+
+# 一行打印完成的换行
+print(&quot;&quot;)
+
+# 行数 + 1
+row += 1
+</code></pre>
+
+<p>```</p>
+<p><strong>字符串中的转义字符</strong></p>
+<ul>
+<li><code>\t</code> 在控制台输出一个 <strong>制表符</strong>，协助在输出文本时 <strong>垂直方向</strong> 保持对齐</li>
+<li><code>\n</code> 在控制台输出一个 <strong>换行符</strong></li>
+</ul>
+<blockquote>
+<p><strong>制表符</strong> 的功能是在不使用表格的情况下在 <strong>垂直方向</strong> 按列对齐文本</p>
+</blockquote>
+<p>| 转义字符 | 描述 |
+| --- | --- |
+| \\ | 反斜杠符号 |
+| \' | 单引号 |
+| \&quot; | 双引号 |
+| \n | 换行 |
+| \t | 横向制表符 |
+| \r | 回车 |</p>
+
+<!-- 函数基础 -->
+<h1>函数基础</h1>
+<h2>目标</h2>
+<ul>
+<li>函数的快速体验</li>
+<li>函数的基本使用</li>
+<li>函数的参数</li>
+<li>函数的返回值</li>
+<li>函数的嵌套调用</li>
+<li>在模块中定义函数</li>
+</ul>
+<h2>01. 函数的快速体验</h2>
+<h3>1.1 快速体验</h3>
+<ul>
+<li>所谓<strong>函数</strong>，就是把 <strong>具有独立功能的代码块</strong> 组织为一个小模块，在需要的时候 <strong>调用</strong></li>
+<li>
+函数的使用包含两个步骤：
+<ol>
+<li>定义函数 —— <strong>封装</strong> 独立的功能</li>
+<li>调用函数 —— 享受 <strong>封装</strong> 的成果</li>
+</ol>
+</li>
+<li><strong>函数的作用</strong>，在开发程序时，使用函数可以提高编写的效率以及代码的 <strong>重用</strong></li>
+</ul>
+<p><strong>演练步骤</strong></p>
+<ol>
+<li>新建 <code>04_函数</code> 项目</li>
+<li>复制之前完成的 <strong>乘法表</strong> 文件</li>
+<li>修改文件，增加函数定义 <code>multiple_table():</code></li>
+<li>新建另外一个文件，使用 <code>import</code> 导入并且调用函数</li>
+</ol>
+<h2>02. 函数基本使用</h2>
+<h3>2.1 函数的定义</h3>
+<p>定义函数的格式如下：</p>
+<p>```python
+def 函数名():</p>
+<pre><code>函数封装的代码
+……
+</code></pre>
+
+<p>```</p>
+<ol>
+<li><code>def</code> 是英文 <code>define</code> 的缩写</li>
+<li><strong>函数名称</strong> 应该能够表达 <strong>函数封装代码</strong> 的功能，方便后续的调用</li>
+<li>
+<strong>函数名称</strong> 的命名应该 <strong>符合</strong> <strong>标识符的命名规则</strong>
+<ul>
+<li>可以由 <strong>字母</strong>、<strong>下划线</strong> 和 <strong>数字</strong> 组成</li>
+<li><strong>不能以数字开头</strong></li>
+<li><strong>不能与关键字重名</strong></li>
+</ul>
+</li>
+</ol>
+<h3>2.2 函数调用</h3>
+<p>调用函数很简单的，通过 <code>函数名()</code> 即可完成对函数的调用</p>
+<h3>2.3 第一个函数演练</h3>
+<p><strong>需求</strong></p>
+<ul>
+<li>1. 编写一个打招呼 <code>say_hello</code> 的函数，封装三行打招呼的代码</li>
+<li>2. 在函数下方调用打招呼的代码</li>
+</ul>
+<p>```python
+name = &quot;小明&quot;</p>
+<h1>解释器知道这里定义了一个函数</h1>
+<p>def say_hello():
+    print(&quot;hello 1&quot;)
+    print(&quot;hello 2&quot;)
+    print(&quot;hello 3&quot;)</p>
+<p>print(name)</p>
+<h1>只有在调用函数时，之前定义的函数才会被执行</h1>
+<h1>函数执行完成之后，会重新回到之前的程序中，继续执行后续的代码</h1>
+<p>say_hello()</p>
+<p>print(name)</p>
+<p>```</p>
+<blockquote>
+<p>用 <strong>单步执行 F8 和 F7</strong> 观察以下代码的执行过程</p>
+</blockquote>
+<ul>
+<li>定义好函数之后，只表示这个函数封装了一段代码而已</li>
+<li>如果不主动调用函数，函数是不会主动执行的</li>
+</ul>
+<h4>思考</h4>
+<ul>
+<li>
+<p>能否将 <strong>函数调用</strong> 放在 <strong>函数定义</strong> 的上方？</p>
+<ul>
+<li>不能！</li>
+<li>因为在 <strong>使用函数名</strong> 调用函数之前，必须要保证 <code>Python</code> 已经知道函数的存在</li>
+<li>否则控制台会提示 <code>NameError: name 'say_hello' is not defined</code> (<strong>名称错误：say_hello 这个名字没有被定义</strong>)</li>
+</ul>
+</li>
+</ul>
+<h3>2.4 PyCharm 的调试工具</h3>
+<ul>
+<li><strong>F8 Step Over</strong> 可以单步执行代码，会把函数调用看作是一行代码直接执行</li>
+<li><strong>F7 Step Into</strong> 可以单步执行代码，如果是函数，会进入函数内部 </li>
+</ul>
+<h3>2.5 函数的文档注释</h3>
+<ul>
+<li>在开发中，如果希望给函数添加注释，应该在 <strong>定义函数</strong> 的下方，使用 <strong>连续的三对引号</strong></li>
+<li>在 <strong>连续的三对引号</strong> 之间编写对函数的说明文字</li>
+<li>在 <strong>函数调用</strong> 位置，使用快捷键 <code>CTRL + Q</code> 可以查看函数的说明信息</li>
+</ul>
+<blockquote>
+<p>注意：因为 <strong>函数体相对比较独立</strong>，<strong>函数定义的上方</strong>，应该和其他代码（包括注释）保留 <strong>两个空行</strong></p>
+</blockquote>
+<h2>03. 函数的参数</h2>
+<p><strong>演练需求</strong></p>
+<ol>
+<li>开发一个 <code>sum_2_num</code> 的函数</li>
+<li>函数能够实现 <strong>两个数字的求和</strong> 功能</li>
+</ol>
+<p>演练代码如下：</p>
+<p>```python
+def sum<em>2</em>num():</p>
+<pre><code>num1 = 10
+num2 = 20
+result = num1 + num2
+
+print(&quot;%d + %d = %d&quot; % (num1, num2, result))
+</code></pre>
+
+<p>sum<em>2</em>num()</p>
+<p>```</p>
+<p><strong>思考一下存在什么问题</strong></p>
+<blockquote>
+<p>函数只能处理 <strong>固定数值</strong> 的相加</p>
+</blockquote>
+<p><strong>如何解决？</strong></p>
+<ul>
+<li>如果能够把需要计算的数字，在调用函数时，传递到函数内部就好了！</li>
+</ul>
+<h3>3.1 函数参数的使用</h3>
+<ul>
+<li>在函数名的后面的小括号内部填写 <strong>参数</strong></li>
+<li>多个参数之间使用 <code>,</code> 分隔</li>
+</ul>
+<p>```python
+def sum<em>2</em>num(num1, num2):</p>
+<pre><code>result = num1 + num2
+
+print(&quot;%d + %d = %d&quot; % (num1, num2, result))
+</code></pre>
+
+<p>sum<em>2</em>num(50, 20)</p>
+<p>```</p>
+<h3>3.2 参数的作用</h3>
+<ul>
+<li><strong>函数</strong>，把 <strong>具有独立功能的代码块</strong> 组织为一个小模块，在需要的时候 <strong>调用</strong></li>
+<li>
+<strong>函数的参数</strong>，增加函数的 <strong>通用性</strong>，针对 <strong>相同的数据处理逻辑</strong>，能够 <strong>适应更多的数据</strong>
+<ol>
+<li>在函数 <strong>内部</strong>，把参数当做 <strong>变量</strong> 使用，进行需要的数据处理</li>
+<li>函数调用时，按照函数定义的<strong>参数顺序</strong>，把 <strong>希望在函数内部处理的数据<strong>，</strong>通过参数</strong> 传递</li>
+</ol>
+</li>
+</ul>
+<h3>3.3 形参和实参</h3>
+<ul>
+<li><strong>形参</strong>：<strong>定义</strong> 函数时，小括号中的参数，是用来接收参数用的，在函数内部 <strong>作为变量使用</strong></li>
+<li><strong>实参</strong>：<strong>调用</strong> 函数时，小括号中的参数，是用来把数据传递到 <strong>函数内部</strong> 用的</li>
+</ul>
+<h2>04. 函数的返回值</h2>
+<ul>
+<li>在程序开发中，有时候，会希望 <strong>一个函数执行结束后，告诉调用者一个结果</strong>，以便调用者针对具体的结果做后续的处理</li>
+<li><strong>返回值</strong> 是函数 <strong>完成工作<strong>后，</strong>最后</strong> 给调用者的 <strong>一个结果</strong></li>
+<li>在函数中使用 <code>return</code> 关键字可以返回结果</li>
+<li>调用函数一方，可以 <strong>使用变量</strong> 来 <strong>接收</strong> 函数的返回结果</li>
+</ul>
+<blockquote>
+<p>注意：<code>return</code> 表示返回，后续的代码都不会被执行</p>
+</blockquote>
+<p>```python
+def sum<em>2</em>num(num1, num2):
+    &quot;&quot;&quot;对两个数字的求和&quot;&quot;&quot;</p>
+<pre><code>return num1 + num2
+</code></pre>
+
+<h1>调用函数，并使用 result 变量接收计算结果</h1>
+<p>result = sum<em>2</em>num(10, 20)</p>
+<p>print(&quot;计算结果是 %d&quot; % result)</p>
+<p>```</p>
+<h2>05. 函数的嵌套调用</h2>
+<ul>
+<li>一个函数里面 <strong>又调用</strong> 了 <strong>另外一个函数</strong>，这就是 <strong>函数嵌套调用</strong></li>
+<li>
+如果函数 <code>test2</code> 中，调用了另外一个函数 <code>test1</code>
+<ul>
+<li>那么执行到调用 <code>test1</code> 函数时，会先把函数 <code>test1</code> 中的任务都执行完</li>
+<li>才会回到 <code>test2</code> 中调用函数 <code>test1</code> 的位置，继续执行后续的代码</li>
+</ul>
+</li>
+</ul>
+<p>```python
+def test1():</p>
+<pre><code>print(&quot;*&quot; * 50)
+print(&quot;test 1&quot;)
+print(&quot;*&quot; * 50)
+</code></pre>
+
+<p>def test2():</p>
+<pre><code>print(&quot;-&quot; * 50)
+print(&quot;test 2&quot;)
+
+test1()
+
+print(&quot;-&quot; * 50)
+</code></pre>
+
+<p>test2()</p>
+<p>```</p>
+<h3>函数嵌套的演练 —— 打印分隔线</h3>
+<blockquote>
+<p>体会一下工作中 <strong>需求是多变</strong> 的</p>
+</blockquote>
+<p><strong>需求 1</strong></p>
+<ul>
+<li>定义一个 <code>print_line</code> 函数能够打印 <code>*</code> 组成的 <strong>一条分隔线</strong></li>
+</ul>
+<p>```python
+def print_line(char):</p>
+<pre><code>print(&quot;*&quot; * 50)
+</code></pre>
+
+<p>```</p>
+<p><strong>需求 2</strong></p>
+<ul>
+<li>定义一个函数能够打印 <strong>由任意字符组成</strong> 的分隔线</li>
+</ul>
+<p>```python
+def print_line(char):</p>
+<pre><code>print(char * 50)
+</code></pre>
+
+<p>```</p>
+<p><strong>需求 3</strong></p>
+<ul>
+<li>定义一个函数能够打印 <strong>任意重复次数</strong> 的分隔线</li>
+</ul>
+<p>```python
+def print_line(char, times):</p>
+<pre><code>print(char * times)
+</code></pre>
+
+<p>```</p>
+<p><strong>需求 4</strong></p>
+<ul>
+<li>定义一个函数能够打印 <strong>5 行</strong> 的分隔线，分隔线要求符合<strong>需求 3</strong></li>
+</ul>
+<blockquote>
+<p>提示：工作中针对需求的变化，应该冷静思考，<strong>不要轻易修改之前已经完成的，能够正常执行的函数</strong>！</p>
+</blockquote>
+<p>```python
+def print_line(char, times):</p>
+<pre><code>print(char * times)
+</code></pre>
+
+<p>def print_lines(char, times):</p>
+<pre><code>row = 0
+
+while row &lt; 5:
+    print_line(char, times)
+
+    row += 1
+</code></pre>
+
+<p>```</p>
+<h2>06. 使用模块中的函数</h2>
+<blockquote>
+<p><strong>模块是 Python 程序架构的一个核心概念</strong></p>
+</blockquote>
+<ul>
+<li><strong>模块</strong> 就好比是 <strong>工具包</strong>，要想使用这个工具包中的工具，就需要 <strong>导入 import</strong> 这个模块</li>
+<li>每一个以扩展名 <code>py</code> 结尾的 <code>Python</code> 源代码文件都是一个 <strong>模块</strong></li>
+<li>在模块中定义的 <strong>全局变量</strong> 、 <strong>函数</strong> 都是模块能够提供给外界直接使用的工具</li>
+</ul>
+<h3>6.1 第一个模块体验</h3>
+<p><strong>步骤</strong></p>
+<ul>
+<li>
+新建 <code>hm_10_分隔线模块.py</code>
+<ul>
+<li>复制 <code>hm_09_打印多条分隔线.py</code> 中的内容，<strong>最后一行 <code>print</code> 代码除外</strong></li>
+<li>增加一个字符串变量</li>
+</ul>
+</li>
+</ul>
+<p><code>python
+name = &quot;黑马程序员&quot;</code></p>
+<ul>
+<li>新建 <code>hm_10_体验模块.py</code> 文件，并且编写以下代码：</li>
+</ul>
+<p>```python
+import hm<em>10</em>分隔线模块</p>
+<p>hm<em>10</em>分隔线模块.print_line(&quot;-&quot;, 80)
+print(hm<em>10</em>分隔线模块.name)
+```</p>
+<h4>体验小结</h4>
+<ul>
+<li>可以 <strong>在一个 Python 文件</strong> 中 <strong>定义 变量 或者 函数</strong></li>
+<li>然后在 <strong>另外一个文件中</strong> 使用 <code>import</code> 导入这个模块</li>
+<li>导入之后，就可以使用 <code>模块名.变量</code> / <code>模块名.函数</code> 的方式，使用这个模块中定义的变量或者函数</li>
+</ul>
+<blockquote>
+<p><strong>模块</strong>可以让 <strong>曾经编写过的代码</strong> 方便的被 <strong>复用</strong>！</p>
+</blockquote>
+<h3>6.2 模块名也是一个标识符</h3>
+<ul>
+<li>标示符可以由 <strong>字母</strong>、<strong>下划线</strong> 和 <strong>数字</strong> 组成</li>
+<li><strong>不能以数字开头</strong></li>
+<li><strong>不能与关键字重名</strong></li>
+</ul>
+<blockquote>
+<p>注意：如果在给 Python 文件起名时，<strong>以数字开头</strong> 是无法在 <code>PyCharm</code> 中通过导入这个模块的</p>
+</blockquote>
+<h3>6.3 Pyc 文件（了解）</h3>
+<blockquote>
+<p><code>C</code> 是 <code>compiled</code> <strong>编译过</strong> 的意思</p>
+</blockquote>
+<p><strong>操作步骤</strong></p>
+<ol>
+<li>浏览程序目录会发现一个 <code>__pycache__</code> 的目录</li>
+<li>目录下会有一个 <code>hm_10_分隔线模块.cpython-35.pyc</code> 文件，<code>cpython-35</code> 表示 <code>Python</code> 解释器的版本</li>
+<li>
+这个 <code>pyc</code> 文件是由 Python 解释器将 <strong>模块的源码</strong> 转换为 <strong>字节码</strong>
+<ul>
+<li><code>Python</code> 这样保存 <strong>字节码</strong> 是作为一种启动 <strong>速度的优化</strong></li>
+</ul>
+</li>
+</ol>
+<p><strong>字节码</strong></p>
+<ul>
+<li>
+<p><code>Python</code> 在解释源程序时是分成两个步骤的</p>
+<ol>
+<li>首先处理源代码，<strong>编译</strong> 生成一个二进制 <strong>字节码</strong></li>
+<li>再对 <strong>字节码</strong> 进行处理，才会生成 CPU 能够识别的 <strong>机器码</strong></li>
+</ol>
+</li>
+<li>
+<p>有了模块的字节码文件之后，下一次运行程序时，如果在 <strong>上次保存字节码之后</strong> 没有修改过源代码，Python 将会加载 .pyc 文件并跳过编译这个步骤</p>
+</li>
+<li>当 <code>Python</code> 重编译时，它会自动检查源文件和字节码文件的时间戳</li>
+<li>如果你又修改了源代码，下次程序运行时，字节码将自动重新创建</li>
+</ul>
+<blockquote>
+<p>提示：有关模块以及模块的其他导入方式，后续课程还会逐渐展开！</p>
+<p><strong>模块是 Python 程序架构的一个核心概念</strong></p>
+</blockquote>
+<!-- 高级变量类型 -->
+<h1>高级变量类型</h1>
+<h2>目标</h2>
+<ul>
+<li>列表</li>
+<li>元组</li>
+<li>字典</li>
+<li>字符串</li>
+<li>公共方法</li>
+<li>变量高级</li>
+</ul>
+<h3>知识点回顾</h3>
+<ul>
+<li>Python 中数据类型可以分为 <strong>数字型</strong> 和 <strong>非数字型</strong></li>
+<li>
+数字型
+<ul>
+<li>整型 (<code>int</code>)</li>
+<li>浮点型（<code>float</code>）</li>
+<li>
+布尔型（<code>bool</code>） 
+<ul>
+<li>真 <code>True</code> <code>非 0 数</code> —— <strong>非零即真</strong></li>
+<li>假 <code>False</code> <code>0</code></li>
+</ul>
+</li>
+<li>
+复数型 (<code>complex</code>)
+<ul>
+<li>主要用于科学计算，例如：平面场问题、波动问题、电感电容等问题</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>非数字型</p>
+<ul>
+<li>字符串</li>
+<li>列表</li>
+<li>元组</li>
+<li>字典</li>
+</ul>
+</li>
+<li>
+<p>在 <code>Python</code> 中，所有 <strong>非数字型变量</strong> 都支持以下特点：</p>
+<ol>
+<li>都是一个 <strong>序列</strong> <code>sequence</code>，也可以理解为 <strong>容器</strong></li>
+<li><strong>取值</strong> <code>[]</code></li>
+<li><strong>遍历</strong> <code>for in</code></li>
+<li><strong>计算长度</strong>、<strong>最大/最小值<strong>、</strong>比较</strong>、<strong>删除</strong></li>
+<li><strong>链接</strong> <code>+</code> 和 <strong>重复</strong> <code>*</code></li>
+<li><strong>切片</strong></li>
+</ol>
+</li>
+</ul>
+<h2>01. 列表</h2>
+<h3>1.1 列表的定义</h3>
+<ul>
+<li><code>List</code>（列表） 是 <code>Python</code> 中使用 <strong>最频繁</strong> 的数据类型，在其他语言中通常叫做 <strong>数组</strong></li>
+<li>专门用于存储 <strong>一串 信息</strong></li>
+<li>列表用 <code>[]</code> 定义，<strong>数据</strong> 之间使用 <code>,</code> 分隔</li>
+<li>
+列表的 <strong>索引</strong> 从 <code>0</code> 开始
+<ul>
+<li><strong>索引</strong> 就是数据在 <strong>列表</strong> 中的位置编号，<strong>索引</strong> 又可以被称为 <strong>下标</strong></li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>注意：从列表中取值时，如果 <strong>超出索引范围</strong>，程序会报错</p>
+</blockquote>
+<p><code>python
+name_list = [&quot;zhangsan&quot;, &quot;lisi&quot;, &quot;wangwu&quot;]</code></p>
+<p><img src="./img/011.png" alt="001_列表示意图" /></p>
+<h3>1.2 列表常用操作</h3>
+<ul>
+<li>在 <code>ipython3</code> 中定义一个 <strong>列表</strong>，例如：<code>name_list = []</code></li>
+<li>输入 <code>name_list.</code> 按下 <code>TAB</code> 键，<code>ipython</code> 会提示 <strong>列表</strong> 能够使用的 <strong>方法</strong> 如下：</li>
+</ul>
+<p><code>In [1]: name_list.
+name_list.append   name_list.count    name_list.insert   name_list.reverse
+name_list.clear    name_list.extend   name_list.pop      name_list.sort
+name_list.copy     name_list.index    name_list.remove</code></p>
+<p>| 序号 | 分类 | 关键字 / 函数 / 方法 | 说明 |
+| --- | --- | --- | --- |
+| 1 | 增加 | 列表.insert(索引, 数据) | 在指定位置插入数据 |
+|  |  | 列表.append(数据) | 在末尾追加数据
+|  |  | 列表.extend(列表2) | 将列表2 的数据追加到列表 | 
+| 2 | 修改 | 列表[索引] = 数据 | 修改指定索引的数据 |
+| 3 | 删除 | del 列表[索引] | 删除指定索引的数据 |
+|  |  | 列表.remove[数据] | 删除第一个出现的指定数据 |
+|  |  | 列表.pop | 删除末尾数据 |
+|  |  | 列表.pop(索引) | 删除指定索引数据 |
+|  |  | 列表.clear | 清空列表 |
+| 4 | 统计 | len(列表) | 列表长度 |
+|  |  | 列表.count(数据) | 数据在列表中出现的次数 |
+| 5 | 排序 | 列表.sort() | 升序排序 |
+|  |  | 列表.sort(reverse=True) | 降序排序 |
+|  |  | 列表.reverse() | 逆序、反转 |</p>
+<h4>del 关键字（科普）</h4>
+<ul>
+<li>使用 <code>del</code> 关键字(<code>delete</code>) 同样可以删除列表中元素</li>
+<li><code>del</code> 关键字本质上是用来 <strong>将一个变量从内存中删除的</strong></li>
+<li>如果使用 <code>del</code> 关键字将变量从内存中删除，后续的代码就不能再使用这个变量了</li>
+</ul>
+<p><code>python
+del name_list[1]</code></p>
+<blockquote>
+<p>在日常开发中，要从列表删除数据，建议 <strong>使用列表提供的方法</strong></p>
+</blockquote>
+<h4>关键字、函数和方法（科普）</h4>
+<ul>
+<li><strong>关键字</strong> 是 Python 内置的、具有特殊意义的标识符</li>
+</ul>
+<p><code>python
+In [1]: import keyword
+In [2]: print(keyword.kwlist)
+In [3]: print(len(keyword.kwlist))</code></p>
+<blockquote>
+<p>关键字后面不需要使用括号</p>
+</blockquote>
+<ul>
+<li><strong>函数</strong> 封装了独立功能，可以直接调用</li>
+</ul>
+<p><code>python
+函数名(参数)</code></p>
+<blockquote>
+<p>函数需要死记硬背</p>
+</blockquote>
+<ul>
+<li><strong>方法</strong> 和函数类似，同样是封装了独立的功能</li>
+<li><strong>方法</strong> 需要通过 <strong>对象</strong> 来调用，表示针对这个 <strong>对象</strong> 要做的操作</li>
+</ul>
+<p><code>python
+对象.方法名(参数)</code></p>
+<blockquote>
+<p>在变量后面输入 <code>.</code>，然后选择针对这个变量要执行的操作，记忆起来比函数要简单很多</p>
+</blockquote>
+<h3>1.3 循环遍历</h3>
+<ul>
+<li>
+<p><strong>遍历</strong> 就是 <strong>从头到尾</strong> <strong>依次</strong> 从 <strong>列表</strong> 中获取数据</p>
+<ul>
+<li>在 <strong>循环体内部</strong> 针对 <strong>每一个元素</strong>，执行相同的操作</li>
+</ul>
+</li>
+<li>
+<p>在 <code>Python</code> 中为了提高列表的遍历效率，专门提供的 <strong>迭代 iteration 遍历</strong></p>
+</li>
+<li>使用 <code>for</code> 就能够实现迭代遍历</li>
+</ul>
+<p>```python</p>
+<h1>for 循环内部使用的变量 in 列表</h1>
+<p>for name in name_list:</p>
+<pre><code>循环内部针对列表元素进行操作
+print(name)
+</code></pre>
+
+<p>```</p>
+<p><img src="./img/010.png" alt="002_forin循环流程图-w420" /></p>
+<h3>1.4 <strong>应用场景</strong></h3>
+<ul>
+<li>尽管 <code>Python</code> 的 <strong>列表</strong> 中可以 <strong>存储不同类型的数据</strong></li>
+<li>
+但是在开发中，更多的应用场景是
+<ol>
+<li><strong>列表</strong> 存储相同类型的数据</li>
+<li>通过 <strong>迭代遍历</strong>，在循环体内部，针对列表中的每一项元素，执行相同的操作</li>
+</ol>
+</li>
+</ul>
+<h2>02. 元组</h2>
+<h3>2.1 元组的定义</h3>
+<ul>
+<li>
+<code>Tuple</code>（元组）与列表类似，不同之处在于元组的 <strong>元素不能修改</strong>
+<ul>
+<li><strong>元组</strong> 表示多个元素组成的序列</li>
+<li><strong>元组</strong> 在 <code>Python</code> 开发中，有特定的应用场景</li>
+</ul>
+</li>
+<li>用于存储 <strong>一串 信息</strong>，<strong>数据</strong> 之间使用 <code>,</code> 分隔</li>
+<li>元组用 <code>()</code> 定义</li>
+<li>
+元组的 <strong>索引</strong> 从 <code>0</code> 开始
+<ul>
+<li><strong>索引</strong> 就是数据在 <strong>元组</strong> 中的位置编号</li>
+</ul>
+</li>
+</ul>
+<p><code>python
+info_tuple = (&quot;zhangsan&quot;, 18, 1.75)</code></p>
+<h4>创建空元组</h4>
+<p><code>python
+info_tuple = ()</code></p>
+<h4>元组中 <strong>只包含一个元素</strong> 时，需要 <strong>在元素后面添加逗号</strong></h4>
+<p><code>python
+info_tuple = (50, )</code></p>
+<p><img src="./img/009.png" alt="003_元组示意图-w500" /></p>
+<h3>2.2 元组常用操作</h3>
+<ul>
+<li>在 <code>ipython3</code> 中定义一个 <strong>元组</strong>，例如：<code>info = ()</code></li>
+<li>输入 <code>info.</code> 按下 <code>TAB</code> 键，<code>ipython</code> 会提示 <strong>元组</strong> 能够使用的函数如下：</li>
+</ul>
+<p><code>python
+info.count  info.index</code></p>
+<blockquote>
+<p>有关 <strong>元组</strong> 的 <strong>常用操作</strong> 可以参照上图练习</p>
+</blockquote>
+<h3>2.3 循环遍历</h3>
+<ul>
+<li><strong>取值</strong> 就是从 <strong>元组</strong> 中获取存储在指定位置的数据</li>
+<li><strong>遍历</strong> 就是 <strong>从头到尾</strong> <strong>依次</strong> 从 <strong>元组</strong> 中获取数据</li>
+</ul>
+<p>```python</p>
+<h1>for 循环内部使用的变量 in 元组</h1>
+<p>for item in info:</p>
+<pre><code>循环内部针对元组元素进行操作
+print(item)
+</code></pre>
+
+<p>```</p>
+<blockquote>
+<ul>
+<li>在 <code>Python</code> 中，可以使用 <code>for</code> 循环遍历所有非数字型类型的变量：<strong>列表</strong>、<strong>元组<strong>、</strong>字典</strong> 以及 <strong>字符串</strong></li>
+<li>提示：在实际开发中，除非 <strong>能够确认元组中的数据类型</strong>，否则针对元组的循环遍历需求并不是很多</li>
+</ul>
+</blockquote>
+<h3>2.4 应用场景</h3>
+<ul>
+<li>尽管可以使用 <code>for in</code> 遍历 <strong>元组</strong></li>
+<li>
+但是在开发中，更多的应用场景是：
+<ul>
+<li>
+<strong>函数的 参数 和 返回值</strong>，一个函数可以接收 <strong>任意多个参数</strong>，或者 <strong>一次返回多个数据</strong>
+<ul>
+<li>有关 <strong>函数的参数 和 返回值</strong>，在后续 <strong>函数高级</strong> 给大家介绍</li>
+</ul>
+</li>
+<li><strong>格式字符串</strong>，格式化字符串后面的 <code>()</code> 本质上就是一个元组</li>
+<li><strong>让列表不可以被修改</strong>，以保护数据安全</li>
+</ul>
+</li>
+</ul>
+<p>```python
+info = (&quot;zhangsan&quot;, 18)</p>
+<p>print(&quot;%s 的年龄是 %d&quot; % info)</p>
+<p>```</p>
+<h4>元组和列表之间的转换</h4>
+<ul>
+<li>使用 <code>list</code> 函数可以把元组转换成列表</li>
+</ul>
+<p><code>python
+list(元组)</code></p>
+<ul>
+<li>使用 <code>tuple</code> 函数可以把列表转换成元组</li>
+</ul>
+<p><code>python
+tuple(列表)</code></p>
+<h2>03. 字典</h2>
+<h3>3.1 字典的定义</h3>
+<ul>
+<li><code>dictionary</code>（字典） 是 <strong>除列表以外</strong> <code>Python</code> 之中 <strong>最灵活</strong> 的数据类型</li>
+<li>
+字典同样可以用来 <strong>存储多个数据</strong>
+<ul>
+<li>通常用于存储 <strong>描述一个 <code>物体</code> 的相关信息</strong> </li>
+</ul>
+</li>
+<li>
+和列表的区别
+<ul>
+<li><strong>列表</strong> 是 <strong>有序</strong> 的对象集合</li>
+<li><strong>字典</strong> 是 <strong>无序</strong> 的对象集合</li>
+</ul>
+</li>
+<li>字典用 <code>{}</code> 定义</li>
+<li>
+字典使用 <strong>键值对</strong> 存储数据，键值对之间使用 <code>,</code> 分隔
+<ul>
+<li><strong>键</strong> <code>key</code> 是索引</li>
+<li><strong>值</strong> <code>value</code> 是数据</li>
+<li><strong>键</strong> 和 <strong>值</strong> 之间使用 <code>:</code> 分隔</li>
+<li><strong>键必须是唯一的</strong></li>
+<li><strong>值</strong> 可以取任何数据类型，但 <strong>键</strong> 只能使用 <strong>字符串</strong>、<strong>数字</strong>或 <strong>元组</strong></li>
+</ul>
+</li>
+</ul>
+<p><code>python
+xiaoming = {&quot;name&quot;: &quot;小明&quot;,
+            &quot;age&quot;: 18,
+            &quot;gender&quot;: True,
+            &quot;height&quot;: 1.75}</code></p>
+<p><img src="./img/008.png" alt="002_字典示意图" /></p>
+<h3>3.2 字典常用操作</h3>
+<ul>
+<li>在 <code>ipython3</code> 中定义一个 <strong>字典</strong>，例如：<code>xiaoming = {}</code></li>
+<li>输入 <code>xiaoming.</code> 按下 <code>TAB</code> 键，<code>ipython</code> 会提示 <strong>字典</strong> 能够使用的函数如下：</li>
+</ul>
+<p><code>In [1]: xiaoming.
+xiaoming.clear       xiaoming.items       xiaoming.setdefault
+xiaoming.copy        xiaoming.keys        xiaoming.update
+xiaoming.fromkeys    xiaoming.pop         xiaoming.values
+xiaoming.get         xiaoming.popitem</code></p>
+<blockquote>
+<p>有关 <strong>字典</strong> 的 <strong>常用操作</strong> 可以参照上图练习</p>
+</blockquote>
+<h3>3.3 循环遍历</h3>
+<ul>
+<li><strong>遍历</strong> 就是 <strong>依次</strong> 从 <strong>字典</strong> 中获取所有键值对</li>
+</ul>
+<p>```python</p>
+<h1>for 循环内部使用的 <code>key 的变量</code> in 字典</h1>
+<p>for k in xiaoming:</p>
+<pre><code>print(&quot;%s: %s&quot; % (k, xiaoming[k]))
+</code></pre>
+
+<p>```</p>
+<blockquote>
+<p>提示：在实际开发中，由于字典中每一个键值对保存数据的类型是不同的，所以针对字典的循环遍历需求并不是很多</p>
+</blockquote>
+<h3>3.4 <strong>应用场景</strong></h3>
+<ul>
+<li>尽管可以使用 <code>for in</code> 遍历 <strong>字典</strong></li>
+<li>
+但是在开发中，更多的应用场景是：
+<ul>
+<li>使用 <strong>多个键值对</strong>，存储 <strong>描述一个 <code>物体</code> 的相关信息</strong> —— 描述更复杂的数据信息</li>
+<li>将 <strong>多个字典</strong> 放在 <strong>一个列表</strong> 中，再进行遍历，在循环体内部针对每一个字典进行 <strong>相同的处理</strong></li>
+</ul>
+</li>
+</ul>
+<p>```python
+card_list = [{&quot;name&quot;: &quot;张三&quot;,
+              &quot;qq&quot;: &quot;12345&quot;,
+              &quot;phone&quot;: &quot;110&quot;},
+             {&quot;name&quot;: &quot;李四&quot;,
+              &quot;qq&quot;: &quot;54321&quot;,
+              &quot;phone&quot;: &quot;10086&quot;}
+             ]</p>
+<p>```</p>
+<h2>04. 字符串</h2>
+<h3>4.1 字符串的定义</h3>
+<ul>
+<li><strong>字符串</strong> 就是 <strong>一串字符</strong>，是编程语言中表示文本的数据类型</li>
+<li>
+在 Python 中可以使用 <strong>一对双引号</strong> <code>&quot;</code> 或者 <strong>一对单引号</strong> <code>'</code> 定义一个字符串
+<ul>
+<li>
+虽然可以使用 <code>\&quot;</code> 或者 <code>\'</code> 做字符串的转义，但是在实际开发中：
+<ul>
+<li>如果字符串内部需要使用 <code>&quot;</code>，可以使用 <code>'</code> 定义字符串</li>
+<li>如果字符串内部需要使用 <code>'</code>，可以使用 <code>&quot;</code> 定义字符串</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>可以使用 <strong>索引</strong> 获取一个字符串中 <strong>指定位置的字符</strong>，索引计数从 <strong>0</strong> 开始</li>
+<li>也可以使用 <code>for</code> <strong>循环遍历</strong> 字符串中每一个字符</li>
+</ul>
+<blockquote>
+<p>大多数编程语言都是用 <code>&quot;</code> 来定义字符串</p>
+</blockquote>
+<p>```python
+string = &quot;Hello Python&quot;</p>
+<p>for c in string:
+    print(c)</p>
+<p>```</p>
+<p><img src="./img/007.png" alt="005_字符串示意图-w500" /></p>
+<h3>4.2 字符串的常用操作</h3>
+<ul>
+<li>在 <code>ipython3</code> 中定义一个 <strong>字符串</strong>，例如：<code>hello_str = &quot;&quot;</code></li>
+<li>输入 <code>hello_str.</code> 按下 <code>TAB</code> 键，<code>ipython</code> 会提示 <strong>字符串</strong> 能够使用的 <strong>方法</strong> 如下：</li>
+</ul>
+<p><code>In [1]: hello_str.
+hello_str.capitalize    hello_str.isidentifier  hello_str.rindex
+hello_str.casefold      hello_str.islower       hello_str.rjust
+hello_str.center        hello_str.isnumeric     hello_str.rpartition
+hello_str.count         hello_str.isprintable   hello_str.rsplit
+hello_str.encode        hello_str.isspace       hello_str.rstrip
+hello_str.endswith      hello_str.istitle       hello_str.split
+hello_str.expandtabs    hello_str.isupper       hello_str.splitlines
+hello_str.find          hello_str.join          hello_str.startswith
+hello_str.format        hello_str.ljust         hello_str.strip
+hello_str.format_map    hello_str.lower         hello_str.swapcase
+hello_str.index         hello_str.lstrip        hello_str.title
+hello_str.isalnum       hello_str.maketrans     hello_str.translate
+hello_str.isalpha       hello_str.partition     hello_str.upper
+hello_str.isdecimal     hello_str.replace       hello_str.zfill
+hello_str.isdigit       hello_str.rfind</code></p>
+<blockquote>
+<p>提示：正是因为 python 内置提供的方法足够多，才使得在开发时，能够针对字符串进行更加灵活的操作！应对更多的开发需求！</p>
+</blockquote>
+<h4>1) 判断类型 - 9</h4>
+<p>| 方法 | 说明 |
+| --- | --- |
+| string.isspace() | 如果 string 中只包含空格，则返回 True | 
+| string.isalnum() | 如果 string 至少有一个字符并且所有字符都是字母或数字则返回 True |
+| string.isalpha() | 如果 string 至少有一个字符并且所有字符都是字母则返回 True |
+| string.isdecimal() | 如果 string 只包含数字则返回 True，<code>全角数字</code> | 
+| string.isdigit() | 如果 string 只包含数字则返回 True，<code>全角数字</code>、<code>⑴</code>、<code>\u00b2</code> |
+| string.isnumeric() | 如果 string 只包含数字则返回 True，<code>全角数字</code>，<code>汉字数字</code> |<br />
+| string.istitle() | 如果 string 是标题化的(每个单词的首字母大写)则返回 True | 
+| string.islower() | 如果 string 中包含至少一个区分大小写的字符，并且所有这些(区分大小写的)字符都是小写，则返回 True | 
+| string.isupper() | 如果 string 中包含至少一个区分大小写的字符，并且所有这些(区分大小写的)字符都是大写，则返回 True | </p>
+<h4>2) 查找和替换 - 7</h4>
+<p>| 方法 | 说明 |
+| --- | --- |
+| string.startswith(str) | 检查字符串是否是以 str 开头，是则返回 True |
+| string.endswith(str) | 检查字符串是否是以 str 结束，是则返回 True |
+| string.find(str, start=0, end=len(string)) | 检测 str 是否包含在 string 中，如果 start 和 end 指定范围，则检查是否包含在指定范围内，如果是返回开始的索引值，否则返回 <code>-1</code> |
+| string.rfind(str, start=0, end=len(string)) | 类似于 find()，不过是从右边开始查找 | 
+| string.index(str, start=0, end=len(string)) | 跟 find() 方法类似，不过如果 str 不在 string 会报错 |
+| string.rindex(str, start=0, end=len(string)) | 类似于 index()，不过是从右边开始 |
+| string.replace(old<em>str, new</em>str, num=string.count(old)) | 把 string 中的 old<em>str 替换成 new</em>str，如果 num 指定，则替换不超过 num 次 |</p>
+<h4>3) 大小写转换 - 5</h4>
+<p>| 方法 | 说明 |
+| --- | --- |
+| string.capitalize() | 把字符串的第一个字符大写 |
+| string.title() | 把字符串的每个单词首字母大写 |
+| string.lower() | 转换 string 中所有大写字符为小写 |
+| string.upper() | 转换 string 中的小写字母为大写 |
+| string.swapcase() | 翻转 string 中的大小写 |</p>
+<h4>4) 文本对齐 - 3</h4>
+<p>| 方法 | 说明 |
+| --- | --- |
+| string.ljust(width) | 返回一个原字符串左对齐，并使用空格填充至长度 width 的新字符串 |
+| string.rjust(width) | 返回一个原字符串右对齐，并使用空格填充至长度 width 的新字符串 |
+| string.center(width) | 返回一个原字符串居中，并使用空格填充至长度 width 的新字符串 |</p>
+<h4>5) 去除空白字符 - 3</h4>
+<p>| 方法 | 说明 |
+| --- | --- |
+| string.lstrip() | 截掉 string 左边（开始）的空白字符 |
+| string.rstrip() | 截掉 string 右边（末尾）的空白字符 |
+| string.strip() | 截掉 string 左右两边的空白字符 |</p>
+<h4>6) 拆分和连接 - 5</h4>
+<p>| 方法 | 说明 |
+| --- | --- |
+| string.partition(str) | 把字符串 string 分成一个 3 元素的元组 (str前面, str, str后面) |
+| string.rpartition(str) | 类似于 partition() 方法，不过是从右边开始查找 |
+| string.split(str=&quot;&quot;, num) | 以 str 为分隔符拆分 string，如果 num 有指定值，则仅分隔 num + 1 个子字符串，str 默认包含 '\r', '\t', '\n' 和空格 |
+| string.splitlines() | 按照行('\r', '\n', '\r\n')分隔，返回一个包含各行作为元素的列表 |
+| string.join(seq) | 以 string 作为分隔符，将 seq 中所有的元素（的字符串表示）合并为一个新的字符串 |</p>
+<h3>4.3 字符串的切片</h3>
+<ul>
+<li>
+<strong>切片</strong> 方法适用于 <strong>字符串<strong>、</strong>列表</strong>、<strong>元组</strong>
+<ul>
+<li><strong>切片</strong> 使用 <strong>索引值</strong> 来限定范围，从一个大的 <strong>字符串</strong> 中 <strong>切出</strong> 小的 <strong>字符串</strong></li>
+<li><strong>列表</strong> 和 <strong>元组</strong> 都是 <strong>有序</strong> 的集合，都能够 <strong>通过索引值</strong> 获取到对应的数据</li>
+<li><strong>字典</strong> 是一个 <strong>无序</strong> 的集合，是使用 <strong>键值对</strong> 保存数据</li>
+</ul>
+</li>
+</ul>
+<p><img src="./img/006.png" alt="006_字符串索引示意图" /></p>
+<p><code>字符串[开始索引:结束索引:步长]</code></p>
+<p><strong>注意</strong>：</p>
+<ol>
+<li>
+指定的区间属于 <strong>左闭右开</strong> 型 <code>[开始索引,  结束索引)</code> =&gt; <code>开始索引 &gt;= 范围 &lt; 结束索引</code>
+<ul>
+<li>从 <code>起始</code> 位开始，到 <strong><code>结束</code>位的前一位</strong> 结束（<strong>不包含结束位本身</strong>)</li>
+</ul>
+</li>
+<li>从头开始，<strong>开始索引</strong> <strong>数字可以省略，冒号不能省略</strong></li>
+<li>到末尾结束，<strong>结束索引</strong> <strong>数字可以省略，冒号不能省略</strong></li>
+<li>步长默认为 <code>1</code>，如果连续切片，<strong>数字和冒号都可以省略</strong></li>
+</ol>
+<h4>索引的顺序和倒序</h4>
+<ul>
+<li>在 Python 中不仅支持 <strong>顺序索引</strong>，同时还支持 <strong>倒序索引</strong></li>
+<li>
+所谓倒序索引就是 <strong>从右向左</strong> 计算索引
+<ul>
+<li>最右边的索引值是 <strong>-1</strong>，依次递减</li>
+</ul>
+</li>
+</ul>
+<p><strong>演练需求</strong></p>
+<ul>
+<li>1. 截取从 2 ~ 5 位置 的字符串</li>
+<li>2. 截取从 2 ~ <code>末尾</code> 的字符串</li>
+<li>3. 截取从 <code>开始</code> ~ 5 位置 的字符串</li>
+<li>4. 截取完整的字符串</li>
+<li>5. 从开始位置，每隔一个字符截取字符串</li>
+<li>6. 从索引 1 开始，每隔一个取一个</li>
+<li>7. 截取从 2 ~ <code>末尾 - 1</code> 的字符串</li>
+<li>8. 截取字符串末尾两个字符</li>
+<li>9. 字符串的逆序（面试题）</li>
+</ul>
+<p><strong>答案</strong></p>
+<p>```
+num_str = &quot;0123456789&quot;</p>
+<h1>1. 截取从 2 ~ 5 位置 的字符串</h1>
+<p>print(num_str[2:6])</p>
+<h1>2. 截取从 2 ~ <code>末尾</code> 的字符串</h1>
+<p>print(num_str[2:])</p>
+<h1>3. 截取从 <code>开始</code> ~ 5 位置 的字符串</h1>
+<p>print(num_str[:6])</p>
+<h1>4. 截取完整的字符串</h1>
+<p>print(num_str[:])</p>
+<h1>5. 从开始位置，每隔一个字符截取字符串</h1>
+<p>print(num_str[::2])</p>
+<h1>6. 从索引 1 开始，每隔一个取一个</h1>
+<p>print(num_str[1::2])</p>
+<h1>倒序切片</h1>
+<h1>-1 表示倒数第一个字符</h1>
+<p>print(num_str[-1])</p>
+<h1>7. 截取从 2 ~ <code>末尾 - 1</code> 的字符串</h1>
+<p>print(num_str[2:-1])</p>
+<h1>8. 截取字符串末尾两个字符</h1>
+<p>print(num_str[-2:])</p>
+<h1>9. 字符串的逆序（面试题）</h1>
+<p>print(num_str[::-1])</p>
+<p>```</p>
+<h2>05. 公共方法</h2>
+<h3>5.1 Python 内置函数</h3>
+<p>Python 包含了以下内置函数：</p>
+<p>| 函数 | 描述 | 备注 |
+| --- | --- | --- |
+| len(item) | 计算容器中元素个数 | |
+| del(item) | 删除变量 | del 有两种方式 |
+| max(item) | 返回容器中元素最大值 | 如果是字典，只针对 key 比较 |
+| min(item) | 返回容器中元素最小值 | 如果是字典，只针对 key 比较 |
+| cmp(item1, item2) | 比较两个值，-1 小于/0 相等/1 大于 | Python 3.x 取消了 cmp 函数 |</p>
+<p><strong>注意</strong></p>
+<ul>
+<li><strong>字符串</strong> 比较符合以下规则： &quot;0&quot; &lt; &quot;A&quot; &lt; &quot;a&quot;</li>
+</ul>
+<h3>5.2 切片</h3>
+<p>| 描述 | Python 表达式 | 结果 | 支持的数据类型 |
+| :---: | --- | --- | --- | --- |
+| 切片 | &quot;0123456789&quot;[::-2] | &quot;97531&quot; | 字符串、列表、元组 |</p>
+<ul>
+<li><strong>切片</strong> 使用 <strong>索引值</strong> 来限定范围，从一个大的 <strong>字符串</strong> 中 <strong>切出</strong> 小的 <strong>字符串</strong></li>
+<li><strong>列表</strong> 和 <strong>元组</strong> 都是 <strong>有序</strong> 的集合，都能够 <strong>通过索引值</strong> 获取到对应的数据</li>
+<li><strong>字典</strong> 是一个 <strong>无序</strong> 的集合，是使用 <strong>键值对</strong> 保存数据</li>
+</ul>
+<h3>5.3 运算符</h3>
+<p>| 运算符 | Python 表达式 | 结果 | 描述 | 支持的数据类型 |
+| :---: | --- | --- | --- | --- |
+| + | [1, 2] + [3, 4] | [1, 2, 3, 4] | 合并 | 字符串、列表、元组 |
+| * | [&quot;Hi!&quot;] * 4 | ['Hi!', 'Hi!', 'Hi!', 'Hi!'] | 重复 | 字符串、列表、元组 |
+| in | 3 in (1, 2, 3) | True | 元素是否存在 | 字符串、列表、元组、字典 |
+| not in | 4 not in (1, 2, 3) | True | 元素是否不存在 | 字符串、列表、元组、字典 |
+| &gt; &gt;= == &lt; &lt;= | (1, 2, 3) &lt; (2, 2, 3) | True | 元素比较 | 字符串、列表、元组 |</p>
+<p><strong>注意</strong></p>
+<ul>
+<li><code>in</code> 在对 <strong>字典</strong> 操作时，判断的是 <strong>字典的键</strong></li>
+<li><code>in</code> 和 <code>not in</code> 被称为 <strong>成员运算符</strong></li>
+</ul>
+<h4>成员运算符</h4>
+<p>成员运算符用于 <strong>测试</strong> 序列中是否包含指定的 <strong>成员</strong></p>
+<p>| 运算符 | 描述 | 实例 |
+| --- | --- | --- |
+| in | 如果在指定的序列中找到值返回 True，否则返回 False | <code>3 in (1, 2, 3)</code> 返回 <code>True</code> |
+| not in | 如果在指定的序列中没有找到值返回 True，否则返回 False | <code>3 not in (1, 2, 3)</code> 返回 <code>False</code> |</p>
+<p>注意：在对 <strong>字典</strong> 操作时，判断的是 <strong>字典的键</strong></p>
+<h3>5.4 完整的 for 循环语法</h3>
+<ul>
+<li>在 <code>Python</code> 中完整的 <code>for 循环</code> 的语法如下：</li>
+</ul>
+<p>```python
+for 变量 in 集合:</p>
+<pre><code>循环体代码
+</code></pre>
+
+<p>else:
+    没有通过 break 退出循环，循环结束后，会执行的代码
+```</p>
+<h4>应用场景</h4>
+<ul>
+<li>在 <strong>迭代遍历</strong> 嵌套的数据类型时，例如 <strong>一个列表包含了多个字典</strong></li>
+<li>
+需求：要判断 某一个字典中 是否存在 指定的 值 
+<ul>
+<li>如果 <strong>存在</strong>，提示并且退出循环</li>
+<li>如果 <strong>不存在</strong>，在 <strong>循环整体结束</strong> 后，希望 <strong>得到一个统一的提示</strong></li>
+</ul>
+</li>
+</ul>
+<p>```python
+students = [
+    {&quot;name&quot;: &quot;阿土&quot;,
+     &quot;age&quot;: 20,
+     &quot;gender&quot;: True,
+     &quot;height&quot;: 1.7,
+     &quot;weight&quot;: 75.0},
+    {&quot;name&quot;: &quot;小美&quot;,
+     &quot;age&quot;: 19,
+     &quot;gender&quot;: False,
+     &quot;height&quot;: 1.6,
+     &quot;weight&quot;: 45.0},
+]</p>
+<p>find_name = &quot;阿土&quot;</p>
+<p>for stu_dict in students:</p>
+<pre><code>print(stu_dict)
+
+# 判断当前遍历的字典中姓名是否为find_name
+if stu_dict[&quot;name&quot;] == find_name:
+    print(&quot;找到了&quot;)
+
+    # 如果已经找到，直接退出循环，就不需要再对后续的数据进行比较
+    break
+</code></pre>
+
+<p>else:
+    print(&quot;没有找到&quot;)</p>
+<p>print(&quot;循环结束&quot;)</p>
+<p>```</p>
+
+<!-- 综合应用 —— 名片管理系统 -->
+<h1>综合应用 —— 名片管理系统</h1>
+<h2>目标</h2>
+<p>综合应用已经学习过的知识点：</p>
+<ul>
+<li><strong>变量</strong></li>
+<li><strong>流程控制</strong></li>
+<li><strong>函数</strong></li>
+<li><strong>模块</strong></li>
+</ul>
+<p>开发 <strong>名片管理系统</strong></p>
+<h2>系统需求</h2>
+<ul>
+<li>1. 程序启动，显示名片管理系统欢迎界面，并显示功能菜单</li>
+</ul>
+<p>```</p>
+<hr />
+<p>欢迎使用【名片管理系统】V1.0</p>
+<ol>
+<li>新建名片</li>
+<li>显示全部</li>
+<li>
+<p>查询名片</p>
+</li>
+<li>
+<p>退出系统</p>
+</li>
+</ol>
+<hr />
+<p>```</p>
+<ul>
+<li>2. 用户用数字选择不同的功能</li>
+<li>3. 根据功能选择，执行不同的功能</li>
+<li>4. 用户名片需要记录用户的 <strong>姓名</strong>、<strong>电话<strong>、</strong>QQ</strong>、<strong>邮件</strong></li>
+<li>5. 如果查询到指定的名片，用户可以选择 <strong>修改</strong> 或者 <strong>删除</strong> 名片</li>
+</ul>
+<h2>步骤</h2>
+<ol>
+<li>框架搭建</li>
+<li>新增名片</li>
+<li>显示所有名片</li>
+<li>查询名片</li>
+<li>查询成功后修改、删除名片</li>
+<li>让 Python 程序能够直接运行</li>
+</ol>
+<h2>01. 框架搭建</h2>
+<p><strong>目标</strong></p>
+<ul>
+<li>
+搭建名片管理系统 <strong>框架结构</strong>
+<ol>
+<li><strong>准备文件</strong>，确定文件名，保证能够 <strong>在需要的位置</strong> 编写代码</li>
+<li>编写 <strong>主运行循环</strong>，实现基本的 <strong>用户输入和判断</strong></li>
+</ol>
+</li>
+</ul>
+<h3>1.1 文件准备</h3>
+<ol>
+<li>
+新建 <code>cards_main.py</code> 保存 <strong>主程序功能代码</strong>
+<ul>
+<li>程序的入口</li>
+<li>每一次启动名片管理系统都通过 <code>main</code> 这个文件启动 </li>
+</ul>
+</li>
+<li>
+新建 <code>cards_tools.py</code> 保存 <strong>所有名片功能函数</strong>
+<ul>
+<li>将对名片的 <strong>新增</strong>、<strong>查询<strong>、</strong>修改</strong>、<strong>删除</strong> 等功能封装在不同的函数中</li>
+</ul>
+</li>
+</ol>
+<h3>1.2 编写主运行循环</h3>
+<ul>
+<li>在 <code>cards_main</code> 中添加一个 <strong>无限循环</strong></li>
+</ul>
+<p>```python</p>
+<p>while True:</p>
+<pre><code># TODO(小明) 显示系统菜单
+
+action = input(&quot;请选择操作功能：&quot;)
+
+print(&quot;您选择的操作是：%s&quot; % action)
+
+# 根据用户输入决定后续的操作
+if action in [&quot;1&quot;, &quot;2&quot;, &quot;3&quot;]:
+    pass
+elif action == &quot;0&quot;:
+    print(&quot;欢迎再次使用【名片管理系统】&quot;)
+
+    break
+else:
+    print(&quot;输入错误，请重新输入&quot;)
+</code></pre>
+
+<p>```</p>
+<h4>字符串判断</h4>
+<p><code>python
+if action in [&quot;1&quot;, &quot;2&quot;, &quot;3&quot;]:</code></p>
+<p><code>python
+if action == &quot;1&quot; or action == &quot;2&quot; or action == &quot;3&quot;:</code></p>
+<ol>
+<li>使用 <code>in</code> 针对 <strong>列表</strong> 判断，避免使用 <code>or</code> 拼接复杂的逻辑条件</li>
+<li>没有使用 <code>int</code> 转换用户输入，可以避免 <strong>一旦用户输入的不是数字</strong>，导致程序运行出错</li>
+</ol>
+<h4>pass</h4>
+<ul>
+<li><code>pass</code> 就是一个空语句，不做任何事情，一般用做占位语句</li>
+<li>是为了保持程序结构的完整性</li>
+</ul>
+<h4>无限循环</h4>
+<ul>
+<li>在开发软件时，如果 <strong>不希望程序执行后</strong> 立即退出</li>
+<li>可以在程序中增加一个 <strong>无限循环</strong></li>
+<li><strong>由用户来决定</strong> 退出程序的时机</li>
+</ul>
+<h4>TODO 注释</h4>
+<ul>
+<li>在 <code>#</code> 后跟上 <code>TODO</code>，用于标记需要去做的工作</li>
+</ul>
+<p>```python</p>
+<h1>TODO(作者/邮件) 显示系统菜单</h1>
+<p>```</p>
+<h3>1.3 在 <code>cards_tools</code> 中增加四个新函数</h3>
+<p>```python
+def show_menu():</p>
+<pre><code>&quot;&quot;&quot;显示菜单
+&quot;&quot;&quot;
+pass
+</code></pre>
+
+<p>def new_card():</p>
+<pre><code>&quot;&quot;&quot;新建名片
+&quot;&quot;&quot;
+print(&quot;-&quot; * 50)
+print(&quot;功能：新建名片&quot;)
+</code></pre>
+
+<p>def show_all():</p>
+<pre><code>&quot;&quot;&quot;显示全部
+&quot;&quot;&quot;
+print(&quot;-&quot; * 50)
+print(&quot;功能：显示全部&quot;)
+</code></pre>
+
+<p>def search_card():</p>
+<pre><code>&quot;&quot;&quot;搜索名片
+&quot;&quot;&quot;
+print(&quot;-&quot; * 50)
+print(&quot;功能：搜索名片&quot;)
+</code></pre>
+
+<p>```</p>
+<h3>1.4 导入模块</h3>
+<ul>
+<li>在 <code>cards_main.py</code> 中使用 <code>import</code> 导入 <code>cards_tools</code> 模块</li>
+</ul>
+<p><code>python
+import cards_tools</code> </p>
+<ul>
+<li>修改 <code>while</code> 循环的代码如下：</li>
+</ul>
+<p>```python
+import cards_tools</p>
+<p>while True:</p>
+<pre><code>cards_tools.show_menu()
+
+action = input(&quot;请选择操作功能：&quot;)
+
+print(&quot;您选择的操作是：%s&quot; % action)
+
+# 根据用户输入决定后续的操作
+if action in [&quot;1&quot;, &quot;2&quot;, &quot;3&quot;]:
+
+    if action == &quot;1&quot;:
+        cards_tools.new_card()
+
+    elif action == &quot;2&quot;:
+        cards_tools.show_all()
+
+    elif action == &quot;3&quot;:
+        cards_tools.search_card()
+
+elif action == &quot;0&quot;:
+    print(&quot;欢迎再次使用【名片管理系统】&quot;)
+
+    break
+else:
+    print(&quot;输入错误，请重新输入：&quot;)
+</code></pre>
+
+<p>```</p>
+<blockquote>
+<p>至此：<code>cards_main</code> 中的所有代码全部开发完毕！</p>
+</blockquote>
+<h3>1.5 完成 <code>show_menu</code> 函数</h3>
+<p>```python
+def show_menu():</p>
+<pre><code>&quot;&quot;&quot;显示菜单
+&quot;&quot;&quot;
+print(&quot;*&quot; * 50)
+print(&quot;欢迎使用【菜单管理系统】V1.0&quot;)
+print(&quot;&quot;)
+print(&quot;1. 新建名片&quot;)
+print(&quot;2. 显示全部&quot;)
+print(&quot;3. 查询名片&quot;)
+print(&quot;&quot;)
+print(&quot;0. 退出系统&quot;)
+print(&quot;*&quot; * 50)
+</code></pre>
+
+<p>```</p>
+<h2>02. 保存名片数据的结构</h2>
+<p><strong>程序就是用来处理数据的，而变量就是用来存储数据的</strong></p>
+<ul>
+<li>使用 <strong>字典</strong> 记录 <strong>每一张名片</strong> 的详细信息</li>
+<li>使用 <strong>列表</strong> 统一记录所有的 <strong>名片字典</strong></li>
+</ul>
+<p><img src="./img/005.png" alt="001_名片管理系统全局列表-w500" /></p>
+<h3>定义名片列表变量</h3>
+<ul>
+<li>在 <code>cards_tools</code> 文件的顶部增加一个 <strong>列表变量</strong></li>
+</ul>
+<p>```python</p>
+<h1>所有名片记录的列表</h1>
+<p>card_list = []
+```</p>
+<p><strong>注意</strong></p>
+<ol>
+<li><strong>所有名片相关操作</strong>，都需要使用这个列表，所以应该 <strong>定义在程序的顶部</strong></li>
+<li><strong>程序刚运行时，没有数据</strong>，所以是 <strong>空列表</strong></li>
+</ol>
+<h2>03. 新增名片</h2>
+<h3>3.1 功能分析</h3>
+<ol>
+<li>提示用户依次输入名片信息</li>
+<li>将名片信息保存到一个字典</li>
+<li>将字典添加到名片列表</li>
+<li>提示名片添加完成</li>
+</ol>
+<h3>3.2 实现 new_card 方法</h3>
+<ul>
+<li>根据步骤实现代码</li>
+</ul>
+<p>```python
+def new_card():</p>
+<pre><code>&quot;&quot;&quot;新建名片
+&quot;&quot;&quot;
+print(&quot;-&quot; * 50)
+print(&quot;功能：新建名片&quot;)
+
+# 1. 提示用户输入名片信息
+name = input(&quot;请输入姓名：&quot;)
+phone = input(&quot;请输入电话：&quot;)
+qq = input(&quot;请输入 QQ 号码：&quot;)
+email = input(&quot;请输入邮箱：&quot;)
+
+# 2. 将用户信息保存到一个字典
+card_dict = {&quot;name&quot;: name,
+             &quot;phone&quot;: phone,
+             &quot;qq&quot;: qq,
+             &quot;email&quot;: email}
+
+# 3. 将用户字典添加到名片列表
+card_list.append(card_dict)
+
+print(card_list)
+
+# 4. 提示添加成功信息
+print(&quot;成功添加 %s 的名片&quot; % card_dict[&quot;name&quot;])
+</code></pre>
+
+<p>```</p>
+<blockquote>
+<p>技巧：在 <code>PyCharm</code> 中，可以使用 <code>SHIFT + F6</code> 统一修改变量名</p>
+</blockquote>
+<h2>04. 显示所有名片</h2>
+<h3>4.1 功能分析</h3>
+<ul>
+<li>循环遍历名片列表，顺序显示每一个字典的信息</li>
+</ul>
+<h3>4.2 基础代码实现</h3>
+<p>```python
+def show_all():</p>
+<pre><code>&quot;&quot;&quot;显示全部
+&quot;&quot;&quot;
+print(&quot;-&quot; * 50)
+print(&quot;功能：显示全部&quot;)
+
+for card_dict in card_list:
+
+    print(card_dict)
+</code></pre>
+
+<p>```</p>
+<ul>
+<li>显示效果不好！</li>
+</ul>
+<h3>4.3 增加标题和使用 <code>\t</code> 显示</h3>
+<p>```python
+def show_all():
+    &quot;&quot;&quot;显示全部
+    &quot;&quot;&quot;
+    print(&quot;-&quot; * 50)
+    print(&quot;功能：显示全部&quot;)</p>
+<pre><code># 打印表头
+for name in [&quot;姓名&quot;, &quot;电话&quot;, &quot;QQ&quot;, &quot;邮箱&quot;]:
+    print(name, end=&quot;\t\t&quot;)
+
+print(&quot;&quot;)
+
+# 打印分隔线
+print(&quot;=&quot; * 50)
+
+for card_dict in card_list:
+
+    print(&quot;%s\t\t%s\t\t%s\t\t%s&quot; % (card_dict[&quot;name&quot;],
+                                    card_dict[&quot;phone&quot;],
+                                    card_dict[&quot;qq&quot;],
+                                    card_dict[&quot;email&quot;]))
+</code></pre>
+
+<p>```</p>
+<h3>4.4 增加没有名片记录判断</h3>
+<p>```python
+def show_all():
+    &quot;&quot;&quot;显示全部
+    &quot;&quot;&quot;
+    print(&quot;-&quot; * 50)
+    print(&quot;功能：显示全部&quot;)</p>
+<pre><code># 1. 判断是否有名片记录
+if len(card_list) == 0:
+    print(&quot;提示：没有任何名片记录&quot;)
+
+    return
+</code></pre>
+
+<p>```</p>
+<p><strong>注意</strong></p>
+<ul>
+<li>在函数中使用 <code>return</code> 表示返回</li>
+<li>如果在 <code>return</code> 后没有跟任何内容，只是表示该函数执行到此就不再执行后续的代码</li>
+</ul>
+<h2>05. 查询名片</h2>
+<h3>5.1 功能分析</h3>
+<ol>
+<li>提示用户要搜索的姓名</li>
+<li>根据用户输入的姓名遍历列表</li>
+<li>搜索到指定的名片后，再执行后续的操作</li>
+</ol>
+<h3>5.2 代码实现</h3>
+<ul>
+<li>查询功能实现</li>
+</ul>
+<p>```python
+def search_card():</p>
+<pre><code>&quot;&quot;&quot;搜索名片
+&quot;&quot;&quot;
+print(&quot;-&quot; * 50)
+print(&quot;功能：搜索名片&quot;)
+
+# 1. 提示要搜索的姓名
+find_name = input(&quot;请输入要搜索的姓名：&quot;)
+
+# 2. 遍历字典
+for card_dict in card_list:
+
+    if card_dict[&quot;name&quot;] == find_name:
+
+        print(&quot;姓名\t\t\t电话\t\t\tQQ\t\t\t邮箱&quot;)
+        print(&quot;-&quot; * 40)
+
+        print(&quot;%s\t\t\t%s\t\t\t%s\t\t\t%s&quot; % (
+            card_dict[&quot;name&quot;],
+            card_dict[&quot;phone&quot;],
+            card_dict[&quot;qq&quot;],
+            card_dict[&quot;email&quot;]))
+
+        print(&quot;-&quot; * 40)
+
+        # TODO(小明) 针对找到的字典进行后续操作：修改/删除
+
+        break
+else:
+    print(&quot;没有找到 %s&quot; % find_name)
+</code></pre>
+
+<p>```</p>
+<ul>
+<li>增加名片操作函数：<strong>修改</strong>/<strong>删除<strong>/</strong>返回主菜单</strong></li>
+</ul>
+<p>```python
+def deal<em>card(find</em>dict):</p>
+<pre><code>&quot;&quot;&quot;操作搜索到的名片字典
+
+:param find_dict:找到的名片字典
+&quot;&quot;&quot;
+print(find_dict)
+
+action_str = input(&quot;请选择要执行的操作 &quot;
+                   &quot;[1] 修改 [2] 删除 [0] 返回上级菜单&quot;)
+
+if action == &quot;1&quot;:
+    print(&quot;修改&quot;)
+elif action == &quot;2&quot;:
+    print(&quot;删除&quot;)
+</code></pre>
+
+<p>```</p>
+<h2>06. 修改和删除</h2>
+<h3>6.1 查询成功后删除名片</h3>
+<ul>
+<li>由于找到的字典记录已经在列表中保存</li>
+<li>要删除名片记录，只需要把列表中对应的字典删除即可</li>
+</ul>
+<p>```python
+    elif action == &quot;2&quot;:
+        card<em>list.remove(find</em>dict)</p>
+<pre><code>    print(&quot;删除成功&quot;)
+</code></pre>
+
+<p>```</p>
+<h3>6.2 修改名片</h3>
+<ul>
+<li>由于找到的字典记录已经在列表中保存</li>
+<li>要修改名片记录，只需要把列表中对应的字典中每一个键值对的数据修改即可</li>
+</ul>
+<p>```python
+    if action == &quot;1&quot;:</p>
+<pre><code>    find_dict[&quot;name&quot;] = input(&quot;请输入姓名：&quot;)
+    find_dict[&quot;phone&quot;] = input(&quot;请输入电话：&quot;)
+    find_dict[&quot;qq&quot;] = input(&quot;请输入QQ：&quot;)
+    find_dict[&quot;email&quot;] = input(&quot;请输入邮件：&quot;)
+
+    print(&quot;%s 的名片修改成功&quot; % find_dict[&quot;name&quot;])
+</code></pre>
+
+<p>```</p>
+<h4>修改名片细化</h4>
+<ul>
+<li><strong>如果用户在使用时，某些名片内容并不想修改</strong>，应该如何做呢？—— 既然系统提供的 <code>input</code> 函数不能满足需求，那么就新定义一个函数 <code>input_card_info</code> 对系统的 <code>input</code> 函数进行扩展</li>
+</ul>
+<p>```python
+def input<em>card</em>info(dict<em>value, tip</em>message):</p>
+<pre><code>&quot;&quot;&quot;输入名片信息
+
+:param dict_value: 字典原有值
+:param tip_message: 输入提示信息
+:return: 如果输入，返回输入内容，否则返回字典原有值
+&quot;&quot;&quot;
+# 1. 提示用户输入内容
+result_str = input(tip_message)
+
+# 2. 针对用户的输入进行判断，如果用户输入了内容，直接返回结果
+if len(result_str) &gt; 0:
+
+    return result_str
+# 3. 如果用户没有输入内容，返回 `字典中原有的值`
+else:
+
+    return dict_value
+</code></pre>
+
+<p>```</p>
+<h2>07. LINUX 上的 <code>Shebang</code> 符号(<code>#!</code>)</h2>
+<ul>
+<li><code>#!</code>这个符号叫做 <code>Shebang</code> 或者 <code>Sha-bang</code></li>
+<li><code>Shebang</code> 通常在 <code>Unix</code> 系统脚本的中 <strong>第一行开头</strong> 使用</li>
+<li>指明 <strong>执行这个脚本文件</strong> 的 <strong>解释程序</strong></li>
+</ul>
+<h3>使用 Shebang 的步骤</h3>
+<ul>
+<li>1. 使用 <code>which</code> 查询 <code>python3</code> 解释器所在路径</li>
+</ul>
+<p><code>bash
+$ which python3</code></p>
+<ul>
+<li>2. 修改要运行的 <strong>主 python 文件</strong>，在第一行增加以下内容</li>
+</ul>
+<p>```python</p>
+<h1>! /usr/bin/python3</h1>
+<p>```</p>
+<ul>
+<li>3. 修改 <strong>主 python 文件</strong> 的文件权限，增加执行权限</li>
+</ul>
+<p><code>bash
+$ chmod +x cards_main.py</code></p>
+<ul>
+<li>4. 在需要时执行程序即可</li>
+</ul>
+<p><code>bash
+./cards_main.py</code></p>
+
+<!-- 变量进阶（理解） -->
+<h1>变量进阶（理解）</h1>
+<h2>目标</h2>
+<ul>
+<li>变量的引用</li>
+<li>可变和不可变类型</li>
+<li>局部变量和全局变量</li>
+</ul>
+<h2>01. 变量的引用</h2>
+<blockquote>
+<ul>
+<li>变量 和 数据 都是保存在 <strong>内存</strong> 中的</li>
+<li>在 <code>Python</code> 中 <strong>函数 的 参数传递</strong> 以及 <strong>返回值</strong> 都是靠 <strong>引用</strong> 传递的</li>
+</ul>
+</blockquote>
+<h3>1.1 引用的概念</h3>
+<p>在 <code>Python</code> 中</p>
+<ul>
+<li><strong>变量</strong> 和 <strong>数据</strong> 是分开存储的</li>
+<li><strong>数据</strong> 保存在内存中的一个位置</li>
+<li><strong>变量</strong> 中保存着数据在内存中的地址</li>
+<li><strong>变量</strong> 中 <strong>记录数据的地址</strong>，就叫做 <strong>引用</strong></li>
+<li>使用 <code>id()</code> 函数可以查看变量中保存数据所在的 <strong>内存地址</strong></li>
+</ul>
+<blockquote>
+<p>注意：如果变量已经被定义，当给一个变量赋值的时候，本质上是 <strong>修改了数据的引用</strong></p>
+<ul>
+<li>变量 <strong>不再</strong> 对之前的数据引用</li>
+<li>变量 <strong>改为</strong> 对新赋值的数据引用</li>
+</ul>
+</blockquote>
+<h3>1.2 <code>变量引用</code> 的示例</h3>
+<p>在 <code>Python</code> 中，变量的名字类似于 <strong>便签纸</strong> 贴在 <strong>数据</strong> 上</p>
+<ul>
+<li>定义一个整数变量 <code>a</code>，并且赋值为 <code>1</code></li>
+</ul>
+<p>| 代码 | 图示 |
+| :---: | :---: |
+| a = 1 | <img src="./img/149/004_a1tag.png" alt="004_a1tag" />|</p>
+<ul>
+<li>将变量 <code>a</code> 赋值为 <code>2</code></li>
+</ul>
+<p>| 代码 | 图示 |
+| :---: | :---: |
+| a = 2 | <img src="./img/149/005_a2tag.png" alt="005_a2tag" /><img src="./img/149/005_1.png" alt="005_1" />|</p>
+<ul>
+<li>定义一个整数变量 <code>b</code>，并且将变量 <code>a</code> 的值赋值给 <code>b</code></li>
+</ul>
+<p>| 代码 | 图示 |
+| :---: | :---: |
+| b = a | <img src="./img/149/006_ab2tag.png" alt="006_ab2tag" />|</p>
+<blockquote>
+<p>变量 <code>b</code> 是第 2 个贴在数字 <code>2</code> 上的标签</p>
+</blockquote>
+<h3>1.3 函数的参数和返回值的传递</h3>
+<p>在 <code>Python</code> 中，函数的 <strong>实参</strong>/<strong>返回值</strong> 都是是靠 <strong>引用</strong> 来传递来的</p>
+<p>```python
+def test(num):</p>
+<pre><code>print(&quot;-&quot; * 50)
+print(&quot;%d 在函数内的内存地址是 %x&quot; % (num, id(num)))
+
+result = 100
+
+print(&quot;返回值 %d 在内存中的地址是 %x&quot; % (result, id(result)))
+print(&quot;-&quot; * 50)
+
+return  result
+</code></pre>
+
+<p>a = 10
+print(&quot;调用函数前 内存地址是 %x&quot; % id(a))</p>
+<p>r = test(a)</p>
+<p>print(&quot;调用函数后 实参内存地址是 %x&quot; % id(a))
+print(&quot;调用函数后 返回值内存地址是 %x&quot; % id(r))</p>
+<p>```</p>
+<h2>02. 可变和不可变类型</h2>
+<ul>
+<li>
+<p><strong>不可变类型</strong>，内存中的数据不允许被修改：</p>
+<ul>
+<li>数字类型 <code>int</code>, <code>bool</code>, <code>float</code>, <code>complex</code>, <code>long(2.x)</code></li>
+<li>字符串 <code>str</code></li>
+<li>元组 <code>tuple</code></li>
+</ul>
+</li>
+<li>
+<p><strong>可变类型</strong>，内存中的数据可以被修改：</p>
+<ul>
+<li>列表 <code>list</code></li>
+<li>字典 <code>dict</code></li>
+</ul>
+</li>
+</ul>
+<p><code>python
+a = 1
+a = &quot;hello&quot;
+a = [1, 2, 3]
+a = [3, 2, 1]</code></p>
+<p>```python
+demo_list = [1, 2, 3]</p>
+<p>print(&quot;定义列表后的内存地址 %d&quot; % id(demo_list))</p>
+<p>demo<em>list.append(999)
+demo</em>list.pop(0)
+demo<em>list.remove(2)
+demo</em>list[0] = 10</p>
+<p>print(&quot;修改数据后的内存地址 %d&quot; % id(demo_list))</p>
+<p>demo_dict = {&quot;name&quot;: &quot;小明&quot;}</p>
+<p>print(&quot;定义字典后的内存地址 %d&quot; % id(demo_dict))</p>
+<p>demo<em>dict[&quot;age&quot;] = 18
+demo</em>dict.pop(&quot;name&quot;)
+demo_dict[&quot;name&quot;] = &quot;老王&quot;</p>
+<p>print(&quot;修改数据后的内存地址 %d&quot; % id(demo_dict))</p>
+<p>```</p>
+<blockquote>
+<p>注意：字典的 <code>key</code> <strong>只能使用不可变类型的数据</strong></p>
+</blockquote>
+<p><strong>注意</strong></p>
+<ol>
+<li><strong>可变类型</strong>的数据变化，是通过 <strong>方法</strong> 来实现的</li>
+<li>
+如果给一个可变类型的变量，赋值了一个新的数据，<strong>引用会修改</strong>
+<ul>
+<li>变量 <strong>不再</strong> 对之前的数据引用</li>
+<li>变量 <strong>改为</strong> 对新赋值的数据引用</li>
+</ul>
+</li>
+</ol>
+<h3>哈希 <code>(hash)</code></h3>
+<ul>
+<li>
+<code>Python</code> 中内置有一个名字叫做 <code>hash(o)</code> 的函数
+<ul>
+<li>接收一个 <strong>不可变类型</strong> 的数据作为 <strong>参数</strong></li>
+<li><strong>返回</strong> 结果是一个 <strong>整数</strong></li>
+</ul>
+</li>
+<li>
+<code>哈希</code> 是一种 <strong>算法</strong>，其作用就是提取数据的 <strong>特征码（指纹）</strong>
+<ul>
+<li><strong>相同的内容</strong> 得到 <strong>相同的结果</strong></li>
+<li><strong>不同的内容</strong> 得到 <strong>不同的结果</strong></li>
+</ul>
+</li>
+<li>
+在 <code>Python</code> 中，设置字典的 <strong>键值对</strong> 时，会首先对 <code>key</code> 进行 <code>hash</code> 已决定如何在内存中保存字典的数据，以方便 <strong>后续</strong> 对字典的操作：<strong>增、删、改、查</strong>
+<ul>
+<li>键值对的 <code>key</code> 必须是不可变类型数据</li>
+<li>键值对的 <code>value</code> 可以是任意类型的数据</li>
+</ul>
+</li>
+</ul>
+<h2>03. 局部变量和全局变量</h2>
+<ul>
+<li><strong>局部变量</strong> 是在 <strong>函数内部</strong> 定义的变量，<strong>只能在函数内部使用</strong></li>
+<li><strong>全局变量</strong> 是在 <strong>函数外部定义</strong> 的变量（没有定义在某一个函数内），<strong>所有函数</strong> 内部 <strong>都可以使用这个变量</strong></li>
+</ul>
+<blockquote>
+<p>提示：在其他的开发语言中，大多 <strong>不推荐使用全局变量</strong> —— 可变范围太大，导致程序不好维护！</p>
+</blockquote>
+<h3>3.1 局部变量</h3>
+<ul>
+<li><strong>局部变量</strong> 是在 <strong>函数内部</strong> 定义的变量，<strong>只能在函数内部使用</strong></li>
+<li>函数执行结束后，<strong>函数内部的局部变量，会被系统回收</strong></li>
+<li>不同的函数，可以定义相同的名字的局部变量，但是 <strong>彼此之间</strong> 不会产生影响</li>
+</ul>
+<h4>局部变量的作用</h4>
+<ul>
+<li>在函数内部使用，<strong>临时</strong> 保存 <strong>函数内部需要使用的数据</strong></li>
+</ul>
+<p>```python
+def demo1():</p>
+<pre><code>num = 10
+
+print(num)
+
+num = 20
+
+print(&quot;修改后 %d&quot; % num)
+</code></pre>
+
+<p>def demo2():</p>
+<pre><code>num = 100
+
+print(num)
+</code></pre>
+
+<p>demo1()
+demo2()</p>
+<p>print(&quot;over&quot;)</p>
+<p>```</p>
+<h4>局部变量的生命周期</h4>
+<ul>
+<li>所谓 <strong>生命周期</strong> 就是变量从 <strong>被创建</strong> 到 <strong>被系统回收</strong> 的过程</li>
+<li><strong>局部变量</strong> 在 <strong>函数执行时</strong> 才会被创建</li>
+<li><strong>函数执行结束后</strong> 局部变量 <strong>被系统回收</strong></li>
+<li><strong>局部变量在生命周期</strong> 内，可以用来存储 <strong>函数内部临时使用到的数据</strong></li>
+</ul>
+<h3>3.2 全局变量</h3>
+<ul>
+<li><strong>全局变量</strong> 是在 <strong>函数外部定义</strong> 的变量，所有函数内部都可以使用这个变量</li>
+</ul>
+<p>```python</p>
+<h1>定义一个全局变量</h1>
+<p>num = 10</p>
+<p>def demo1():</p>
+<pre><code>print(num)
+</code></pre>
+
+<p>def demo2():</p>
+<pre><code>print(num)
+</code></pre>
+
+<p>demo1()
+demo2()</p>
+<p>print(&quot;over&quot;)</p>
+<p>```</p>
+<p><strong>注意</strong>：函数执行时，<strong>需要处理变量时</strong> 会：</p>
+<ol>
+<li><strong>首先</strong> 查找 <strong>函数内部</strong> 是否存在 <strong>指定名称 的局部变量</strong>，<strong>如果有，直接使用</strong></li>
+<li>如果没有，查找 <strong>函数外部</strong> 是否存在 <strong>指定名称 的全局变量<strong>，</strong>如果有，直接使用</strong></li>
+<li>如果还没有，程序报错！</li>
+</ol>
+<h4>1) 函数不能直接修改 <code>全局变量的引用</code></h4>
+<ul>
+<li><strong>全局变量</strong> 是在 <strong>函数外部定义</strong> 的变量（没有定义在某一个函数内），<strong>所有函数</strong> 内部 <strong>都可以使用这个变量</strong></li>
+</ul>
+<blockquote>
+<p>提示：在其他的开发语言中，大多 <strong>不推荐使用全局变量</strong> —— 可变范围太大，导致程序不好维护！</p>
+</blockquote>
+<ul>
+<li>在函数内部，可以 <strong>通过全局变量的引用获取对应的数据</strong></li>
+<li>但是，<strong>不允许直接修改全局变量的引用</strong> —— 使用赋值语句修改全局变量的值</li>
+</ul>
+<p>```python
+num = 10</p>
+<p>def demo1():</p>
+<pre><code>print(&quot;demo1&quot; + &quot;-&quot; * 50)
+
+# 只是定义了一个局部变量，不会修改到全局变量，只是变量名相同而已
+num = 100
+print(num)
+</code></pre>
+
+<p>def demo2():</p>
+<pre><code>print(&quot;demo2&quot; + &quot;-&quot; * 50)
+print(num)
+</code></pre>
+
+<p>demo1()
+demo2()</p>
+<p>print(&quot;over&quot;)</p>
+<p>```</p>
+<blockquote>
+<p>注意：只是在函数内部定义了一个局部变量而已，只是变量名相同 —— 在函数内部不能直接修改全局变量的值</p>
+</blockquote>
+<h4>2) 在函数内部修改全局变量的值</h4>
+<ul>
+<li>如果在函数中需要修改全局变量，需要使用 <code>global</code> 进行声明</li>
+</ul>
+<p>```python
+num = 10</p>
+<p>def demo1():</p>
+<pre><code>print(&quot;demo1&quot; + &quot;-&quot; * 50)
+
+# global 关键字，告诉 Python 解释器 num 是一个全局变量
+global num
+# 只是定义了一个局部变量，不会修改到全局变量，只是变量名相同而已
+num = 100
+print(num)
+</code></pre>
+
+<p>def demo2():</p>
+<pre><code>print(&quot;demo2&quot; + &quot;-&quot; * 50)
+print(num)
+</code></pre>
+
+<p>demo1()
+demo2()</p>
+<p>print(&quot;over&quot;)</p>
+<p>```</p>
+<h4>3) 全局变量定义的位置</h4>
+<ul>
+<li>为了保证所有的函数都能够正确使用到全局变量，应该 <strong>将全局变量定义在其他函数的上方</strong></li>
+</ul>
+<p>```python
+a = 10</p>
+<p>def demo():
+    print(&quot;%d&quot; % a)
+    print(&quot;%d&quot; % b)
+    print(&quot;%d&quot; % c)</p>
+<p>b = 20
+demo()
+c = 30</p>
+<p>```</p>
+<p><strong>注意</strong></p>
+<ul>
+<li>由于全局变量 c，是在调用函数之后，才定义的，在执行函数时，变量还没有定义，所以程序会报错！</li>
+</ul>
+<p><strong>代码结构示意图如下</strong></p>
+<p><img src="./img/003.png" alt="001_代码结构示意图-w240" /></p>
+<h4>4) 全局变量命名的建议</h4>
+<ul>
+<li>为了避免局部变量和全局变量出现混淆，在定义全局变量时，有些公司会有一些开发要求，例如：</li>
+<li>全局变量名前应该增加 <code>g_</code> 或者 <code>gl_</code> 的前缀</li>
+</ul>
+<blockquote>
+<p>提示：具体的要求格式，各公司要求可能会有些差异</p>
+</blockquote>
+<!-- 函数进阶 -->
+<h1>函数进阶</h1>
+<h2>目标</h2>
+<ul>
+<li>函数参数和返回值的作用</li>
+<li>函数的返回值 进阶</li>
+<li>函数的参数 进阶</li>
+<li>递归函数</li>
+</ul>
+<h2>01. 函数参数和返回值的作用</h2>
+<p>函数根据 <strong>有没有参数</strong> 以及 <strong>有没有返回值</strong>，可以 <strong>相互组合</strong>，一共有 <strong>4 种</strong> 组合形式</p>
+<ol>
+<li>无参数，无返回值</li>
+<li>无参数，有返回值</li>
+<li>有参数，无返回值</li>
+<li>有参数，有返回值</li>
+</ol>
+<p><img src="./img/004.png" alt="001_函数参数和返回值" /></p>
+<blockquote>
+<p>定义函数时，<strong>是否接收参数，或者是否返回结果</strong>，是根据 <strong>实际的功能需求</strong> 来决定的！</p>
+</blockquote>
+<ol>
+<li>如果函数 <strong>内部处理的数据不确定</strong>，就可以将外界的数据以参数传递到函数内部</li>
+<li>如果希望一个函数 <strong>执行完成后，向外界汇报执行结果</strong>，就可以增加函数的返回值</li>
+</ol>
+<h3>1.1 无参数，无返回值</h3>
+<p>此类函数，不接收参数，也没有返回值，应用场景如下：</p>
+<ol>
+<li><strong>只是单纯地做一件事情</strong>，例如 <strong>显示菜单</strong></li>
+<li>在函数内部 <strong>针对全局变量进行操作</strong>，例如：<strong>新建名片</strong>，最终结果 <strong>记录在全局变量</strong> 中</li>
+</ol>
+<blockquote>
+<p>注意：</p>
+</blockquote>
+<ul>
+<li>如果全局变量的数据类型是一个 <strong>可变类型</strong>，在函数内部可以使用 <strong>方法</strong> 修改全局变量的内容 —— <strong>变量的引用不会改变</strong></li>
+<li>在函数内部，<strong>使用赋值语句</strong> 才会 <strong>修改变量的引用</strong></li>
+</ul>
+<h3>1.2 无参数，有返回值</h3>
+<p>此类函数，不接收参数，但是有返回值，应用场景如下：</p>
+<ul>
+<li>采集数据，例如 <strong>温度计</strong>，返回结果就是当前的温度，而不需要传递任何的参数</li>
+</ul>
+<h3>1.3 有参数，无返回值</h3>
+<p>此类函数，接收参数，没有返回值，应用场景如下：</p>
+<ul>
+<li>函数内部的代码保持不变，针对 <strong>不同的参数 处理 不同的数据</strong></li>
+<li>例如 <strong>名片管理系统</strong> 针对 <strong>找到的名片</strong> 做 <strong>修改</strong>、<strong>删除</strong> 操作</li>
+</ul>
+<h3>1.4 有参数，有返回值</h3>
+<p>此类函数，接收参数，同时有返回值，应用场景如下：</p>
+<ul>
+<li>函数内部的代码保持不变，针对 <strong>不同的参数 处理 不同的数据</strong>，并且 <strong>返回期望的处理结果</strong></li>
+<li>
+例如 <strong>名片管理系统</strong> 使用 <strong>字典默认值</strong> 和 <strong>提示信息</strong> 提示用户输入内容
+<ul>
+<li>如果输入，返回输入内容</li>
+<li>如果没有输入，返回字典默认值</li>
+</ul>
+</li>
+</ul>
+<h2>02. 函数的返回值 进阶</h2>
+<ul>
+<li>在程序开发中，有时候，会希望 <strong>一个函数执行结束后，告诉调用者一个结果</strong>，以便调用者针对具体的结果做后续的处理</li>
+<li><strong>返回值</strong> 是函数 <strong>完成工作<strong>后，</strong>最后</strong> 给调用者的 <strong>一个结果</strong></li>
+<li>在函数中使用 <code>return</code> 关键字可以返回结果</li>
+<li>调用函数一方，可以 <strong>使用变量</strong> 来 <strong>接收</strong> 函数的返回结果</li>
+</ul>
+<blockquote>
+<p>问题：一个函数执行后能否返回多个结果？</p>
+</blockquote>
+<h3>示例 —— 温度和湿度测量</h3>
+<ul>
+<li>假设要开发一个函数能够同时返回当前的温度和湿度</li>
+<li><strong>先完成返回温度</strong>的功能如下：</li>
+</ul>
+<p>```python
+def measure():
+    &quot;&quot;&quot;返回当前的温度&quot;&quot;&quot;</p>
+<pre><code>print(&quot;开始测量...&quot;)
+temp = 39
+print(&quot;测量结束...&quot;)
+
+return temp
+</code></pre>
+
+<p>result = measure()
+print(result)
+```</p>
+<ul>
+<li>在利用 <strong>元组</strong> 在返回温度的同时，也能够返回 <strong>湿度</strong></li>
+<li>改造如下：</li>
+</ul>
+<p>```python
+def measure():
+    &quot;&quot;&quot;返回当前的温度&quot;&quot;&quot;</p>
+<pre><code>print(&quot;开始测量...&quot;)
+temp = 39
+wetness = 10
+print(&quot;测量结束...&quot;)
+
+return (temp, wetness)
+</code></pre>
+
+<p>```</p>
+<blockquote>
+<p>提示：如果一个函数返回的是元组，括号可以省略</p>
+</blockquote>
+<p><strong>技巧</strong> </p>
+<ul>
+<li>在 <code>Python</code> 中，可以 <strong>将一个元组</strong> 使用 <strong>赋值语句</strong> 同时赋值给 <strong>多个变量</strong></li>
+<li>注意：变量的数量需要和元组中的元素数量保持一致</li>
+</ul>
+<p><code>python
+result = temp, wetness = measure()</code></p>
+<h3>面试题 —— 交换两个数字</h3>
+<p><strong>题目要求</strong></p>
+<ol>
+<li>有两个整数变量 <code>a = 6</code>, <code>b = 100</code></li>
+<li>不使用其他变量，<strong>交换两个变量的值</strong></li>
+</ol>
+<h4>解法 1 —— 使用其他变量</h4>
+<p>```python</p>
+<h1>解法 1 - 使用临时变量</h1>
+<p>c = b
+b = a
+a = c
+```</p>
+<h4>解法 2 —— 不使用临时变量</h4>
+<p>```python</p>
+<h1>解法 2 - 不使用临时变量</h1>
+<p>a = a + b
+b = a - b
+a = a - b
+```</p>
+<h4>解法 3 —— Python 专有，利用元组</h4>
+<p><code>python
+a, b = b, a</code></p>
+<h2>03. 函数的参数 进阶</h2>
+<h3>3.1. 不可变和可变的参数</h3>
+<blockquote>
+<p>问题 1：在函数内部，针对参数使用 <strong>赋值语句</strong>，会不会影响调用函数时传递的 <strong>实参变量</strong>？ —— 不会！</p>
+</blockquote>
+<ul>
+<li>
+无论传递的参数是 <strong>可变</strong> 还是 <strong>不可变</strong> 
+<ul>
+<li>只要 <strong>针对参数</strong> 使用 <strong>赋值语句</strong>，会在 <strong>函数内部</strong> 修改 <strong>局部变量的引用<strong>，</strong>不会影响到 外部变量的引用</strong></li>
+</ul>
+</li>
+</ul>
+<p>```python
+def demo(num, num_list):</p>
+<pre><code>print(&quot;函数内部&quot;)
+
+# 赋值语句
+num = 200
+num_list = [1, 2, 3]
+
+print(num)
+print(num_list)
+
+print(&quot;函数代码完成&quot;)
+</code></pre>
+
+<p>gl<em>num = 99
+gl</em>list = [4, 5, 6]
+demo(gl<em>num, gl<em>list)
+print(gl</em>num)
+print(gl</em>list)</p>
+<p>```</p>
+<blockquote>
+<p>问题 2：如果传递的参数是 <strong>可变类型</strong>，在函数内部，使用 <strong>方法</strong> 修改了数据的内容，<strong>同样会影响到外部的数据</strong></p>
+</blockquote>
+<p>```python
+def mutable(num_list):</p>
+<pre><code># num_list = [1, 2, 3]
+num_list.extend([1, 2, 3])
+
+print(num_list)
+</code></pre>
+
+<p>gl<em>list = [6, 7, 8]
+mutable(gl</em>list)
+print(gl_list)
+```</p>
+<h4>面试题 —— <code>+=</code></h4>
+<ul>
+<li>在 <code>python</code> 中，列表变量调用 <code>+=</code> 本质上是在执行列表变量的 <code>extend</code> 方法，不会修改变量的引用</li>
+</ul>
+<p>```python
+def demo(num, num_list):</p>
+<pre><code>print(&quot;函数内部代码&quot;)
+
+# num = num + num
+num += num
+# num_list.extend(num_list) 由于是调用方法，所以不会修改变量的引用
+# 函数执行结束后，外部数据同样会发生变化
+num_list += num_list
+
+print(num)
+print(num_list)
+print(&quot;函数代码完成&quot;)
+</code></pre>
+
+<p>gl<em>num = 9
+gl</em>list = [1, 2, 3]
+demo(gl<em>num, gl<em>list)
+print(gl</em>num)
+print(gl</em>list)</p>
+<p>```</p>
+<h3>3.2 缺省参数</h3>
+<ul>
+<li>定义函数时，可以给 <strong>某个参数</strong> 指定一个<strong>默认值</strong>，具有默认值的参数就叫做 <strong>缺省参数</strong></li>
+<li>调用函数时，如果没有传入 <strong>缺省参数</strong> 的值，则在函数内部使用定义函数时指定的 <strong>参数默认值</strong></li>
+<li>函数的缺省参数，<strong>将常见的值设置为参数的缺省值</strong>，从而 <strong>简化函数的调用</strong></li>
+<li>例如：对列表排序的方法</li>
+</ul>
+<p>```python
+gl<em>num</em>list = [6, 3, 9]</p>
+<h1>默认就是升序排序，因为这种应用需求更多</h1>
+<p>gl<em>num</em>list.sort()
+print(gl<em>num</em>list)</p>
+<h1>只有当需要降序排序时，才需要传递 <code>reverse</code> 参数</h1>
+<p>gl<em>num</em>list.sort(reverse=True)
+print(gl<em>num</em>list)
+```</p>
+<h4>指定函数的缺省参数</h4>
+<ul>
+<li>在参数后使用赋值语句，可以指定参数的缺省值</li>
+</ul>
+<p>```python
+def print_info(name, gender=True):</p>
+<pre><code>gender_text = &quot;男生&quot;
+if not gender:
+    gender_text = &quot;女生&quot;
+
+print(&quot;%s 是 %s&quot; % (name, gender_text))
+</code></pre>
+
+<p>```</p>
+<p><strong>提示</strong></p>
+<ol>
+<li>缺省参数，需要使用 <strong>最常见的值</strong> 作为默认值！</li>
+<li>如果一个参数的值 <strong>不能确定</strong>，则不应该设置默认值，具体的数值在调用函数时，由外界传递！</li>
+</ol>
+<h4>缺省参数的注意事项</h4>
+<h5>1) 缺省参数的定义位置</h5>
+<ul>
+<li><strong>必须保证</strong> <strong>带有默认值的缺省参数</strong> <strong>在参数列表末尾</strong></li>
+<li>所以，以下定义是错误的！</li>
+</ul>
+<p><code>python
+def print_info(name, gender=True, title):</code></p>
+<h5>2) 调用带有多个缺省参数的函数</h5>
+<ul>
+<li>在 <strong>调用函数时</strong>，如果有 <strong>多个缺省参数<strong>，</strong>需要指定参数名</strong>，这样解释器才能够知道参数的对应关系！</li>
+</ul>
+<p>```python
+def print_info(name, title=&quot;&quot;, gender=True):
+    &quot;&quot;&quot;</p>
+<pre><code>:param title: 职位
+:param name: 班上同学的姓名
+:param gender: True 男生 False 女生
+&quot;&quot;&quot;
+
+gender_text = &quot;男生&quot;
+
+if not gender:
+    gender_text = &quot;女生&quot;
+
+print(&quot;%s%s 是 %s&quot; % (title, name, gender_text))
+</code></pre>
+
+<h1>提示：在指定缺省参数的默认值时，应该使用最常见的值作为默认值！</h1>
+<p>print<em>info(&quot;小明&quot;)
+print</em>info(&quot;老王&quot;, title=&quot;班长&quot;)
+print_info(&quot;小美&quot;, gender=False)</p>
+<p>```</p>
+<h3>3.3 多值参数（知道）</h3>
+<h4>定义支持多值参数的函数</h4>
+<ul>
+<li>有时可能需要 <strong>一个函数</strong> 能够处理的参数 <strong>个数</strong> 是不确定的，这个时候，就可以使用 <strong>多值参数</strong></li>
+<li>
+<code>python</code> 中有 <strong>两种</strong> 多值参数：
+<ul>
+<li>参数名前增加 <strong>一个</strong> <code>*</code> 可以接收 <strong>元组</strong></li>
+<li>参数名前增加 <strong>两个</strong> <code>*</code> 可以接收 <strong>字典</strong></li>
+</ul>
+</li>
+<li>
+<p>一般在给多值参数命名时，<strong>习惯</strong>使用以下两个名字</p>
+<ul>
+<li><code>*args</code> —— 存放 <strong>元组</strong> 参数，前面有一个 <code>*</code></li>
+<li><code>**kwargs</code> —— 存放 <strong>字典</strong> 参数，前面有两个 <code>*</code></li>
+</ul>
+</li>
+<li>
+<p><code>args</code> 是 <code>arguments</code> 的缩写，有变量的含义</p>
+</li>
+<li><code>kw</code> 是 <code>keyword</code> 的缩写，<code>kwargs</code> 可以记忆 <strong>键值对参数</strong></li>
+</ul>
+<p>```python
+def demo(num, *args, **kwargs):</p>
+<pre><code>print(num)
+print(args)
+print(kwargs)
+</code></pre>
+
+<p>demo(1, 2, 3, 4, 5, name=&quot;小明&quot;, age=18, gender=True)</p>
+<p>```</p>
+<blockquote>
+<p>提示：<strong>多值参数</strong> 的应用会经常出现在网络上一些大牛开发的框架中，知道多值参数，<strong>有利于我们能够读懂大牛的代码</strong></p>
+</blockquote>
+<h4>多值参数案例 —— 计算任意多个数字的和</h4>
+<p><strong>需求</strong></p>
+<ol>
+<li>定义一个函数 <code>sum_numbers</code>，可以接收的 <strong>任意多个整数</strong></li>
+<li>功能要求：将传递的 <strong>所有数字累加</strong> 并且返回累加结果</li>
+</ol>
+<p>```python
+def sum_numbers(*args):</p>
+<pre><code>num = 0
+# 遍历 args 元组顺序求和
+for n in args:
+    num += n
+
+return num
+</code></pre>
+
+<p>print(sum_numbers(1, 2, 3))
+```</p>
+<h4>元组和字典的拆包（知道）</h4>
+<ul>
+<li>
+在调用带有多值参数的函数时，如果希望：
+<ul>
+<li>将一个 <strong>元组变量</strong>，直接传递给 <code>args</code></li>
+<li>将一个 <strong>字典变量</strong>，直接传递给 <code>kwargs</code></li>
+</ul>
+</li>
+<li>
+就可以使用 <strong>拆包</strong>，简化参数的传递，<strong>拆包</strong> 的方式是：
+<ul>
+<li>在 <strong>元组变量前</strong>，增加 <strong>一个</strong> <code>*</code></li>
+<li>在 <strong>字典变量前</strong>，增加 <strong>两个</strong> <code>*</code></li>
+</ul>
+</li>
+</ul>
+<p>```python
+def demo(*args, **kwargs):</p>
+<pre><code>print(args)
+print(kwargs)
+</code></pre>
+
+<h1>需要将一个元组变量/字典变量传递给函数对应的参数</h1>
+<p>gl<em>nums = (1, 2, 3)
+gl</em>xiaoming = {&quot;name&quot;: &quot;小明&quot;, &quot;age&quot;: 18}</p>
+<h1>会把 num_tuple 和 xiaoming 作为元组传递个 args</h1>
+<h1>demo(gl<em>nums, gl</em>xiaoming)</h1>
+<p>demo(*gl_nums, **gl_xiaoming)</p>
+<p>```</p>
+<h2>04. 函数的递归</h2>
+<blockquote>
+<p>函数调用自身的 <strong>编程技巧</strong> 称为递归</p>
+</blockquote>
+<h3>4.1 递归函数的特点</h3>
+<p><strong>特点</strong></p>
+<ul>
+<li>
+<strong>一个函数</strong> <strong>内部</strong> <strong>调用自己</strong>
+<ul>
+<li>函数内部可以调用其他函数，当然在函数内部也可以调用自己</li>
+</ul>
+</li>
+</ul>
+<p><strong>代码特点</strong></p>
+<ol>
+<li>函数内部的 <strong>代码</strong> 是相同的，只是针对 <strong>参数</strong> 不同，<strong>处理的结果不同</strong></li>
+<li>
+当 <strong>参数满足一个条件</strong> 时，函数不再执行
+<ul>
+<li><strong>这个非常重要</strong>，通常被称为递归的出口，否则 <strong>会出现死循环</strong>！</li>
+</ul>
+</li>
+</ol>
+<p>示例代码</p>
+<p>```python
+def sum_numbers(num):</p>
+<pre><code>print(num)
+
+# 递归的出口很重要，否则会出现死循环
+if num == 1:
+    return
+
+sum_numbers(num - 1)
+</code></pre>
+
+<p>sum_numbers(3)</p>
+<p>```</p>
+<p><img src="./img/002.png" alt="002_递归调用示意图I" /></p>
+<h3>4.2 递归案例 —— 计算数字累加</h3>
+<p><strong>需求</strong></p>
+<ol>
+<li>定义一个函数 <code>sum_numbers</code></li>
+<li>能够接收一个 <code>num</code> 的整数参数</li>
+<li>计算 1 + 2 + ... num 的结果</li>
+</ol>
+<p>```python
+def sum_numbers(num):</p>
+<pre><code>if num == 1:
+    return 1
+
+# 假设 sum_numbers 能够完成 num - 1 的累加
+temp = sum_numbers(num - 1)
+
+# 函数内部的核心算法就是 两个数字的相加
+return num + temp
+</code></pre>
+
+<p>print(sum_numbers(2))</p>
+<p>```</p>
+<p><img src="./img/001.png" alt="002_递归调用示意图" /></p>
+<blockquote>
+<p>提示：递归是一个 <strong>编程技巧</strong>，初次接触递归会感觉有些吃力！在处理 <strong>不确定的循环条件时<strong>，格外的有用，例如：</strong>遍历整个文件目录的结构</strong></p>
+</blockquote>
+
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->

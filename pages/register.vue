@@ -122,6 +122,9 @@ export default {
       } else {
         this.result = '输入信息有误'
       }
+      $http.track({
+        flag: 'logUp'
+      })
     },
     checkName(isclick) {
       if (this.user.username) {

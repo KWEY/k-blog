@@ -2,7 +2,7 @@
   <div class="kwe-left">
     <template v-if="articleList.length > 0">
       <div v-for="item in articleList" :key="item.id" class="kwe-directory" >
-        <nuxt-link :to="'/article/' + item.id" @click.stop="articleId(item.id)">
+        <nuxt-link :to="'/article/' + item.id">
           <h3 class="kwe-title">{{ item.title }}</h3>
         </nuxt-link>
         <div class="kwe-description">{{ item.description }}</div>
@@ -12,7 +12,6 @@
             <span
               v-for="ele of item.type"
               :key="ele.name[1]"
-              @click.stop="articleType(ele.name[1])"
             >
               <nuxt-link
                 :to="'/?type=' + ele.name[1]"
@@ -86,12 +85,6 @@ export default {
           }
         })
       }
-    },
-    articleId(id) {
-      $http.track({flag: 'article', params: id})
-    },
-    articleType(id) {
-      $http.track({flag: 'articleType', params: id})
     }
   }
 }

@@ -2,7 +2,7 @@
  * 接口域名的管理
  */
 const isPro = process.env.NODE_ENV === 'production'
-const baseUrl = isPro ? 'https://www.webq.top' : 'http://127.0.0.1:3000'
+export const baseUrl = isPro ? 'https://www.webq.top' : 'http://127.0.0.1:3000'
 const base = {
   loglist: `${baseUrl}/api/loglist`, // 获取log list信息
   deletelog: `${baseUrl}/api/deletelog`, // 删除log信息

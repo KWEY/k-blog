@@ -41,7 +41,6 @@ export default {
         this.initNav()
       }, 400)
     }
-    $http.track({flag: 'Follow'})
   },
   methods: {
     initNav() {
