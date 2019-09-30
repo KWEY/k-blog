@@ -274,3 +274,22 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
   img {
     max-width: 100%
   }
+
+  .note {
+    position: relative;
+    padding: 2.5em 1.2em 0.5em;
+    margin-top: 10px;
+    background: #e9fbe9;
+    border-left: 2px solid #52e052;
+  }
+  .note:after {
+      color: #2b2;
+      content: 'Note';
+      position: absolute;
+      left: 1.2em;
+      font-size: 14px;
+      top: 0;
+      display: block;
+      width: 100%;
+      line-height: 40px;
+  }
