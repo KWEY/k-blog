@@ -4,8 +4,11 @@
     <a href="../pages/py00.html" target="_blank">
       <h5 class="kwe-li">认识 Python</h5>
     </a>
+    <a href="../pages/hongye.html" target="_blank">
+      <h5 class="kwe-li">Python 视频解析</h5>
+    </a>
     <a href="../pages/py01.html" target="_blank">
-      <h5 class="kwe-li">Python 语法</h5>
+      <h5 class="kwe-li">Python 文档</h5>
     </a>
   </div>
 </template>
