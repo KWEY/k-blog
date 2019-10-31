@@ -26,7 +26,12 @@ export default {
 <style lang="less">
 .kwe-static {
   max-width: 800px;
-  margin: 60px auto;
+  min-height: 600px;
+  margin: 0 auto;
+  overflow: hidden;
+  .kwe-title {
+    margin-top: 80px;
+  }
   .kwe-title, .kwe-li {
     border-bottom: 1px solid #00a1d6;
   }

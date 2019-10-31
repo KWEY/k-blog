@@ -108,7 +108,7 @@ export default {
     padding: 4px 8px;
     border-radius: 2px;
     transition: all 0.2s;
-    background: #fff;
+    background: rgba(255,255,255,0.7);
     box-sizing: border-box;
     box-shadow: 0 0 2px 0px #ccc;
     transition: box-shadow 0.5s;
@@ -126,6 +126,9 @@ export default {
       margin: 6px 0 20px;
       font-size: 12px;
       text-align: left;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
     }
     .kwe-bottom {
       display: flex;
@@ -146,13 +149,13 @@ export default {
           padding-right: 8px;
           line-height: 18px;
           height: 20px;
-          border: 1px solid #ccc;
+          border: 1px solid #c8e5fe;
           border-left-color: transparent;
           font-size: 12px;
           text-align: center;
           color: #00a1d6;
           &:hover {
-            text-shadow: 1px 1px 1px #ccc;
+            text-shadow: 1px 1px 1px #c8e5fe;
           }
           &:before {
             content: '';
@@ -163,8 +166,8 @@ export default {
             width: 13px;
             height: 13px;
             transform: rotate(45deg);
-            border-left: 1px solid #ccc;
-            border-bottom: 1px solid #ccc;
+            border-left: 1px solid #c8e5fe;
+            border-bottom: 1px solid #c8e5fe;
           }
         }
       }

@@ -54,7 +54,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="less">
-@bg: rgba(8, 40, 70, 0.85);
+@bg: rgba(255, 255, 255, 0.9);
 .kwe-top {
   position: fixed;
   top: 0;
@@ -62,7 +62,7 @@ export default {
   width: 100%;
   box-shadow: rgba(0, 0, 0, 0.1) 0 1px 2px;
   z-index: 2;
-  color: #9acfea;
+  color: #ff6700;
   background: @bg;
   user-select: none;
   &-wrap {
@@ -81,17 +81,17 @@ export default {
       display: block;
       margin: 6px 0 6px 10px;
       padding: 0px 12px;
-      fill: #00a1d6;
+      fill: #ff6700;
       line-height: 28px;
       font-size: 14px;
       font-weight: 200;
       z-index: 2;
       &:hover {
-        color: #00a1d6;
+        color: #ff6700;
       }
       .kwe-home-svg {
         vertical-align: sub;
-        fill: #00a1d6;
+        fill: #ff6700;
         width: 20px;
       }
     }

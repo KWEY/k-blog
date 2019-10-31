@@ -163,6 +163,11 @@ export const typeList = {
           src: '/doc/dp',
           pid: '003_006',
           name: '设计模式'
+        },
+        {
+          src: '/doc/dj',
+          pid: '003_007',
+          name: 'Django'
         }
       ]
     }

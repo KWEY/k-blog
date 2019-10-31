@@ -66,7 +66,7 @@ export default {
   .kwe-header-wrap {
     width: 100%;
     padding-top: 40%;
-    background: url('../assets/3.jpg') center no-repeat;
+    // background: url('../assets/3.jpg') center no-repeat;
     background-size: 100%;
   }
   &-author {

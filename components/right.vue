@@ -112,6 +112,7 @@ export default {
   width: 340px;
   flex: none;
   margin: 30px 0 30px;
+  background: rgba(255,255,255,0.7);
   .kwe-data {
     box-sizing: border-box;
     padding: 20px 0 0 20px;

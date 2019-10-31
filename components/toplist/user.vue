@@ -72,12 +72,12 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="less">
-@bg: rgba(8, 40, 70, 0.85);
+@bg: rgba(255, 255, 255, 0.9);
 .kwe-user {
   display: flex;
   flex: none;
   position: relative;
-  color: #00a1d6;
+  color: #ff6700;
   min-width: 100px;
   line-height: 40px;
   text-align: center;
@@ -96,12 +96,12 @@ export default {
     }
   }
   .kwe-action {
-    border-left: 1px solid #00a1d6;
+    border-left: 1px solid #ff6700;
     .kwe-upload {
       display: inline-block;
       width: 100px;
       &:hover {
-        text-shadow: 1px 1px 1px #00a1d6;
+        text-shadow: 1px 1px 3px #ff6700;
       }
     }
   }
@@ -110,12 +110,12 @@ export default {
     display: none;
     width: 100%;
     background: @bg;
-    box-shadow: 1px 1px 1px #222;
+    // box-shadow: 1px 1px 1px #222;
     .kwe-logout,
     .kwe-change {
       cursor: pointer;
       &:hover {
-        text-shadow: 1px 1px 1px #00a1d6;
+        background: #c1e2fb;
       }
     }
   }

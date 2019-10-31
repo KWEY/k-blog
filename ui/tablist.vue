@@ -66,7 +66,7 @@ export default {
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="less">
-@bg: rgba(8, 40, 70, 0.85);
+@bg: rgba(255, 255, 255, 0.9);
 .eui-tablist {
   display: flex;
   white-space: nowrap;
@@ -107,7 +107,7 @@ export default {
         padding: 0 20px;
         transition: padding 0.4s;
         &.active {
-          background: rgba(8, 40, 70, 0.95);
+          background: #c1e2fb;
         }
         &::before {
           content: '>';
@@ -120,7 +120,7 @@ export default {
         }
         &:hover {
           padding-left: 26px;
-          background: rgba(8, 40, 70, 0.95);
+          background: #c1e2fb;
           &::before {
             left: 14px;
           }

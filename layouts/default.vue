@@ -107,6 +107,11 @@ export default {
 }
 </script>
 <style lang="less">
+body {
+  background: url('../assets/bg.jpg') top center no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
 .kwe-default-wrap {
   color: #33495e;
   font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;

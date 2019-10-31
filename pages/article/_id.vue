@@ -123,6 +123,7 @@ export default {
   font-size: 16px;
   box-sizing: border-box;
   overflow: hidden;
+  background: rgba(255,255,255,0.6);
   img {
     max-width: 100%;
   }
@@ -191,14 +192,14 @@ export default {
       min-width: 24px;
       line-height: 20px;
       height: 22px;
-      border: 1px solid #ccc;
+      border: 1px solid #c8e5fe;
       border-left-color: transparent;
       font-size: 12px;
       text-align: center;
       color: #00a1d6;
       cursor: pointer;
       &:hover {
-        text-shadow: 1px 1px 1px #ccc;
+        text-shadow: 1px 1px 1px #c8e5fe;
       }
       &:before {
         content: '';
@@ -209,8 +210,8 @@ export default {
         width: 15px;
         height: 15px;
         transform: rotate(45deg);
-        border-left: 1px solid #ccc;
-        border-bottom: 1px solid #ccc;
+        border-left: 1px solid #c8e5fe;
+        border-bottom: 1px solid #c8e5fe;
       }
     }
   }

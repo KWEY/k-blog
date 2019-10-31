@@ -1,0 +1,42 @@
+def index(request):
+    # latest_question_list = Article.objects.order_by('id')[:5]
+    data = []
+    with open('./event.json') as f:
+        js = json.load(f)  # js是转换后的字典
+        for item in js:
+
+            ip = '0.0.0.0'
+            flag = ''
+            params = ''
+            ctime = None
+            ua =''
+            for i in item:
+                if i == 'ip':
+                    ip = item[i]
+                if i == 'ctime':
+                    if item[i]:
+                        ctime = datetime.fromtimestamp((item[i]/1000))
+                if i == 'flag':
+                    flag = item[i]
+                if i == 'params':
+                    params = item[i]
+                if i == 'ua':
+                    ua = item[i]
+                
+            data.append(Event(
+                    ip=ip,
+                    flag=flag,
+                    params=params,
+                    ctime=ctime,
+                    ua=ua,
+                ))
+
+            print(data.__len__())
+
+    Event.objects.bulk_create(data,5) 
+
+    # list = Article.objects.values()
+    # for j in list:
+    #     print(j)
+    #     pass
+    return HttpResponse('list')

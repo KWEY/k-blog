@@ -1,6 +1,6 @@
 <template>
   <div class="kwe-search">
-    <input v-model.trim="keyword" type="text" class="kwe-text" @keyup.enter="keyup">
+    <input v-model.trim="keyword" type="text" class="kwe-text" @keyup.enter="keyup" placeholder="站内搜索">
     <search-svg class="kwe-search-svg" @click="searchKeyword" />
   </div>
 </template>

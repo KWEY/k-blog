@@ -1,0 +1,121 @@
+{
+    "orginal": "https://gitlab.com/help/ci/yaml/README.md",
+    "typeList": [
+        {
+          "title": "1",
+          "name": "Web框架本质",
+          "id": "#a1"
+        },
+        {
+          "title": "2",
+          "name": "django学员管理系统",
+          "id": "#a2"
+        },
+        {
+          "title": "3",
+          "name": "动态路由",
+          "id": "#a3"
+        },
+        {
+          "title": "4",
+          "name": "路由分发",
+          "id": "#a4"
+        },
+        {
+          "title": "5",
+          "name": "反向生成URL（Django独有）",
+          "id": "#a5"
+        },
+        {
+          "title": "6",
+          "name": "ORM基本操作（数据表+数据行操作）",
+          "id": "#a6"
+        },
+        {
+          "title": "7",
+          "name": "Django视图CBV",
+          "id": "#a7"
+        },
+        {
+          "title": "8",
+          "name": "ORM连表操作（一对多）（一对多中，外键存在于从表中）",
+          "id": "#a8"
+        },
+        {
+          "title": "9",
+          "name": "ORM连表操作（多对多）",
+          "id": "#a9"
+        },
+        {
+          "title": "10",
+          "name": "ORM连表操作（多对多自关联）",
+          "id": "#a10"
+        },
+        {
+          "title": "11",
+          "name": "ORM操作补充（models模块中数据表属性定义操作）",
+          "id": "#a11"
+        },
+        {
+          "title": "12",
+          "name": "分页查询",
+          "id": "#a12"
+        },
+        {
+          "title": "13",
+          "name": "ORM补充之基本操作（数据行高级操作）",
+          "id": "#a13"
+        },
+        {
+          "title": "14",
+          "name": "XSS攻击（跨站脚本攻击）",
+          "id": "#a14"
+        },
+        {
+          "title": "15",
+          "name": "ORM函数相关（html模版上使用函数）simple_tag",
+          "id": "#a15"
+        },
+        {
+          "title": "16",
+          "name": "cookie和session（推荐使用session）",
+          "id": "#a16"
+        },
+        {
+          "title": "17",
+          "name": "allow_failure",
+          "id": "#a17"
+        },
+        {
+          "title": "18",
+          "name": "用户登陆demo",
+          "id": "#a18"
+        },
+        {
+          "title": "19",
+          "name": "Form组件完成学员管理系统",
+          "id": "#a19"
+        },
+        {
+          "title": "20",
+          "name": "Form常用组件定制",
+          "id": "#a20"
+        },
+        {
+          "title": "21",
+          "name": "Form组件中的钩子（扩展自定义函数）",
+          "id": "#a21"
+        },
+        {
+          "title": "22",
+          "name": "Ajax提交数据部分",
+          "id": "#a22"
+        },
+        {
+          "title": "23",
+          "name": "CORS解决跨域问题（跨来源资源共享）（响应头添加值）",
+          "id": "#a23"
+        }
+        
+    ]
+}

@@ -66,6 +66,9 @@ export default {
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="less">
+.kwe-nav {
+  background:rgba(255,255,255,0.6)
+}
 .kwe-nav.loading {
   min-height: 200px;
   background: url('../assets/loading.gif') no-repeat center;
@@ -75,6 +78,15 @@ export default {
   text-align: center;
 }
 .kwe-nav-wrap {
+  .nav-x-add-info .nav-x-add-btn, .nav-x-add-info .nav-x-clear {
+    border: none;
+  }
+  input {
+    background: transparent;
+  }
+  .kui-select {
+    background: transparent;
+  }
   .nav-x {
     height: 100%;
     padding-top: 60px;

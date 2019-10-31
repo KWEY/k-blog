@@ -57,8 +57,8 @@ export default {
   height: 100px;
   box-shadow: 0 -1px 2px 2px #ccc;
   box-sizing: border-box;
-  color: #9acfea;
-  background: rgba(8, 40, 70, 0.85);
+  color: #ff6700;
+  background: rgba(255, 255, 255, 0.9);
   line-height: 100px;
   .kwe-sw {
     position: absolute;
