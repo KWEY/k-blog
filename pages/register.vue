@@ -203,6 +203,7 @@ export default {
 <style lang="less">
 .kwe-register {
   width: 100%;
+  min-height: 600px;
   padding-top: 60px;
   font-size: 14px;
   color: #606266;
@@ -235,7 +236,7 @@ export default {
       margin: 0 auto;
       padding: 0 20px;
       font-size: 36px;
-      background: #efefef;
+      background: rgba(255, 255, 255, 0.9);
       text-align: center;
     }
   }
@@ -289,7 +290,7 @@ export default {
     border: 1px solid #ccc;
     outline: none;
     margin: 0 auto 30px auto;
-    background: transparent;
+    background: transparent !important;
   }
 }
 </style>
